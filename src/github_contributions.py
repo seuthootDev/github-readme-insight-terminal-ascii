@@ -19,7 +19,6 @@ def fetch_contributions(username: str) -> dict[str, int]:
     with urllib.request.urlopen(req, timeout=15) as resp:
         html = resp.read().decode("utf-8", errors="replace")
 
-    # 현재 GitHub: <td data-date="YYYY-MM-DD"> ... <tool-tip>N contributions on ... / No contributions</tool-tip>
     result = {}
     pattern = re.compile(
         r'data-date="([^"]+)"[^>]*>.*?<tool-tip[^>]*>([^<]+)</tool-tip>',

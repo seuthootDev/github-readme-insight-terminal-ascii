@@ -37,8 +37,10 @@ Outputs the contribution graph to your terminal and saves it as `mac_style.svg` 
 
 ```bash
 pip install -r requirements.txt
-python main.py --user YOUR_GITHUB_ID [--theme mac]
+python -m src.cli --user YOUR_GITHUB_ID [--theme mac]
 ```
+
+Compatibility entrypoint: `python main.py --user YOUR_GITHUB_ID [--theme mac]`
 
 **Options**
 
@@ -50,8 +52,8 @@ python main.py --user YOUR_GITHUB_ID [--theme mac]
 **Examples**
 
 ```bash
-python main.py --user seuthootdev --theme mac
-python main.py --user torvalds --theme ubuntu
+python -m src.cli --user seuthootdev --theme mac
+python -m src.cli --user torvalds --theme ubuntu
 ```
 
 ### API Local Testing
@@ -165,8 +167,10 @@ GitHub 기여 그래프(잔디)를 **터미널 스타일 ASCII 아트 SVG**로 �
 
 ```bash
 pip install -r requirements.txt
-python main.py --user YOUR_GITHUB_ID [--theme mac]
+python -m src.cli --user YOUR_GITHUB_ID [--theme mac]
 ```
+
+호환용 진입점: `python main.py --user YOUR_GITHUB_ID [--theme mac]`
 
 **옵션**
 
@@ -178,8 +182,8 @@ python main.py --user YOUR_GITHUB_ID [--theme mac]
 **예시**
 
 ```bash
-python main.py --user seuthootdev --theme mac
-python main.py --user torvalds --theme ubuntu
+python -m src.cli --user seuthootdev --theme mac
+python -m src.cli --user torvalds --theme ubuntu
 ```
 
 ### API 로컬 테스트

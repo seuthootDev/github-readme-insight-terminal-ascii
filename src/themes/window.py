@@ -5,8 +5,7 @@ from pathlib import Path
 from rich.console import Console
 from rich.text import Text
 
-# 헤더 아이콘 (헤더 좌측 배치용)
-ICON_PATH = Path(__file__).resolve().parent / "resources" / "PowerShell_icon.svg"
+ICON_PATH = Path(__file__).resolve().parents[2] / "resources" / "PowerShell_icon.svg"
 HEADER_ICON_SIZE = 24
 HEADER_ICON_X = 12
 HEADER_ICON_Y = 8
@@ -40,7 +39,6 @@ def _load_header_icon_svg() -> str:
     if not ICON_PATH.exists():
         return ""
     raw = ICON_PATH.read_text(encoding="utf-8")
-    # <svg ...> 와 </svg> 제거 후 내부 path 등만 추출
     inner = re.sub(r"<svg[^>]*>", "", raw, count=1)
     inner = re.sub(r"</svg>\s*$", "", inner)
     scale = HEADER_ICON_SIZE / 256
@@ -80,12 +78,6 @@ def export_svg_string(console: Console, github_id: str) -> str:
     svg = re.sub(
         r'<g transform="translate\(26,22\)">\s*(?:<circle[^>]*/>\s*){3}</g>',
         win_buttons,
-        svg
+        svg,
     )
     return svg
-
-
-def export_svg(console: Console, github_id: str) -> None:
-    """SVG 내보낸 후 Windows Terminal 스타일로 수정해 저장."""
-    with open("window_style.svg", "w", encoding="utf-8") as f:
-        f.write(export_svg_string(console, github_id))

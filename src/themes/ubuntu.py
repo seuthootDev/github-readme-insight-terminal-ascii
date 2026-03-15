@@ -1,5 +1,6 @@
 """Ubuntu GNOME Terminal / Yaru-dark 스타일 디자인."""
 import re
+
 from rich.console import Console
 from rich.text import Text
 
@@ -54,12 +55,6 @@ def export_svg_string(console: Console, github_id: str) -> str:
     svg = re.sub(
         r'<g transform="translate\(26,22\)">\s*(?:<circle[^>]*/>\s*){3}</g>',
         ubuntu_buttons,
-        svg
+        svg,
     )
     return svg
-
-
-def export_svg(console: Console, github_id: str) -> None:
-    """SVG 내보낸 후 Ubuntu GNOME Terminal 스타일로 수정해 저장."""
-    with open("ubuntu_style.svg", "w", encoding="utf-8") as f:
-        f.write(export_svg_string(console, github_id))

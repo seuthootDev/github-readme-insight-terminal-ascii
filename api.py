@@ -5,7 +5,7 @@ GET /svg?user=USER&theme=mac|window|ubuntu → image/svg+xml
 from fastapi import FastAPI, Query
 from fastapi.responses import Response
 
-from main import THEMES, generate_svg
+from src.generator import THEMES, generate_svg
 
 app = FastAPI(
     title="GitCon SVG API",

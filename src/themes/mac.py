@@ -29,9 +29,3 @@ def print_prompt_only(console: Console, github_id: str) -> None:
 def export_svg_string(console: Console, github_id: str) -> str:
     """Rich 기본(macOS 스타일) SVG 문자열 반환."""
     return console.export_svg(title=f"{github_id} — zsh — 90×24")
-
-
-def export_svg(console: Console, github_id: str) -> None:
-    """Rich 기본(macOS 스타일) SVG 저장."""
-    with open("mac_style.svg", "w", encoding="utf-8") as f:
-        f.write(export_svg_string(console, github_id))

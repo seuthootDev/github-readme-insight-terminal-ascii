@@ -183,7 +183,7 @@ def add_terminal_animation_to_string(svg: str) -> str:
                 return m.group(0)
 
             attrs = attrs.strip()
-            if "class=\"" in attrs:
+            if 'class="' in attrs:
                 attrs = re.sub(r'class="([^"]+)"', rf'class="\1 {prefix}-typing-command"', attrs, count=1)
             else:
                 attrs += f' class="{prefix}-typing-command"'

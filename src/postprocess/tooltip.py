@@ -6,14 +6,11 @@ import re
 from datetime import timedelta
 from pathlib import Path
 
-
-# Rich 터미널 SVG 레이아웃 (mac_style 등과 동일한 스케일)
-# 잔디 첫 행(Sun)의 y = 166.4, 행 간격 = 24.4 (line-height)
 FIRST_GRASS_Y = 166.4
 CELL_WIDTH = 24.4
 LABEL_X_OFFSET = 48.8
-ROW_STEP = 24.4  # 한 요일 행당 높이 (Rich line-height)
-COLS_FIRST_LINE = 38  # 줄바꿈 시 둘째 줄 col 오프셋
+ROW_STEP = 24.4
+COLS_FIRST_LINE = 38
 
 
 def _xy_to_col_row(x: float, y: float) -> tuple[int, int] | None:
@@ -25,7 +22,6 @@ def _xy_to_col_row(x: float, y: float) -> tuple[int, int] | None:
     if row < 0 or row > 6:
         return None
     remainder = y_offset % ROW_STEP
-    # 한 행이 한 줄이면 remainder < 절반일 때만 첫 줄(좌측 38칸) 영역
     in_first_line = remainder < (ROW_STEP / 2 - 0.01)
     if in_first_line and x >= LABEL_X_OFFSET:
         col = int(round((x - LABEL_X_OFFSET) / CELL_WIDTH))
@@ -48,12 +44,8 @@ def add_grass_tooltips(
     path = Path(svg_path)
     svg = path.read_text(encoding="utf-8")
     contributions = contributions or {}
-
-    # ■ 하나씩이 <text ...>■</text> 형태. x/y 추출 후 날짜 계산해 <title> 삽입
     block = "■"
-
-    # 셀 하나 높이(한 줄). Rich는 line-height 24.4
-    CELL_HEIGHT = 24.4
+    cell_height = 24.4
 
     def repl(m: re.Match) -> str:
         attrs = m.group(1)
@@ -74,12 +66,10 @@ def add_grass_tooltips(
             title = f"{cell_date.isoformat()} ({day_name}) — {count} contribution{'s' if count != 1 else ''}"
         else:
             title = f"{cell_date.isoformat()} ({day_name}) — No contributions"
-        # 셀 전체(■+공백)를 덮는 투명 rect → 호버 영역이 넓어져 툴팁이 잘 나옴 (y는 텍스트 기준선)
-        rect_y = y - CELL_HEIGHT + 2
-        rect = f'<rect x="{x:.1f}" y="{rect_y:.1f}" width="{CELL_WIDTH:.1f}" height="{CELL_HEIGHT:.1f}" fill="transparent"/>'
+        rect_y = y - cell_height + 2
+        rect = f'<rect x="{x:.1f}" y="{rect_y:.1f}" width="{CELL_WIDTH:.1f}" height="{cell_height:.1f}" fill="transparent"/>'
         return f'<g><title>{title}</title>{rect}<text{attrs}>{block}</text></g>'
 
-    # 이미 <title>이 들어간 SVG도 처리 (재실행 시), 최종은 항상 <g>+rect+text
     pattern = re.compile(
         r'<text([^>]*)\s*>(?:<title>[^<]*</title>)?' + re.escape(block) + r'</text>',
         re.DOTALL,
@@ -99,7 +89,7 @@ def add_grass_tooltips_to_string(
     """
     contributions = contributions or {}
     block = "■"
-    CELL_HEIGHT = 24.4
+    cell_height = 24.4
 
     def repl(m: re.Match) -> str:
         attrs = m.group(1)
@@ -120,8 +110,8 @@ def add_grass_tooltips_to_string(
             title = f"{cell_date.isoformat()} ({day_name}) — {count} contribution{'s' if count != 1 else ''}"
         else:
             title = f"{cell_date.isoformat()} ({day_name}) — No contributions"
-        rect_y = y - CELL_HEIGHT + 2
-        rect = f'<rect x="{x:.1f}" y="{rect_y:.1f}" width="{CELL_WIDTH:.1f}" height="{CELL_HEIGHT:.1f}" fill="transparent"/>'
+        rect_y = y - cell_height + 2
+        rect = f'<rect x="{x:.1f}" y="{rect_y:.1f}" width="{CELL_WIDTH:.1f}" height="{cell_height:.1f}" fill="transparent"/>'
         return f'<g><title>{title}</title>{rect}<text{attrs}>{block}</text></g>'
 
     pattern = re.compile(
