@@ -7,6 +7,18 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 - **CLI**: Run locally to print to terminal and save as an SVG without a server.
 - **API**: Returns SVG via `GET /svg?user=USER&theme=...` for use in README `<img>` tags.
 
+**theme=mac** — macOS Terminal (zsh)
+
+![mac](images/mac_style.svg)
+
+**theme=window** — Windows PowerShell
+
+![window](images/window_style.svg)
+
+**theme=ubuntu** — Ubuntu GNOME Terminal
+
+![ubuntu](images/ubuntu_style.svg)
+
 ---
 
 ## Introduction
@@ -86,21 +98,7 @@ https://YOUR_DEPLOY_URL/svg?user=GITHUB_USERNAME&theme=THEME
 ![GitHub contribution grass](https://YOUR_DEPLOY_URL/svg?user=YOUR_GITHUB_ID&theme=mac)
 ```
 
-**Theme Previews**
-
-**theme=mac** — macOS Terminal (zsh)
-
-![mac](images/mac_style.svg)
-
-**theme=window** — Windows PowerShell
-
-![window](images/window_style.svg)
-
-**theme=ubuntu** — Ubuntu GNOME Terminal
-
-![ubuntu](images/ubuntu_style.svg)
-
-Simply add the markdown line above to your Profile README or any repository README to display the contribution SVG.
+*(Theme previews are shown at the top of this README.)* Simply add the markdown line above to your Profile README or any repository README to display the contribution SVG.
 
 ---
 
@@ -136,6 +134,18 @@ GitHub 기여 그래프(잔디)를 **터미널 스타일 ASCII 아트 SVG**로 �
 - **테마**: macOS 터미널 / Windows PowerShell / Ubuntu GNOME 스타일
 - **CLI**: 서버 없이 로컬에서 바로 실행해 터미널 출력 + SVG 파일 저장
 - **API**: `GET /svg?user=USER&theme=...` 로 SVG 반환 → README `<img>` 로 사용
+
+**theme=mac** — macOS 터미널(zsh)
+
+![mac](images/mac_style.svg)
+
+**theme=window** — Windows PowerShell
+
+![window](images/window_style.svg)
+
+**theme=ubuntu** — Ubuntu GNOME 터미널
+
+![ubuntu](images/ubuntu_style.svg)
 
 ---
 
@@ -216,21 +226,7 @@ https://YOUR_DEPLOY_URL/svg?user=GITHUB_USERNAME&theme=THEME
 ![GitHub contribution grass](https://YOUR_DEPLOY_URL/svg?user=YOUR_GITHUB_ID&theme=mac)
 ```
 
-**테마별 미리보기**
-
-**theme=mac** — macOS 터미널(zsh)
-
-![mac](images/mac_style.svg)
-
-**theme=window** — Windows PowerShell
-
-![window](images/window_style.svg)
-
-**theme=ubuntu** — Ubuntu GNOME 터미널
-
-![ubuntu](images/ubuntu_style.svg)
-
-프로필 README나 일반 README의 **이미지 한 줄**을 위 마크다운으로 넣으면, 해당 사용자의 잔디 SVG가 표시됩니다.
+*(테마 미리보기는 본 README 상단에 있습니다.)* 프로필 README나 일반 README의 **이미지 한 줄**을 위 마크다운으로 넣으면, 해당 사용자의 잔디 SVG가 표시됩니다.
 
 ---
 
