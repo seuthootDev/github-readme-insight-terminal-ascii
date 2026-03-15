@@ -26,10 +26,10 @@ venv/
 ENV/
 env/
 
-# Generated SVG (CLI output)
-mac_style.svg
-window_style.svg
-ubuntu_style.svg
+# Generated SVG (CLI output, root only — images/ 폴더는 README용으로 커밋)
+/mac_style.svg
+/window_style.svg
+/ubuntu_style.svg
 
 # Environment / secrets
 .env
