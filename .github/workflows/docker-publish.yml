@@ -5,12 +5,12 @@ on:
     branches:
       - main
       - master
-    # paths:
-    #   # 문서만 변경 시 이미지 재빌드 안 함
-    #   - '**.py'
-    #   - 'Dockerfile'
-    #   - 'requirements.txt'
-    #   - '.dockerignore'
+    paths:
+      # 문서만 변경 시 이미지 재빌드 안 함
+      - '**.py'
+      - 'Dockerfile'
+      - 'requirements.txt'
+      - '.dockerignore'
 
 env:
   REGISTRY: docker.io
