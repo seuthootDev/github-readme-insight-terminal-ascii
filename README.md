@@ -88,9 +88,17 @@ https://YOUR_DEPLOY_URL/svg?user=GITHUB_USERNAME&theme=THEME
 
 **Theme Previews**
 
-- `theme=mac` — macOS Terminal (zsh) style
-- `theme=window` — Windows PowerShell style
-- `theme=ubuntu` — Ubuntu GNOME Terminal style
+**theme=mac** — macOS Terminal (zsh)
+
+![mac](images/mac_style.svg)
+
+**theme=window** — Windows PowerShell
+
+![window](images/window_style.svg)
+
+**theme=ubuntu** — Ubuntu GNOME Terminal
+
+![ubuntu](images/ubuntu_style.svg)
 
 Simply add the markdown line above to your Profile README or any repository README to display the contribution SVG.
 
@@ -210,9 +218,17 @@ https://YOUR_DEPLOY_URL/svg?user=GITHUB_USERNAME&theme=THEME
 
 **테마별 미리보기**
 
-- `theme=mac` — macOS 터미널(zsh) 스타일
-- `theme=window` — Windows PowerShell 스타일
-- `theme=ubuntu` — Ubuntu GNOME 터미널 스타일
+**theme=mac** — macOS 터미널(zsh)
+
+![mac](images/mac_style.svg)
+
+**theme=window** — Windows PowerShell
+
+![window](images/window_style.svg)
+
+**theme=ubuntu** — Ubuntu GNOME 터미널
+
+![ubuntu](images/ubuntu_style.svg)
 
 프로필 README나 일반 README의 **이미지 한 줄**을 위 마크다운으로 넣으면, 해당 사용자의 잔디 SVG가 표시됩니다.
 
