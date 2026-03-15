@@ -101,6 +101,10 @@ Simply add the markdown line above to your Profile README or any repository READ
 This project is deployed on **Render** using a **Docker Hub image**.  
 (e.g., Deploying `seuthootdev/github-grass-ascii:latest` as a Render Web Service via "Deploy an existing image")
 
+### CI/CD (GitHub Actions → Docker Hub → Render)
+
+On push to `main` or `master`, GitHub Actions builds the Docker image and pushes it to Docker Hub. If Render is set to **auto-deploy** from that image, it will redeploy automatically.
+
 ---
 
 ## Contributing
@@ -218,6 +222,10 @@ https://YOUR_DEPLOY_URL/svg?user=GITHUB_USERNAME&theme=THEME
 
 이 프로젝트는 **Render**에서 **Docker Hub에 올린 이미지**를 그대로 배포하는 방식으로 서비스됩니다.  
 (예: `seuthootdev/github-grass-ascii:latest` 이미지를 Render Web Service로 Deploy an existing image)
+
+### CI/CD (GitHub Actions → Docker Hub → Render)
+
+`main` 또는 `master`에 푸시하면 GitHub Actions가 Docker 이미지를 빌드해 Docker Hub에 푸시합니다. Render에서 해당 이미지 **자동 배포**가 켜져 있으면 새 이미지가 올라올 때마다 자동으로 재배포됩니다.
 
 ---
 
