@@ -16,6 +16,7 @@ from github_contributions import fetch_contributions, level_from_count
 from pathlib import Path
 
 from svg_tooltip import add_grass_tooltips_to_string
+from svg_animation import add_terminal_animation_to_string
 
 CONSOLE_WIDTH = 120
 THEMES = {"mac": mac, "window": window, "ubuntu": ubuntu}
@@ -150,7 +151,8 @@ def generate_svg(theme: str, github_id: str) -> str:
     render_grass(console, contributions)
     module.print_prompt_only(console, github_id)
     svg = module.export_svg_string(console, github_id)
-    return add_grass_tooltips_to_string(svg, first_sunday, contributions)
+    svg = add_grass_tooltips_to_string(svg, first_sunday, contributions)
+    return add_terminal_animation_to_string(svg)
 
 
 def run(theme: str, github_id: str) -> None:
