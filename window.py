@@ -6,7 +6,7 @@ from rich.console import Console
 from rich.text import Text
 
 # 헤더 아이콘 (헤더 좌측 배치용)
-ICON_PATH = Path(__file__).resolve().parent / "source" / "PowerShell_icon.svg"
+ICON_PATH = Path(__file__).resolve().parent / "resources" / "PowerShell_icon.svg"
 HEADER_ICON_SIZE = 24
 HEADER_ICON_X = 12
 HEADER_ICON_Y = 8
