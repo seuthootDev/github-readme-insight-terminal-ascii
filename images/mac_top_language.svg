@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="382" viewBox="0 0 620 382" role="img" aria-label="Top languages card for seuthootDev">
+<title>seuthootDev — zsh</title>
+<defs>
+<style>
+  .line-fetch { opacity: 0; animation: show 0.01s linear 1.2s forwards; }
+  .line-success { opacity: 0; animation: show 0.01s linear 1.95s forwards; }
+  .line-languages { opacity: 0; animation: show 0.01s linear 2.05s forwards; }
+  .line-bottom { opacity: 0; animation: show 0.01s linear 2.4s forwards; }
+  .cursor { opacity: 0; animation: show 0.01s linear 2.4s forwards, blink 1s steps(1,end) 2.4s infinite; }
+  .typing-cursor {
+    opacity: 1;
+    animation: hideTypingCursor 0.01s linear 1.2s forwards;
+  }
+  @keyframes show { to { opacity: 1; } }
+  @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+  @keyframes hideTypingCursor { to { opacity: 0; } }
+  </style>
+<clipPath id="toplang-command-typing-clip"><rect x="262.04" y="70" width="0" height="22"><animate attributeName="width" from="0" to="303.6" dur="1.2s" begin="0s" fill="freeze" /></rect></clipPath>
+<clipPath id="toplang-fetch-typing-clip"><rect x="44" y="92" width="0" height="20"><animate attributeName="width" from="0" to="283.76" dur="0.75s" begin="1.2s" fill="freeze" /></rect></clipPath>
+</defs>
+<rect x="20" y="20" width="580" height="342" rx="10" fill="#292929"/>
+<rect x="21" y="60" width="578" height="301" rx="0" fill="#1e1e1e"/>
+<rect x="21" y="21" width="578" height="40" rx="8" fill="#3a3a3a"/>
+
+      <circle cx="38" cy="40" r="6" fill="#ff5f56" />
+      <circle cx="58" cy="40" r="6" fill="#ffbd2e" />
+      <circle cx="78" cy="40" r="6" fill="#27c93f" />
+    
+<text x="310" y="45" font-size="13" font-family="Consolas, Menlo, monospace" fill="#a8a8a8" text-anchor="middle">seuthootDev — zsh</text>
+<text x="44" y="86" font-size="16" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">seuthootDev@MacBook</tspan><tspan fill="#61afef"> ~ </tspan><tspan fill="#c5c8c6">% </tspan></text>
+<text x="262.04" y="86" fill="#c5c8c6" font-size="16" font-family="Consolas, Menlo, monospace" clip-path="url(#toplang-command-typing-clip)">gh api users/seuthootDev/repos</text>
+<text class="typing-cursor" x="262.04" y="86" fill="#c5c8c6" font-size="16" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" from="262.04" to="561.6400000000001" dur="1.2s" begin="0s" fill="freeze" /></text>
+<g class="line-fetch">
+<text x="44" y="108" fill="#8b949e" font-size="14" font-family="Consolas, Menlo, monospace" clip-path="url(#toplang-fetch-typing-clip)">Fetching data from GitHub API...</text>
+</g>
+<g class="line-success">
+<text x="44" y="128" font-size="14" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">✔ </tspan><tspan fill="#c5c8c6">Success! Generated language card for &#39;seuthootDev&#39;.</tspan></text>
+</g>
+<g class="line-languages">
+<rect x="44" y="152" width="532" height="158" rx="12" fill="#1e1e1e" stroke="#30363d"/>
+<text x="68" y="186" font-size="24" font-family="Segoe UI, Arial, sans-serif" fill="#58a6ff" font-weight="700">Top Languages</text>
+<text x="68" y="210" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">JUNG SEUNGHOON (seuthootDev) · top 8</text>
+<rect x="68" y="219" width="481" height="9" rx="2" fill="none" stroke="#30363d"/>
+<rect x="68" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="75" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="82" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="89" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="96" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="103" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="110" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="117" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="124" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="131" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="138" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="145" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="152" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="159" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="166" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="173" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="180" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="187" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="194" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="201" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="208" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="215" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="222" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="229" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="236" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="243" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="250" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="257" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="264" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="271" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="278" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="285" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="292" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="299" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="306" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="313" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="320" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="327" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="334" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="341" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="348" y="220" width="5" height="7" rx="1" fill="#3572A5"/><rect x="355" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="362" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="369" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="376" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="383" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="390" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="397" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="404" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="411" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="418" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="425" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="432" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="439" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="446" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="453" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="460" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="467" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="474" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="481" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="488" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="495" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="502" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="509" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="516" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="523" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="530" y="220" width="5" height="7" rx="1" fill="#3178c6"/><rect x="537" y="220" width="5" height="7" rx="1" fill="#f1e05a"/><rect x="544" y="220" width="5" height="7" rx="1" fill="#f1e05a"/>
+<circle cx="68" cy="243" r="4" fill="#3572A5"/>
+<text x="80" y="248" font-size="13" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">Python</text>
+<text x="258" y="248" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">59.31%</text>
+<circle cx="68" cy="267" r="4" fill="#3178c6"/>
+<text x="80" y="272" font-size="13" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">TypeScript</text>
+<text x="258" y="272" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">37.59%</text>
+<circle cx="321" cy="243" r="4" fill="#f1e05a"/>
+<text x="333" y="248" font-size="13" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">JavaScript</text>
+<text x="511" y="248" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">3.05%</text>
+<circle cx="321" cy="267" r="4" fill="#e34c26"/>
+<text x="333" y="272" font-size="13" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">HTML</text>
+<text x="511" y="272" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">0.04%</text>
+</g>
+<g class="line-bottom">
+<text x="44" y="338" font-size="16" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">seuthootDev@MacBook</tspan><tspan fill="#61afef"> ~ </tspan><tspan fill="#c5c8c6">% </tspan></text>
+<text class="cursor" x="259.04" y="338" fill="#c5c8c6" font-size="16" font-family="Consolas, Menlo, monospace">█</text>
+</g>
+</svg>
