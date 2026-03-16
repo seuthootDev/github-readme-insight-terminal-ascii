@@ -8,7 +8,7 @@ export async function fetchContributions(username) {
   const url = `https://github.com/users/${encodeURIComponent(username.trim())}/contributions`;
   const response = await fetch(url, {
     headers: {
-      "User-Agent": "github-grass-ascii-js",
+      "User-Agent": "github-readme-insight-terminal-ascii",
       Accept: "text/html"
     }
   });

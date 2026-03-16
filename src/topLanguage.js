@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { THEMES } from "./themes.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
+const GITHUB_GRAPHQL_URL = "https://api.github.com/graphql";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -82,6 +83,10 @@ function getLanguageColor(language) {
   return LANGUAGE_COLORS[language] ?? hashColorFromLanguage(language);
 }
 
+function getRowColor(row) {
+  return row?.color ?? getLanguageColor(row?.language);
+}
+
 function createCombinedLanguageBar({ x, y, width, rows, blockWidth = 5, blockGap = 2, emptyColor = "#30363d" }) {
   const parts = [];
   const blocks = Math.max(12, Math.floor((width + blockGap) / (blockWidth + blockGap)));
@@ -96,7 +101,7 @@ function createCombinedLanguageBar({ x, y, width, rows, blockWidth = 5, blockGap
     for (const row of normalized) {
       cumulative += Number(row?.pct ?? 0);
       if (point <= cumulative) {
-        fill = getLanguageColor(row.language);
+        fill = getRowColor(row);
         break;
       }
     }
@@ -115,6 +120,13 @@ function clampTopN(input) {
   const parsed = Number.parseInt(String(input ?? "6"), 10);
   if (Number.isNaN(parsed)) return 6;
   return Math.min(12, Math.max(6, parsed));
+}
+
+function cardHeightForTop(top) {
+  const rowsPerColumn = Math.ceil(clampTopN(top) / 2);
+  const baseHeight = 188;
+  const rowHeight = 24;
+  return baseHeight + ((rowsPerColumn - 4) * rowHeight);
 }
 
 function createAnimationCss() {
@@ -136,13 +148,18 @@ function createAnimationCss() {
 
 async function fetchJson(url) {
   const githubToken = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
+  const logTokenUsage = ["1", "true", "yes", "on"].includes(String(process.env.LOG_GITHUB_TOKEN_USAGE ?? "").toLowerCase());
   const headers = {
     Accept: "application/vnd.github+json",
-    "User-Agent": "github-grass-ascii-js"
+    "User-Agent": "github-readme-insight-terminal-ascii"
   };
 
   if (githubToken) {
     headers.Authorization = `Bearer ${githubToken}`;
+  }
+
+  if (logTokenUsage) {
+    console.log(`[github-api][top-language] token-used=${Boolean(githubToken)} url=${url}`);
   }
 
   const response = await fetch(url, { headers });
@@ -168,6 +185,41 @@ async function fetchJson(url) {
   return response.json();
 }
 
+async function fetchGraphql(query, variables) {
+  const githubToken = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
+  const logTokenUsage = ["1", "true", "yes", "on"].includes(String(process.env.LOG_GITHUB_TOKEN_USAGE ?? "").toLowerCase());
+
+  if (!githubToken) {
+    throw new Error("GitHub GraphQL requests require GITHUB_TOKEN or GH_TOKEN.");
+  }
+
+  if (logTokenUsage) {
+    console.log("[github-api][top-language] token-used=true graphql=true");
+  }
+
+  const response = await fetch(GITHUB_GRAPHQL_URL, {
+    method: "POST",
+    headers: {
+      Accept: "application/vnd.github+json",
+      Authorization: `Bearer ${githubToken}`,
+      "Content-Type": "application/json",
+      "User-Agent": "github-readme-insight-terminal-ascii"
+    },
+    body: JSON.stringify({ query, variables })
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch GitHub GraphQL API: HTTP ${response.status}`);
+  }
+
+  const data = await response.json();
+  if (Array.isArray(data?.errors) && data.errors.length > 0) {
+    throw new Error(String(data.errors[0]?.message ?? "Failed to fetch GitHub GraphQL API."));
+  }
+
+  return data?.data;
+}
+
 async function fetchAllRepos(username) {
   const repos = [];
   let page = 1;
@@ -188,6 +240,64 @@ async function fetchAllRepos(username) {
     if (page > 10) {
       break;
     }
+  }
+
+  return repos;
+}
+
+const TOP_LANGUAGE_GRAPHQL_QUERY = `
+  query topLanguages($login: String!, $after: String) {
+    user(login: $login) {
+      repositories(
+        ownerAffiliations: OWNER
+        isFork: false
+        privacy: PUBLIC
+        first: 100
+        after: $after
+        orderBy: { field: PUSHED_AT, direction: DESC }
+      ) {
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+        nodes {
+          name
+          languages(first: 20, orderBy: { field: SIZE, direction: DESC }) {
+            edges {
+              size
+              node {
+                name
+                color
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+async function fetchAllRepoLanguageEdges(username) {
+  const repos = [];
+  let after = null;
+  let page = 0;
+
+  while (page < 10) {
+    const data = await fetchGraphql(TOP_LANGUAGE_GRAPHQL_QUERY, {
+      login: username,
+      after
+    });
+
+    const repositoryConnection = data?.user?.repositories;
+    const nodes = repositoryConnection?.nodes ?? [];
+    repos.push(...nodes);
+
+    if (!repositoryConnection?.pageInfo?.hasNextPage) {
+      break;
+    }
+
+    after = repositoryConnection.pageInfo.endCursor;
+    page += 1;
   }
 
   return repos;
@@ -219,6 +329,47 @@ function aggregateLanguages(repos) {
     .sort((a, b) => b.size - a.size);
 
   return rows;
+}
+
+function aggregateLanguageEdges(repos) {
+  const languageMap = new Map();
+
+  for (const repo of repos) {
+    const edges = repo?.languages?.edges ?? [];
+    for (const edge of edges) {
+      const language = String(edge?.node?.name ?? "").trim();
+      if (!language) continue;
+
+      const size = Math.max(0, Number(edge?.size ?? 0));
+      if (size <= 0) continue;
+
+      const current = languageMap.get(language) ?? {
+        language,
+        size: 0,
+        repos: 0,
+        color: edge?.node?.color ?? null
+      };
+
+      current.size += size;
+      current.repos += 1;
+      if (!current.color && edge?.node?.color) {
+        current.color = edge.node.color;
+      }
+
+      languageMap.set(language, current);
+    }
+  }
+
+  const totalSize = [...languageMap.values()].reduce((acc, item) => acc + item.size, 0);
+  return [...languageMap.values()]
+    .map((item) => ({
+      language: item.language,
+      size: item.size,
+      repos: item.repos,
+      color: item.color,
+      pct: totalSize > 0 ? (item.size / totalSize) * 100 : 0
+    }))
+    .sort((a, b) => b.size - a.size);
 }
 
 function buildPrompt(themeName, githubId) {
@@ -267,6 +418,7 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
 
   let profile = null;
   let repos = [];
+  let languageRows = [];
   let partial = false;
 
   try {
@@ -281,7 +433,18 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
     partial = true;
   }
 
-  const languageRows = aggregateLanguages(repos).slice(0, top);
+  try {
+    if (process.env.GITHUB_TOKEN || process.env.GH_TOKEN) {
+      const graphRepos = await fetchAllRepoLanguageEdges(githubId);
+      languageRows = aggregateLanguageEdges(graphRepos).slice(0, top);
+    } else {
+      languageRows = aggregateLanguages(repos).slice(0, top);
+    }
+  } catch {
+    partial = true;
+    languageRows = aggregateLanguages(repos).slice(0, top);
+  }
+
   const fallbackLogin = profile?.login || githubId;
   const displayName = profile?.name || fallbackLogin;
 
@@ -294,18 +457,24 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   const fetchLineY = promptY + 22;
   const successLineY = fetchLineY + 20;
 
-  const rowsPerCol = Math.max(3, Math.ceil(languageRows.length / 2));
   const rowHeight = 24;
-  const statsCardH = Math.max(158, 110 + ((rowsPerCol - 1) * rowHeight));
+  const statsCardH = cardHeightForTop(top);
   const bottomPromptY = statsCardY + statsCardH + 28;
   const termBottomPadding = 24;
 
   const promptParts = buildPrompt(themeName, githubId);
   const commandText = buildCommand(themeName, githubId);
-  const promptW = promptPartsWidth(promptParts, 16);
-  const commandW = textWidth(commandText, 16);
-  const minWidthForPrompt = Math.ceil(44 + promptW + 3 + commandW + 60);
-  const minWidthForCard = 500;
+  const promptW = promptPartsWidth(promptParts, 15);
+  const commandW = textWidth(commandText, 15);
+  const maxPromptCommandWidth = Math.max(
+    ...["mac", "window", "ubuntu"].map((themeVariant) => {
+      const promptPartsVariant = buildPrompt(themeVariant, githubId);
+      const commandTextVariant = buildCommand(themeVariant, githubId);
+      return promptPartsWidth(promptPartsVariant, 15) + 3 + textWidth(commandTextVariant, 15);
+    })
+  );
+  const minWidthForPrompt = Math.ceil(44 + maxPromptCommandWidth + 60);
+  const minWidthForCard = 620;
   const width = Math.max(minWidthForCard, minWidthForPrompt);
 
   const termW = width - 40;
@@ -336,7 +505,7 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   const commandClipId = "toplang-command-typing-clip";
   const fetchClipId = "toplang-fetch-typing-clip";
   const fetchText = "Fetching data from GitHub API...";
-  const fetchWidth = textWidth(fetchText, 14);
+  const fetchWidth = textWidth(fetchText, 13);
 
   const leftRows = languageRows.slice(0, Math.ceil(languageRows.length / 2));
   const rightRows = languageRows.slice(Math.ceil(languageRows.length / 2));
@@ -372,16 +541,16 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   svg.push(theme.controlsSvg(controlsX, controlsY));
   svg.push(`<text x="${termX + termW / 2}" y="${termY + 25}" font-size="13" font-family="Consolas, Menlo, monospace" fill="#a8a8a8" text-anchor="middle">${escapeXml(theme.title(githubId))}</text>`);
 
-  svg.push(addTextSpans(promptParts, promptStartX, promptY));
-  svg.push(`<text x="${commandX}" y="${promptY}" fill="${theme.text}" font-size="16" font-family="Consolas, Menlo, monospace" clip-path="url(#${commandClipId})">${escapeXml(commandText)}</text>`);
-  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="16" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" from="${commandX}" to="${commandX + commandW + 2}" dur="1.2s" begin="0s" fill="freeze" /></text>`);
+  svg.push(addTextSpans(promptParts, promptStartX, promptY, 15));
+  svg.push(`<text x="${commandX}" y="${promptY}" fill="${theme.text}" font-size="15" font-family="Consolas, Menlo, monospace" clip-path="url(#${commandClipId})">${escapeXml(commandText)}</text>`);
+  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" from="${commandX}" to="${commandX + commandW + 2}" dur="1.2s" begin="0s" fill="freeze" /></text>`);
 
   svg.push(`<g class="line-fetch">`);
-  svg.push(`<text x="${promptStartX}" y="${fetchLineY}" fill="#8b949e" font-size="14" font-family="Consolas, Menlo, monospace" clip-path="url(#${fetchClipId})">${escapeXml(fetchText)}</text>`);
+  svg.push(`<text x="${promptStartX}" y="${fetchLineY}" fill="#8b949e" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#${fetchClipId})">${escapeXml(fetchText)}</text>`);
   svg.push(`</g>`);
 
   svg.push(`<g class="line-success">`);
-  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="14" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(`Success! Generated language card for '${githubId}'.`)}</tspan></text>`);
+  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(`Success! Generated language card for '${githubId}'.`)}</tspan></text>`);
   svg.push(`</g>`);
 
   svg.push(`<g class="line-languages">`);
@@ -398,7 +567,7 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   for (let i = 0; i < leftRows.length; i += 1) {
     const row = leftRows[i];
     const y = rowStartY + (i * rowHeight);
-    const langColor = getLanguageColor(row.language);
+    const langColor = getRowColor(row);
     svg.push(`<circle cx="${leftColX}" cy="${y - 5}" r="4" fill="${langColor}"/>`);
     svg.push(`<text x="${leftColX + 12}" y="${y}" font-size="13" font-family="Segoe UI, Arial, sans-serif" fill="${labelColor}">${escapeXml(row.language)}</text>`);
     svg.push(`<text x="${leftColX + 190}" y="${y}" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="${valueColor}" font-weight="700" text-anchor="end">${escapeXml(row.pct.toFixed(2))}%</text>`);
@@ -407,7 +576,7 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   for (let i = 0; i < rightRows.length; i += 1) {
     const row = rightRows[i];
     const y = rowStartY + (i * rowHeight);
-    const langColor = getLanguageColor(row.language);
+    const langColor = getRowColor(row);
     svg.push(`<circle cx="${rightColX}" cy="${y - 5}" r="4" fill="${langColor}"/>`);
     svg.push(`<text x="${rightColX + 12}" y="${y}" font-size="13" font-family="Segoe UI, Arial, sans-serif" fill="${labelColor}">${escapeXml(row.language)}</text>`);
     svg.push(`<text x="${rightColX + 190}" y="${y}" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="${valueColor}" font-weight="700" text-anchor="end">${escapeXml(row.pct.toFixed(2))}%</text>`);
@@ -415,8 +584,8 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   svg.push(`</g>`);
 
   svg.push(`<g class="line-bottom">`);
-  svg.push(addTextSpans(promptParts, promptStartX, bottomPromptY));
-  svg.push(`<text class="cursor" x="${promptStartX + promptPartsWidth(promptParts, 16)}" y="${bottomPromptY}" fill="#c5c8c6" font-size="16" font-family="Consolas, Menlo, monospace">█</text>`);
+  svg.push(addTextSpans(promptParts, promptStartX, bottomPromptY, 15));
+  svg.push(`<text class="cursor" x="${promptStartX + promptPartsWidth(promptParts, 15)}" y="${bottomPromptY}" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█</text>`);
   svg.push(`</g>`);
 
   svg.push(`</svg>`);

@@ -76,13 +76,18 @@ function createAnimationCss() {
 
 async function fetchJson(url) {
   const githubToken = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
+  const logTokenUsage = ["1", "true", "yes", "on"].includes(String(process.env.LOG_GITHUB_TOKEN_USAGE ?? "").toLowerCase());
   const headers = {
     Accept: "application/vnd.github+json",
-    "User-Agent": "github-grass-ascii-js"
+    "User-Agent": "github-readme-insight-terminal-ascii"
   };
 
   if (githubToken) {
     headers.Authorization = `Bearer ${githubToken}`;
+  }
+
+  if (logTokenUsage) {
+    console.log(`[github-api][stats] token-used=${Boolean(githubToken)} url=${url}`);
   }
 
   const response = await fetch(url, {
@@ -254,19 +259,23 @@ export async function generateStatsSvg(themeName, githubId) {
   const promptY = 86;
   const statsCardX = 44;
   const statsCardY = 152;
-  const statsCardH = 158;
+  const statsCardH = 188;
   const fetchLineY = promptY + 22;
   const successLineY = fetchLineY + 20;
   const bottomPromptY = statsCardY + statsCardH + 28;
   const termBottomPadding = 24;
 
-  // 카드 2열 레이아웃 최소폭 + 프롬프트+커맨드 길이 중 큰 값으로 동적 결정
   const promptParts0 = buildStatsPrompt(themeName, githubId);
   const commandText0 = buildStatsCommand(themeName, githubId);
-  const promptW0 = promptPartsWidth(promptParts0, 16);
-  const commandW0 = textWidth(commandText0, 16);
-  const minWidthForPrompt = Math.ceil(44 + promptW0 + 3 + commandW0 + 60);
-  const minWidthForCard = 500;
+  const maxPromptCommandWidth = Math.max(
+    ...["mac", "window", "ubuntu"].map((themeVariant) => {
+      const promptParts = buildStatsPrompt(themeVariant, githubId);
+      const commandText = buildStatsCommand(themeVariant, githubId);
+      return promptPartsWidth(promptParts, 15) + 3 + textWidth(commandText, 15);
+    })
+  );
+  const minWidthForPrompt = Math.ceil(44 + maxPromptCommandWidth + 60);
+  const minWidthForCard = 620;
   const width = Math.max(minWidthForCard, minWidthForPrompt);
 
   const termW = width - 40;
@@ -277,7 +286,7 @@ export async function generateStatsSvg(themeName, githubId) {
   const height = termY + termH + 20;
 
   const paddingX = statsCardX + 24;
-  const rowStartY = statsCardY + 88;
+  const rowStartY = statsCardY + 92;
   const rowHeight = 28;
   const leftColX = paddingX;
   const rightColX = statsCardX + Math.round((width - 88) * 0.52);
@@ -293,12 +302,14 @@ export async function generateStatsSvg(themeName, githubId) {
   const promptParts = promptParts0;
   const promptStartX = 44;
   const commandText = commandText0;
-  const commandX = promptStartX + promptW0 + 3;
-  const commandWidth = commandW0;
+  const promptW = promptPartsWidth(promptParts, 15);
+  const commandW = textWidth(commandText, 15);
+  const commandX = promptStartX + promptW + 3;
+  const commandWidth = commandW;
   const commandClipId = "stats-command-typing-clip";
   const fetchClipId = "stats-fetch-typing-clip";
   const fetchText = "Fetching data from GitHub API...";
-  const fetchWidth = textWidth(fetchText, 14);
+  const fetchWidth = textWidth(fetchText, 13);
   const successText = `\u2714 Success! Generated ASCII art for '${githubId}'.`;
 
   const leftRows = statsRows.slice(0, 3);
@@ -328,44 +339,44 @@ export async function generateStatsSvg(themeName, githubId) {
   svg.push(theme.controlsSvg(controlsX, controlsY));
   svg.push(`<text x="${termX + termW / 2}" y="${termY + 25}" font-size="13" font-family="Consolas, Menlo, monospace" fill="#a8a8a8" text-anchor="middle">${escapeXml(theme.title(githubId))}</text>`);
 
-  svg.push(addTextSpans(promptParts, promptStartX, promptY));
-  svg.push(`<text x="${commandX}" y="${promptY}" fill="${theme.text}" font-size="16" font-family="Consolas, Menlo, monospace" clip-path="url(#${commandClipId})">${escapeXml(commandText)}</text>`);
-  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="16" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" from="${commandX}" to="${commandX + commandWidth + 2}" dur="1.2s" begin="0s" fill="freeze" /></text>`);
+  svg.push(addTextSpans(promptParts, promptStartX, promptY, 15));
+  svg.push(`<text x="${commandX}" y="${promptY}" fill="${theme.text}" font-size="15" font-family="Consolas, Menlo, monospace" clip-path="url(#${commandClipId})">${escapeXml(commandText)}</text>`);
+  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" from="${commandX}" to="${commandX + commandWidth + 2}" dur="1.2s" begin="0s" fill="freeze" /></text>`);
 
   svg.push(`<g class="line-fetch">`);
-  svg.push(`<text x="${promptStartX}" y="${fetchLineY}" fill="#8b949e" font-size="14" font-family="Consolas, Menlo, monospace" clip-path="url(#${fetchClipId})">${escapeXml(fetchText)}</text>`);
+  svg.push(`<text x="${promptStartX}" y="${fetchLineY}" fill="#8b949e" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#${fetchClipId})">${escapeXml(fetchText)}</text>`);
   svg.push(`</g>`);
 
   svg.push(`<g class="line-success">`);
-  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="14" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(`Success! Generated ASCII art for '${githubId}'.`)}</tspan></text>`);
+  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(`Success! Generated ASCII art for '${githubId}'.`)}</tspan></text>`);
   svg.push(`</g>`);
 
   svg.push(`<g class="line-stats">`);
   svg.push(`<rect x="${statsCardX}" y="${statsCardY}" width="${statsCardW}" height="${statsCardH}" rx="12" fill="${theme.bodyBg}" stroke="${borderColor}"/>`);
-  svg.push(`<text x="${paddingX}" y="${statsCardY + 34}" font-size="24" font-family="Segoe UI, Arial, sans-serif" fill="${titleColor}" font-weight="700">GitHub Stats</text>`);
-  svg.push(`<text x="${paddingX}" y="${statsCardY + 58}" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="${labelColor}">${subtitle}</text>`);
+  svg.push(`<text x="${paddingX}" y="${statsCardY + 34}" font-size="25" font-family="Segoe UI, Arial, sans-serif" fill="${titleColor}" font-weight="700">GitHub Stats</text>`);
+  svg.push(`<text x="${paddingX}" y="${statsCardY + 58}" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="${labelColor}">${subtitle}</text>`);
   svg.push(`<line x1="${paddingX}" y1="${statsCardY + 70}" x2="${statsCardX + statsCardW - 24}" y2="${statsCardY + 70}" stroke="${borderColor}"/>`);
 
   for (let i = 0; i < leftRows.length; i += 1) {
     const y = rowStartY + i * rowHeight;
     const row = leftRows[i];
     svg.push(`<circle cx="${leftColX}" cy="${y - 5}" r="4" fill="${iconColor}"/>`);
-    svg.push(`<text x="${leftColX + 12}" y="${y}" font-size="13" font-family="Segoe UI, Arial, sans-serif" fill="${labelColor}">${escapeXml(row.label)}</text>`);
-    svg.push(`<text x="${leftColX + 160}" y="${y}" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="${valueColor}" font-weight="700" text-anchor="end">${escapeXml(row.value)}</text>`);
+    svg.push(`<text x="${leftColX + 12}" y="${y}" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="${labelColor}">${escapeXml(row.label)}</text>`);
+    svg.push(`<text x="${leftColX + 160}" y="${y}" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="${valueColor}" font-weight="700" text-anchor="end">${escapeXml(row.value)}</text>`);
   }
 
   for (let i = 0; i < rightRows.length; i += 1) {
     const y = rowStartY + i * rowHeight;
     const row = rightRows[i];
     svg.push(`<circle cx="${rightColX}" cy="${y - 5}" r="4" fill="${iconColor}"/>`);
-    svg.push(`<text x="${rightColX + 12}" y="${y}" font-size="13" font-family="Segoe UI, Arial, sans-serif" fill="${labelColor}">${escapeXml(row.label)}</text>`);
-    svg.push(`<text x="${rightColX + 190}" y="${y}" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="${valueColor}" font-weight="700" text-anchor="end">${escapeXml(row.value)}</text>`);
+    svg.push(`<text x="${rightColX + 12}" y="${y}" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="${labelColor}">${escapeXml(row.label)}</text>`);
+    svg.push(`<text x="${rightColX + 190}" y="${y}" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="${valueColor}" font-weight="700" text-anchor="end">${escapeXml(row.value)}</text>`);
   }
   svg.push(`</g>`);
 
   svg.push(`<g class="line-bottom">`);
-  svg.push(addTextSpans(promptParts, promptStartX, bottomPromptY));
-  svg.push(`<text class="cursor" x="${promptStartX + promptPartsWidth(promptParts, 16)}" y="${bottomPromptY}" fill="#c5c8c6" font-size="16" font-family="Consolas, Menlo, monospace">█</text>`);
+  svg.push(addTextSpans(promptParts, promptStartX, bottomPromptY, 15));
+  svg.push(`<text class="cursor" x="${promptStartX + promptPartsWidth(promptParts, 15)}" y="${bottomPromptY}" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█</text>`);
   svg.push(`</g>`);
 
   svg.push(`</svg>`);

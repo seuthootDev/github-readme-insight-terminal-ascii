@@ -92,10 +92,10 @@ Use the deployed API URL as your image source.
 **URL Format**
 
 ```
-https://YOUR_DEPLOY_URL/svg?user=GITHUB_USERNAME&theme=THEME
-https://YOUR_DEPLOY_URL/svg/grass?user=GITHUB_USERNAME&theme=THEME
-https://YOUR_DEPLOY_URL/svg/stats?user=GITHUB_USERNAME&theme=THEME
-https://YOUR_DEPLOY_URL/svg/top-language?user=GITHUB_USERNAME&theme=THEME&top=8
+https://github-readme-insight-terminal-asci.vercel.app/svg?user=GITHUB_USERNAME&theme=THEME
+https://github-readme-insight-terminal-asci.vercel.app/svg/grass?user=GITHUB_USERNAME&theme=THEME
+https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=GITHUB_USERNAME&theme=THEME
+https://github-readme-insight-terminal-asci.vercel.app/svg/top-language?user=GITHUB_USERNAME&theme=THEME&top=8
 ```
 
 | Query | Required | Description |
@@ -108,10 +108,10 @@ https://YOUR_DEPLOY_URL/svg/top-language?user=GITHUB_USERNAME&theme=THEME&top=8
 **Markdown Example**
 
 ```markdown
-![GitHub contribution grass](https://YOUR_DEPLOY_URL/svg?user=YOUR_GITHUB_ID&theme=mac)
-![GitHub contribution grass](https://YOUR_DEPLOY_URL/svg/grass?user=YOUR_GITHUB_ID&theme=mac)
-![GitHub stats](https://YOUR_DEPLOY_URL/svg/stats?user=YOUR_GITHUB_ID&theme=mac)
-![GitHub top languages](https://YOUR_DEPLOY_URL/svg/top-language?user=YOUR_GITHUB_ID&theme=mac&top=8)
+![GitHub contribution grass](https://github-readme-insight-terminal-asci.vercel.app/svg?user=YOUR_GITHUB_ID&theme=mac)
+![GitHub contribution grass](https://github-readme-insight-terminal-asci.vercel.app/svg/grass?user=YOUR_GITHUB_ID&theme=mac)
+![GitHub stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=YOUR_GITHUB_ID&theme=mac)
+![GitHub top languages](https://github-readme-insight-terminal-asci.vercel.app/svg/top-language?user=YOUR_GITHUB_ID&theme=mac&top=8)
 ```
 
 ---
@@ -226,9 +226,9 @@ npm run serve
 **URL 형식**
 
 ```
-https://YOUR_DEPLOY_URL/svg?user=GITHUB_USERNAME&theme=THEME
-https://YOUR_DEPLOY_URL/svg/stats?user=GITHUB_USERNAME&theme=THEME
-https://YOUR_DEPLOY_URL/svg/top-language?user=GITHUB_USERNAME&theme=THEME&top=8
+https://github-readme-insight-terminal-asci.vercel.app/svg?user=GITHUB_USERNAME&theme=THEME
+https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=GITHUB_USERNAME&theme=THEME
+https://github-readme-insight-terminal-asci.vercel.app/svg/top-language?user=GITHUB_USERNAME&theme=THEME&top=8
 ```
 
 | 쿼리 | 필수 | 설명 |
@@ -241,9 +241,9 @@ https://YOUR_DEPLOY_URL/svg/top-language?user=GITHUB_USERNAME&theme=THEME&top=8
 **마크다운 예시**
 
 ```markdown
-![GitHub contribution grass](https://YOUR_DEPLOY_URL/svg?user=YOUR_GITHUB_ID&theme=mac)
-![GitHub stats](https://YOUR_DEPLOY_URL/svg/stats?user=YOUR_GITHUB_ID&theme=mac)
-![GitHub top languages](https://YOUR_DEPLOY_URL/svg/top-language?user=YOUR_GITHUB_ID&theme=mac&top=8)
+![GitHub contribution grass](https://github-readme-insight-terminal-asci.vercel.app/svg?user=YOUR_GITHUB_ID&theme=mac)
+![GitHub stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=YOUR_GITHUB_ID&theme=mac)
+![GitHub top languages](https://github-readme-insight-terminal-asci.vercel.app/svg/top-language?user=YOUR_GITHUB_ID&theme=mac&top=8)
 ```
 
 ---
