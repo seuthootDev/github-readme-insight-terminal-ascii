@@ -1,0 +1,32 @@
+{
+  "name": "github-readme-insight-terminal-ascii",
+  "version": "1.0.0",
+  "description": "Generate terminal-style GitHub contribution grass SVG with Node.js",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "github-grass-ascii": "src/cli.js"
+  },
+  "scripts": {
+    "cli": "node src/cli.js",
+    "serve": "node src/server.js"
+  },
+  "keywords": [
+    "github",
+    "contribution",
+    "grass",
+    "ascii",
+    "svg",
+    "terminal",
+    "github-stats",
+    "github-activity",
+    "github-language",
+    "github-profile",
+    "readme-stats",
+    "profile-readme"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

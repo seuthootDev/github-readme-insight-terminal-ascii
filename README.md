@@ -1,11 +1,12 @@
-# GitHub Grass ASCII
+# GitHub README Insight Terminal ASCII
 
-A tool to generate **terminal-style ASCII art SVGs** of your GitHub contribution graph (grass).  
-Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), you can embed it into your README or GitHub profile with a single URL.
+A tool to generate **terminal-style ASCII SVGs** from your GitHub profile contribution data.  
+Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), you can embed it in your README or GitHub profile with a single URL.
 
-- **Themes**: macOS Terminal / Windows PowerShell / Ubuntu GNOME styles.
-- **CLI**: Run locally to print to terminal and save as an SVG without a server.
-- **API**: Returns SVG via `GET /svg?user=USER&theme=...` for use in README `<img>` tags.
+- **Themes**: macOS Terminal / Windows PowerShell / Ubuntu GNOME styles
+- **CLI**: Run locally to print to terminal and save SVG
+- **API**: Returns SVG via `GET /svg?user=USER&theme=...` (default grass) or `GET /svg/:type?user=USER&theme=...`
+- **Tooltip**: Hover each cell to see date and contribution count
 
 **theme=mac** — macOS Terminal (zsh)
 
@@ -19,13 +20,25 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 
 ![ubuntu](images/ubuntu_style.svg)
 
+**Stats previews (mac / window / ubuntu)**
+
+![mac stats](images/mac_stats.svg)
+![window stats](images/window_stats.svg)
+![ubuntu stats](images/ubuntu_stats.svg)
+
+**Top-language previews (mac / window / ubuntu)**
+
+![mac top language](images/mac_top_language.svg)
+![window top language](images/window_top_language.svg)
+![ubuntu top language](images/ubuntu_top_language.svg)
+
 ---
 
 ## Introduction
 
 - Enter a GitHub username to fetch the **last year's contribution data** and render a contribution grid.
-- Exports terminal output rendered with [Rich](https://github.com/Textualize/rich) to an SVG. When viewed in a browser, tooltips showing the **date and contribution count** are displayed on hover.
-- Each theme features a unique window design (title bar, buttons, background colors) to suit your preference.
+- Renders a terminal-style SVG directly in Node.js, including hover tooltips with **date and contribution count**.
+- Each theme has a distinct terminal window style (title bar, controls, and background colors).
 
 ---
 
@@ -33,14 +46,12 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 
 ### CLI (Run without a server)
 
-Outputs the contribution graph to your terminal and saves it as `mac_style.svg` (or your chosen theme name) in the same directory.
+Prints the contribution graph in your terminal and saves SVG output in the current directory.
 
 ```bash
-pip install -r requirements.txt
-python -m src.cli --user YOUR_GITHUB_ID [--theme mac]
+npm install
+npm run cli -- --user YOUR_GITHUB_ID --theme mac
 ```
-
-Compatibility entrypoint: `python main.py --user YOUR_GITHUB_ID [--theme mac]`
 
 **Options**
 
@@ -48,70 +59,66 @@ Compatibility entrypoint: `python main.py --user YOUR_GITHUB_ID [--theme mac]`
 |--------|----------|-------------|
 | `--user` | ✅ | GitHub User ID |
 | `--theme` | ❌ (Default: mac) | `mac` / `window` / `ubuntu` |
+| `--output` | ❌ (Default: `{theme}_style.svg`) | Output file name |
 
 **Examples**
 
 ```bash
-python -m src.cli --user seuthootdev --theme mac
-python -m src.cli --user torvalds --theme ubuntu
+npm run cli -- --user seuthootdev --theme mac
+npm run cli -- --user torvalds --theme ubuntu --output ubuntu_style.svg
 ```
 
 ### API Local Testing
 
-To verify the URL for browser or README use locally:
+Run the local API server for browser/README URL testing:
 
 ```bash
-pip install -r requirements.txt
-uvicorn api:app --reload
+npm install
+npm run serve
 ```
 
-- Browser: `http://127.0.0.1:8000/svg?user=YOUR_GITHUB_ID&theme=mac`
-- Test by switching themes between `mac`, `window`, and `ubuntu`.
-
-### Run with Docker
-
-```bash
-docker build -t github-grass-ascii .
-docker run -p 8000:8000 github-grass-ascii
-```
-
-Access via `http://127.0.0.1:8000/svg?user=...&theme=...`.
+- Browser (grass): `http://127.0.0.1:8000/svg?user=YOUR_GITHUB_ID&theme=mac`
+- Browser (typed route): `http://127.0.0.1:8000/svg/grass?user=YOUR_GITHUB_ID&theme=mac`
+- Browser (stats): `http://127.0.0.1:8000/svg/stats?user=YOUR_GITHUB_ID&theme=mac`
+- Browser (top-language): `http://127.0.0.1:8000/svg/top-language?user=YOUR_GITHUB_ID&theme=mac&top=8`
+- Test with `mac`, `window`, and `ubuntu` themes.
 
 ---
 
 ## Embedding in GitHub Profile / README
 
-Use the deployed API URL as an image source.
+Use the deployed API URL as your image source.
 
 **URL Format**
 
 ```
 https://YOUR_DEPLOY_URL/svg?user=GITHUB_USERNAME&theme=THEME
+https://YOUR_DEPLOY_URL/svg/grass?user=GITHUB_USERNAME&theme=THEME
+https://YOUR_DEPLOY_URL/svg/stats?user=GITHUB_USERNAME&theme=THEME
+https://YOUR_DEPLOY_URL/svg/top-language?user=GITHUB_USERNAME&theme=THEME&top=8
 ```
 
 | Query | Required | Description |
 |-------|----------|-------------|
 | `user` | ✅ | GitHub Username |
 | `theme` | ❌ (Default: mac) | `mac` / `window` / `ubuntu` |
+| `top` | ❌ (top-language only, Default: 6) | `6` to `12` |
+
 
 **Markdown Example**
 
 ```markdown
 ![GitHub contribution grass](https://YOUR_DEPLOY_URL/svg?user=YOUR_GITHUB_ID&theme=mac)
+![GitHub contribution grass](https://YOUR_DEPLOY_URL/svg/grass?user=YOUR_GITHUB_ID&theme=mac)
+![GitHub stats](https://YOUR_DEPLOY_URL/svg/stats?user=YOUR_GITHUB_ID&theme=mac)
+![GitHub top languages](https://YOUR_DEPLOY_URL/svg/top-language?user=YOUR_GITHUB_ID&theme=mac&top=8)
 ```
-
-*(Theme previews are shown at the top of this README.)* Simply add the markdown line above to your Profile README or any repository README to display the contribution SVG.
 
 ---
 
 ## Deployment
 
-This project is deployed on **Render** using a **Docker Hub image**.  
-(e.g., Deploying `seuthootdev/github-grass-ascii:latest` as a Render Web Service via "Deploy an existing image")
-
-### CI/CD (GitHub Actions → Docker Hub → Render)
-
-On push to `main` or `master`, GitHub Actions builds the Docker image and pushes it to Docker Hub. If Render is set to **auto-deploy** from that image, it will redeploy automatically.
+This project is deployed via **Vercel**.
 
 ---
 
@@ -122,20 +129,19 @@ Contributions such as bug reports, new themes, and documentation/code improvemen
 1. Fork this repository.
 2. Create a branch (`git checkout -b feature/your-feature`).
 3. Commit and push your changes.
-4. Open a Pull Request to this repository.
-
-You can also share ideas or report bugs through Issues.
+4. Open a Pull Request.
 
 ---
 
-# GitHub Grass ASCII
+# GitHub Insight Terminal ASCII
 
-GitHub 기여 그래프(잔디)를 **터미널 스타일 ASCII 아트 SVG**로 만들어 주는 도구입니다.  
+GitHub 프로필 기여 데이터를 **터미널 스타일 ASCII SVG**로 만들어 주는 도구입니다.  
 [github-readme-stats](https://github.com/anuraghazra/github-readme-stats)처럼 URL 하나로 README나 GitHub 프로필에 이미지를 넣을 수 있습니다.
 
 - **테마**: macOS 터미널 / Windows PowerShell / Ubuntu GNOME 스타일
 - **CLI**: 서버 없이 로컬에서 바로 실행해 터미널 출력 + SVG 파일 저장
-- **API**: `GET /svg?user=USER&theme=...` 로 SVG 반환 → README `<img>` 로 사용
+- **API**: `GET /svg?user=USER&theme=...` 로 SVG 반환 → README 이미지로 사용
+- **툴팁**: 셀 hover 시 날짜·기여 수 표시
 
 **theme=mac** — macOS 터미널(zsh)
 
@@ -149,13 +155,25 @@ GitHub 기여 그래프(잔디)를 **터미널 스타일 ASCII 아트 SVG**로 �
 
 ![ubuntu](images/ubuntu_style.svg)
 
+**Stats 미리보기 (mac / window / ubuntu)**
+
+![mac stats](images/mac_stats.svg)
+![window stats](images/window_stats.svg)
+![ubuntu stats](images/ubuntu_stats.svg)
+
+**Top-language 미리보기 (mac / window / ubuntu)**
+
+![mac top language](images/mac_top_language.svg)
+![window top language](images/window_top_language.svg)
+![ubuntu top language](images/ubuntu_top_language.svg)
+
 ---
 
 ## 프로젝트 소개
 
 - GitHub 사용자명을 넣으면 **최근 1년 기여 데이터**를 가져와 잔디 그리드를 그립니다.
-- Rich로 그린 터미널 출력을 SVG로 내보내며, 셀에 마우스를 올리면 **날짜·기여 수** 툴팁이 표시됩니다.
-- 테마별로 창 디자인(제목창, 버튼, 배경색)이 달라서 취향에 맞는 스타일을 고를 수 있습니다.
+- Node.js로 터미널 스타일 SVG를 생성하며, 셀에 마우스를 올리면 **날짜·기여 수** 툴팁이 표시됩니다.
+- 테마별로 창 디자인(제목창, 버튼, 배경색)이 달라 취향에 맞게 사용할 수 있습니다.
 
 ---
 
@@ -163,14 +181,12 @@ GitHub 기여 그래프(잔디)를 **터미널 스타일 ASCII 아트 SVG**로 �
 
 ### CLI (서버 없이 실행)
 
-터미널에 잔디를 출력하고, 같은 디렉터리에 `mac_style.svg`(또는 선택한 테마명) 파일로 저장됩니다.
+터미널에 잔디를 출력하고, 현재 디렉터리에 SVG 파일로 저장됩니다.
 
 ```bash
-pip install -r requirements.txt
-python -m src.cli --user YOUR_GITHUB_ID [--theme mac]
+npm install
+npm run cli -- --user YOUR_GITHUB_ID --theme mac
 ```
-
-호환용 진입점: `python main.py --user YOUR_GITHUB_ID [--theme mac]`
 
 **옵션**
 
@@ -178,12 +194,13 @@ python -m src.cli --user YOUR_GITHUB_ID [--theme mac]
 |------|------|------|
 | `--user` | ✅ | GitHub 사용자 ID |
 | `--theme` | ❌ (기본: mac) | `mac` / `window` / `ubuntu` |
+| `--output` | ❌ (기본: `{theme}_style.svg`) | 출력 파일명 |
 
 **예시**
 
 ```bash
-python -m src.cli --user seuthootdev --theme mac
-python -m src.cli --user torvalds --theme ubuntu
+npm run cli -- --user seuthootdev --theme mac
+npm run cli -- --user torvalds --theme ubuntu --output ubuntu_style.svg
 ```
 
 ### API 로컬 테스트
@@ -191,57 +208,49 @@ python -m src.cli --user torvalds --theme ubuntu
 브라우저나 README 이미지용 URL을 로컬에서 확인할 때:
 
 ```bash
-pip install -r requirements.txt
-uvicorn api:app --reload
+npm install
+npm run serve
 ```
 
 - 브라우저: `http://127.0.0.1:8000/svg?user=YOUR_GITHUB_ID&theme=mac`
-- 테마만 바꿔가며 `mac`, `window`, `ubuntu` 로 테스트하면 됩니다.
-
-### Docker로 로컬 실행
-
-```bash
-docker build -t github-grass-ascii .
-docker run -p 8000:8000 github-grass-ascii
-```
-
-이후 `http://127.0.0.1:8000/svg?user=...&theme=...` 로 접속하면 됩니다.
+- 브라우저(stats): `http://127.0.0.1:8000/svg/stats?user=YOUR_GITHUB_ID&theme=mac`
+- 브라우저(top-language): `http://127.0.0.1:8000/svg/top-language?user=YOUR_GITHUB_ID&theme=mac&top=8`
+- `mac`, `window`, `ubuntu` 테마를 바꿔가며 확인하면 됩니다.
 
 ---
 
 ## GitHub 프로필 / README에 이미지 넣기
 
-배포된 API URL을 **이미지 주소**로 쓰면 됩니다.
+배포된 API URL을 이미지 주소로 사용하면 됩니다.
 
 **URL 형식**
 
 ```
 https://YOUR_DEPLOY_URL/svg?user=GITHUB_USERNAME&theme=THEME
+https://YOUR_DEPLOY_URL/svg/stats?user=GITHUB_USERNAME&theme=THEME
+https://YOUR_DEPLOY_URL/svg/top-language?user=GITHUB_USERNAME&theme=THEME&top=8
 ```
 
 | 쿼리 | 필수 | 설명 |
 |------|------|------|
 | `user` | ✅ | GitHub 사용자명 |
 | `theme` | ❌ (기본: mac) | `mac` / `window` / `ubuntu` |
+| `top` | ❌ (top-language 전용, 기본: 6) | `6` ~ `12` |
+
 
 **마크다운 예시**
 
 ```markdown
 ![GitHub contribution grass](https://YOUR_DEPLOY_URL/svg?user=YOUR_GITHUB_ID&theme=mac)
+![GitHub stats](https://YOUR_DEPLOY_URL/svg/stats?user=YOUR_GITHUB_ID&theme=mac)
+![GitHub top languages](https://YOUR_DEPLOY_URL/svg/top-language?user=YOUR_GITHUB_ID&theme=mac&top=8)
 ```
-
-*(테마 미리보기는 본 README 상단에 있습니다.)* 프로필 README나 일반 README의 **이미지 한 줄**을 위 마크다운으로 넣으면, 해당 사용자의 잔디 SVG가 표시됩니다.
 
 ---
 
 ## 배포
 
-이 프로젝트는 **Render**에서 **Docker Hub에 올린 이미지**를 그대로 배포하는 방식으로 서비스됩니다.  
-(예: `seuthootdev/github-grass-ascii:latest` 이미지를 Render Web Service로 Deploy an existing image)
-
-### CI/CD (GitHub Actions → Docker Hub → Render)
-
-`main` 또는 `master`에 푸시하면 GitHub Actions가 Docker 이미지를 빌드해 Docker Hub에 푸시합니다. Render에서 해당 이미지 **자동 배포**가 켜져 있으면 새 이미지가 올라올 때마다 자동으로 재배포됩니다.
+이 프로젝트는 **Vercel**을 통해 배포 중입니다.
 
 ---
 
@@ -250,8 +259,6 @@ https://YOUR_DEPLOY_URL/svg?user=GITHUB_USERNAME&theme=THEME
 버그 제보, 테마 추가, 문서/코드 개선 등 기여를 환영합니다.
 
 1. 이 저장소를 Fork 한 뒤
-2. 브랜치를 만들고 (`git checkout -b feature/원하는기능`)
+2. 브랜치를 만들고 (`git checkout -b feature/your-feature`)
 3. 변경 사항을 커밋·푸시한 후
-4. 본 저장소로 Pull Request를 보내 주세요.
-
-이슈로 아이디어나 버그를 알려 주셔도 됩니다.
+4. Pull Request를 보내 주세요.

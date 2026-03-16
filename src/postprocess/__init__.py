@@ -1,1 +1,0 @@
-"""SVG post-processing helpers."""
