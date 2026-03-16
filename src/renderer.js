@@ -24,7 +24,8 @@ function resolveGenerateOptions(input, githubIdFallback) {
       type: normalizeRenderType(input.type),
       themeName: input.themeName,
       githubId: input.githubId,
-      topN: input.topN
+      topN: input.topN,
+      scale: input.scale
     };
   }
 
@@ -32,17 +33,18 @@ function resolveGenerateOptions(input, githubIdFallback) {
     type: DEFAULT_RENDER_TYPE,
     themeName: input,
     githubId: githubIdFallback,
-    topN: undefined
+    topN: undefined,
+    scale: undefined
   };
 }
 
 export async function generateSvg(input, githubIdFallback) {
-  const { type, themeName, githubId, topN } = resolveGenerateOptions(input, githubIdFallback);
+  const { type, themeName, githubId, topN, scale } = resolveGenerateOptions(input, githubIdFallback);
   const renderer = RENDERERS[type];
 
   if (!renderer) {
     throw new Error(`Unknown render type: ${type}. Use one of: ${getAvailableRenderTypes().join(", ")}`);
   }
 
-  return renderer(themeName, githubId, { topN });
+  return renderer(themeName, githubId, { topN, scale });
 }

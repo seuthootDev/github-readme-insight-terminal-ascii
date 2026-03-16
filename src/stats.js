@@ -74,6 +74,12 @@ function createAnimationCss() {
   `;
 }
 
+function resolveOutputScale(input) {
+  const parsed = Number.parseFloat(String(input ?? "1"));
+  if (!Number.isFinite(parsed)) return 1;
+  return Math.min(3, Math.max(0.2, parsed));
+}
+
 async function fetchJson(url) {
   const githubToken = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
   const logTokenUsage = ["1", "true", "yes", "on"].includes(String(process.env.LOG_GITHUB_TOKEN_USAGE ?? "").toLowerCase());
@@ -244,7 +250,7 @@ function buildStatsCommand(themeName, githubId) {
   return `gh api users/${githubId}`;
 }
 
-export async function generateStatsSvg(themeName, githubId) {
+export async function generateStatsSvg(themeName, githubId, options = {}) {
   const theme = THEMES[themeName];
   if (!theme) {
     throw new Error(`Unknown theme: ${themeName}. Use one of: ${Object.keys(THEMES).join(", ")}`);
@@ -284,6 +290,9 @@ export async function generateStatsSvg(themeName, githubId) {
   const termBodyTop = termY + headerH;
   const termH = bottomPromptY + termBottomPadding - termY;
   const height = termY + termH + 20;
+  const outputScale = resolveOutputScale(options.scale);
+  const outputWidth = Math.round(width * outputScale);
+  const outputHeight = Math.round(height * outputScale);
 
   const paddingX = statsCardX + 24;
   const rowStartY = statsCardY + 92;
@@ -322,7 +331,7 @@ export async function generateStatsSvg(themeName, githubId) {
 
   const svg = [];
   svg.push(`<?xml version="1.0" encoding="UTF-8"?>`);
-  svg.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="GitHub stats card for ${escapeXml(githubId)}">`);
+  svg.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${outputWidth}" height="${outputHeight}" viewBox="0 0 ${width} ${height}" role="img" aria-label="GitHub stats card for ${escapeXml(githubId)}">`);
   svg.push(`<title>${escapeXml(theme.title(githubId))}</title>`);
   svg.push(`<defs>`);
   svg.push(`<style>${createAnimationCss()}</style>`);

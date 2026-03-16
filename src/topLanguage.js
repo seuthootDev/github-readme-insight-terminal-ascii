@@ -129,6 +129,12 @@ function cardHeightForTop(top) {
   return baseHeight + ((rowsPerColumn - 4) * rowHeight);
 }
 
+function resolveOutputScale(input) {
+  const parsed = Number.parseFloat(String(input ?? "1"));
+  if (!Number.isFinite(parsed)) return 1;
+  return Math.min(3, Math.max(0.2, parsed));
+}
+
 function createAnimationCss() {
   return `
   .line-fetch { opacity: 0; animation: show 0.01s linear 1.2s forwards; }
@@ -483,6 +489,9 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   const termBodyTop = termY + headerH;
   const termH = bottomPromptY + termBottomPadding - termY;
   const height = termY + termH + 20;
+  const outputScale = resolveOutputScale(options.scale);
+  const outputWidth = Math.round(width * outputScale);
+  const outputHeight = Math.round(height * outputScale);
 
   const paddingX = statsCardX + 24;
   const stackedBarX = paddingX;
@@ -524,7 +533,7 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
 
   const svg = [];
   svg.push(`<?xml version="1.0" encoding="UTF-8"?>`);
-  svg.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="Top languages card for ${escapeXml(githubId)}">`);
+  svg.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${outputWidth}" height="${outputHeight}" viewBox="0 0 ${width} ${height}" role="img" aria-label="Top languages card for ${escapeXml(githubId)}">`);
   svg.push(`<title>${escapeXml(theme.title(githubId))}</title>`);
   svg.push(`<defs>`);
   svg.push(`<style>${createAnimationCss()}</style>`);

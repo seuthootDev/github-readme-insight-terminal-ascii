@@ -103,6 +103,7 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/top-language?user=GIT
 | `user` | ✅ | GitHub Username |
 | `theme` | ❌ (Default: mac) | `mac` / `window` / `ubuntu` |
 | `top` | ❌ (top-language only, Default: 6) | `6` to `12` |
+| `scale` | ❌ (Default: 1) | Uniform size multiplier (`0.2` to `3`) |
 
 
 **Markdown Example**
@@ -112,6 +113,7 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/top-language?user=GIT
 ![GitHub contribution grass](https://github-readme-insight-terminal-asci.vercel.app/svg/grass?user=YOUR_GITHUB_ID&theme=mac)
 ![GitHub stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=YOUR_GITHUB_ID&theme=mac)
 ![GitHub top languages](https://github-readme-insight-terminal-asci.vercel.app/svg/top-language?user=YOUR_GITHUB_ID&theme=mac&top=8)
+![GitHub top languages (scaled)](https://github-readme-insight-terminal-asci.vercel.app/svg/top-language?user=YOUR_GITHUB_ID&theme=mac&top=8&scale=0.8)
 ```
 
 ---
@@ -236,6 +238,7 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/top-language?user=GIT
 | `user` | ✅ | GitHub 사용자명 |
 | `theme` | ❌ (기본: mac) | `mac` / `window` / `ubuntu` |
 | `top` | ❌ (top-language 전용, 기본: 6) | `6` ~ `12` |
+| `scale` | ❌ (기본: 1) | 전체 크기 배율 (`0.2` ~ `3`) |
 
 
 **마크다운 예시**
@@ -244,6 +247,7 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/top-language?user=GIT
 ![GitHub contribution grass](https://github-readme-insight-terminal-asci.vercel.app/svg?user=YOUR_GITHUB_ID&theme=mac)
 ![GitHub stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=YOUR_GITHUB_ID&theme=mac)
 ![GitHub top languages](https://github-readme-insight-terminal-asci.vercel.app/svg/top-language?user=YOUR_GITHUB_ID&theme=mac&top=8)
+![GitHub top languages (scaled)](https://github-readme-insight-terminal-asci.vercel.app/svg/top-language?user=YOUR_GITHUB_ID&theme=mac&top=8&scale=0.8)
 ```
 
 ---

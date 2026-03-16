@@ -121,7 +121,13 @@ function createAnimationCss() {
   `;
 }
 
-export async function generateGrassSvg(themeName, githubId) {
+function resolveOutputScale(input) {
+  const parsed = Number.parseFloat(String(input ?? "1"));
+  if (!Number.isFinite(parsed)) return 1;
+  return Math.min(3, Math.max(0.2, parsed));
+}
+
+export async function generateGrassSvg(themeName, githubId, options = {}) {
   const theme = THEMES[themeName];
   if (!theme) {
     throw new Error(`Unknown theme: ${themeName}. Use one of: ${Object.keys(THEMES).join(", ")}`);
@@ -142,6 +148,9 @@ export async function generateGrassSvg(themeName, githubId) {
   const termH = bottomPromptY + termBottomPadding - termY;
   const height = termY + termH + 20;
   const termW = width - 40;
+  const outputScale = resolveOutputScale(options.scale);
+  const outputWidth = Math.round(width * outputScale);
+  const outputHeight = Math.round(height * outputScale);
 
   const monthY = 170;
   const rowStartY = 198;
@@ -149,8 +158,8 @@ export async function generateGrassSvg(themeName, githubId) {
   const cellGap = 7;
   const colStep = cellSize + cellGap;
   const rowStep = cellSize + 11;
-  const dayLabelX = 48;
-  const gridStartX = 118;
+  const dayLabelX = 62;
+  const gridStartX = 96;
 
   const promptParts = theme.prompt(githubId);
   const promptStartX = 44;
@@ -171,7 +180,7 @@ export async function generateGrassSvg(themeName, githubId) {
 
   const svgParts = [];
   svgParts.push(`<?xml version="1.0" encoding="UTF-8"?>`);
-  svgParts.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="GitHub contribution graph for ${escapeXml(githubId)}">`);
+  svgParts.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${outputWidth}" height="${outputHeight}" viewBox="0 0 ${width} ${height}" role="img" aria-label="GitHub contribution graph for ${escapeXml(githubId)}">`);
   svgParts.push(`<title>${escapeXml(theme.title(githubId))}</title>`);
   svgParts.push(`<defs>`);
   svgParts.push(`<style>${createAnimationCss()}</style>`);
