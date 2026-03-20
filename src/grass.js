@@ -103,21 +103,31 @@ function buildGridData(firstSunday, today, contributions) {
   return grid;
 }
 
-function createAnimationCss() {
+function createAnimationCss(timeline) {
+  const pct = (seconds) => ((seconds / timeline.cycleDuration) * 100).toFixed(4);
+
   return `
-  .line-fetch { opacity: 0; animation: show 0.01s linear 1.25s forwards; }
-  .line-success { opacity: 0; animation: show 0.01s linear 1.8s forwards; }
-  .line-grass { opacity: 0; animation: show 0.01s linear 2.3s forwards; }
-  .line-bottom { opacity: 0; animation: show 0.01s linear 2.9s forwards; }
+  .line-fetch { opacity: 0; animation: show-fetch ${timeline.cycleDuration}s linear infinite; }
+  .line-success { opacity: 0; animation: show-success ${timeline.cycleDuration}s linear infinite; }
+  .line-grass { opacity: 0; animation: show-grass ${timeline.cycleDuration}s linear infinite; }
+  .line-bottom { opacity: 0; animation: show-bottom ${timeline.cycleDuration}s linear infinite; }
   .grass-cell-hitbox { cursor: help; }
-  .cursor { opacity: 0; animation: show 0.01s linear 2.9s forwards, blink 1s steps(1,end) 2.9s infinite; }
+  .cursor {
+    opacity: 1;
+    visibility: hidden;
+    animation: cursor-window ${timeline.cycleDuration}s steps(1, end) infinite, blink ${timeline.blinkDuration}s steps(1,end) infinite;
+  }
   .typing-cursor {
     opacity: 1;
-    animation: hideTypingCursor 0.01s linear 1.2s forwards;
+    animation: typing-cursor-window ${timeline.cycleDuration}s steps(1, end) infinite;
   }
-  @keyframes show { to { opacity: 1; } }
+  @keyframes show-fetch { 0%, ${pct(timeline.fetchAt)}% { opacity: 0; } ${pct(timeline.fetchAt + 0.01)}%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes show-success { 0%, ${pct(timeline.successAt)}% { opacity: 0; } ${pct(timeline.successAt + 0.01)}%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes show-grass { 0%, ${pct(timeline.grassAt)}% { opacity: 0; } ${pct(timeline.grassAt + 0.01)}%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes show-bottom { 0%, ${pct(timeline.bottomAt)}% { opacity: 0; } ${pct(timeline.bottomAt + 0.01)}%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes cursor-window { 0%, ${pct(timeline.bottomAt)}% { visibility: hidden; } ${pct(timeline.bottomAt + 0.01)}%, 99.9% { visibility: visible; } 100% { visibility: hidden; } }
+  @keyframes typing-cursor-window { 0%, ${pct(timeline.typingDuration)}% { opacity: 1; } ${pct(timeline.typingDuration + 0.01)}%, 99.9% { opacity: 0; } 100% { opacity: 1; } }
   @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
-  @keyframes hideTypingCursor { to { opacity: 0; } }
   `;
 }
 
@@ -172,6 +182,18 @@ export async function generateGrassSvg(themeName, githubId, options = {}) {
   const commandWidth = textWidth(commandText, 16);
   const commandClipId = "command-typing-clip";
   const monthLabelItems = monthLabels(firstSunday, gridStartX, colStep);
+  const timeline = {
+    typingDuration: 1.2,
+    fetchAt: 1.25,
+    successAt: 1.8,
+    grassAt: 2.3,
+    bottomAt: 2.9,
+    blinkDuration: 0.8,
+    blinkCount: 15,
+    cycleDuration: 2.9 + (0.8 * 15),
+    holdEndRatio: "0.999"
+  };
+  timeline.typingRatio = (timeline.typingDuration / timeline.cycleDuration).toFixed(6);
 
   const controlsY = termY + 20;
   const controlsX = themeName === "mac"
@@ -183,9 +205,9 @@ export async function generateGrassSvg(themeName, githubId, options = {}) {
   svgParts.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${outputWidth}" height="${outputHeight}" viewBox="0 0 ${width} ${height}" role="img" aria-label="GitHub contribution graph for ${escapeXml(githubId)}">`);
   svgParts.push(`<title>${escapeXml(theme.title(githubId))}</title>`);
   svgParts.push(`<defs>`);
-  svgParts.push(`<style>${createAnimationCss()}</style>`);
+  svgParts.push(`<style>${createAnimationCss(timeline)}</style>`);
   svgParts.push(
-    `<clipPath id="${commandClipId}"><rect x="${commandX}" y="${promptY - 16}" width="0" height="22"><animate attributeName="width" from="0" to="${commandWidth + 6}" dur="1.2s" begin="0s" fill="freeze" /></rect></clipPath>`
+    `<clipPath id="${commandClipId}"><rect x="${commandX}" y="${promptY - 16}" width="0" height="22"><animate attributeName="width" values="0;${commandWidth + 6};${commandWidth + 6};0" keyTimes="0;${timeline.typingRatio};${timeline.holdEndRatio};1" dur="${timeline.cycleDuration}s" repeatCount="indefinite" /></rect></clipPath>`
   );
   svgParts.push(`</defs>`);
 
@@ -202,7 +224,7 @@ export async function generateGrassSvg(themeName, githubId, options = {}) {
   svgParts.push(`<g>`);
   svgParts.push(addTextSpans(promptParts, promptStartX, promptY));
   svgParts.push(`<text x="${commandX}" y="${promptY}" fill="${theme.text}" font-size="16" font-family="Consolas, Menlo, monospace" clip-path="url(#${commandClipId})">${escapeXml(commandText)}</text>`);
-  svgParts.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="16" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" from="${commandX}" to="${commandX + commandWidth + 2}" dur="1.2s" begin="0s" fill="freeze" /></text>`);
+  svgParts.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="16" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandWidth + 2};${commandX + commandWidth + 2};${commandX}" keyTimes="0;${timeline.typingRatio};${timeline.holdEndRatio};1" dur="${timeline.cycleDuration}s" repeatCount="indefinite" /></text>`);
   svgParts.push(`</g>`);
 
   svgParts.push(`<text class="line-fetch" x="44" y="113" fill="#8b949e" font-size="16" font-family="Consolas, Menlo, monospace">Fetching data from GitHub API...</text>`);

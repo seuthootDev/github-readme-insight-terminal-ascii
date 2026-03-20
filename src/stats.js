@@ -54,23 +54,33 @@ function addTextSpans(parts, startX, y, fontSize = 16) {
   return `<text x="${startX}" y="${y}" font-size="${fontSize}" font-family="Consolas, Menlo, monospace">${spans.join("")}</text>`;
 }
 
-function createAnimationCss() {
+function createAnimationCss(timeline) {
+  const pct = (seconds) => ((seconds / timeline.cycleDuration) * 100).toFixed(4);
+
   return `
-  .line-fetch { opacity: 0; animation: show 0.01s linear 1.2s forwards; }
-  .line-success { opacity: 0; animation: show 0.01s linear 1.95s forwards; }
-  .line-stats { opacity: 0; animation: show 0.01s linear 2.05s forwards; }
-  .line-bottom { opacity: 0; animation: show 0.01s linear 2.4s forwards; }
-  .cursor { opacity: 0; animation: show 0.01s linear 2.4s forwards, blink 1s steps(1,end) 2.4s infinite; }
+  .line-fetch { opacity: 0; animation: show-fetch ${timeline.cycleDuration}s linear infinite; }
+  .line-success { opacity: 0; animation: show-success ${timeline.cycleDuration}s linear infinite; }
+  .line-stats { opacity: 0; animation: show-stats ${timeline.cycleDuration}s linear infinite; }
+  .line-bottom { opacity: 0; animation: show-bottom ${timeline.cycleDuration}s linear infinite; }
+  .cursor {
+    opacity: 1;
+    visibility: hidden;
+    animation: cursor-window ${timeline.cycleDuration}s steps(1, end) infinite, blink ${timeline.blinkDuration}s steps(1,end) infinite;
+  }
   .typing-cursor {
     opacity: 1;
-    animation: hideTypingCursor 0.01s linear 1.2s forwards;
+    animation: typing-cursor-window ${timeline.cycleDuration}s steps(1, end) infinite;
   }
   .fetch-typing-cursor {
     display: none;
   }
-  @keyframes show { to { opacity: 1; } }
+  @keyframes show-fetch { 0%, ${pct(timeline.fetchStart)}% { opacity: 0; } ${pct(timeline.fetchStart + 0.01)}%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes show-success { 0%, ${pct(timeline.successAt)}% { opacity: 0; } ${pct(timeline.successAt + 0.01)}%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes show-stats { 0%, ${pct(timeline.statsAt)}% { opacity: 0; } ${pct(timeline.statsAt + 0.01)}%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes show-bottom { 0%, ${pct(timeline.bottomAt)}% { opacity: 0; } ${pct(timeline.bottomAt + 0.01)}%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes cursor-window { 0%, ${pct(timeline.bottomAt)}% { visibility: hidden; } ${pct(timeline.bottomAt + 0.01)}%, 99.9% { visibility: visible; } 100% { visibility: hidden; } }
+  @keyframes typing-cursor-window { 0%, ${pct(timeline.typingDuration)}% { opacity: 1; } ${pct(timeline.typingDuration + 0.01)}%, 99.9% { opacity: 0; } 100% { opacity: 1; } }
   @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
-  @keyframes hideTypingCursor { to { opacity: 0; } }
   `;
 }
 
@@ -321,6 +331,22 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
   const fetchWidth = textWidth(fetchText, 13);
   const successText = `\u2714 Success! Generated ASCII art for '${githubId}'.`;
 
+  const timeline = {
+    typingDuration: 1.2,
+    fetchStart: 1.2,
+    fetchDuration: 0.75,
+    successAt: 1.95,
+    statsAt: 2.05,
+    bottomAt: 2.4,
+    blinkDuration: 0.8,
+    blinkCount: 15,
+    cycleDuration: 2.4 + (0.8 * 15),
+    holdEndRatio: "0.999"
+  };
+  timeline.typingRatio = (timeline.typingDuration / timeline.cycleDuration).toFixed(6);
+  timeline.fetchStartRatio = (timeline.fetchStart / timeline.cycleDuration).toFixed(6);
+  timeline.fetchEndRatio = ((timeline.fetchStart + timeline.fetchDuration) / timeline.cycleDuration).toFixed(6);
+
   const leftRows = statsRows.slice(0, 3);
   const rightRows = statsRows.slice(3);
 
@@ -334,9 +360,9 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
   svg.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${outputWidth}" height="${outputHeight}" viewBox="0 0 ${width} ${height}" role="img" aria-label="GitHub stats card for ${escapeXml(githubId)}">`);
   svg.push(`<title>${escapeXml(theme.title(githubId))}</title>`);
   svg.push(`<defs>`);
-  svg.push(`<style>${createAnimationCss()}</style>`);
-  svg.push(`<clipPath id="${commandClipId}"><rect x="${commandX}" y="${promptY - 16}" width="0" height="22"><animate attributeName="width" from="0" to="${commandWidth + 6}" dur="1.2s" begin="0s" fill="freeze" /></rect></clipPath>`);
-  svg.push(`<clipPath id="${fetchClipId}"><rect x="${promptStartX}" y="${fetchLineY - 16}" width="0" height="20"><animate attributeName="width" from="0" to="${fetchWidth + 6}" dur="0.75s" begin="1.2s" fill="freeze" /></rect></clipPath>`);
+  svg.push(`<style>${createAnimationCss(timeline)}</style>`);
+  svg.push(`<clipPath id="${commandClipId}"><rect x="${commandX}" y="${promptY - 16}" width="0" height="22"><animate attributeName="width" values="0;${commandWidth + 6};${commandWidth + 6};0" keyTimes="0;${timeline.typingRatio};${timeline.holdEndRatio};1" dur="${timeline.cycleDuration}s" repeatCount="indefinite" /></rect></clipPath>`);
+  svg.push(`<clipPath id="${fetchClipId}"><rect x="${promptStartX}" y="${fetchLineY - 16}" width="0" height="20"><animate attributeName="width" values="0;0;${fetchWidth + 6};${fetchWidth + 6};0" keyTimes="0;${timeline.fetchStartRatio};${timeline.fetchEndRatio};${timeline.holdEndRatio};1" dur="${timeline.cycleDuration}s" repeatCount="indefinite" /></rect></clipPath>`);
   svg.push(`</defs>`);
 
   svg.push(`<rect x="${termX}" y="${termY}" width="${termW}" height="${termH}" rx="10" fill="${theme.frameBg}"/>`);
@@ -350,7 +376,7 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
 
   svg.push(addTextSpans(promptParts, promptStartX, promptY, 15));
   svg.push(`<text x="${commandX}" y="${promptY}" fill="${theme.text}" font-size="15" font-family="Consolas, Menlo, monospace" clip-path="url(#${commandClipId})">${escapeXml(commandText)}</text>`);
-  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" from="${commandX}" to="${commandX + commandWidth + 2}" dur="1.2s" begin="0s" fill="freeze" /></text>`);
+  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandWidth + 2};${commandX + commandWidth + 2};${commandX}" keyTimes="0;${timeline.typingRatio};${timeline.holdEndRatio};1" dur="${timeline.cycleDuration}s" repeatCount="indefinite" /></text>`);
 
   svg.push(`<g class="line-fetch">`);
   svg.push(`<text x="${promptStartX}" y="${fetchLineY}" fill="#8b949e" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#${fetchClipId})">${escapeXml(fetchText)}</text>`);
