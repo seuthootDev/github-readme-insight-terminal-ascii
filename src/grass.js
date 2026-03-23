@@ -189,8 +189,8 @@ export async function generateGrassSvg(themeName, githubId, options = {}) {
     grassAt: 2.3,
     bottomAt: 2.9,
     blinkDuration: 0.8,
-    blinkCount: 15,
-    cycleDuration: 2.9 + (0.8 * 15),
+    blinkCount: 20,
+    cycleDuration: 2.9 + (0.8 * 20),
     holdEndRatio: "0.999"
   };
   timeline.typingRatio = (timeline.typingDuration / timeline.cycleDuration).toFixed(6);

@@ -339,8 +339,8 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
     statsAt: 2.05,
     bottomAt: 2.4,
     blinkDuration: 0.8,
-    blinkCount: 15,
-    cycleDuration: 2.4 + (0.8 * 15),
+    blinkCount: 20,
+    cycleDuration: 2.4 + (0.8 * 20),
     holdEndRatio: "0.999"
   };
   timeline.typingRatio = (timeline.typingDuration / timeline.cycleDuration).toFixed(6);
