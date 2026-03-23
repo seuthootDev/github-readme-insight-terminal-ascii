@@ -3,24 +3,32 @@
 <title>Windows PowerShell</title>
 <defs>
 <style>
-  .line-fetch { opacity: 0; animation: show 0.01s linear 1.2s forwards; }
-  .line-success { opacity: 0; animation: show 0.01s linear 1.95s forwards; }
-  .line-stats { opacity: 0; animation: show 0.01s linear 2.05s forwards; }
-  .line-bottom { opacity: 0; animation: show 0.01s linear 2.4s forwards; }
-  .cursor { opacity: 0; animation: show 0.01s linear 2.4s forwards, blink 1s steps(1,end) 2.4s infinite; }
+  .line-fetch { opacity: 0; animation: show-fetch 18.4s linear infinite; }
+  .line-success { opacity: 0; animation: show-success 18.4s linear infinite; }
+  .line-stats { opacity: 0; animation: show-stats 18.4s linear infinite; }
+  .line-bottom { opacity: 0; animation: show-bottom 18.4s linear infinite; }
+  .cursor {
+    opacity: 1;
+    visibility: hidden;
+    animation: cursor-window 18.4s steps(1, end) infinite, blink 0.8s steps(1,end) infinite;
+  }
   .typing-cursor {
     opacity: 1;
-    animation: hideTypingCursor 0.01s linear 1.2s forwards;
+    animation: typing-cursor-window 18.4s steps(1, end) infinite;
   }
   .fetch-typing-cursor {
     display: none;
   }
-  @keyframes show { to { opacity: 1; } }
+  @keyframes show-fetch { 0%, 6.5217% { opacity: 0; } 6.5761%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes show-success { 0%, 10.5978% { opacity: 0; } 10.6522%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes show-stats { 0%, 11.1413% { opacity: 0; } 11.1957%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes show-bottom { 0%, 13.0435% { opacity: 0; } 13.0978%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes cursor-window { 0%, 13.0435% { visibility: hidden; } 13.0978%, 99.9% { visibility: visible; } 100% { visibility: hidden; } }
+  @keyframes typing-cursor-window { 0%, 6.5217% { opacity: 1; } 6.5761%, 99.9% { opacity: 0; } 100% { opacity: 1; } }
   @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
-  @keyframes hideTypingCursor { to { opacity: 0; } }
   </style>
-<clipPath id="stats-command-typing-clip"><rect x="257" y="70" width="0" height="22"><animate attributeName="width" from="0" to="238.50000000000003" dur="1.2s" begin="0s" fill="freeze" /></rect></clipPath>
-<clipPath id="stats-fetch-typing-clip"><rect x="44" y="92" width="0" height="20"><animate attributeName="width" from="0" to="263.92" dur="0.75s" begin="1.2s" fill="freeze" /></rect></clipPath>
+<clipPath id="stats-command-typing-clip"><rect x="257" y="70" width="0" height="22"><animate attributeName="width" values="0;238.50000000000003;238.50000000000003;0" keyTimes="0;0.065217;0.999;1" dur="18.4s" repeatCount="indefinite" /></rect></clipPath>
+<clipPath id="stats-fetch-typing-clip"><rect x="44" y="92" width="0" height="20"><animate attributeName="width" values="0;0;263.92;263.92;0" keyTimes="0;0.065217;0.105978;0.999;1" dur="18.4s" repeatCount="indefinite" /></rect></clipPath>
 </defs>
 <rect x="20" y="20" width="580" height="372" rx="10" fill="#0c0c0c"/>
 <rect x="21" y="60" width="578" height="331" rx="0" fill="#0c0c0c"/>
@@ -34,7 +42,7 @@
 <text x="310" y="45" font-size="13" font-family="Consolas, Menlo, monospace" fill="#a8a8a8" text-anchor="middle">Windows PowerShell</text>
 <text x="44" y="86" font-size="15" font-family="Consolas, Menlo, monospace"><tspan fill="#c678dd">PS </tspan><tspan fill="#e5c07b">C:\Users\seuthootDev</tspan><tspan fill="#c5c8c6">&gt; </tspan></text>
 <text x="257" y="86" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace" clip-path="url(#stats-command-typing-clip)">Get-GHProfile seuthootDev</text>
-<text class="typing-cursor" x="257" y="86" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" from="257" to="491.5" dur="1.2s" begin="0s" fill="freeze" /></text>
+<text class="typing-cursor" x="257" y="86" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="257;491.5;491.5;257" keyTimes="0;0.065217;0.999;1" dur="18.4s" repeatCount="indefinite" /></text>
 <g class="line-fetch">
 <text x="44" y="108" fill="#8b949e" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#stats-fetch-typing-clip)">Fetching data from GitHub API...</text>
 </g>
@@ -63,7 +71,7 @@
 <text x="511" y="272" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">0</text>
 <circle cx="321" cy="295" r="4" fill="#98c379"/>
 <text x="333" y="300" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">Contributions (1y)</text>
-<text x="511" y="300" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">892</text>
+<text x="511" y="300" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">901</text>
 </g>
 <g class="line-bottom">
 <text x="44" y="368" font-size="15" font-family="Consolas, Menlo, monospace"><tspan fill="#c678dd">PS </tspan><tspan fill="#e5c07b">C:\Users\seuthootDev</tspan><tspan fill="#c5c8c6">&gt; </tspan></text>
