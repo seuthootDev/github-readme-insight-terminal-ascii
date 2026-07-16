@@ -28,9 +28,9 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 
 **top-lang previews (mac / windows / ubuntu)**
 
-![mac top language](images/mac_top_language.svg)
-![windows top language](images/windows_top_language.svg)
-![ubuntu top language](images/ubuntu_top_language.svg)
+![mac top language](images/mac-top-lang.svg)
+![windows top language](images/windows-top-lang.svg)
+![ubuntu top language](images/ubuntu-top-lang.svg)
 
 ---
 
