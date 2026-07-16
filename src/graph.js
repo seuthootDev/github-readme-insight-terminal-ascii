@@ -198,7 +198,7 @@ export async function generateGraphSvg(themeName, githubId, options = {}) {
   const controlsY = termY + 20;
   const controlsX = themeName === "mac"
     ? termX + 18
-    : (themeName === "window" ? termX + termW - 74 : termX + termW - 62);
+    : (themeName === "windows" ? termX + termW - 74 : termX + termW - 62);
 
   const svgParts = [];
   svgParts.push(`<?xml version="1.0" encoding="UTF-8"?>`);
@@ -214,7 +214,7 @@ export async function generateGraphSvg(themeName, githubId, options = {}) {
   svgParts.push(`<rect x="${termX}" y="${termY}" width="${termW}" height="${termH}" rx="10" fill="${theme.frameBg}"/>`);
   svgParts.push(`<rect x="${termX + 1}" y="${termY + headerH}" width="${termW - 2}" height="${termH - headerH - 1}" rx="0" fill="${theme.bodyBg}"/>`);
   svgParts.push(`<rect x="${termX + 1}" y="${termY + 1}" width="${termW - 2}" height="${headerH}" rx="8" fill="${theme.headerBg}"/>`);
-  if (themeName === "window" && POWERSHELL_ICON_DATA_URI) {
+  if (themeName === "windows" && POWERSHELL_ICON_DATA_URI) {
     svgParts.push(`<image href="${POWERSHELL_ICON_DATA_URI}" x="${termX + 12}" y="${termY + 8}" width="24" height="24" />`);
   }
   svgParts.push(theme.controlsSvg(controlsX, controlsY));

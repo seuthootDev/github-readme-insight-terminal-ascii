@@ -12,24 +12,24 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 
 ![mac](images/mac_style.svg)
 
-**theme=window** — Windows PowerShell
+**theme=windows** — Windows PowerShell
 
-![window](images/window_style.svg)
+![windows](images/windows_style.svg)
 
 **theme=ubuntu** — Ubuntu GNOME Terminal
 
 ![ubuntu](images/ubuntu_style.svg)
 
-**Stats previews (mac / window / ubuntu)**
+**Stats previews (mac / windows / ubuntu)**
 
 ![mac stats](images/mac_stats.svg)
-![window stats](images/window_stats.svg)
+![windows stats](images/windows_stats.svg)
 ![ubuntu stats](images/ubuntu_stats.svg)
 
-**top-lang previews (mac / window / ubuntu)**
+**top-lang previews (mac / windows / ubuntu)**
 
 ![mac top language](images/mac_top_language.svg)
-![window top language](images/window_top_language.svg)
+![windows top language](images/windows_top_language.svg)
 ![ubuntu top language](images/ubuntu_top_language.svg)
 
 ---
@@ -38,7 +38,7 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 
 - Enter a GitHub username to fetch the **last year's contribution data** and render a contribution grid.
 - Renders a terminal-style SVG directly in Node.js, including hover tooltips with **date and contribution count**.
-- Each theme has a distinct terminal window style (title bar, controls, and background colors).
+- Each theme has a distinct terminal windows style (title bar, controls, and background colors).
 
 ---
 
@@ -58,7 +58,7 @@ npm run cli -- --user YOUR_GITHUB_ID --theme mac
 | Option | Required | Description |
 |--------|----------|-------------|
 | `--user` | ✅ | GitHub User ID |
-| `--theme` | ❌ (Default: mac) | `mac` / `window` / `ubuntu` |
+| `--theme` | ❌ (Default: mac) | `mac` / `windows` / `ubuntu` |
 | `--output` | ❌ (Default: `{theme}_style.svg`) | Output file name |
 
 **Examples**
@@ -81,7 +81,7 @@ npm run serve
 - Browser (typed route): `http://127.0.0.1:8000/svg/graph?user=YOUR_GITHUB_ID&theme=mac`
 - Browser (stats): `http://127.0.0.1:8000/svg/stats?user=YOUR_GITHUB_ID&theme=mac`
 - Browser (top-lang): `http://127.0.0.1:8000/svg/top-lang?user=YOUR_GITHUB_ID&theme=mac&top=8`
-- Test with `mac`, `window`, and `ubuntu` themes.
+- Test with `mac`, `windows`, and `ubuntu` themes.
 
 ---
 
@@ -101,7 +101,7 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=GITHUB_
 | Query | Required | Description |
 |-------|----------|-------------|
 | `user` | ✅ | GitHub Username |
-| `theme` | ❌ (Default: mac) | `mac` / `window` / `ubuntu` |
+| `theme` | ❌ (Default: mac) | `mac` / `windows` / `ubuntu` |
 | `top` | ❌ (top-lang only, Default: 6) | `6` to `12` |
 | `scale` | ❌ (Default: 1) | Uniform size multiplier (`0.2` to `3`) |
 

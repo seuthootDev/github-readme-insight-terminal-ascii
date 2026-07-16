@@ -40,7 +40,7 @@ export const THEMES = {
       <circle cx="${x + 40}" cy="${y}" r="6" fill="#27c93f" />
     `
   },
-  window: {
+  windows: {
     title: () => "Windows PowerShell",
     frameBg: "#0c0c0c",
     bodyBg: "#0c0c0c",
@@ -48,7 +48,7 @@ export const THEMES = {
     text: "#c5c8c6",
     accentSuccess: "#98c379",
     prompt: windowsPrompt,
-    command: (user) => `github-cli --user ${user} --theme window`,
+    command: (user) => `github-cli --user ${user} --theme windows`,
     controlsSvg: (x, y) => `
       <text x="${x}" y="${y + 5}" font-size="13" text-anchor="middle" fill="#c5c8c6">&#x2500;</text>
       <text x="${x + 28}" y="${y + 5}" font-size="13" text-anchor="middle" fill="#c5c8c6">&#x25A1;</text>

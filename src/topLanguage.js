@@ -389,7 +389,7 @@ function aggregateLanguageEdges(repos) {
 }
 
 function buildPrompt(themeName, githubId) {
-  if (themeName === "window") {
+  if (themeName === "windows") {
     return [
       { text: "PS ", fill: "#c678dd" },
       { text: `C:\\Users\\${githubId}`, fill: "#e5c07b" },
@@ -413,7 +413,7 @@ function buildPrompt(themeName, githubId) {
 }
 
 function buildCommand(themeName, githubId) {
-  if (themeName === "window") {
+  if (themeName === "windows") {
     return `Get-GHLanguages ${githubId}`;
   }
 
@@ -483,7 +483,7 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   const promptW = promptPartsWidth(promptParts, 15);
   const commandW = textWidth(commandText, 15);
   const maxPromptCommandWidth = Math.max(
-    ...["mac", "window", "ubuntu"].map((themeVariant) => {
+    ...["mac", "windows", "ubuntu"].map((themeVariant) => {
       const promptPartsVariant = buildPrompt(themeVariant, githubId);
       const commandTextVariant = buildCommand(themeVariant, githubId);
       return promptPartsWidth(promptPartsVariant, 15) + 3 + textWidth(commandTextVariant, 15);
@@ -554,7 +554,7 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   const controlsY = termY + 20;
   const controlsX = themeName === "mac"
     ? termX + 18
-    : (themeName === "window" ? termX + termW - 74 : termX + termW - 62);
+    : (themeName === "windows" ? termX + termW - 74 : termX + termW - 62);
 
   const svg = [];
   svg.push(`<?xml version="1.0" encoding="UTF-8"?>`);
@@ -569,7 +569,7 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   svg.push(`<rect x="${termX}" y="${termY}" width="${termW}" height="${termH}" rx="10" fill="${theme.frameBg}"/>`);
   svg.push(`<rect x="${termX + 1}" y="${termBodyTop}" width="${termW - 2}" height="${termH - headerH - 1}" rx="0" fill="${theme.bodyBg}"/>`);
   svg.push(`<rect x="${termX + 1}" y="${termY + 1}" width="${termW - 2}" height="${headerH}" rx="8" fill="${theme.headerBg}"/>`);
-  if (themeName === "window" && POWERSHELL_ICON_DATA_URI) {
+  if (themeName === "windows" && POWERSHELL_ICON_DATA_URI) {
     svg.push(`<image href="${POWERSHELL_ICON_DATA_URI}" x="${termX + 12}" y="${termY + 8}" width="24" height="24" />`);
   }
   svg.push(theme.controlsSvg(controlsX, controlsY));
