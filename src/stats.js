@@ -329,7 +329,7 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
   const fetchClipId = "stats-fetch-typing-clip";
   const fetchText = "Fetching data from GitHub API...";
   const fetchWidth = textWidth(fetchText, 13);
-  const successText = `\u2714 Success! Generated ASCII art for '${githubId}'.`;
+  const successText = `\u2714 Success! Generated GitHub stats for '${githubId}'.`;
 
   const timeline = {
     typingDuration: 1.2,
@@ -383,7 +383,7 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
   svg.push(`</g>`);
 
   svg.push(`<g class="line-success">`);
-  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(`Success! Generated ASCII art for '${githubId}'.`)}</tspan></text>`);
+  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(`Success! Generated GitHub stats for '${githubId}'.`)}</tspan></text>`);
   svg.push(`</g>`);
 
   svg.push(`<g class="line-stats">`);

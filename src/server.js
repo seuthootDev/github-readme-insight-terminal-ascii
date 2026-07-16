@@ -28,7 +28,7 @@ const PORT = Number.parseInt(process.env.PORT ?? "8000", 10);
 async function handleSvgRequest(req, res, forcedType = null) {
   const user = String(req.query.user ?? "").trim();
   const theme = String(req.query.theme ?? "mac").trim() || "mac";
-  const renderType = String(forcedType ?? req.params.type ?? "grass").trim().toLowerCase();
+  const renderType = String(forcedType ?? req.params.type ?? "graph").trim().toLowerCase();
   const topRaw = req.query.top;
   const topParsed = Number.parseInt(String(topRaw ?? ""), 10);
   const topN = Number.isNaN(topParsed) ? undefined : Math.min(12, Math.max(6, topParsed));
@@ -69,7 +69,7 @@ async function handleSvgRequest(req, res, forcedType = null) {
 }
 
 app.get(["/", "/svg"], async (req, res) => {
-  await handleSvgRequest(req, res, "grass");
+  await handleSvgRequest(req, res, "graph");
 });
 
 app.get(["/:type", "/svg/:type"], async (req, res) => {
@@ -79,7 +79,7 @@ app.get(["/:type", "/svg/:type"], async (req, res) => {
 // Local/dev: listen. Vercel: use the exported app as the serverless entrypoint.
 if (!process.env.VERCEL) {
   app.listen(PORT, () => {
-    console.log(`github-grass-ascii-js API listening on http://127.0.0.1:${PORT}`);
+    console.log(`github-graph-ascii-js API listening on http://127.0.0.1:${PORT}`);
   });
 }
 

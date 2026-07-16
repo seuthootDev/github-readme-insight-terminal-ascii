@@ -5,7 +5,7 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 
 - **Themes**: macOS Terminal / Windows PowerShell / Ubuntu GNOME styles
 - **CLI**: Run locally to print to terminal and save SVG
-- **API**: Returns SVG via `GET /svg?user=USER&theme=...` (default grass) or `GET /svg/:type?user=USER&theme=...`
+- **API**: Returns SVG via `GET /svg?user=USER&theme=...` (default graph) or `GET /svg/:type?user=USER&theme=...`
 - **Tooltip**: Hover each cell to see date and contribution count
 
 **theme=mac** — macOS Terminal (zsh)
@@ -77,8 +77,8 @@ npm install
 npm run serve
 ```
 
-- Browser (grass): `http://127.0.0.1:8000/svg?user=YOUR_GITHUB_ID&theme=mac`
-- Browser (typed route): `http://127.0.0.1:8000/svg/grass?user=YOUR_GITHUB_ID&theme=mac`
+- Browser (graph): `http://127.0.0.1:8000/svg?user=YOUR_GITHUB_ID&theme=mac`
+- Browser (typed route): `http://127.0.0.1:8000/svg/graph?user=YOUR_GITHUB_ID&theme=mac`
 - Browser (stats): `http://127.0.0.1:8000/svg/stats?user=YOUR_GITHUB_ID&theme=mac`
 - Browser (top-lang): `http://127.0.0.1:8000/svg/top-lang?user=YOUR_GITHUB_ID&theme=mac&top=8`
 - Test with `mac`, `window`, and `ubuntu` themes.
@@ -93,7 +93,7 @@ Use the deployed API URL as your image source.
 
 ```
 https://github-readme-insight-terminal-asci.vercel.app/svg?user=GITHUB_USERNAME&theme=THEME
-https://github-readme-insight-terminal-asci.vercel.app/svg/grass?user=GITHUB_USERNAME&theme=THEME
+https://github-readme-insight-terminal-asci.vercel.app/svg/graph?user=GITHUB_USERNAME&theme=THEME
 https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=GITHUB_USERNAME&theme=THEME
 https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=GITHUB_USERNAME&theme=THEME&top=8
 ```
@@ -109,8 +109,8 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=GITHUB_
 **Markdown Example**
 
 ```markdown
-![GitHub contribution grass](https://github-readme-insight-terminal-asci.vercel.app/svg?user=YOUR_GITHUB_ID&theme=mac)
-![GitHub contribution grass](https://github-readme-insight-terminal-asci.vercel.app/svg/grass?user=YOUR_GITHUB_ID&theme=mac)
+![GitHub contribution graph](https://github-readme-insight-terminal-asci.vercel.app/svg?user=YOUR_GITHUB_ID&theme=mac)
+![GitHub contribution graph](https://github-readme-insight-terminal-asci.vercel.app/svg/graph?user=YOUR_GITHUB_ID&theme=mac)
 ![GitHub stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=YOUR_GITHUB_ID&theme=mac)
 ![GitHub top languages](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=YOUR_GITHUB_ID&theme=mac&top=8)
 ![GitHub top languages (scaled)](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=YOUR_GITHUB_ID&theme=mac&top=8&scale=0.8)
