@@ -2,7 +2,7 @@ function macPrompt(user) {
   return [
     { text: `${user}@MacBook-Pro`, fill: "#98c379" },
     { text: " ", fill: "#c5c8c6" },
-    { text: "github-grass", fill: "#61afef" },
+    { text: "github-cli", fill: "#61afef" },
     { text: " % ", fill: "#c5c8c6" }
   ];
 }
@@ -19,7 +19,7 @@ function ubuntuPrompt(user) {
 function windowsPrompt(user) {
   return [
     { text: "PS ", fill: "#c678dd" },
-    { text: `C:\\GitHub\\${user}\\github-grass`, fill: "#e5c07b" },
+    { text: `C:\\GitHub\\${user}\\github-cli`, fill: "#e5c07b" },
     { text: "> ", fill: "#c5c8c6" }
   ];
 }
@@ -33,7 +33,7 @@ export const THEMES = {
     text: "#c5c8c6",
     accentSuccess: "#98c379",
     prompt: macPrompt,
-    command: (user) => `github-grass --user ${user} --theme mac`,
+    command: (user) => `github-cli --user ${user} --theme mac`,
     controlsSvg: (x, y) => `
       <circle cx="${x}" cy="${y}" r="6" fill="#ff5f56" />
       <circle cx="${x + 20}" cy="${y}" r="6" fill="#ffbd2e" />
@@ -48,7 +48,7 @@ export const THEMES = {
     text: "#c5c8c6",
     accentSuccess: "#98c379",
     prompt: windowsPrompt,
-    command: (user) => `github-grass --user ${user} --theme window`,
+    command: (user) => `github-cli --user ${user} --theme window`,
     controlsSvg: (x, y) => `
       <text x="${x}" y="${y + 5}" font-size="13" text-anchor="middle" fill="#c5c8c6">&#x2500;</text>
       <text x="${x + 28}" y="${y + 5}" font-size="13" text-anchor="middle" fill="#c5c8c6">&#x25A1;</text>
@@ -63,7 +63,7 @@ export const THEMES = {
     text: "#c5c8c6",
     accentSuccess: "#98c379",
     prompt: ubuntuPrompt,
-    command: (user) => `./render_grass --target=${user}`,
+    command: (user) => `./github-cli --target=${user}`,
     controlsSvg: (x, y) => `
       <circle cx="${x}" cy="${y}" r="7" fill="#5a5a5a" />
       <circle cx="${x + 22}" cy="${y}" r="7" fill="#5a5a5a" />

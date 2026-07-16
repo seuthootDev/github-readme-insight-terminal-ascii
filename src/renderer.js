@@ -7,7 +7,7 @@ const DEFAULT_RENDER_TYPE = "grass";
 const RENDERERS = {
   grass: generateGrassSvg,
   stats: generateStatsSvg,
-  "top-language": generateTopLanguageSvg
+  "top-lang": generateTopLanguageSvg
 };
 
 function normalizeRenderType(type) {

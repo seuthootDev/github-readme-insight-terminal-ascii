@@ -19,7 +19,6 @@ try {
     if (key && !(key in process.env)) process.env[key] = val;
   }
 } catch {
-  // .env 파일 없으면 그냥 넘어감
 }
 import { THEMES } from "./themes.js";
 
@@ -77,6 +76,11 @@ app.get(["/:type", "/svg/:type"], async (req, res) => {
   await handleSvgRequest(req, res);
 });
 
-app.listen(PORT, () => {
-  console.log(`github-grass-ascii-js API listening on http://127.0.0.1:${PORT}`);
-});
+// Local/dev: listen. Vercel: use the exported app as the serverless entrypoint.
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`github-grass-ascii-js API listening on http://127.0.0.1:${PORT}`);
+  });
+}
+
+export default app;

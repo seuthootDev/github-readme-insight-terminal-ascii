@@ -175,7 +175,7 @@ async function fetchJson(url) {
   }
 
   if (logTokenUsage) {
-    console.log(`[github-api][top-language] token-used=${Boolean(githubToken)} url=${url}`);
+    console.log(`[github-api][top-lang] token-used=${Boolean(githubToken)} url=${url}`);
   }
 
   const response = await fetch(url, { headers });
@@ -210,7 +210,7 @@ async function fetchGraphql(query, variables) {
   }
 
   if (logTokenUsage) {
-    console.log("[github-api][top-language] token-used=true graphql=true");
+    console.log("[github-api][top-lang] token-used=true graphql=true");
   }
 
   const response = await fetch(GITHUB_GRAPHQL_URL, {

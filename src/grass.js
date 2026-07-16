@@ -227,8 +227,11 @@ export async function generateGrassSvg(themeName, githubId, options = {}) {
   svgParts.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="16" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandWidth + 2};${commandX + commandWidth + 2};${commandX}" keyTimes="0;${timeline.typingRatio};${timeline.holdEndRatio};1" dur="${timeline.cycleDuration}s" repeatCount="indefinite" /></text>`);
   svgParts.push(`</g>`);
 
+  const dateRange = `${formatDate(firstSunday)} ~ ${formatDate(today)}`;
+  const dateRangeX = termX + termW - 24;
   svgParts.push(`<text class="line-fetch" x="44" y="113" fill="#8b949e" font-size="16" font-family="Consolas, Menlo, monospace">Fetching data from GitHub API...</text>`);
   svgParts.push(`<text class="line-success" x="44" y="136" fill="${theme.accentSuccess}" font-size="16" font-family="Consolas, Menlo, monospace">✔ Success! Generated ASCII art for '${escapeXml(githubId)}'.</text>`);
+  svgParts.push(`<text class="line-success" x="${dateRangeX}" y="136" fill="#8b949e" font-size="14" font-family="Consolas, Menlo, monospace" text-anchor="end">${dateRange}</text>`);
 
   svgParts.push(`<g class="line-grass">`);
   for (const monthItem of monthLabelItems) {
@@ -251,12 +254,10 @@ export async function generateGrassSvg(themeName, githubId, options = {}) {
     }
   }
 
-  const dateLeft = `${formatDate(firstSunday)} ~ ${formatDate(today)}`;
   const contribText = `${total} contribution${total === 1 ? "" : "s"} in the last year`;
   const footerY = 388;
   const legendY = footerY - 12;
-  svgParts.push(`<text x="44" y="${footerY}" fill="#8b949e" font-size="14" font-family="Consolas, Menlo, monospace">${dateLeft}</text>`);
-  svgParts.push(`<text x="680" y="${footerY}" fill="#8b949e" font-size="14" font-family="Consolas, Menlo, monospace">${contribText}</text>`);
+  svgParts.push(`<text x="44" y="${footerY}" fill="#8b949e" font-size="14" font-family="Consolas, Menlo, monospace">${contribText}</text>`);
   svgParts.push(`<text x="930" y="${footerY}" fill="#8b949e" font-size="14" font-family="Consolas, Menlo, monospace">Less</text>`);
 
   let legendX = 970;
