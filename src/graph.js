@@ -107,26 +107,26 @@ function createAnimationCss(timeline) {
   const pct = (seconds) => ((seconds / timeline.cycleDuration) * 100).toFixed(4);
 
   return `
-  .line-fetch { opacity: 0; animation: show-fetch ${timeline.cycleDuration}s linear infinite; }
-  .line-success { opacity: 0; animation: show-success ${timeline.cycleDuration}s linear infinite; }
-  .line-graph { opacity: 0; animation: show-graph ${timeline.cycleDuration}s linear infinite; }
-  .line-bottom { opacity: 0; animation: show-bottom ${timeline.cycleDuration}s linear infinite; }
+  .line-fetch { opacity: 0; animation: show-fetch ${timeline.cycleDuration}s linear forwards; }
+  .line-success { opacity: 0; animation: show-success ${timeline.cycleDuration}s linear forwards; }
+  .line-graph { opacity: 0; animation: show-graph ${timeline.cycleDuration}s linear forwards; }
+  .line-bottom { opacity: 0; animation: show-bottom ${timeline.cycleDuration}s linear forwards; }
   .graph-cell-hitbox { cursor: help; }
   .cursor {
     opacity: 1;
     visibility: hidden;
-    animation: cursor-window ${timeline.cycleDuration}s steps(1, end) infinite, blink ${timeline.blinkDuration}s steps(1,end) infinite;
+    animation: cursor-window ${timeline.cycleDuration}s steps(1, end) forwards, blink ${timeline.blinkDuration}s steps(1,end) infinite;
   }
   .typing-cursor {
     opacity: 1;
-    animation: typing-cursor-window ${timeline.cycleDuration}s steps(1, end) infinite;
+    animation: typing-cursor-window ${timeline.cycleDuration}s steps(1, end) forwards;
   }
-  @keyframes show-fetch { 0%, ${pct(timeline.fetchAt)}% { opacity: 0; } ${pct(timeline.fetchAt + 0.01)}%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
-  @keyframes show-success { 0%, ${pct(timeline.successAt)}% { opacity: 0; } ${pct(timeline.successAt + 0.01)}%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
-  @keyframes show-graph { 0%, ${pct(timeline.graphAt)}% { opacity: 0; } ${pct(timeline.graphAt + 0.01)}%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
-  @keyframes show-bottom { 0%, ${pct(timeline.bottomAt)}% { opacity: 0; } ${pct(timeline.bottomAt + 0.01)}%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
-  @keyframes cursor-window { 0%, ${pct(timeline.bottomAt)}% { visibility: hidden; } ${pct(timeline.bottomAt + 0.01)}%, 99.9% { visibility: visible; } 100% { visibility: hidden; } }
-  @keyframes typing-cursor-window { 0%, ${pct(timeline.typingDuration)}% { opacity: 1; } ${pct(timeline.typingDuration + 0.01)}%, 99.9% { opacity: 0; } 100% { opacity: 1; } }
+  @keyframes show-fetch { 0%, ${pct(Math.max(0, timeline.fetchAt - 0.01))}% { opacity: 0; } ${pct(timeline.fetchAt)}%, 100% { opacity: 1; } }
+  @keyframes show-success { 0%, ${pct(Math.max(0, timeline.successAt - 0.01))}% { opacity: 0; } ${pct(timeline.successAt)}%, 100% { opacity: 1; } }
+  @keyframes show-graph { 0%, ${pct(Math.max(0, timeline.graphAt - 0.01))}% { opacity: 0; } ${pct(timeline.graphAt)}%, 100% { opacity: 1; } }
+  @keyframes show-bottom { 0%, ${pct(Math.max(0, timeline.bottomAt - 0.01))}% { opacity: 0; } ${pct(timeline.bottomAt)}%, 100% { opacity: 1; } }
+  @keyframes cursor-window { 0%, ${pct(Math.max(0, timeline.bottomAt - 0.01))}% { visibility: hidden; } ${pct(timeline.bottomAt)}%, 100% { visibility: visible; } }
+  @keyframes typing-cursor-window { 0%, ${pct(timeline.typingDuration)}% { opacity: 1; } ${pct(Math.min(timeline.cycleDuration, timeline.typingDuration + 0.01))}%, 100% { opacity: 0; } }
   @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
   `;
 }
@@ -189,9 +189,7 @@ export async function generateGraphSvg(themeName, githubId, options = {}) {
     graphAt: 2.3,
     bottomAt: 2.9,
     blinkDuration: 0.8,
-    blinkCount: 20,
-    cycleDuration: 2.9 + (0.8 * 20),
-    holdEndRatio: "0.999"
+    cycleDuration: 2.9
   };
   timeline.typingRatio = (timeline.typingDuration / timeline.cycleDuration).toFixed(6);
 
@@ -207,7 +205,7 @@ export async function generateGraphSvg(themeName, githubId, options = {}) {
   svgParts.push(`<defs>`);
   svgParts.push(`<style>${createAnimationCss(timeline)}</style>`);
   svgParts.push(
-    `<clipPath id="${commandClipId}"><rect x="${commandX}" y="${promptY - 16}" width="0" height="22"><animate attributeName="width" values="0;${commandWidth + 6};${commandWidth + 6};0" keyTimes="0;${timeline.typingRatio};${timeline.holdEndRatio};1" dur="${timeline.cycleDuration}s" repeatCount="indefinite" /></rect></clipPath>`
+    `<clipPath id="${commandClipId}"><rect x="${commandX}" y="${promptY - 16}" width="0" height="22"><animate attributeName="width" values="0;${commandWidth + 6};${commandWidth + 6}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></rect></clipPath>`
   );
   svgParts.push(`</defs>`);
 
@@ -224,7 +222,7 @@ export async function generateGraphSvg(themeName, githubId, options = {}) {
   svgParts.push(`<g>`);
   svgParts.push(addTextSpans(promptParts, promptStartX, promptY));
   svgParts.push(`<text x="${commandX}" y="${promptY}" fill="${theme.text}" font-size="16" font-family="Consolas, Menlo, monospace" clip-path="url(#${commandClipId})">${escapeXml(commandText)}</text>`);
-  svgParts.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="16" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandWidth + 2};${commandX + commandWidth + 2};${commandX}" keyTimes="0;${timeline.typingRatio};${timeline.holdEndRatio};1" dur="${timeline.cycleDuration}s" repeatCount="indefinite" /></text>`);
+  svgParts.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="16" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandWidth + 2};${commandX + commandWidth + 2}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></text>`);
   svgParts.push(`</g>`);
 
   const dateRange = `${formatDate(firstSunday)} ~ ${formatDate(today)}`;

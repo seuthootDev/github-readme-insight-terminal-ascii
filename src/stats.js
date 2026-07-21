@@ -58,28 +58,28 @@ function createAnimationCss(timeline) {
   const pct = (seconds) => ((seconds / timeline.cycleDuration) * 100).toFixed(4);
 
   return `
-  .line-fetch { opacity: 0; animation: show-fetch ${timeline.cycleDuration}s linear infinite; }
-  .line-success { opacity: 0; animation: show-success ${timeline.cycleDuration}s linear infinite; }
-  .line-stats { opacity: 0; animation: show-stats ${timeline.cycleDuration}s linear infinite; }
-  .line-bottom { opacity: 0; animation: show-bottom ${timeline.cycleDuration}s linear infinite; }
+  .line-fetch { opacity: 0; animation: show-fetch ${timeline.cycleDuration}s linear forwards; }
+  .line-success { opacity: 0; animation: show-success ${timeline.cycleDuration}s linear forwards; }
+  .line-stats { opacity: 0; animation: show-stats ${timeline.cycleDuration}s linear forwards; }
+  .line-bottom { opacity: 0; animation: show-bottom ${timeline.cycleDuration}s linear forwards; }
   .cursor {
     opacity: 1;
     visibility: hidden;
-    animation: cursor-window ${timeline.cycleDuration}s steps(1, end) infinite, blink ${timeline.blinkDuration}s steps(1,end) infinite;
+    animation: cursor-window ${timeline.cycleDuration}s steps(1, end) forwards, blink ${timeline.blinkDuration}s steps(1,end) infinite;
   }
   .typing-cursor {
     opacity: 1;
-    animation: typing-cursor-window ${timeline.cycleDuration}s steps(1, end) infinite;
+    animation: typing-cursor-window ${timeline.cycleDuration}s steps(1, end) forwards;
   }
   .fetch-typing-cursor {
     display: none;
   }
-  @keyframes show-fetch { 0%, ${pct(timeline.fetchStart)}% { opacity: 0; } ${pct(timeline.fetchStart + 0.01)}%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
-  @keyframes show-success { 0%, ${pct(timeline.successAt)}% { opacity: 0; } ${pct(timeline.successAt + 0.01)}%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
-  @keyframes show-stats { 0%, ${pct(timeline.statsAt)}% { opacity: 0; } ${pct(timeline.statsAt + 0.01)}%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
-  @keyframes show-bottom { 0%, ${pct(timeline.bottomAt)}% { opacity: 0; } ${pct(timeline.bottomAt + 0.01)}%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
-  @keyframes cursor-window { 0%, ${pct(timeline.bottomAt)}% { visibility: hidden; } ${pct(timeline.bottomAt + 0.01)}%, 99.9% { visibility: visible; } 100% { visibility: hidden; } }
-  @keyframes typing-cursor-window { 0%, ${pct(timeline.typingDuration)}% { opacity: 1; } ${pct(timeline.typingDuration + 0.01)}%, 99.9% { opacity: 0; } 100% { opacity: 1; } }
+  @keyframes show-fetch { 0%, ${pct(Math.max(0, timeline.fetchStart - 0.01))}% { opacity: 0; } ${pct(timeline.fetchStart)}%, 100% { opacity: 1; } }
+  @keyframes show-success { 0%, ${pct(Math.max(0, timeline.successAt - 0.01))}% { opacity: 0; } ${pct(timeline.successAt)}%, 100% { opacity: 1; } }
+  @keyframes show-stats { 0%, ${pct(Math.max(0, timeline.statsAt - 0.01))}% { opacity: 0; } ${pct(timeline.statsAt)}%, 100% { opacity: 1; } }
+  @keyframes show-bottom { 0%, ${pct(Math.max(0, timeline.bottomAt - 0.01))}% { opacity: 0; } ${pct(timeline.bottomAt)}%, 100% { opacity: 1; } }
+  @keyframes cursor-window { 0%, ${pct(Math.max(0, timeline.bottomAt - 0.01))}% { visibility: hidden; } ${pct(timeline.bottomAt)}%, 100% { visibility: visible; } }
+  @keyframes typing-cursor-window { 0%, ${pct(timeline.typingDuration)}% { opacity: 1; } ${pct(Math.min(timeline.cycleDuration, timeline.typingDuration + 0.01))}%, 100% { opacity: 0; } }
   @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
   `;
 }
@@ -339,9 +339,7 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
     statsAt: 2.05,
     bottomAt: 2.4,
     blinkDuration: 0.8,
-    blinkCount: 20,
-    cycleDuration: 2.4 + (0.8 * 20),
-    holdEndRatio: "0.999"
+    cycleDuration: 2.4
   };
   timeline.typingRatio = (timeline.typingDuration / timeline.cycleDuration).toFixed(6);
   timeline.fetchStartRatio = (timeline.fetchStart / timeline.cycleDuration).toFixed(6);
@@ -361,8 +359,8 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
   svg.push(`<title>${escapeXml(theme.title(githubId))}</title>`);
   svg.push(`<defs>`);
   svg.push(`<style>${createAnimationCss(timeline)}</style>`);
-  svg.push(`<clipPath id="${commandClipId}"><rect x="${commandX}" y="${promptY - 16}" width="0" height="22"><animate attributeName="width" values="0;${commandWidth + 6};${commandWidth + 6};0" keyTimes="0;${timeline.typingRatio};${timeline.holdEndRatio};1" dur="${timeline.cycleDuration}s" repeatCount="indefinite" /></rect></clipPath>`);
-  svg.push(`<clipPath id="${fetchClipId}"><rect x="${promptStartX}" y="${fetchLineY - 16}" width="0" height="20"><animate attributeName="width" values="0;0;${fetchWidth + 6};${fetchWidth + 6};0" keyTimes="0;${timeline.fetchStartRatio};${timeline.fetchEndRatio};${timeline.holdEndRatio};1" dur="${timeline.cycleDuration}s" repeatCount="indefinite" /></rect></clipPath>`);
+  svg.push(`<clipPath id="${commandClipId}"><rect x="${commandX}" y="${promptY - 16}" width="0" height="22"><animate attributeName="width" values="0;${commandWidth + 6};${commandWidth + 6}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></rect></clipPath>`);
+  svg.push(`<clipPath id="${fetchClipId}"><rect x="${promptStartX}" y="${fetchLineY - 16}" width="0" height="20"><animate attributeName="width" values="0;0;${fetchWidth + 6};${fetchWidth + 6}" keyTimes="0;${timeline.fetchStartRatio};${timeline.fetchEndRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></rect></clipPath>`);
   svg.push(`</defs>`);
 
   svg.push(`<rect x="${termX}" y="${termY}" width="${termW}" height="${termH}" rx="10" fill="${theme.frameBg}"/>`);
@@ -376,7 +374,7 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
 
   svg.push(addTextSpans(promptParts, promptStartX, promptY, 15));
   svg.push(`<text x="${commandX}" y="${promptY}" fill="${theme.text}" font-size="15" font-family="Consolas, Menlo, monospace" clip-path="url(#${commandClipId})">${escapeXml(commandText)}</text>`);
-  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandWidth + 2};${commandX + commandWidth + 2};${commandX}" keyTimes="0;${timeline.typingRatio};${timeline.holdEndRatio};1" dur="${timeline.cycleDuration}s" repeatCount="indefinite" /></text>`);
+  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandWidth + 2};${commandX + commandWidth + 2}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></text>`);
 
   svg.push(`<g class="line-fetch">`);
   svg.push(`<text x="${promptStartX}" y="${fetchLineY}" fill="#8b949e" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#${fetchClipId})">${escapeXml(fetchText)}</text>`);

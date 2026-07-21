@@ -3,32 +3,32 @@
 <title>Windows PowerShell</title>
 <defs>
 <style>
-  .line-fetch { opacity: 0; animation: show-fetch 18.4s linear infinite; }
-  .line-success { opacity: 0; animation: show-success 18.4s linear infinite; }
-  .line-stats { opacity: 0; animation: show-stats 18.4s linear infinite; }
-  .line-bottom { opacity: 0; animation: show-bottom 18.4s linear infinite; }
+  .line-fetch { opacity: 0; animation: show-fetch 2.4s linear forwards; }
+  .line-success { opacity: 0; animation: show-success 2.4s linear forwards; }
+  .line-stats { opacity: 0; animation: show-stats 2.4s linear forwards; }
+  .line-bottom { opacity: 0; animation: show-bottom 2.4s linear forwards; }
   .cursor {
     opacity: 1;
     visibility: hidden;
-    animation: cursor-window 18.4s steps(1, end) infinite, blink 0.8s steps(1,end) infinite;
+    animation: cursor-window 2.4s steps(1, end) forwards, blink 0.8s steps(1,end) infinite;
   }
   .typing-cursor {
     opacity: 1;
-    animation: typing-cursor-window 18.4s steps(1, end) infinite;
+    animation: typing-cursor-window 2.4s steps(1, end) forwards;
   }
   .fetch-typing-cursor {
     display: none;
   }
-  @keyframes show-fetch { 0%, 6.5217% { opacity: 0; } 6.5761%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
-  @keyframes show-success { 0%, 10.5978% { opacity: 0; } 10.6522%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
-  @keyframes show-stats { 0%, 11.1413% { opacity: 0; } 11.1957%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
-  @keyframes show-bottom { 0%, 13.0435% { opacity: 0; } 13.0978%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
-  @keyframes cursor-window { 0%, 13.0435% { visibility: hidden; } 13.0978%, 99.9% { visibility: visible; } 100% { visibility: hidden; } }
-  @keyframes typing-cursor-window { 0%, 6.5217% { opacity: 1; } 6.5761%, 99.9% { opacity: 0; } 100% { opacity: 1; } }
+  @keyframes show-fetch { 0%, 49.5833% { opacity: 0; } 50.0000%, 100% { opacity: 1; } }
+  @keyframes show-success { 0%, 80.8333% { opacity: 0; } 81.2500%, 100% { opacity: 1; } }
+  @keyframes show-stats { 0%, 85.0000% { opacity: 0; } 85.4167%, 100% { opacity: 1; } }
+  @keyframes show-bottom { 0%, 99.5833% { opacity: 0; } 100.0000%, 100% { opacity: 1; } }
+  @keyframes cursor-window { 0%, 99.5833% { visibility: hidden; } 100.0000%, 100% { visibility: visible; } }
+  @keyframes typing-cursor-window { 0%, 50.0000% { opacity: 1; } 50.4167%, 100% { opacity: 0; } }
   @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
   </style>
-<clipPath id="stats-command-typing-clip"><rect x="231.8" y="70" width="0" height="22"><animate attributeName="width" values="0;210.60000000000002;210.60000000000002;0" keyTimes="0;0.065217;0.999;1" dur="18.4s" repeatCount="indefinite" /></rect></clipPath>
-<clipPath id="stats-fetch-typing-clip"><rect x="44" y="92" width="0" height="20"><animate attributeName="width" values="0;0;263.92;263.92;0" keyTimes="0;0.065217;0.105978;0.999;1" dur="18.4s" repeatCount="indefinite" /></rect></clipPath>
+<clipPath id="stats-command-typing-clip"><rect x="231.8" y="70" width="0" height="22"><animate attributeName="width" values="0;210.60000000000002;210.60000000000002" keyTimes="0;0.500000;1" dur="2.4s" fill="freeze" /></rect></clipPath>
+<clipPath id="stats-fetch-typing-clip"><rect x="44" y="92" width="0" height="20"><animate attributeName="width" values="0;0;263.92;263.92" keyTimes="0;0.500000;0.812500;1" dur="2.4s" fill="freeze" /></rect></clipPath>
 </defs>
 <rect x="20" y="20" width="580" height="372" rx="10" fill="#0c0c0c"/>
 <rect x="21" y="60" width="578" height="331" rx="0" fill="#0c0c0c"/>
@@ -42,7 +42,7 @@
 <text x="310" y="45" font-size="13" font-family="Consolas, Menlo, monospace" fill="#a8a8a8" text-anchor="middle">Windows PowerShell</text>
 <text x="44" y="86" font-size="15" font-family="Consolas, Menlo, monospace"><tspan fill="#c678dd">PS </tspan><tspan fill="#e5c07b">C:\Users\chef0111</tspan><tspan fill="#c5c8c6">&gt; </tspan></text>
 <text x="231.8" y="86" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace" clip-path="url(#stats-command-typing-clip)">Get-GHProfile chef0111</text>
-<text class="typing-cursor" x="231.8" y="86" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="231.8;438.40000000000003;438.40000000000003;231.8" keyTimes="0;0.065217;0.999;1" dur="18.4s" repeatCount="indefinite" /></text>
+<text class="typing-cursor" x="231.8" y="86" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="231.8;438.40000000000003;438.40000000000003" keyTimes="0;0.500000;1" dur="2.4s" fill="freeze" /></text>
 <g class="line-fetch">
 <text x="44" y="108" fill="#8b949e" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#stats-fetch-typing-clip)">Fetching data from GitHub API...</text>
 </g>
@@ -59,7 +59,7 @@
 <text x="228" y="244" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">1</text>
 <circle cx="68" cy="267" r="4" fill="#98c379"/>
 <text x="80" y="272" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">Total PRs</text>
-<text x="228" y="272" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">462</text>
+<text x="228" y="272" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">463</text>
 <circle cx="68" cy="295" r="4" fill="#98c379"/>
 <text x="80" y="300" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">Total Issues</text>
 <text x="228" y="300" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">0</text>
@@ -71,7 +71,7 @@
 <text x="511" y="272" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">0</text>
 <circle cx="321" cy="295" r="4" fill="#98c379"/>
 <text x="333" y="300" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">Contributions (1y)</text>
-<text x="511" y="300" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">3,275</text>
+<text x="511" y="300" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">3,262</text>
 </g>
 <g class="line-bottom">
 <text x="44" y="368" font-size="15" font-family="Consolas, Menlo, monospace"><tspan fill="#c678dd">PS </tspan><tspan fill="#e5c07b">C:\Users\chef0111</tspan><tspan fill="#c5c8c6">&gt; </tspan></text>
