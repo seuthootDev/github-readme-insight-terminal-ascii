@@ -5,11 +5,11 @@ import { fileURLToPath } from "node:url";
 
 import {
   DAY_LABELS,
-  GRASS_COLORS,
+  GRAPH_COLORS,
   NUM_WEEKS,
   addDays,
   buildMonthLine,
-  getGrassRange,
+  getGraphRange,
   levelFromCount,
   toIsoDate
 } from "./constants.js";
@@ -38,7 +38,7 @@ function parseArgs(argv) {
 }
 
 function printHelp() {
-  console.log("GitHub grass ASCII art generator (Node.js)");
+  console.log("GitHub graph ASCII art generator (Node.js)");
   console.log("Usage: node src/cli.js --user YOUR_GITHUB_ID [--theme mac] [--output file.svg]");
   console.log(`Themes: ${Object.keys(THEMES).join(", ")}`);
 }
@@ -59,7 +59,7 @@ function colorBlock(hex) {
 }
 
 function printGrid(contributions) {
-  const { firstSunday, today } = getGrassRange();
+  const { firstSunday, today } = getGraphRange();
   const monthLine = buildMonthLine(firstSunday);
 
   console.log(`    ${monthLine}`);
@@ -69,14 +69,14 @@ function printGrid(contributions) {
       const date = addDays(firstSunday, col * 7 + row);
       const count = date > today ? 0 : (contributions[toIsoDate(date)] ?? 0);
       const level = levelFromCount(count);
-      line += `${colorBlock(GRASS_COLORS[level])} `;
+      line += `${colorBlock(GRAPH_COLORS[level])} `;
     }
     console.log(line);
   }
 
   const total = sumContributions(contributions);
   const left = `${toIsoDate(firstSunday)} ~ ${toIsoDate(today)}`;
-  const legend = `Less ${GRASS_COLORS.map(colorBlock).join(" ")} More`;
+  const legend = `Less ${GRAPH_COLORS.map(colorBlock).join(" ")} More`;
   console.log(`  ${left}`);
   console.log(`  ${total} contribution${total === 1 ? "" : "s"} in the last year  ${legend}`);
 }

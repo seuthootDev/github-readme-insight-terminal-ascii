@@ -1,6 +1,6 @@
 export const NUM_WEEKS = 52;
 export const DAY_LABELS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-export const GRASS_COLORS = ["#2d333b", "#0e4429", "#26a641", "#39d353"];
+export const GRAPH_COLORS = ["#2d333b", "#0e4429", "#26a641", "#39d353"];
 
 export function levelFromCount(count) {
   if (count <= 0) return 0;
@@ -9,7 +9,7 @@ export function levelFromCount(count) {
   return 3;
 }
 
-export function getGrassRange() {
+export function getGraphRange() {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 

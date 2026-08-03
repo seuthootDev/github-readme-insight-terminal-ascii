@@ -1,13 +1,13 @@
-import { generateGrassSvg } from "./grass.js";
+import { generateGraphSvg } from "./graph.js";
 import { generateStatsSvg } from "./stats.js";
 import { generateTopLanguageSvg } from "./topLanguage.js";
 
-const DEFAULT_RENDER_TYPE = "grass";
+const DEFAULT_RENDER_TYPE = "graph";
 
 const RENDERERS = {
-  grass: generateGrassSvg,
+  graph: generateGraphSvg,
   stats: generateStatsSvg,
-  "top-language": generateTopLanguageSvg
+  "top-lang": generateTopLanguageSvg
 };
 
 function normalizeRenderType(type) {

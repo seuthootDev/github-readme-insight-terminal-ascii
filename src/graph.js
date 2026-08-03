@@ -4,10 +4,10 @@ import { fileURLToPath } from "node:url";
 
 import {
   DAY_LABELS,
-  GRASS_COLORS,
+  GRAPH_COLORS,
   NUM_WEEKS,
   addDays,
-  getGrassRange,
+  getGraphRange,
   levelFromCount,
   toIsoDate
 } from "./constants.js";
@@ -107,26 +107,26 @@ function createAnimationCss(timeline) {
   const pct = (seconds) => ((seconds / timeline.cycleDuration) * 100).toFixed(4);
 
   return `
-  .line-fetch { opacity: 0; animation: show-fetch ${timeline.cycleDuration}s linear infinite; }
-  .line-success { opacity: 0; animation: show-success ${timeline.cycleDuration}s linear infinite; }
-  .line-grass { opacity: 0; animation: show-grass ${timeline.cycleDuration}s linear infinite; }
-  .line-bottom { opacity: 0; animation: show-bottom ${timeline.cycleDuration}s linear infinite; }
-  .grass-cell-hitbox { cursor: help; }
+  .line-fetch { opacity: 0; animation: show-fetch ${timeline.cycleDuration}s linear forwards; }
+  .line-success { opacity: 0; animation: show-success ${timeline.cycleDuration}s linear forwards; }
+  .line-graph { opacity: 0; animation: show-graph ${timeline.cycleDuration}s linear forwards; }
+  .line-bottom { opacity: 0; animation: show-bottom ${timeline.cycleDuration}s linear forwards; }
+  .graph-cell-hitbox { cursor: help; }
   .cursor {
     opacity: 1;
     visibility: hidden;
-    animation: cursor-window ${timeline.cycleDuration}s steps(1, end) infinite, blink ${timeline.blinkDuration}s steps(1,end) infinite;
+    animation: cursor-window ${timeline.cycleDuration}s steps(1, end) forwards, blink ${timeline.blinkDuration}s steps(1,end) infinite;
   }
   .typing-cursor {
     opacity: 1;
-    animation: typing-cursor-window ${timeline.cycleDuration}s steps(1, end) infinite;
+    animation: typing-cursor-window ${timeline.cycleDuration}s steps(1, end) forwards;
   }
-  @keyframes show-fetch { 0%, ${pct(timeline.fetchAt)}% { opacity: 0; } ${pct(timeline.fetchAt + 0.01)}%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
-  @keyframes show-success { 0%, ${pct(timeline.successAt)}% { opacity: 0; } ${pct(timeline.successAt + 0.01)}%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
-  @keyframes show-grass { 0%, ${pct(timeline.grassAt)}% { opacity: 0; } ${pct(timeline.grassAt + 0.01)}%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
-  @keyframes show-bottom { 0%, ${pct(timeline.bottomAt)}% { opacity: 0; } ${pct(timeline.bottomAt + 0.01)}%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
-  @keyframes cursor-window { 0%, ${pct(timeline.bottomAt)}% { visibility: hidden; } ${pct(timeline.bottomAt + 0.01)}%, 99.9% { visibility: visible; } 100% { visibility: hidden; } }
-  @keyframes typing-cursor-window { 0%, ${pct(timeline.typingDuration)}% { opacity: 1; } ${pct(timeline.typingDuration + 0.01)}%, 99.9% { opacity: 0; } 100% { opacity: 1; } }
+  @keyframes show-fetch { 0%, ${pct(Math.max(0, timeline.fetchAt - 0.01))}% { opacity: 0; } ${pct(timeline.fetchAt)}%, 100% { opacity: 1; } }
+  @keyframes show-success { 0%, ${pct(Math.max(0, timeline.successAt - 0.01))}% { opacity: 0; } ${pct(timeline.successAt)}%, 100% { opacity: 1; } }
+  @keyframes show-graph { 0%, ${pct(Math.max(0, timeline.graphAt - 0.01))}% { opacity: 0; } ${pct(timeline.graphAt)}%, 100% { opacity: 1; } }
+  @keyframes show-bottom { 0%, ${pct(Math.max(0, timeline.bottomAt - 0.01))}% { opacity: 0; } ${pct(timeline.bottomAt)}%, 100% { opacity: 1; } }
+  @keyframes cursor-window { 0%, ${pct(Math.max(0, timeline.bottomAt - 0.01))}% { visibility: hidden; } ${pct(timeline.bottomAt)}%, 100% { visibility: visible; } }
+  @keyframes typing-cursor-window { 0%, ${pct(timeline.typingDuration)}% { opacity: 1; } ${pct(Math.min(timeline.cycleDuration, timeline.typingDuration + 0.01))}%, 100% { opacity: 0; } }
   @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
   `;
 }
@@ -137,7 +137,7 @@ function resolveOutputScale(input) {
   return Math.min(3, Math.max(0.2, parsed));
 }
 
-export async function generateGrassSvg(themeName, githubId, options = {}) {
+export async function generateGraphSvg(themeName, githubId, options = {}) {
   const theme = THEMES[themeName];
   if (!theme) {
     throw new Error(`Unknown theme: ${themeName}. Use one of: ${Object.keys(THEMES).join(", ")}`);
@@ -145,7 +145,7 @@ export async function generateGrassSvg(themeName, githubId, options = {}) {
 
   const contributions = await fetchContributions(githubId);
   const total = sumContributions(contributions);
-  const { firstSunday, today } = getGrassRange();
+  const { firstSunday, today } = getGraphRange();
   const grid = buildGridData(firstSunday, today, contributions);
 
   const width = 1180;
@@ -186,19 +186,17 @@ export async function generateGrassSvg(themeName, githubId, options = {}) {
     typingDuration: 1.2,
     fetchAt: 1.25,
     successAt: 1.8,
-    grassAt: 2.3,
+    graphAt: 2.3,
     bottomAt: 2.9,
     blinkDuration: 0.8,
-    blinkCount: 20,
-    cycleDuration: 2.9 + (0.8 * 20),
-    holdEndRatio: "0.999"
+    cycleDuration: 2.9
   };
   timeline.typingRatio = (timeline.typingDuration / timeline.cycleDuration).toFixed(6);
 
   const controlsY = termY + 20;
   const controlsX = themeName === "mac"
     ? termX + 18
-    : (themeName === "window" ? termX + termW - 74 : termX + termW - 62);
+    : (themeName === "windows" ? termX + termW - 74 : termX + termW - 62);
 
   const svgParts = [];
   svgParts.push(`<?xml version="1.0" encoding="UTF-8"?>`);
@@ -207,14 +205,14 @@ export async function generateGrassSvg(themeName, githubId, options = {}) {
   svgParts.push(`<defs>`);
   svgParts.push(`<style>${createAnimationCss(timeline)}</style>`);
   svgParts.push(
-    `<clipPath id="${commandClipId}"><rect x="${commandX}" y="${promptY - 16}" width="0" height="22"><animate attributeName="width" values="0;${commandWidth + 6};${commandWidth + 6};0" keyTimes="0;${timeline.typingRatio};${timeline.holdEndRatio};1" dur="${timeline.cycleDuration}s" repeatCount="indefinite" /></rect></clipPath>`
+    `<clipPath id="${commandClipId}"><rect x="${commandX}" y="${promptY - 16}" width="0" height="22"><animate attributeName="width" values="0;${commandWidth + 6};${commandWidth + 6}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></rect></clipPath>`
   );
   svgParts.push(`</defs>`);
 
   svgParts.push(`<rect x="${termX}" y="${termY}" width="${termW}" height="${termH}" rx="10" fill="${theme.frameBg}"/>`);
   svgParts.push(`<rect x="${termX + 1}" y="${termY + headerH}" width="${termW - 2}" height="${termH - headerH - 1}" rx="0" fill="${theme.bodyBg}"/>`);
   svgParts.push(`<rect x="${termX + 1}" y="${termY + 1}" width="${termW - 2}" height="${headerH}" rx="8" fill="${theme.headerBg}"/>`);
-  if (themeName === "window" && POWERSHELL_ICON_DATA_URI) {
+  if (themeName === "windows" && POWERSHELL_ICON_DATA_URI) {
     svgParts.push(`<image href="${POWERSHELL_ICON_DATA_URI}" x="${termX + 12}" y="${termY + 8}" width="24" height="24" />`);
   }
   svgParts.push(theme.controlsSvg(controlsX, controlsY));
@@ -224,13 +222,16 @@ export async function generateGrassSvg(themeName, githubId, options = {}) {
   svgParts.push(`<g>`);
   svgParts.push(addTextSpans(promptParts, promptStartX, promptY));
   svgParts.push(`<text x="${commandX}" y="${promptY}" fill="${theme.text}" font-size="16" font-family="Consolas, Menlo, monospace" clip-path="url(#${commandClipId})">${escapeXml(commandText)}</text>`);
-  svgParts.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="16" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandWidth + 2};${commandX + commandWidth + 2};${commandX}" keyTimes="0;${timeline.typingRatio};${timeline.holdEndRatio};1" dur="${timeline.cycleDuration}s" repeatCount="indefinite" /></text>`);
+  svgParts.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="16" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandWidth + 2};${commandX + commandWidth + 2}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></text>`);
   svgParts.push(`</g>`);
 
+  const dateRange = `${formatDate(firstSunday)} ~ ${formatDate(today)}`;
+  const dateRangeX = termX + termW - 24;
   svgParts.push(`<text class="line-fetch" x="44" y="113" fill="#8b949e" font-size="16" font-family="Consolas, Menlo, monospace">Fetching data from GitHub API...</text>`);
-  svgParts.push(`<text class="line-success" x="44" y="136" fill="${theme.accentSuccess}" font-size="16" font-family="Consolas, Menlo, monospace">✔ Success! Generated ASCII art for '${escapeXml(githubId)}'.</text>`);
+  svgParts.push(`<text class="line-success" x="44" y="136" fill="${theme.accentSuccess}" font-size="16" font-family="Consolas, Menlo, monospace">✔ Success! Generated contribution graph for '${escapeXml(githubId)}'.</text>`);
+  svgParts.push(`<text class="line-success" x="${dateRangeX}" y="136" fill="#8b949e" font-size="14" font-family="Consolas, Menlo, monospace" text-anchor="end">${dateRange}</text>`);
 
-  svgParts.push(`<g class="line-grass">`);
+  svgParts.push(`<g class="line-graph">`);
   for (const monthItem of monthLabelItems) {
     svgParts.push(`<text x="${monthItem.x}" y="${monthY}" fill="#ffffff" font-size="14" font-family="Consolas, Menlo, monospace">${escapeXml(monthItem.text)}</text>`);
   }
@@ -242,25 +243,23 @@ export async function generateGrassSvg(themeName, githubId, options = {}) {
     for (let col = 0; col < NUM_WEEKS; col += 1) {
       const cell = grid[row][col];
       const x = gridStartX + col * colStep;
-      const fill = GRASS_COLORS[cell.level];
+      const fill = GRAPH_COLORS[cell.level];
       const tooltip = cell.count > 0
         ? `${cell.iso} (${DAY_LABELS[row]}) — ${cell.count} contribution${cell.count === 1 ? "" : "s"}`
         : `${cell.iso} (${DAY_LABELS[row]}) — No contributions`;
 
-      svgParts.push(`<g><title>${escapeXml(tooltip)}</title><rect x="${x}" y="${y - 11}" width="${cellSize}" height="${cellSize}" fill="${fill}" rx="2" /><rect class="grass-cell-hitbox" x="${x - 1}" y="${y - 12}" width="${cellSize + 2}" height="${cellSize + 2}" fill="transparent" rx="3" /></g>`);
+      svgParts.push(`<g><title>${escapeXml(tooltip)}</title><rect x="${x}" y="${y - 11}" width="${cellSize}" height="${cellSize}" fill="${fill}" rx="2" /><rect class="graph-cell-hitbox" x="${x - 1}" y="${y - 12}" width="${cellSize + 2}" height="${cellSize + 2}" fill="transparent" rx="3" /></g>`);
     }
   }
 
-  const dateLeft = `${formatDate(firstSunday)} ~ ${formatDate(today)}`;
   const contribText = `${total} contribution${total === 1 ? "" : "s"} in the last year`;
   const footerY = 388;
   const legendY = footerY - 12;
-  svgParts.push(`<text x="44" y="${footerY}" fill="#8b949e" font-size="14" font-family="Consolas, Menlo, monospace">${dateLeft}</text>`);
-  svgParts.push(`<text x="680" y="${footerY}" fill="#8b949e" font-size="14" font-family="Consolas, Menlo, monospace">${contribText}</text>`);
+  svgParts.push(`<text x="44" y="${footerY}" fill="#8b949e" font-size="14" font-family="Consolas, Menlo, monospace">${contribText}</text>`);
   svgParts.push(`<text x="930" y="${footerY}" fill="#8b949e" font-size="14" font-family="Consolas, Menlo, monospace">Less</text>`);
 
   let legendX = 970;
-  for (const color of GRASS_COLORS) {
+  for (const color of GRAPH_COLORS) {
     svgParts.push(`<rect x="${legendX}" y="${legendY}" width="12" height="12" fill="${color}" rx="2" />`);
     legendX += 18;
   }
