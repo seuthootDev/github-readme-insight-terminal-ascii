@@ -253,25 +253,31 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
   const profile = await fetchAsciiProfile(githubId);
   const asciiRows = await imageToAsciiGrid(profile.avatarUrl, { cols, color });
 
-  const fontSize = 15;
+  // Sized for readability after the small default display scale (~0.28).
+  const fontSize = 32;
+  const uiFontSize = 28;
+  const titleFontSize = 24;
+  const nameFontSize = 42;
+  const loginFontSize = 32;
+  const metaFontSize = 24;
   const charW = fontSize * 0.6;
-  const lineH = fontSize + 4;
+  const lineH = fontSize + 8;
   const asciiW = Math.ceil(cols * charW);
   const asciiH = Math.ceil(asciiRows.length * lineH);
 
-  const termX = 20;
-  const termY = 20;
-  const headerH = 40;
-  const promptY = 86;
-  const contentX = 44;
-  const contentY = 152;
-  const infoGap = 32;
-  const infoW = 240;
-  const contentH = Math.max(asciiH, 120);
-  const fetchLineY = promptY + 22;
-  const successLineY = fetchLineY + 20;
-  const bottomPromptY = contentY + contentH + 28;
-  const termBottomPadding = 24;
+  const termX = 28;
+  const termY = 28;
+  const headerH = 72;
+  const promptY = 140;
+  const contentX = 56;
+  const contentY = 260;
+  const infoGap = 56;
+  const infoW = 420;
+  const contentH = Math.max(asciiH, 220);
+  const fetchLineY = promptY + 42;
+  const successLineY = fetchLineY + 38;
+  const bottomPromptY = contentY + contentH + 48;
+  const termBottomPadding = 40;
 
   const promptParts = buildAsciiPrompt(themeName, githubId);
   const commandText = buildAsciiCommand(themeName, githubId, color);
@@ -279,30 +285,30 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
     ...["mac", "windows", "ubuntu"].map((themeVariant) => {
       const p = buildAsciiPrompt(themeVariant, githubId);
       const c = buildAsciiCommand(themeVariant, githubId, color);
-      return promptPartsWidth(p, 15) + 3 + textWidth(c, 15);
+      return promptPartsWidth(p, uiFontSize) + 3 + textWidth(c, uiFontSize);
     })
   );
 
-  const minWidthForPrompt = Math.ceil(44 + maxPromptCommandWidth + 60);
-  const minWidthForContent = Math.ceil(contentX + asciiW + infoGap + infoW + 44);
-  const width = Math.max(680, minWidthForPrompt, minWidthForContent);
-  const termW = width - 40;
+  const minWidthForPrompt = Math.ceil(contentX + maxPromptCommandWidth + 80);
+  const minWidthForContent = Math.ceil(contentX + asciiW + infoGap + infoW + 56);
+  const width = Math.max(1200, minWidthForPrompt, minWidthForContent);
+  const termW = width - termX * 2;
   const termBodyTop = termY + headerH;
   const termH = bottomPromptY + termBottomPadding - termY;
-  const height = termY + termH + 20;
+  const height = termY + termH + 28;
   // High-res ASCII portraits need a smaller default display scale.
   const outputScale = resolveOutputScale(options.scale ?? 0.28);
   const outputWidth = Math.round(width * outputScale);
   const outputHeight = Math.round(height * outputScale);
 
-  const promptStartX = 44;
-  const promptW = promptPartsWidth(promptParts, 15);
-  const commandW = textWidth(commandText, 15);
-  const commandX = promptStartX + promptW + 3;
+  const promptStartX = contentX;
+  const promptW = promptPartsWidth(promptParts, uiFontSize);
+  const commandW = textWidth(commandText, uiFontSize);
+  const commandX = promptStartX + promptW + 4;
   const commandClipId = "ascii-command-typing-clip";
   const fetchClipId = "ascii-fetch-typing-clip";
   const fetchText = "Fetching avatar from GitHub API...";
-  const fetchWidth = textWidth(fetchText, 13);
+  const fetchWidth = textWidth(fetchText, metaFontSize);
   const modeLabel = color ? "color" : "mono";
 
   const timeline = {
@@ -319,9 +325,9 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
   timeline.fetchStartRatio = (timeline.fetchStart / timeline.cycleDuration).toFixed(6);
   timeline.fetchEndRatio = ((timeline.fetchStart + timeline.fetchDuration) / timeline.cycleDuration).toFixed(6);
 
-  const controlsY = termY + 20;
+  const controlsY = termY + Math.round(headerH / 2);
   const controlsX = themeName === "mac"
-    ? termX + 18
+    ? termX + 28
     : (themeName === "windows" ? termX + termW - 74 : termX + termW - 62);
 
   const infoX = contentX + asciiW + infoGap;
@@ -334,29 +340,29 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
   svg.push(`<title>${escapeXml(theme.title(githubId))}</title>`);
   svg.push(`<defs>`);
   svg.push(`<style>${createAnimationCss(timeline)}</style>`);
-  svg.push(`<clipPath id="${commandClipId}"><rect x="${commandX}" y="${promptY - 16}" width="0" height="22"><animate attributeName="width" values="0;${commandW + 6};${commandW + 6}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></rect></clipPath>`);
-  svg.push(`<clipPath id="${fetchClipId}"><rect x="${promptStartX}" y="${fetchLineY - 16}" width="0" height="20"><animate attributeName="width" values="0;0;${fetchWidth + 6};${fetchWidth + 6}" keyTimes="0;${timeline.fetchStartRatio};${timeline.fetchEndRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></rect></clipPath>`);
+  svg.push(`<clipPath id="${commandClipId}"><rect x="${commandX}" y="${promptY - 28}" width="0" height="40"><animate attributeName="width" values="0;${commandW + 8};${commandW + 8}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></rect></clipPath>`);
+  svg.push(`<clipPath id="${fetchClipId}"><rect x="${promptStartX}" y="${fetchLineY - 28}" width="0" height="36"><animate attributeName="width" values="0;0;${fetchWidth + 8};${fetchWidth + 8}" keyTimes="0;${timeline.fetchStartRatio};${timeline.fetchEndRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></rect></clipPath>`);
   svg.push(`</defs>`);
 
-  svg.push(`<rect x="${termX}" y="${termY}" width="${termW}" height="${termH}" rx="10" fill="${theme.frameBg}"/>`);
-  svg.push(`<rect x="${termX + 1}" y="${termBodyTop}" width="${termW - 2}" height="${termH - headerH - 1}" rx="0" fill="${theme.bodyBg}"/>`);
-  svg.push(`<rect x="${termX + 1}" y="${termY + 1}" width="${termW - 2}" height="${headerH}" rx="8" fill="${theme.headerBg}"/>`);
+  svg.push(`<rect x="${termX}" y="${termY}" width="${termW}" height="${termH}" rx="14" fill="${theme.frameBg}"/>`);
+  svg.push(`<rect x="${termX + 2}" y="${termBodyTop}" width="${termW - 4}" height="${termH - headerH - 2}" rx="0" fill="${theme.bodyBg}"/>`);
+  svg.push(`<rect x="${termX + 2}" y="${termY + 2}" width="${termW - 4}" height="${headerH}" rx="12" fill="${theme.headerBg}"/>`);
   if (themeName === "windows" && POWERSHELL_ICON_DATA_URI) {
-    svg.push(`<image href="${POWERSHELL_ICON_DATA_URI}" x="${termX + 12}" y="${termY + 8}" width="24" height="24" />`);
+    svg.push(`<image href="${POWERSHELL_ICON_DATA_URI}" x="${termX + 18}" y="${termY + 18}" width="36" height="36" />`);
   }
   svg.push(theme.controlsSvg(controlsX, controlsY));
-  svg.push(`<text x="${termX + termW / 2}" y="${termY + 25}" font-size="13" font-family="Consolas, Menlo, monospace" fill="#a8a8a8" text-anchor="middle">${escapeXml(theme.title(githubId))}</text>`);
+  svg.push(`<text x="${termX + termW / 2}" y="${termY + 44}" font-size="${titleFontSize}" font-family="Consolas, Menlo, monospace" fill="#a8a8a8" text-anchor="middle">${escapeXml(theme.title(githubId))}</text>`);
 
-  svg.push(addTextSpans(promptParts, promptStartX, promptY, 15));
-  svg.push(`<text x="${commandX}" y="${promptY}" fill="${theme.text}" font-size="15" font-family="Consolas, Menlo, monospace" clip-path="url(#${commandClipId})">${escapeXml(commandText)}</text>`);
-  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandW + 2};${commandX + commandW + 2}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></text>`);
+  svg.push(addTextSpans(promptParts, promptStartX, promptY, uiFontSize));
+  svg.push(`<text x="${commandX}" y="${promptY}" fill="${theme.text}" font-size="${uiFontSize}" font-family="Consolas, Menlo, monospace" clip-path="url(#${commandClipId})">${escapeXml(commandText)}</text>`);
+  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="${uiFontSize}" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandW + 2};${commandX + commandW + 2}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></text>`);
 
   svg.push(`<g class="line-fetch">`);
-  svg.push(`<text x="${promptStartX}" y="${fetchLineY}" fill="#8b949e" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#${fetchClipId})">${escapeXml(fetchText)}</text>`);
+  svg.push(`<text x="${promptStartX}" y="${fetchLineY}" fill="#8b949e" font-size="${metaFontSize}" font-family="Consolas, Menlo, monospace" clip-path="url(#${fetchClipId})">${escapeXml(fetchText)}</text>`);
   svg.push(`</g>`);
 
   svg.push(`<g class="line-success">`);
-  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(`Success! Generated ${modeLabel} ASCII avatar for '${githubId}'.`)}</tspan></text>`);
+  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="${metaFontSize}" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(`Success! Generated ${modeLabel} ASCII avatar for '${githubId}'.`)}</tspan></text>`);
   svg.push(`</g>`);
 
   svg.push(`<g class="line-ascii">`);
@@ -369,18 +375,18 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
     monoFill
   }));
 
-  svg.push(`<text x="${infoX}" y="${infoCenterY - 10}" font-size="22" font-family="Segoe UI, Arial, sans-serif" fill="#58a6ff" font-weight="700">${escapeXml(profile.name)}</text>`);
-  svg.push(`<text x="${infoX}" y="${infoCenterY + 18}" font-size="16" font-family="Consolas, Menlo, monospace" fill="${theme.accentSuccess}">@${escapeXml(profile.login)}</text>`);
-  svg.push(`<text x="${infoX}" y="${infoCenterY + 44}" font-size="13" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">${color ? "color ascii" : "mono ascii"} · ${cols} cols</text>`);
+  svg.push(`<text x="${infoX}" y="${infoCenterY - 18}" font-size="${nameFontSize}" font-family="Segoe UI, Arial, sans-serif" fill="#58a6ff" font-weight="700">${escapeXml(profile.name)}</text>`);
+  svg.push(`<text x="${infoX}" y="${infoCenterY + 28}" font-size="${loginFontSize}" font-family="Consolas, Menlo, monospace" fill="${theme.accentSuccess}">@${escapeXml(profile.login)}</text>`);
+  svg.push(`<text x="${infoX}" y="${infoCenterY + 72}" font-size="${metaFontSize}" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">${color ? "color ascii" : "mono ascii"} · ${cols} cols</text>`);
   if (profile.bio) {
     const bio = profile.bio.length > 48 ? `${profile.bio.slice(0, 45)}...` : profile.bio;
-    svg.push(`<text x="${infoX}" y="${infoCenterY + 68}" font-size="13" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">${escapeXml(bio)}</text>`);
+    svg.push(`<text x="${infoX}" y="${infoCenterY + 112}" font-size="${metaFontSize}" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">${escapeXml(bio)}</text>`);
   }
   svg.push(`</g>`);
 
   svg.push(`<g class="line-bottom">`);
-  svg.push(addTextSpans(promptParts, promptStartX, bottomPromptY, 15));
-  svg.push(`<text class="cursor" x="${promptStartX + promptPartsWidth(promptParts, 15)}" y="${bottomPromptY}" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█</text>`);
+  svg.push(addTextSpans(promptParts, promptStartX, bottomPromptY, uiFontSize));
+  svg.push(`<text class="cursor" x="${promptStartX + promptPartsWidth(promptParts, uiFontSize)}" y="${bottomPromptY}" fill="#c5c8c6" font-size="${uiFontSize}" font-family="Consolas, Menlo, monospace">█</text>`);
   svg.push(`</g>`);
 
   svg.push(`</svg>`);
