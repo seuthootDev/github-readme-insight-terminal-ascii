@@ -35,6 +35,13 @@ async function handleSvgRequest(req, res, forcedType = null) {
   const scaleRaw = req.query.scale;
   const scaleParsed = Number.parseFloat(String(scaleRaw ?? ""));
   const scale = Number.isFinite(scaleParsed) ? scaleParsed : undefined;
+  const colorRaw = String(req.query.color ?? req.query.mode ?? "").trim().toLowerCase();
+  const color = colorRaw
+    ? ["1", "true", "yes", "on", "color"].includes(colorRaw)
+    : undefined;
+  const colsRaw = req.query.cols ?? req.query.size;
+  const colsParsed = Number.parseInt(String(colsRaw ?? ""), 10);
+  const cols = Number.isNaN(colsParsed) ? undefined : colsParsed;
 
   if (!user) {
     res.status(400).type("text/plain").send("Query parameter 'user' is required.");
@@ -57,7 +64,9 @@ async function handleSvgRequest(req, res, forcedType = null) {
       themeName: theme,
       githubId: user,
       topN,
-      scale
+      scale,
+      color,
+      cols
     });
     res.set("Cache-Control", "public, max-age=1800");
     res.type("image/svg+xml").send(svg);
