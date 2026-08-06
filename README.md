@@ -1,13 +1,13 @@
 # GitHub README Insight Terminal ASCII
 
-A tool to generate **terminal-style ASCII SVGs** from your GitHub profile contribution data.  
+A tool to generate **terminal-style ASCII SVGs** from your GitHub profile data.  
 Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), you can embed it in your README or GitHub profile with a single URL.
 
-- **Themes**: macOS Terminal / Windows PowerShell / Ubuntu GNOME styles
-- **Types**: contribution graph / stats / top languages / ASCII avatar
-- **CLI**: Run locally to print to terminal and save SVG
-- **API**: Returns SVG via `GET /svg?user=USER&theme=...` (default graph) or `GET /svg/:type?user=USER&theme=...`
-- **Tooltip**: Hover each contribution cell to see date and count
+- **Themes**: macOS Terminal / Windows PowerShell / Ubuntu GNOME
+- **Types**: contribution graph · stats · top languages · ASCII avatar · GitHub neofetch
+- **CLI**: Run locally to print the graph and save SVG
+- **API**: `GET /svg?user=USER&theme=...` (default graph) or `GET /svg/:type?user=USER&theme=...`
+- **Tooltip**: Hover contribution cells to see date and count
 
 **theme=mac** — macOS Terminal (zsh)
 
@@ -21,83 +21,89 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 
 ![ubuntu](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=ubuntu&scale=0.4)
 
-**Stats previews (mac / windows / ubuntu)**
+**Stats**
 
 ![mac stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=mac&scale=0.4)
 ![windows stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=windows&scale=0.4)
 ![ubuntu stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=ubuntu&scale=0.4)
 
-**top-lang previews (mac / windows / ubuntu)**
+**Top languages**
 
 ![mac top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=mac&top=8&scale=0.4)
 ![windows top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=windows&top=8&scale=0.4)
 ![ubuntu top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=ubuntu&top=8&scale=0.4)
 
-**ascii avatar previews (mono / color)**
+**ASCII avatar** (mono / color)
 
 ![mac ascii mono](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=torvalds&theme=mac)
 ![mac ascii color](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=torvalds&theme=mac&color=1)
+
+**GitHub neofetch** — Octocat ASCII + profile fields (Repos, Stars, Contributions, …)
+
+![mac neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=mac&color=1)
+![windows neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=windows&color=1)
+![ubuntu neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=ubuntu&color=1)
 
 ---
 
 ## Introduction
 
-- Enter a GitHub username to fetch contribution / stats / language data, or render an **ASCII avatar** from the profile photo.
-- Renders a terminal-style SVG directly in Node.js (graph cells include hover tooltips with date and count).
-- Each theme has a distinct terminal window style (title bar, controls, and background colors).
+Pass a GitHub username to fetch profile data and render a terminal-style SVG in Node.js.
+
+| Type | What it shows |
+|------|----------------|
+| `graph` | Contribution calendar (hover tooltips) |
+| `stats` | Stars, PRs, issues, yearly contributions |
+| `top-lang` | Most used languages |
+| `ascii` | Profile photo as ASCII art |
+| `neofetch` | GitHub “neofetch” card — official Octocat ASCII (`api.github.com/octocat`) + fields like Name, Repos, Followers, Stars, Contributions, Languages |
+
+Themes only change the terminal chrome (title bar, controls, colors).
 
 ---
 
 ## Local Usage
 
-### CLI (Run without a server)
+### CLI
 
-Prints the contribution graph in your terminal and saves SVG output in the current directory.
+Prints the contribution graph in your terminal and saves an SVG.
 
 ```bash
 npm install
 npm run cli -- --user YOUR_GITHUB_ID --theme mac
 ```
 
-**Options**
-
 | Option | Required | Description |
 |--------|----------|-------------|
-| `--user` | ✅ | GitHub User ID |
-| `--theme` | ❌ (Default: mac) | `mac` / `windows` / `ubuntu` |
-| `--output` | ❌ (Default: `{theme}_style.svg`) | Output file name |
-
-**Examples**
+| `--user` | ✅ | GitHub username |
+| `--theme` | ❌ (default: `mac`) | `mac` / `windows` / `ubuntu` |
+| `--output` | ❌ | Output file (default: `{theme}_style.svg`) |
 
 ```bash
 npm run cli -- --user seuthootdev --theme mac
 npm run cli -- --user torvalds --theme ubuntu --output ubuntu_style.svg
 ```
 
-### API Local Testing
-
-Run the local API server for browser/README URL testing:
+### API
 
 ```bash
 npm install
 npm run serve
 ```
 
-- Browser (graph): `http://127.0.0.1:8000/svg?user=YOUR_GITHUB_ID&theme=mac`
-- Browser (typed route): `http://127.0.0.1:8000/svg/graph?user=YOUR_GITHUB_ID&theme=mac`
-- Browser (stats): `http://127.0.0.1:8000/svg/stats?user=YOUR_GITHUB_ID&theme=mac`
-- Browser (top-lang): `http://127.0.0.1:8000/svg/top-lang?user=YOUR_GITHUB_ID&theme=mac&top=8`
-- Browser (ascii mono): `http://127.0.0.1:8000/svg/ascii?user=YOUR_GITHUB_ID&theme=mac`
-- Browser (ascii color): `http://127.0.0.1:8000/svg/ascii?user=YOUR_GITHUB_ID&theme=mac&color=1`
-- Test with `mac`, `windows`, and `ubuntu` themes.
+| Type | URL |
+|------|-----|
+| graph | `http://127.0.0.1:8000/svg?user=YOUR_GITHUB_ID&theme=mac` |
+| graph | `http://127.0.0.1:8000/svg/graph?user=YOUR_GITHUB_ID&theme=mac` |
+| stats | `http://127.0.0.1:8000/svg/stats?user=YOUR_GITHUB_ID&theme=mac` |
+| top-lang | `http://127.0.0.1:8000/svg/top-lang?user=YOUR_GITHUB_ID&theme=mac&top=8` |
+| ascii | `http://127.0.0.1:8000/svg/ascii?user=YOUR_GITHUB_ID&theme=mac` |
+| ascii (color) | `http://127.0.0.1:8000/svg/ascii?user=YOUR_GITHUB_ID&theme=mac&color=1` |
+| neofetch | `http://127.0.0.1:8000/svg/neofetch?user=YOUR_GITHUB_ID&theme=mac&color=1` |
 
 ---
 
 ## Embedding in GitHub Profile / README
-
-Use the deployed API URL as your image source.
-
-**URL Format**
 
 ```
 https://github-readme-insight-terminal-asci.vercel.app/svg?user=GITHUB_USERNAME&theme=THEME
@@ -106,41 +112,37 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=GITHUB_USE
 https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=GITHUB_USERNAME&theme=THEME&top=8
 https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=GITHUB_USERNAME&theme=THEME
 https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=GITHUB_USERNAME&theme=THEME&color=1
+https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=GITHUB_USERNAME&theme=THEME&color=1
 ```
 
 | Query | Required | Description |
 |-------|----------|-------------|
-| `user` | ✅ | GitHub Username |
-| `theme` | ❌ (Default: mac) | `mac` / `windows` / `ubuntu` |
-| `top` | ❌ (top-lang only, Default: 6) | `6` to `12` |
-| `color` | ❌ (ascii only, Default: mono) | `1` / `true` / `color` for color ASCII |
-| `cols` | ❌ (ascii only, Default: 100) | ASCII width `24` to `140` |
-| `scale` | ❌ (Default: `1`, ascii: `0.28`) | Uniform size multiplier (`0.2` to `3`) |
-
-
-**Markdown Example**
+| `user` | ✅ | GitHub username |
+| `theme` | ❌ (default: `mac`) | `mac` / `windows` / `ubuntu` |
+| `top` | ❌ (`top-lang` only, default: `6`) | `6`–`12` |
+| `color` | ❌ (`ascii` / `neofetch`, default: mono) | `1` / `true` / `color` |
+| `cols` | ❌ (`ascii` only, default: `100`) | ASCII width `24`–`140` |
+| `scale` | ❌ (default: `1`, ascii: `0.28`) | Size multiplier `0.2`–`3` |
 
 ```markdown
 ![GitHub contribution graph](https://github-readme-insight-terminal-asci.vercel.app/svg?user=YOUR_GITHUB_ID&theme=mac)
-![GitHub contribution graph](https://github-readme-insight-terminal-asci.vercel.app/svg/graph?user=YOUR_GITHUB_ID&theme=mac)
 ![GitHub stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=YOUR_GITHUB_ID&theme=mac)
 ![GitHub top languages](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=YOUR_GITHUB_ID&theme=mac&top=8)
-![GitHub top languages (scaled)](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=YOUR_GITHUB_ID&theme=mac&top=8&scale=0.8)
-![ASCII avatar mono](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=YOUR_GITHUB_ID&theme=mac)
-![ASCII avatar color](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=YOUR_GITHUB_ID&theme=mac&color=1)
+![ASCII avatar](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=YOUR_GITHUB_ID&theme=mac&color=1)
+![GitHub neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=YOUR_GITHUB_ID&theme=mac&color=1)
 ```
 
 ---
 
 ## Deployment
 
-This project is deployed via **Vercel**.
+Deployed on **Vercel**.
 
 ---
 
 ## Contributing
 
-Contributions such as bug reports, new themes, and documentation/code improvements are welcome.
+Bug reports, new themes, and docs/code improvements are welcome.
 
 1. Fork this repository.
 2. Create a branch (`git checkout -b feature/your-feature`).

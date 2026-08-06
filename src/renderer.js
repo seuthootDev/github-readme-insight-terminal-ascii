@@ -1,5 +1,6 @@
 import { generateAsciiAvatarSvg } from "./asciiAvatar.js";
 import { generateGraphSvg } from "./graph.js";
+import { generateNeofetchSvg } from "./neofetch.js";
 import { generateStatsSvg } from "./stats.js";
 import { generateTopLanguageSvg } from "./topLanguage.js";
 
@@ -9,7 +10,8 @@ const RENDERERS = {
   graph: generateGraphSvg,
   stats: generateStatsSvg,
   "top-lang": generateTopLanguageSvg,
-  ascii: generateAsciiAvatarSvg
+  ascii: generateAsciiAvatarSvg,
+  neofetch: generateNeofetchSvg
 };
 
 function normalizeRenderType(type) {
