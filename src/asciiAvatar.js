@@ -81,7 +81,7 @@ function createAnimationCss(timeline) {
 function resolveOutputScale(input) {
   const parsed = Number.parseFloat(String(input ?? "1"));
   if (!Number.isFinite(parsed)) return 1;
-  return Math.min(3, Math.max(0.2, parsed));
+  return Math.min(3, Math.max(0.05, parsed));
 }
 
 function resolveColorMode(input) {

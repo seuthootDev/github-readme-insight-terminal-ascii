@@ -122,7 +122,7 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=GITHUB_
 | `top` | ❌ (`top-lang` only, default: `6`) | `6`–`12` |
 | `color` | ❌ (`ascii` / `neofetch`, default: mono) | `1` / `true` / `color` |
 | `cols` | ❌ (`ascii` only, default: `100`) | ASCII width `24`–`140` |
-| `scale` | ❌ (default: `1`, ascii: `0.28`) | Size multiplier `0.2`–`3` |
+| `scale` | ❌ (default: `1`, ascii: `0.28`) | Size multiplier `0.05`–`3` |
 
 ```markdown
 ![GitHub contribution graph](https://github-readme-insight-terminal-asci.vercel.app/svg?user=YOUR_GITHUB_ID&theme=mac)
