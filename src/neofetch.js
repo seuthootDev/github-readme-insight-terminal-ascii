@@ -30,51 +30,33 @@ const NEOFETCH_COLOR_BARS = [
   "#81a1c1", "#b48ead", "#8fbcbb", "#eceff4"
 ];
 
-/** Match previous avatar ASCII width (~42 cols at 13px). */
-const TARGET_LOGO_WIDTH = 328;
-
 /**
- * Official GitHub Octocat ASCII (speech bubble removed for logo panel).
- * Source: https://api.github.com/octocat (also known from octocatsay).
+ * Custom Octocat ASCII logo for GitHub neofetch.
  * Each line is [{ c: colorIndex, t: text }, ...] — colorIndex is 1-based into `colors`.
  */
 const GITHUB_LOGO = {
   mono: "#c9d1d9",
   colors: ["#f0f6fc", "#58a6ff", "#8b949e"],
   lines: [
-    [{ c: 1, t: "               MMM.           .MMM" }],
-    [{ c: 1, t: "               MMMMMMMMMMMMMMMMMMM" }],
-    [{ c: 1, t: "               MMMMMMMMMMMMMMMMMMM" }],
-    [{ c: 1, t: "              MMMMMMMMMMMMMMMMMMMMM" }],
-    [{ c: 1, t: "             MMMMMMMMMMMMMMMMMMMMMMM" }],
-    [{ c: 1, t: "            MMMMMMMMMMMMMMMMMMMMMMMM" }],
-    [{ c: 1, t: "            MMMM::- -:::::::- -::MMMM" }],
-    [
-      { c: 1, t: "             MM~:~ " },
-      { c: 2, t: "00" },
-      { c: 1, t: "~:::::~ " },
-      { c: 2, t: "00" },
-      { c: 1, t: "~:~MM" }
-    ],
-    [
-      { c: 1, t: "        .. MMMMM::." },
-      { c: 2, t: "00" },
-      { c: 1, t: ":::+:::." },
-      { c: 2, t: "00" },
-      { c: 1, t: "::MMMMM .." }
-    ],
-    [{ c: 1, t: "              .MM::::: " }, { c: 3, t: "._." }, { c: 1, t: " :::::MM." }],
-    [{ c: 1, t: "                 MMMM;:::::;MMMM" }],
-    [{ c: 1, t: "          -MM        MMMMMMM" }],
-    [{ c: 1, t: "          ^  M+     MMMMMMMMM" }],
-    [{ c: 1, t: "              MMMMMMM MM MM MM" }],
-    [{ c: 1, t: "                   MM MM MM MM" }],
-    [{ c: 1, t: "                   MM MM MM MM" }],
-    [{ c: 1, t: "                .~~MM~MM~MM~MM~~." }],
-    [{ c: 1, t: "             ~~~~MM:~MM~~~MM~:MM~~~~" }],
-    [{ c: 1, t: "            ~~~~~~==~==~~~==~==~~~~~~" }],
-    [{ c: 1, t: "             ~~~~~~==~==~==~==~~~~~~" }],
-    [{ c: 1, t: "                 :~==~==~==~==~~" }]
+    [{ c: 1, t: "     '::    ::'" }],
+    [{ c: 1, t: "   " }, { c: 2, t: "@" }, { c: 1, t: ":          :" }, { c: 2, t: "@" }],
+    [{ c: 1, t: "  ?:            :'" }],
+    [{ c: 1, t: " +:              :+" }],
+    [{ c: 1, t: " :  :::      :::  :" }],
+    [{ c: 1, t: "'   :  ;+  +;  :   '" }],
+    [{ c: 1, t: ":   :          :   :" }],
+    [{ c: 1, t: "    :          :" }],
+    [{ c: 1, t: "   :            :" }],
+    [{ c: 1, t: "                :" }],
+    [{ c: 1, t: "   :            :" }],
+    [{ c: 1, t: "    '          '" }],
+    [{ c: 1, t: ":   :;        ;:   :" }],
+    [{ c: 1, t: ":  :  ::+  +::     :" }],
+    [{ c: 2, t: "@" }, { c: 1, t: ": ::  :;  ;:     :" }, { c: 2, t: "@" }],
+    [{ c: 1, t: " '  ':::          '" }],
+    [{ c: 1, t: "  :  :''         :" }],
+    [{ c: 1, t: "   :   :    :   :" }],
+    [{ c: 1, t: "    ;: :    : :;" }]
   ]
 };
 
@@ -372,18 +354,19 @@ function measureLogoCols(rows) {
   return Math.max(1, ...rows.map((row) => row.length));
 }
 
-function resolveLogoMetrics(rows) {
+function resolveLogoMetrics(rows, { targetHeight }) {
   const cols = measureLogoCols(rows);
-  // Scale glyph size so the logo block matches the old avatar width.
-  const fontSize = Math.max(12, Math.min(28, Math.round(TARGET_LOGO_WIDTH / (cols * 0.62))));
+  const rowCount = Math.max(1, rows.length);
+  // Match logo height to the right-hand specs column (not an independent width target).
+  const fontSize = Math.max(10, Math.min(18, Math.round(targetHeight / rowCount - 3)));
   const charW = fontSize * 0.62;
-  const lineH = fontSize + 4;
+  const lineH = fontSize + 3;
   return {
     fontSize,
     charW,
     lineH,
     asciiW: Math.ceil(cols * charW),
-    asciiH: Math.ceil(rows.length * lineH)
+    asciiH: Math.ceil(rowCount * lineH)
   };
 }
 
@@ -483,12 +466,15 @@ export async function generateNeofetchSvg(themeName, githubId, options = {}) {
   const data = await fetchNeofetchData(githubId);
   const asciiRows = logoToCells(color);
   const infoRows = buildNeofetchRows(data);
-  const logoMetrics = resolveLogoMetrics(asciiRows);
 
   const fontSize = 14;
   const uiFontSize = 15;
   const titleFontSize = 13;
   const infoLineH = 20;
+  const colorBars = renderColorBars(0, 0);
+  // Specs column is the height budget; logo scales to match it.
+  const infoBlockH = infoRows.length * infoLineH + 16 + colorBars.height;
+  const logoMetrics = resolveLogoMetrics(asciiRows, { targetHeight: infoBlockH });
   const { charW, lineH: asciiLineH, asciiW, asciiH, fontSize: logoFontSize } = logoMetrics;
 
   const labelWidth = Math.ceil(
@@ -523,9 +509,7 @@ export async function generateNeofetchSvg(themeName, githubId, options = {}) {
     })
   );
 
-  const colorBars = renderColorBars(0, 0);
-  const infoBlockH = infoRows.length * infoLineH + 16 + colorBars.height;
-  const contentH = Math.max(asciiH + 20, infoBlockH);
+  const contentH = Math.max(asciiH, infoBlockH);
   const bottomPromptY = contentY + contentH + 28;
   const termBottomPadding = 24;
 

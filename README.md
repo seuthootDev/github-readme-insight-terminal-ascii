@@ -56,7 +56,7 @@ Pass a GitHub username to fetch profile data and render a terminal-style SVG in 
 | `stats` | Stars, PRs, issues, yearly contributions |
 | `top-lang` | Most used languages |
 | `ascii` | Profile photo as ASCII art |
-| `neofetch` | GitHub “neofetch” card — official Octocat ASCII (`api.github.com/octocat`) + fields like Name, Repos, Followers, Stars, Contributions, Languages |
+| `neofetch` | GitHub “neofetch” card — Octocat ASCII + fields like Name, Repos, Followers, Stars, Contributions, Languages |
 
 Themes only change the terminal chrome (title bar, controls, colors).
 
