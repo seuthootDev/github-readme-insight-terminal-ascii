@@ -10,27 +10,27 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 
 **theme=mac** — macOS Terminal (zsh)
 
-![mac](images/mac_style.svg)
+![mac](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=mac&scale=0.4)
 
 **theme=windows** — Windows PowerShell
 
-![windows](images/windows_style.svg)
+![windows](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=windows&scale=0.4)
 
 **theme=ubuntu** — Ubuntu GNOME Terminal
 
-![ubuntu](images/ubuntu_style.svg)
+![ubuntu](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=ubuntu&scale=0.4)
 
 **Stats previews (mac / windows / ubuntu)**
 
-![mac stats](images/mac_stats.svg)
-![windows stats](images/windows_stats.svg)
-![ubuntu stats](images/ubuntu_stats.svg)
+![mac stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=mac&scale=0.4)
+![windows stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=windows&scale=0.4)
+![ubuntu stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=ubuntu&scale=0.4)
 
 **top-lang previews (mac / windows / ubuntu)**
 
-![mac top language](images/mac-top-lang.svg)
-![windows top language](images/windows-top-lang.svg)
-![ubuntu top language](images/ubuntu-top-lang.svg)
+![mac top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=mac&top=8&scale=0.4)
+![windows top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=windows&top=8&scale=0.4)
+![ubuntu top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=ubuntu&top=8&scale=0.4)
 
 ---
 
