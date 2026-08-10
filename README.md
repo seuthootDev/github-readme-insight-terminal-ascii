@@ -136,3 +136,29 @@ Bug reports, new themes, and docs/code improvements are welcome.
 2. Create a branch (`git checkout -b feature/your-feature`).
 3. Commit and push your changes.
 4. Open a Pull Request.
+
+---
+
+## More from the same author
+
+Like terminal ASCII cards? These sister projects turn GitHub activity into **zodiac profile cards** — embed as SVG in your README, or pin a Gist (productive-box style).
+
+### [github-readme-zodiac](https://github.com/seuthootDev/github-readme-zodiac)
+
+Western zodiac cards from your GitHub stats — constellation art, traits like Consistency / Builder, SVG or pinned Gist.
+
+![Developer Zodiac](https://github-readme-zodiac.vercel.app/api/card?username=torvalds)
+
+```md
+![Developer Zodiac](https://github-readme-zodiac.vercel.app/api/card?username=YOUR_USERNAME)
+```
+
+### [github-readme-chinese-zodiac](https://github.com/seuthootDev/github-readme-chinese-zodiac)
+
+Asian zodiac (生肖) cards — the 12 animals, SVG or pinned Gist, same GitHub signals with Asian-flavored trait names.
+
+![Asian Zodiac](https://github-readme-chinese-zodiac.vercel.app/api/card?username=torvalds&glow=1)
+
+```md
+![Asian Zodiac](https://github-readme-chinese-zodiac.vercel.app/api/card?username=YOUR_USERNAME&glow=1)
+```
