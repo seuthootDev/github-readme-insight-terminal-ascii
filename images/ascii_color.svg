@@ -1,0 +1,1461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="311" height="216" viewBox="0 0 3107 2162.4" role="img" aria-label="ASCII avatar for torvalds">
+<title>torvalds — zsh</title>
+<defs>
+<style>
+  .line-fetch { opacity: 0; animation: show-fetch 2.4s linear forwards; }
+  .line-success { opacity: 0; animation: show-success 2.4s linear forwards; }
+  .line-ascii { opacity: 0; animation: show-ascii 2.4s linear forwards; }
+  .line-bottom { opacity: 0; animation: show-bottom 2.4s linear forwards; }
+  .cursor {
+    opacity: 1;
+    visibility: hidden;
+    animation: cursor-window 2.4s steps(1, end) forwards, blink 0.8s steps(1,end) infinite;
+  }
+  .typing-cursor {
+    opacity: 1;
+    animation: typing-cursor-window 2.4s steps(1, end) forwards;
+  }
+  @keyframes show-fetch { 0%, 49.5833% { opacity: 0; } 50.0000%, 100% { opacity: 1; } }
+  @keyframes show-success { 0%, 80.8333% { opacity: 0; } 81.2500%, 100% { opacity: 1; } }
+  @keyframes show-ascii { 0%, 85.0000% { opacity: 0; } 85.4167%, 100% { opacity: 1; } }
+  @keyframes show-bottom { 0%, 99.5833% { opacity: 0; } 100.0000%, 100% { opacity: 1; } }
+  @keyframes cursor-window { 0%, 99.5833% { visibility: hidden; } 100.0000%, 100% { visibility: visible; } }
+  @keyframes typing-cursor-window { 0%, 50.0000% { opacity: 1; } 50.4167%, 100% { opacity: 0; } }
+  @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+  </style>
+<clipPath id="ascii-command-typing-clip"><rect x="1082.7839999999999" y="313.6" width="0" height="112"><animate attributeName="width" values="0;1952.32;1952.32" keyTimes="0;0.500000;1" dur="2.4s" fill="freeze" /></rect></clipPath>
+<clipPath id="ascii-fetch-typing-clip"><rect x="156.79999999999998" y="431.20000000000005" width="0" height="100.8"><animate attributeName="width" values="0;0;1424.5759999999998;1424.5759999999998" keyTimes="0;0.500000;0.812500;1" dur="2.4s" fill="freeze" /></rect></clipPath>
+</defs>
+<rect x="78.39999999999999" y="78.39999999999999" width="2950.2" height="2056" rx="14" fill="#292929"/>
+<rect x="80.39999999999999" y="280" width="2946.2" height="1852.4" rx="0" fill="#1e1e1e"/>
+<rect x="80.39999999999999" y="80.39999999999999" width="2946.2" height="201.6" rx="12" fill="#3a3a3a"/>
+
+      <circle cx="156.79999999999998" cy="179.39999999999998" r="6" fill="#ff5f56" />
+      <circle cx="176.79999999999998" cy="179.39999999999998" r="6" fill="#ffbd2e" />
+      <circle cx="196.79999999999998" cy="179.39999999999998" r="6" fill="#27c93f" />
+    
+<text x="1553.5" y="201.59999999999997" font-size="67.19999999999999" font-family="Consolas, Menlo, monospace" fill="#a8a8a8" text-anchor="middle">torvalds — zsh</text>
+<text x="156.79999999999998" y="392" font-size="78.39999999999999" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">torvalds@MacBook</tspan><tspan fill="#61afef"> ~ </tspan><tspan fill="#c5c8c6">% </tspan></text>
+<text x="1082.7839999999999" y="392" fill="#c5c8c6" font-size="78.39999999999999" font-family="Consolas, Menlo, monospace" clip-path="url(#ascii-command-typing-clip)">github-cli ascii --user torvalds --color</text>
+<text class="typing-cursor" x="1082.7839999999999" y="392" fill="#c5c8c6" font-size="78.39999999999999" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="1082.7839999999999;3029.104;3029.104" keyTimes="0;0.500000;1" dur="2.4s" fill="freeze" /></text>
+<g class="line-fetch">
+<text x="156.79999999999998" y="509.6" fill="#8b949e" font-size="67.19999999999999" font-family="Consolas, Menlo, monospace" clip-path="url(#ascii-fetch-typing-clip)">Fetching avatar from GitHub API...</text>
+</g>
+<g class="line-success">
+<text x="156.79999999999998" y="616" font-size="67.19999999999999" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">✔ </tspan><tspan fill="#c5c8c6">Success! Generated color ASCII avatar for &#39;torvalds&#39;.</tspan></text>
+</g>
+<g class="line-ascii">
+<text x="156.79999999999998" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#312e29">  </text>
+<text x="195.2" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#33302b"> </text>
+<text x="214.39999999999998" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#35322d"> </text>
+<text x="233.59999999999997" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#34312c"> </text>
+<text x="252.79999999999995" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#312e29"> </text>
+<text x="271.99999999999994" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#33302b"> </text>
+<text x="291.19999999999993" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#322f2a"> </text>
+<text x="310.3999999999999" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#312e29"> </text>
+<text x="329.5999999999999" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#302e29"> </text>
+<text x="348.7999999999999" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#302f29"> </text>
+<text x="367.9999999999999" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#32312b"> </text>
+<text x="387.1999999999999" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#35322d"> </text>
+<text x="406.39999999999986" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#36332e"> </text>
+<text x="425.59999999999985" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#383530">  </text>
+<text x="463.99999999999983" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#393631">  </text>
+<text x="502.3999999999998" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#37342f"> </text>
+<text x="521.5999999999998" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#393631"> </text>
+<text x="540.7999999999998" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3a3730"> </text>
+<text x="559.9999999999999" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3c3932">  </text>
+<text x="598.3999999999999" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3e3b34">  </text>
+<text x="636.7999999999998" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3d3a33"> </text>
+<text x="655.9999999999999" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3e3b34"> </text>
+<text x="675.1999999999999" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#413e37"> </text>
+<text x="694.4" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3f3c35"> </text>
+<text x="713.6" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3e3b34"> </text>
+<text x="732.8000000000001" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3f3c35"> </text>
+<text x="752.0000000000001" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#403d36">  </text>
+<text x="790.4000000000001" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#434039">░</text>
+<text x="809.6000000000001" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3e3b34"> </text>
+<text x="828.8000000000002" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#39362f"> </text>
+<text x="848.0000000000002" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#35322d"> </text>
+<text x="867.2000000000003" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#33302b"> </text>
+<text x="886.4000000000003" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#322f2a"> </text>
+<text x="905.6000000000004" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#312e29"> </text>
+<text x="924.8000000000004" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2f2c27"> </text>
+<text x="944.0000000000005" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2c2924"> </text>
+<text x="963.2000000000005" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2a2823"> </text>
+<text x="982.4000000000005" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#282721"> </text>
+<text x="1001.6000000000006" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#26251f"> </text>
+<text x="1020.8000000000006" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#24231d"> </text>
+<text x="1040.0000000000007" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#22211b"> </text>
+<text x="1059.2000000000007" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#1d1c16"> </text>
+<text x="1078.4000000000008" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#1c1b16"> </text>
+<text x="1097.6000000000008" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#1a1815"> </text>
+<text x="156.79999999999998" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#34312c">  </text>
+<text x="195.2" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#36332e">  </text>
+<text x="233.6" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#35322d"> </text>
+<text x="252.79999999999998" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#33302b"> </text>
+<text x="272" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#35322d"> </text>
+<text x="291.2" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#34312c"> </text>
+<text x="310.4" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#33302b"> </text>
+<text x="329.59999999999997" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#33312c"> </text>
+<text x="348.79999999999995" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#36352f">  </text>
+<text x="387.19999999999993" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#393631"> </text>
+<text x="406.3999999999999" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3b3833"> </text>
+<text x="425.5999999999999" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3d3a34"> </text>
+<text x="444.7999999999999" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3c3933"> </text>
+<text x="463.9999999999999" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3e3b35"> </text>
+<text x="483.1999999999999" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3f3c36"> </text>
+<text x="502.39999999999986" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3e3b36"> </text>
+<text x="521.5999999999999" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3e3b35"> </text>
+<text x="540.8" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3f3c37"> </text>
+<text x="560" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#403d36"> </text>
+<text x="579.2" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#423e37"> </text>
+<text x="598.4000000000001" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#45413a">░</text>
+<text x="617.6000000000001" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#444039">░</text>
+<text x="636.8000000000002" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#403d36"> </text>
+<text x="656.0000000000002" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#423f38"> </text>
+<text x="675.2000000000003" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#44413a">░░</text>
+<text x="713.6000000000003" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#46423b">░</text>
+<text x="732.8000000000003" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4a463f">░</text>
+<text x="752.0000000000003" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4a4740">░</text>
+<text x="771.2000000000004" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#45423b">░</text>
+<text x="790.4000000000004" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#423f38"> </text>
+<text x="809.6000000000005" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3e3b34"> </text>
+<text x="828.8000000000005" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3c3932">  </text>
+<text x="867.2000000000005" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#38352f"> </text>
+<text x="886.4000000000005" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#35322c"> </text>
+<text x="905.6000000000006" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#33302a"> </text>
+<text x="924.8000000000006" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#302d28"> </text>
+<text x="944.0000000000007" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2f2c27"> </text>
+<text x="963.2000000000007" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2c2b25"> </text>
+<text x="982.4000000000008" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2b2a24"> </text>
+<text x="1001.6000000000008" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#292822"> </text>
+<text x="1020.8000000000009" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#26251f"> </text>
+<text x="1040.000000000001" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#22211b"> </text>
+<text x="1059.200000000001" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#1f1e18"> </text>
+<text x="1078.400000000001" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#1e1d18"> </text>
+<text x="1097.600000000001" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#1c1a17"> </text>
+<text x="156.79999999999998" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#35322d">  </text>
+<text x="195.2" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#383530">  </text>
+<text x="233.6" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#37342f"> </text>
+<text x="252.79999999999998" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#36332e">   </text>
+<text x="310.4" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#383530"> </text>
+<text x="329.59999999999997" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#393631">  </text>
+<text x="367.99999999999994" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3b3832"> </text>
+<text x="387.19999999999993" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3c3932"> </text>
+<text x="406.3999999999999" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3e3b34">  </text>
+<text x="444.7999999999999" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3b362f"> </text>
+<text x="463.9999999999999" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3d3832"> </text>
+<text x="483.1999999999999" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#36312b"> </text>
+<text x="502.39999999999986" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#332f29"> </text>
+<text x="521.5999999999999" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#36322b"> </text>
+<text x="540.8" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#39352e"> </text>
+<text x="560" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#35312b"> </text>
+<text x="579.2" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#322b24"> </text>
+<text x="598.4000000000001" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#352d26"> </text>
+<text x="617.6000000000001" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3b332d"> </text>
+<text x="636.8000000000002" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3d3730"> </text>
+<text x="656.0000000000002" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3b352f"> </text>
+<text x="675.2000000000003" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#413d36"> </text>
+<text x="694.4000000000003" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#49443d">░░</text>
+<text x="732.8000000000003" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4d4841">░</text>
+<text x="752.0000000000003" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4b4841">░</text>
+<text x="771.2000000000004" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#48463e">░</text>
+<text x="790.4000000000004" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#444139">░</text>
+<text x="809.6000000000005" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#403d37"> </text>
+<text x="828.8000000000005" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#413e37">  </text>
+<text x="867.2000000000005" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3e3b34"> </text>
+<text x="886.4000000000005" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3c3932"> </text>
+<text x="905.6000000000006" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#37342d"> </text>
+<text x="924.8000000000006" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#35322b"> </text>
+<text x="944.0000000000007" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#33302b"> </text>
+<text x="963.2000000000007" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2f2d27"> </text>
+<text x="982.4000000000008" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2e2d27"> </text>
+<text x="1001.6000000000008" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2b2a24"> </text>
+<text x="1020.8000000000009" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#272620"> </text>
+<text x="1040.000000000001" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#23221c"> </text>
+<text x="1059.200000000001" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#1f1e18"> </text>
+<text x="1078.400000000001" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#1e1d17"> </text>
+<text x="1097.600000000001" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#1b1915"> </text>
+<text x="156.79999999999998" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#35322d"> </text>
+<text x="175.99999999999997" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#37342f"> </text>
+<text x="195.19999999999996" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#393631"> </text>
+<text x="214.39999999999995" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3b3833"> </text>
+<text x="233.59999999999994" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#393631"> </text>
+<text x="252.79999999999993" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3a3732">   </text>
+<text x="310.3999999999999" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3b3833"> </text>
+<text x="329.5999999999999" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3c3934"> </text>
+<text x="348.7999999999999" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3c3933"> </text>
+<text x="367.9999999999999" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3e3b35"> </text>
+<text x="387.1999999999999" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#403d37"> </text>
+<text x="406.39999999999986" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#403c33"> </text>
+<text x="425.59999999999985" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#342b20"> </text>
+<text x="444.79999999999984" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2e241a"> </text>
+<text x="463.99999999999983" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#261c12"> </text>
+<text x="483.1999999999998" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#21160d"> </text>
+<text x="502.3999999999998" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#1d130a"> </text>
+<text x="521.5999999999998" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#251b10"> </text>
+<text x="540.7999999999998" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#332a1d"> </text>
+<text x="559.9999999999999" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2c2219"> </text>
+<text x="579.1999999999999" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#291f16"> </text>
+<text x="598.4" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2b2118"> </text>
+<text x="617.6" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2e231b"> </text>
+<text x="636.8000000000001" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#271c13"> </text>
+<text x="656.0000000000001" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#1e130a"> </text>
+<text x="675.2000000000002" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#180f07"> </text>
+<text x="694.4000000000002" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#1f160e"> </text>
+<text x="713.6000000000003" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2e271f"> </text>
+<text x="732.8000000000003" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#433d36"> </text>
+<text x="752.0000000000003" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4a453f">░</text>
+<text x="771.2000000000004" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4a483f">░</text>
+<text x="790.4000000000004" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#45433b">░</text>
+<text x="809.6000000000005" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#423f3a">  </text>
+<text x="848.0000000000005" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#434039">░</text>
+<text x="867.2000000000005" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#423f38"> </text>
+<text x="886.4000000000005" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#413e37"> </text>
+<text x="905.6000000000006" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3d3a33"> </text>
+<text x="924.8000000000006" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3b3831"> </text>
+<text x="944.0000000000007" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#37342d"> </text>
+<text x="963.2000000000007" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#35322b"> </text>
+<text x="982.4000000000008" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#33312b"> </text>
+<text x="1001.6000000000008" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#302f29"> </text>
+<text x="1020.8000000000009" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2c2b25"> </text>
+<text x="1040.000000000001" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2a2923"> </text>
+<text x="1059.200000000001" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#22211b"> </text>
+<text x="1078.400000000001" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#1f1e18"> </text>
+<text x="1097.600000000001" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#1e1d17"> </text>
+<text x="156.79999999999998" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3a3731"> </text>
+<text x="175.99999999999997" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3d3a34">  </text>
+<text x="214.39999999999998" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3e3b36">  </text>
+<text x="252.79999999999998" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#403d37"> </text>
+<text x="272" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#423f39"> </text>
+<text x="291.2" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#43403a">░</text>
+<text x="310.4" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#413e38"> </text>
+<text x="329.59999999999997" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#403d38"> </text>
+<text x="348.79999999999995" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#413e39"> </text>
+<text x="367.99999999999994" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#423f3a"> </text>
+<text x="387.19999999999993" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#463f39">░</text>
+<text x="406.3999999999999" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#403429"> </text>
+<text x="425.5999999999999" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#312418"> </text>
+<text x="444.7999999999999" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#251d11"> </text>
+<text x="463.9999999999999" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2c2219"> </text>
+<text x="483.1999999999999" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#443527"> </text>
+<text x="502.39999999999986" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#504031">░</text>
+<text x="521.5999999999999" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#503e30">░</text>
+<text x="540.8" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4d3c2d"> </text>
+<text x="560" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#48392e"> </text>
+<text x="579.2" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#392c21"> </text>
+<text x="598.4000000000001" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2c2118"> </text>
+<text x="617.6000000000001" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2b2018"> </text>
+<text x="636.8000000000002" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#32271b"> </text>
+<text x="656.0000000000002" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2a1f12"> </text>
+<text x="675.2000000000003" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#170d04"> </text>
+<text x="694.4000000000003" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#160c03">  </text>
+<text x="732.8000000000003" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#170d05"> </text>
+<text x="752.0000000000003" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#281d16"> </text>
+<text x="771.2000000000004" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#433d36"> </text>
+<text x="790.4000000000004" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4a463f">░</text>
+<text x="809.6000000000005" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#48443d">░</text>
+<text x="828.8000000000005" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#47443d">░</text>
+<text x="848.0000000000006" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#48443e">░</text>
+<text x="867.2000000000006" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#45423b">░░</text>
+<text x="905.6000000000006" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#423f38"> </text>
+<text x="924.8000000000006" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3f3c35"> </text>
+<text x="944.0000000000007" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3b3831"> </text>
+<text x="963.2000000000007" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#38352e"> </text>
+<text x="982.4000000000008" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#35332c"> </text>
+<text x="1001.6000000000008" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#32312b"> </text>
+<text x="1020.8000000000009" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2f2e28"> </text>
+<text x="1040.000000000001" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2c2b25"> </text>
+<text x="1059.200000000001" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#27251f"> </text>
+<text x="1078.400000000001" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#22201b"> </text>
+<text x="1097.600000000001" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#22201a"> </text>
+<text x="156.79999999999998" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3f3c35"> </text>
+<text x="175.99999999999997" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#434039">░</text>
+<text x="195.19999999999996" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#45423b">░</text>
+<text x="214.39999999999995" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#434039">░</text>
+<text x="233.59999999999994" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#44413a">░</text>
+<text x="252.79999999999993" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#46433c">░</text>
+<text x="271.99999999999994" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#47443d">░</text>
+<text x="291.19999999999993" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#45423b">░</text>
+<text x="310.3999999999999" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#424038">░</text>
+<text x="329.5999999999999" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#44413b">░</text>
+<text x="348.7999999999999" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#46443e">░</text>
+<text x="367.9999999999999" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#464139">░</text>
+<text x="387.1999999999999" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#42382e"> </text>
+<text x="406.39999999999986" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2a1f12"> </text>
+<text x="425.59999999999985" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#19110b"> </text>
+<text x="444.79999999999984" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#1f120a"> </text>
+<text x="463.99999999999983" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#674635">░</text>
+<text x="483.1999999999998" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#946752">░</text>
+<text x="502.3999999999998" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9b6a58">░</text>
+<text x="521.5999999999998" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9c6956">░</text>
+<text x="540.7999999999998" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#986551">░</text>
+<text x="559.9999999999999" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#875646">░</text>
+<text x="579.1999999999999" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#764e3d">░</text>
+<text x="598.4" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#623e2f">░</text>
+<text x="617.6" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#502f21"> </text>
+<text x="636.8000000000001" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#412618"> </text>
+<text x="656.0000000000001" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#473726"> </text>
+<text x="675.2000000000002" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#1f140a"> </text>
+<text x="694.4000000000002" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#140a05"> </text>
+<text x="713.6000000000003" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#160b05"> </text>
+<text x="732.8000000000003" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#140903"> </text>
+<text x="752.0000000000003" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#140802"> </text>
+<text x="771.2000000000004" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#170e07"> </text>
+<text x="790.4000000000004" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#352c25"> </text>
+<text x="809.6000000000005" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#565049">░</text>
+<text x="828.8000000000005" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#534e47">░</text>
+<text x="848.0000000000006" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#514c45">░</text>
+<text x="867.2000000000006" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4e4b44">░</text>
+<text x="886.4000000000007" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4b4841">░</text>
+<text x="905.6000000000007" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#46433c">░</text>
+<text x="924.8000000000008" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#434039">░</text>
+<text x="944.0000000000008" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3f3c35"> </text>
+<text x="963.2000000000008" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3a3730"> </text>
+<text x="982.4000000000009" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#37352f"> </text>
+<text x="1001.6000000000009" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#34322d"> </text>
+<text x="1020.800000000001" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#302e29"> </text>
+<text x="1040.000000000001" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2f2e28"> </text>
+<text x="1059.200000000001" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2b2924"> </text>
+<text x="1078.400000000001" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#282620"> </text>
+<text x="1097.600000000001" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#282520"> </text>
+<text x="156.79999999999998" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#48443d">░</text>
+<text x="175.99999999999997" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4b4740">░</text>
+<text x="195.19999999999996" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4a463f">░</text>
+<text x="214.39999999999995" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#49453e">░</text>
+<text x="233.59999999999994" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4a463f">░</text>
+<text x="252.79999999999993" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4c4740">░</text>
+<text x="271.99999999999994" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4c4841">░</text>
+<text x="291.19999999999993" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4a4740">░</text>
+<text x="310.3999999999999" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4b4842">░</text>
+<text x="329.5999999999999" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4d4a43">░</text>
+<text x="348.7999999999999" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4f4c43">░</text>
+<text x="367.9999999999999" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#433a2d"> </text>
+<text x="387.1999999999999" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#312416"> </text>
+<text x="406.39999999999986" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#291f13"> </text>
+<text x="425.59999999999985" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#392317"> </text>
+<text x="444.79999999999984" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8f634d">░</text>
+<text x="463.99999999999983" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b0755d">▒</text>
+<text x="483.1999999999998" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b3745e">▒</text>
+<text x="502.3999999999998" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b47561">▒</text>
+<text x="521.5999999999998" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b77963">▒</text>
+<text x="540.7999999999998" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b1745c">░</text>
+<text x="559.9999999999999" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a56653">░</text>
+<text x="579.1999999999999" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#945c48">░</text>
+<text x="598.4" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#885641">░</text>
+<text x="617.6" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#774a37">░</text>
+<text x="636.8000000000001" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#603726"> </text>
+<text x="656.0000000000001" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#523623"> </text>
+<text x="675.2000000000002" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3b2b1b"> </text>
+<text x="694.4000000000002" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#130a05"> </text>
+<text x="713.6000000000003" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#170d09"> </text>
+<text x="732.8000000000003" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#150a06"> </text>
+<text x="752.0000000000003" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#110603"> </text>
+<text x="771.2000000000004" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#120803"> </text>
+<text x="790.4000000000004" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#130b02"> </text>
+<text x="809.6000000000005" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#241e16"> </text>
+<text x="828.8000000000005" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#514c45">░</text>
+<text x="848.0000000000006" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#555049">░</text>
+<text x="867.2000000000006" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#544f48">░</text>
+<text x="886.4000000000007" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#514c45">░</text>
+<text x="905.6000000000007" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4b4841">░</text>
+<text x="924.8000000000008" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#47443d">░</text>
+<text x="944.0000000000008" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#413e37"> </text>
+<text x="963.2000000000008" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3c3932"> </text>
+<text x="982.4000000000009" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#393630"> </text>
+<text x="1001.6000000000009" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#36332e"> </text>
+<text x="1020.800000000001" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#33302b"> </text>
+<text x="1040.000000000001" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#322f2a"> </text>
+<text x="1059.200000000001" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2d2c26"> </text>
+<text x="1078.400000000001" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#272620"> </text>
+<text x="1097.600000000001" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#23221c"> </text>
+<text x="156.79999999999998" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4f4a43">░</text>
+<text x="175.99999999999997" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#524d46">░</text>
+<text x="195.19999999999996" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#534e47">░</text>
+<text x="214.39999999999995" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#524d46">░</text>
+<text x="233.59999999999994" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4f4a43">░</text>
+<text x="252.79999999999993" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#514c45">░</text>
+<text x="271.99999999999994" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#534e47">░</text>
+<text x="291.19999999999993" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#545049">░░</text>
+<text x="329.5999999999999" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#544f49">░</text>
+<text x="348.7999999999999" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#555145">░</text>
+<text x="367.9999999999999" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2c2116"> </text>
+<text x="387.1999999999999" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2e2116"> </text>
+<text x="406.39999999999986" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4c3b29"> </text>
+<text x="425.59999999999985" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a47864">▒</text>
+<text x="444.79999999999984" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bd836a">▒</text>
+<text x="463.99999999999983" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c78c77">▒</text>
+<text x="483.1999999999998" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cc907f">▒</text>
+<text x="502.3999999999998" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c98d7c">▒</text>
+<text x="521.5999999999998" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c88c7b">▒</text>
+<text x="540.7999999999998" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bf8370">▒</text>
+<text x="559.9999999999999" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b67766">▒</text>
+<text x="579.1999999999999" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ac705e">░</text>
+<text x="598.4" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a06754">░</text>
+<text x="617.6" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8f5a46">░</text>
+<text x="636.8000000000001" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7b4c3b">░</text>
+<text x="656.0000000000001" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5d3628"> </text>
+<text x="675.2000000000002" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#472e1f"> </text>
+<text x="694.4000000000002" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#23160c"> </text>
+<text x="713.6000000000003" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#150a05"> </text>
+<text x="732.8000000000003" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#180d06"> </text>
+<text x="752.0000000000003" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#130802"> </text>
+<text x="771.2000000000004" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#130804"> </text>
+<text x="790.4000000000004" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#110702">  </text>
+<text x="828.8000000000004" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#241b13"> </text>
+<text x="848.0000000000005" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#575149">░</text>
+<text x="867.2000000000005" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#565249">░</text>
+<text x="886.4000000000005" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#524f48">░</text>
+<text x="905.6000000000006" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4c4944">░</text>
+<text x="924.8000000000006" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#47443e">░</text>
+<text x="944.0000000000007" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#423f38"> </text>
+<text x="963.2000000000007" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3d3a33"> </text>
+<text x="982.4000000000008" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3b3832"> </text>
+<text x="1001.6000000000008" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#393631"> </text>
+<text x="1020.8000000000009" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#35322d"> </text>
+<text x="1040.000000000001" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#32302b"> </text>
+<text x="1059.200000000001" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2d2c26"> </text>
+<text x="1078.400000000001" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#292822"> </text>
+<text x="1097.600000000001" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#25241e"> </text>
+<text x="156.79999999999998" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#555049">░</text>
+<text x="175.99999999999997" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#59544d">░</text>
+<text x="195.19999999999996" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5c5750">░</text>
+<text x="214.39999999999995" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5b564f">░</text>
+<text x="233.59999999999994" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#554f49">░</text>
+<text x="252.79999999999993" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#55504b">░</text>
+<text x="271.99999999999994" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#59544d">░</text>
+<text x="291.19999999999993" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5a554e">░</text>
+<text x="310.3999999999999" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#59544d">░</text>
+<text x="329.5999999999999" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#58544d">░</text>
+<text x="348.7999999999999" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5c564b">░</text>
+<text x="367.9999999999999" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#31271b"> </text>
+<text x="387.1999999999999" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#36271b"> </text>
+<text x="406.39999999999986" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#87644f">░</text>
+<text x="425.59999999999985" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#be8873">▒</text>
+<text x="444.79999999999984" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cb957f">▒</text>
+<text x="463.99999999999983" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d5a18f">▒</text>
+<text x="483.1999999999998" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d9a596">▒</text>
+<text x="502.3999999999998" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d49f91">▒</text>
+<text x="521.5999999999998" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cd9787">▒</text>
+<text x="540.7999999999998" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c08a79">▒</text>
+<text x="559.9999999999999" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bd8373">▒</text>
+<text x="579.1999999999999" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b57c69">▒</text>
+<text x="598.4" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a46b58">░</text>
+<text x="617.6" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#925c48">░</text>
+<text x="636.8000000000001" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#805241">░</text>
+<text x="656.0000000000001" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6c4436">░</text>
+<text x="675.2000000000002" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#533424"> </text>
+<text x="694.4000000000002" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#331e11"> </text>
+<text x="713.6000000000003" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#201309"> </text>
+<text x="732.8000000000003" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#1b0f06"> </text>
+<text x="752.0000000000003" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#1f130a"> </text>
+<text x="771.2000000000004" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#160b07"> </text>
+<text x="790.4000000000004" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#130904"> </text>
+<text x="809.6000000000005" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#140904"> </text>
+<text x="828.8000000000005" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#160b03"> </text>
+<text x="848.0000000000006" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#564f46">░</text>
+<text x="867.2000000000006" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5c5951">░</text>
+<text x="886.4000000000007" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#58554e">░</text>
+<text x="905.6000000000007" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#514e49">░</text>
+<text x="924.8000000000008" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4d4a44">░</text>
+<text x="944.0000000000008" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#47443d">░</text>
+<text x="963.2000000000008" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#413e37"> </text>
+<text x="982.4000000000009" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3e3b35"> </text>
+<text x="1001.6000000000009" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#393631"> </text>
+<text x="1020.800000000001" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#35322d"> </text>
+<text x="1040.000000000001" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#33302b"> </text>
+<text x="1059.200000000001" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2f2e28"> </text>
+<text x="1078.400000000001" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2b2a24"> </text>
+<text x="1097.600000000001" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#272620"> </text>
+<text x="156.79999999999998" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5e5952">░</text>
+<text x="175.99999999999997" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5f5a54">░</text>
+<text x="195.19999999999996" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5e5951">░</text>
+<text x="214.39999999999995" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5b564d">░</text>
+<text x="233.59999999999994" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#56514c">░</text>
+<text x="252.79999999999993" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#58524e">░</text>
+<text x="271.99999999999994" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#59544e">░</text>
+<text x="291.19999999999993" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5a554f">░</text>
+<text x="310.3999999999999" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5c5750">░</text>
+<text x="329.5999999999999" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#615d56">░</text>
+<text x="348.7999999999999" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#686258">░</text>
+<text x="367.9999999999999" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#40352a"> </text>
+<text x="387.1999999999999" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3c2b1e"> </text>
+<text x="406.39999999999986" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9b715b">░</text>
+<text x="425.59999999999985" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c8927a">▒</text>
+<text x="444.79999999999984" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d19c87">▒</text>
+<text x="463.99999999999983" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d5a592">▒</text>
+<text x="483.1999999999998" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d5a595">▒</text>
+<text x="502.3999999999998" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d39f91">▒</text>
+<text x="521.5999999999998" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cb9585">▒</text>
+<text x="540.7999999999998" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c38979">▒</text>
+<text x="559.9999999999999" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bd8675">▒</text>
+<text x="579.1999999999999" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#be8774">▒</text>
+<text x="598.4" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#aa7260">░</text>
+<text x="617.6" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#945e4b">░</text>
+<text x="636.8000000000001" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#805240">░</text>
+<text x="656.0000000000001" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#71483a">░</text>
+<text x="675.2000000000002" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#633f31">░</text>
+<text x="694.4000000000002" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#573528"> </text>
+<text x="713.6000000000003" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#452a1b"> </text>
+<text x="732.8000000000003" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3d2616"> </text>
+<text x="752.0000000000003" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#462d1f"> </text>
+<text x="771.2000000000004" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#24150e"> </text>
+<text x="790.4000000000004" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#140904"> </text>
+<text x="809.6000000000005" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#140c04"> </text>
+<text x="828.8000000000005" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#20150d"> </text>
+<text x="848.0000000000006" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#585248">░</text>
+<text x="867.2000000000006" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#635e56">░</text>
+<text x="886.4000000000007" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5f5a54">░</text>
+<text x="905.6000000000007" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#57544d">░</text>
+<text x="924.8000000000008" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#514e47">░</text>
+<text x="944.0000000000008" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4b4841">░</text>
+<text x="963.2000000000008" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#45423b">░</text>
+<text x="982.4000000000009" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#423f39"> </text>
+<text x="1001.6000000000009" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3d3a35"> </text>
+<text x="1020.800000000001" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#37342f"> </text>
+<text x="1040.000000000001" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#36332e"> </text>
+<text x="1059.200000000001" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#34332d"> </text>
+<text x="1078.400000000001" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#302f29"> </text>
+<text x="1097.600000000001" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2b2a24"> </text>
+<text x="156.79999999999998" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#67635c">░</text>
+<text x="175.99999999999997" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#66625b">░</text>
+<text x="195.19999999999996" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#656059">░</text>
+<text x="214.39999999999995" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5f5a54">░</text>
+<text x="233.59999999999994" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5d5752">░</text>
+<text x="252.79999999999993" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5f5955">░</text>
+<text x="271.99999999999994" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5f5a51">░</text>
+<text x="291.19999999999993" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#615c52">░</text>
+<text x="310.3999999999999" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6a655b">░</text>
+<text x="329.5999999999999" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7a766a">░</text>
+<text x="348.7999999999999" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#80786d">░</text>
+<text x="367.9999999999999" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6d6358">░</text>
+<text x="387.1999999999999" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#33271a"> </text>
+<text x="406.39999999999986" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#946b59">░</text>
+<text x="425.59999999999985" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c89381">▒</text>
+<text x="444.79999999999984" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ba8876">▒</text>
+<text x="463.99999999999983" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b88c7d">▒</text>
+<text x="483.1999999999998" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ad8575">▒</text>
+<text x="502.3999999999998" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#af8272">▒</text>
+<text x="521.5999999999998" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c69382">▒</text>
+<text x="540.7999999999998" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c68d7d">▒</text>
+<text x="559.9999999999999" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#be8575">▒</text>
+<text x="579.1999999999999" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c89180">▒</text>
+<text x="598.4" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9c6c59">░</text>
+<text x="617.6" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#785241">░</text>
+<text x="636.8000000000001" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5d3d2d">░</text>
+<text x="656.0000000000001" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4e3326"> </text>
+<text x="675.2000000000002" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#472e1e"> </text>
+<text x="694.4000000000002" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4a2e1d"> </text>
+<text x="713.6000000000003" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#543524"> </text>
+<text x="732.8000000000003" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5b3a27"> </text>
+<text x="752.0000000000003" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5a3829"> </text>
+<text x="771.2000000000004" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2a190f"> </text>
+<text x="790.4000000000004" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#180d06"> </text>
+<text x="809.6000000000005" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#181007"> </text>
+<text x="828.8000000000005" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4a4137">░</text>
+<text x="848.0000000000006" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#67635c">░</text>
+<text x="867.2000000000006" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#67625b">░</text>
+<text x="886.4000000000007" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#635e58">░</text>
+<text x="905.6000000000007" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5f5a54">░</text>
+<text x="924.8000000000008" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#59544e">░</text>
+<text x="944.0000000000008" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#544f49">░</text>
+<text x="963.2000000000008" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4c4841">░</text>
+<text x="982.4000000000009" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#46433c">░</text>
+<text x="1001.6000000000009" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#423f39"> </text>
+<text x="1020.800000000001" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3d3a34"> </text>
+<text x="1040.000000000001" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3b3831">  </text>
+<text x="1078.400000000001" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#36332d"> </text>
+<text x="1097.600000000001" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#302d28"> </text>
+<text x="156.79999999999998" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6e6761">░</text>
+<text x="175.99999999999997" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#706963">░</text>
+<text x="195.19999999999996" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6f6962">░</text>
+<text x="214.39999999999995" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6c6760">░</text>
+<text x="233.59999999999994" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#69645d">░</text>
+<text x="252.79999999999993" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#656059">░</text>
+<text x="271.99999999999994" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6b665c">░</text>
+<text x="291.19999999999993" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7c776c">░</text>
+<text x="310.3999999999999" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#867f73">▒</text>
+<text x="329.5999999999999" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8c8378">▒</text>
+<text x="348.7999999999999" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#858073">▒</text>
+<text x="367.9999999999999" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8a8176">▒</text>
+<text x="387.1999999999999" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#423228"> </text>
+<text x="406.39999999999986" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7d5b4b">░</text>
+<text x="425.59999999999985" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9c705e">░</text>
+<text x="444.79999999999984" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#906855">░</text>
+<text x="463.99999999999983" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#775545">░</text>
+<text x="483.1999999999998" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5f4233">░</text>
+<text x="502.3999999999998" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#744d3a">░</text>
+<text x="521.5999999999998" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9f6e58">░</text>
+<text x="540.7999999999998" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c89280">▒</text>
+<text x="559.9999999999999" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bc8573">▒</text>
+<text x="579.1999999999999" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#885948">░</text>
+<text x="598.4" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#674132">░</text>
+<text x="617.6" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#71503f">░</text>
+<text x="636.8000000000001" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6f5345">░</text>
+<text x="656.0000000000001" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4d362b"> </text>
+<text x="675.2000000000002" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4c3328"> </text>
+<text x="694.4000000000002" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4c3023"> </text>
+<text x="713.6000000000003" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4f3322"> </text>
+<text x="732.8000000000003" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5c3a27">░</text>
+<text x="752.0000000000003" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5c3827"> </text>
+<text x="771.2000000000004" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2c1a0f"> </text>
+<text x="790.4000000000004" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#23150b"> </text>
+<text x="809.6000000000005" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#2f1e14"> </text>
+<text x="828.8000000000005" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6f695d">░</text>
+<text x="848.0000000000006" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#746f67">░</text>
+<text x="867.2000000000006" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6f6a62">░</text>
+<text x="886.4000000000007" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#69645c">░</text>
+<text x="905.6000000000007" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#666159">░</text>
+<text x="924.8000000000008" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#635e56">░</text>
+<text x="944.0000000000008" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#625d54">░</text>
+<text x="963.2000000000008" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#56514a">░</text>
+<text x="982.4000000000009" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#514d47">░</text>
+<text x="1001.6000000000009" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4c4843">░</text>
+<text x="1020.800000000001" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#45423d">░</text>
+<text x="1040.000000000001" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#403d38"> </text>
+<text x="1059.200000000001" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3e3b35"> </text>
+<text x="1078.400000000001" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3a3732"> </text>
+<text x="1097.600000000001" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#322f2a"> </text>
+<text x="156.79999999999998" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#766c66">░</text>
+<text x="175.99999999999997" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#776d67">░</text>
+<text x="195.19999999999996" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#776e68">░</text>
+<text x="214.39999999999995" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#766f68">░</text>
+<text x="233.59999999999994" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#777169">░</text>
+<text x="252.79999999999993" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#716b60">░</text>
+<text x="271.99999999999994" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#777266">░</text>
+<text x="291.19999999999993" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#878074">▒</text>
+<text x="310.3999999999999" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#92897e">▒</text>
+<text x="329.5999999999999" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8e857b">▒</text>
+<text x="348.7999999999999" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#867f74">▒</text>
+<text x="367.9999999999999" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#80796e">░</text>
+<text x="387.1999999999999" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#735b51">░</text>
+<text x="406.39999999999986" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#885e4b">░</text>
+<text x="425.59999999999985" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c2947f">▒</text>
+<text x="444.79999999999984" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ab7865">▒</text>
+<text x="463.99999999999983" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a68173">▒</text>
+<text x="483.1999999999998" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7d5f56">░</text>
+<text x="502.3999999999998" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#82574a">░</text>
+<text x="521.5999999999998" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#aa7460">░</text>
+<text x="540.7999999999998" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cc917d">▒</text>
+<text x="559.9999999999999" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ae7160">░</text>
+<text x="579.1999999999999" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#583321"> </text>
+<text x="598.4" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#502f21"> </text>
+<text x="617.6" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#734a3c">░</text>
+<text x="636.8000000000001" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#896458">░</text>
+<text x="656.0000000000001" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#64433b">░</text>
+<text x="675.2000000000002" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5d3d2f">░</text>
+<text x="694.4000000000002" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#533523"> </text>
+<text x="713.6000000000003" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#593c27">░</text>
+<text x="732.8000000000003" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#613e2b">░</text>
+<text x="752.0000000000003" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#603a29">░</text>
+<text x="771.2000000000004" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#46291c"> </text>
+<text x="790.4000000000004" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#46281c"> </text>
+<text x="809.6000000000005" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4b261a"> </text>
+<text x="828.8000000000005" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#84786e">░</text>
+<text x="848.0000000000006" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7d7970">░</text>
+<text x="867.2000000000006" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#767167">░</text>
+<text x="886.4000000000007" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6f6a60">░</text>
+<text x="905.6000000000007" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6d685e">░</text>
+<text x="924.8000000000008" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6e695f">░</text>
+<text x="944.0000000000008" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6c675d">░</text>
+<text x="963.2000000000008" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#605c55">░</text>
+<text x="982.4000000000009" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5a554e">░</text>
+<text x="1001.6000000000009" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#57524b">░</text>
+<text x="1020.800000000001" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#504a43">░</text>
+<text x="1040.000000000001" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4a453e">░</text>
+<text x="1059.200000000001" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#413e39"> </text>
+<text x="1078.400000000001" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#393631"> </text>
+<text x="1097.600000000001" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#302e29"> </text>
+<text x="156.79999999999998" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7d746b">░</text>
+<text x="175.99999999999997" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7e756c">░</text>
+<text x="195.19999999999996" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7f766d">░</text>
+<text x="214.39999999999995" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#827970">░</text>
+<text x="233.59999999999994" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#877e74">░</text>
+<text x="252.79999999999993" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#867d72">░</text>
+<text x="271.99999999999994" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8e857a">▒</text>
+<text x="291.19999999999993" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8c8379">▒</text>
+<text x="310.3999999999999" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8b8279">▒</text>
+<text x="329.5999999999999" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8d847b">▒</text>
+<text x="348.7999999999999" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#857b73">░</text>
+<text x="367.9999999999999" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7f786e">░</text>
+<text x="387.1999999999999" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#977d71">▒</text>
+<text x="406.39999999999986" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#be846f">▒</text>
+<text x="425.59999999999985" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cc9b87">▒</text>
+<text x="444.79999999999984" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d29f8d">▒</text>
+<text x="463.99999999999983" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d3a190">▒</text>
+<text x="483.1999999999998" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cd9b8a">▒</text>
+<text x="502.3999999999998" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c48e7b">▒</text>
+<text x="521.5999999999998" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cc9483">▒</text>
+<text x="540.7999999999998" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cd8c7a">▒</text>
+<text x="559.9999999999999" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9e5e4e">░</text>
+<text x="579.1999999999999" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5f3526"> </text>
+<text x="598.4" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#573123"> </text>
+<text x="617.6" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#653c30">░</text>
+<text x="636.8000000000001" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7a4b3f">░</text>
+<text x="656.0000000000001" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#835143">░</text>
+<text x="675.2000000000002" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#855546">░</text>
+<text x="694.4000000000002" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#784c3a">░</text>
+<text x="713.6000000000003" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6b4332">░</text>
+<text x="732.8000000000003" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#653f2e">░</text>
+<text x="752.0000000000003" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#633e2d">░</text>
+<text x="771.2000000000004" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5a3729"> </text>
+<text x="790.4000000000004" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3b1a0f"> </text>
+<text x="809.6000000000005" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#492517"> </text>
+<text x="828.8000000000005" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7e695b">░</text>
+<text x="848.0000000000006" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#827c72">░</text>
+<text x="867.2000000000006" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7c776d">░</text>
+<text x="886.4000000000007" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#777268">░</text>
+<text x="905.6000000000007" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#767167">░</text>
+<text x="924.8000000000008" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#726d63">░</text>
+<text x="944.0000000000008" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#716c62">░</text>
+<text x="963.2000000000008" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#655f59">░</text>
+<text x="982.4000000000009" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5c5750">░</text>
+<text x="1001.6000000000009" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5a554e">░</text>
+<text x="1020.800000000001" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#534e47">░</text>
+<text x="1040.000000000001" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4e4943">░</text>
+<text x="1059.200000000001" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#46403c">░</text>
+<text x="1078.400000000001" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3b3833"> </text>
+<text x="1097.600000000001" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#31302a"> </text>
+<text x="156.79999999999998" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#81786f">░</text>
+<text x="175.99999999999997" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#877e75">░░</text>
+<text x="214.39999999999998" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8b8279">▒</text>
+<text x="233.59999999999997" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8e857c">▒</text>
+<text x="252.79999999999995" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#90877d">▒</text>
+<text x="271.99999999999994" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#92897f">▒</text>
+<text x="291.19999999999993" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#91887e">▒</text>
+<text x="310.3999999999999" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8c837a">▒</text>
+<text x="329.5999999999999" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8f867d">▒</text>
+<text x="348.7999999999999" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8b8279">▒</text>
+<text x="367.9999999999999" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8b8479">▒</text>
+<text x="387.1999999999999" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a48a7f">▒</text>
+<text x="406.39999999999986" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c0806e">▒</text>
+<text x="425.59999999999985" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d19885">▒</text>
+<text x="444.79999999999984" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#da9e90">▒</text>
+<text x="463.99999999999983" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#da9d8f">▒</text>
+<text x="483.1999999999998" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d6998a">▒</text>
+<text x="502.3999999999998" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d69686">▒</text>
+<text x="521.5999999999998" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d08e7d">▒</text>
+<text x="540.7999999999998" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ce8c7b">▒</text>
+<text x="559.9999999999999" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a26556">░</text>
+<text x="579.1999999999999" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#613627"> </text>
+<text x="598.4" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5a3222"> </text>
+<text x="617.6" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5c3323"> </text>
+<text x="636.8000000000001" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#734232">░</text>
+<text x="656.0000000000001" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#834d3a">░</text>
+<text x="675.2000000000002" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#83503e">░</text>
+<text x="694.4000000000002" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#794a3a">░</text>
+<text x="713.6000000000003" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6b4233">░</text>
+<text x="732.8000000000003" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#644231">░</text>
+<text x="752.0000000000003" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#644131">░</text>
+<text x="771.2000000000004" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5e3b2b">░</text>
+<text x="790.4000000000004" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4f2918"> </text>
+<text x="809.6000000000005" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4e2619"> </text>
+<text x="828.8000000000005" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7b695c">░</text>
+<text x="848.0000000000006" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#847b71">░</text>
+<text x="867.2000000000006" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#81786f">░</text>
+<text x="886.4000000000007" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#80776f">░</text>
+<text x="905.6000000000007" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7d776d">░</text>
+<text x="924.8000000000008" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#747167">░</text>
+<text x="944.0000000000008" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#746f65">░</text>
+<text x="963.2000000000008" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6d675e">░</text>
+<text x="982.4000000000009" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#625c54">░</text>
+<text x="1001.6000000000009" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5f5a53">░</text>
+<text x="1020.800000000001" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#58534c">░</text>
+<text x="1040.000000000001" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4d4841">░</text>
+<text x="1059.200000000001" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#46403c">░</text>
+<text x="1078.400000000001" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3b3933"> </text>
+<text x="1097.600000000001" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#33322c"> </text>
+<text x="156.79999999999998" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#877e75">░</text>
+<text x="175.99999999999997" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8b8279">▒</text>
+<text x="195.19999999999996" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8c837a">▒</text>
+<text x="214.39999999999995" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8e857c">▒</text>
+<text x="233.59999999999994" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#90877e">▒▒</text>
+<text x="271.99999999999994" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#91887f">▒▒</text>
+<text x="310.3999999999999" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#958c83">▒</text>
+<text x="329.5999999999999" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9a9188">▒</text>
+<text x="348.7999999999999" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#978e85">▒</text>
+<text x="367.9999999999999" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9a9187">▒</text>
+<text x="387.1999999999999" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9e8d84">▒</text>
+<text x="406.39999999999986" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c28f7f">▒</text>
+<text x="425.59999999999985" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cd9583">▒</text>
+<text x="444.79999999999984" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#db9e90">▒</text>
+<text x="463.99999999999983" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d99c8e">▒</text>
+<text x="483.1999999999998" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c78a7b">▒</text>
+<text x="502.3999999999998" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c68677">▒</text>
+<text x="521.5999999999998" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c07e6f">▒</text>
+<text x="540.7999999999998" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c08374">▒</text>
+<text x="559.9999999999999" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9e685b">░</text>
+<text x="579.1999999999999" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#583528"> </text>
+<text x="598.4" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5a352b"> </text>
+<text x="617.6" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4c2a1e"> </text>
+<text x="636.8000000000001" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#613a2b">░</text>
+<text x="656.0000000000001" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#815140">░</text>
+<text x="675.2000000000002" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#805341">░</text>
+<text x="694.4000000000002" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#79503f">░</text>
+<text x="713.6000000000003" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6a4635">░</text>
+<text x="732.8000000000003" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#634231">░</text>
+<text x="752.0000000000003" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5e3e2c">░</text>
+<text x="771.2000000000004" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5d3829"> </text>
+<text x="790.4000000000004" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#542c1b"> </text>
+<text x="809.6000000000005" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#725b4d">░</text>
+<text x="828.8000000000005" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#868176">▒</text>
+<text x="848.0000000000006" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#867e73">░</text>
+<text x="867.2000000000006" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#868074">▒</text>
+<text x="886.4000000000007" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8a8178">▒</text>
+<text x="905.6000000000007" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#817b71">░</text>
+<text x="924.8000000000008" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#716c63">░</text>
+<text x="944.0000000000008" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6a655c">░</text>
+<text x="963.2000000000008" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#625d58">░</text>
+<text x="982.4000000000009" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5c5651">░</text>
+<text x="1001.6000000000009" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5f5a53">░</text>
+<text x="1020.800000000001" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5e5951">░</text>
+<text x="1040.000000000001" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#524d47">░</text>
+<text x="1059.200000000001" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#46413d">░</text>
+<text x="1078.400000000001" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3a3933"> </text>
+<text x="1097.600000000001" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#33322c"> </text>
+<text x="156.79999999999998" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8e857c">▒</text>
+<text x="175.99999999999997" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#948b82">▒</text>
+<text x="195.19999999999996" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#958c83">▒</text>
+<text x="214.39999999999995" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#988f86">▒</text>
+<text x="233.59999999999994" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#999087">▒▒▒▒</text>
+<text x="310.3999999999999" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9d948b">▒</text>
+<text x="329.5999999999999" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a29990">▒</text>
+<text x="348.7999999999999" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9f968d">▒</text>
+<text x="367.9999999999999" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9f948c">▒</text>
+<text x="387.1999999999999" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#988e87">▒</text>
+<text x="406.39999999999986" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a08a7d">▒</text>
+<text x="425.59999999999985" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bf9481">▒</text>
+<text x="444.79999999999984" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cd9b88">▒</text>
+<text x="463.99999999999983" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c59280">▒</text>
+<text x="483.1999999999998" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b98472">▒</text>
+<text x="502.3999999999998" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bd8676">▒</text>
+<text x="521.5999999999998" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b0796b">▒</text>
+<text x="540.7999999999998" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#aa7567">░</text>
+<text x="559.9999999999999" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8f5f54">░</text>
+<text x="579.1999999999999" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5e3d33">░</text>
+<text x="598.4" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4c2d23"> </text>
+<text x="617.6" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4c2e24"> </text>
+<text x="636.8000000000001" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4f3125"> </text>
+<text x="656.0000000000001" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5e3c2c">░</text>
+<text x="675.2000000000002" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#714c3b">░</text>
+<text x="694.4000000000002" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6f4b3a">░</text>
+<text x="713.6000000000003" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#674837">░</text>
+<text x="732.8000000000003" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5f4131">░</text>
+<text x="752.0000000000003" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5f4030">░</text>
+<text x="771.2000000000004" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#593b2e">░</text>
+<text x="790.4000000000004" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#827066">░</text>
+<text x="809.6000000000005" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8b8178">▒</text>
+<text x="828.8000000000005" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8d847a">▒</text>
+<text x="848.0000000000006" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8b8279">▒</text>
+<text x="867.2000000000006" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#858075">▒</text>
+<text x="886.4000000000007" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#827e74">░</text>
+<text x="905.6000000000007" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7f7a70">░</text>
+<text x="924.8000000000008" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#757069">░</text>
+<text x="944.0000000000008" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#706b64">░</text>
+<text x="963.2000000000008" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6b6660">░░</text>
+<text x="1001.6000000000008" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#68635c">░</text>
+<text x="1020.8000000000009" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#635e56">░</text>
+<text x="1040.000000000001" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#57524c">░</text>
+<text x="1059.200000000001" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#47453f">░</text>
+<text x="1078.400000000001" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3e3b36"> </text>
+<text x="1097.600000000001" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#37352f"> </text>
+<text x="156.79999999999998" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#938a81">▒</text>
+<text x="175.99999999999997" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#988f86">▒</text>
+<text x="195.19999999999996" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9d948b">▒</text>
+<text x="214.39999999999995" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a0978e">▒▒</text>
+<text x="252.79999999999995" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a39a91">▒</text>
+<text x="271.99999999999994" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a59c93">▒</text>
+<text x="291.19999999999993" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a1988f">▒</text>
+<text x="310.3999999999999" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a39a91">▒</text>
+<text x="329.5999999999999" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a29990">▒</text>
+<text x="348.7999999999999" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9f968d">▒</text>
+<text x="367.9999999999999" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a59a92">▒</text>
+<text x="387.1999999999999" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a1988f">▒</text>
+<text x="406.39999999999986" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#989086">▒</text>
+<text x="425.59999999999985" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#af8e82">▒</text>
+<text x="444.79999999999984" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c89d8d">▒</text>
+<text x="463.99999999999983" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c29681">▒</text>
+<text x="483.1999999999998" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b2816c">▒</text>
+<text x="502.3999999999998" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b57c6f">▒</text>
+<text x="521.5999999999998" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ba7b72">▒</text>
+<text x="540.7999999999998" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b77970">▒</text>
+<text x="559.9999999999999" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a5685f">░</text>
+<text x="579.1999999999999" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#91564e">░</text>
+<text x="598.4" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#74423b">░</text>
+<text x="617.6" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5f382d"> </text>
+<text x="636.8000000000001" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4d2f22"> </text>
+<text x="656.0000000000001" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5e402f">░</text>
+<text x="675.2000000000002" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#795642">░</text>
+<text x="694.4000000000002" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#674734">░</text>
+<text x="713.6000000000003" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#644735">░</text>
+<text x="732.8000000000003" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#654733">░</text>
+<text x="752.0000000000003" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#654431">░</text>
+<text x="771.2000000000004" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5c3e2e">░</text>
+<text x="790.4000000000004" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6c5c54">░</text>
+<text x="809.6000000000005" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8a8075">▒</text>
+<text x="828.8000000000005" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8d897f">▒</text>
+<text x="848.0000000000006" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8d887e">▒</text>
+<text x="867.2000000000006" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8f887f">▒</text>
+<text x="886.4000000000007" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8f887e">▒</text>
+<text x="905.6000000000007" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#898278">▒</text>
+<text x="924.8000000000008" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#817e74">░</text>
+<text x="944.0000000000008" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7c776e">░</text>
+<text x="963.2000000000008" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7b766c">░</text>
+<text x="982.4000000000009" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#777269">░</text>
+<text x="1001.6000000000009" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#746f66">░</text>
+<text x="1020.800000000001" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6b6660">░</text>
+<text x="1040.000000000001" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#615c55">░</text>
+<text x="1059.200000000001" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#534f45">░</text>
+<text x="1078.400000000001" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4c4740">░</text>
+<text x="1097.600000000001" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#423f3a"> </text>
+<text x="156.79999999999998" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9d948b">▒</text>
+<text x="175.99999999999997" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9c938a">▒</text>
+<text x="195.19999999999996" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9a9188">▒</text>
+<text x="214.39999999999995" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a29990">▒</text>
+<text x="233.59999999999994" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a49b92">▒</text>
+<text x="252.79999999999993" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a89f96">▒▒</text>
+<text x="291.19999999999993" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a39a91">▒</text>
+<text x="310.3999999999999" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a59c93">▒</text>
+<text x="329.5999999999999" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a29990">▒</text>
+<text x="348.7999999999999" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a69d94">▒</text>
+<text x="367.9999999999999" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a29990">▒</text>
+<text x="387.1999999999999" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9c948b">▒</text>
+<text x="406.39999999999986" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#968e86">▒</text>
+<text x="425.59999999999985" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#998d83">▒</text>
+<text x="444.79999999999984" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b79685">▒</text>
+<text x="463.99999999999983" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c99d88">▒</text>
+<text x="483.1999999999998" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c59a81">▒</text>
+<text x="502.3999999999998" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c99584">▒</text>
+<text x="521.5999999999998" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c28379">▒</text>
+<text x="540.7999999999998" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b2736a">▒</text>
+<text x="559.9999999999999" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a3635a">░</text>
+<text x="579.1999999999999" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#94574e">░</text>
+<text x="598.4" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#77453b">░</text>
+<text x="617.6" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#694135">░</text>
+<text x="636.8000000000001" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#654231">░</text>
+<text x="656.0000000000001" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#684633">░</text>
+<text x="675.2000000000002" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#785642">░</text>
+<text x="694.4000000000002" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6b4b38">░</text>
+<text x="713.6000000000003" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6d4c39">░</text>
+<text x="732.8000000000003" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6a4735">░</text>
+<text x="752.0000000000003" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#684332">░</text>
+<text x="771.2000000000004" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#563625"> </text>
+<text x="790.4000000000004" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#3e2c1f"> </text>
+<text x="809.6000000000005" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#857b6d">░</text>
+<text x="828.8000000000005" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#928f84">▒</text>
+<text x="848.0000000000006" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#908b7f">▒</text>
+<text x="867.2000000000006" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#90897e">▒</text>
+<text x="886.4000000000007" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#978d85">▒</text>
+<text x="905.6000000000007" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#968f85">▒</text>
+<text x="924.8000000000008" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#908d82">▒</text>
+<text x="944.0000000000008" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#847f75">░</text>
+<text x="963.2000000000008" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#777268">░</text>
+<text x="982.4000000000009" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#767168">░</text>
+<text x="1001.6000000000009" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#77726b">░</text>
+<text x="1020.800000000001" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6d6861">░</text>
+<text x="1040.000000000001" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#615c55">░</text>
+<text x="1059.200000000001" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#58554d">░</text>
+<text x="1078.400000000001" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#524f48">░</text>
+<text x="1097.600000000001" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4f4c47">░</text>
+<text x="156.79999999999998" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9b9289">▒</text>
+<text x="175.99999999999997" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9e958c">▒</text>
+<text x="195.19999999999996" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9c938a">▒</text>
+<text x="214.39999999999995" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9f968d">▒▒</text>
+<text x="252.79999999999995" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a1988f">▒▒▒</text>
+<text x="310.4" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a29990">▒▒</text>
+<text x="348.79999999999995" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#aca49b">▒</text>
+<text x="367.99999999999994" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a69e94">▒</text>
+<text x="387.19999999999993" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a49b92">▒</text>
+<text x="406.3999999999999" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9e958d">▒</text>
+<text x="425.5999999999999" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9e988e">▒</text>
+<text x="444.7999999999999" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a7998f">▒</text>
+<text x="463.9999999999999" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b69584">▒</text>
+<text x="483.1999999999999" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#be957d">▒</text>
+<text x="502.39999999999986" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c49a85">▒</text>
+<text x="521.5999999999999" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cd9f8d">▒</text>
+<text x="540.8" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c39281">▒</text>
+<text x="560" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a47263">░</text>
+<text x="579.2" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#906050">░</text>
+<text x="598.4000000000001" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#845947">░</text>
+<text x="617.6000000000001" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7a5441">░</text>
+<text x="636.8000000000002" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6d4a39">░</text>
+<text x="656.0000000000002" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#634531">░</text>
+<text x="675.2000000000003" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#694b37">░</text>
+<text x="694.4000000000003" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#704e3b">░</text>
+<text x="713.6000000000004" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#704b39">░</text>
+<text x="732.8000000000004" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#64412f">░</text>
+<text x="752.0000000000005" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5a3825"> </text>
+<text x="771.2000000000005" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#41271a"> </text>
+<text x="790.4000000000005" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7e6d61">░</text>
+<text x="809.6000000000006" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8f8678">▒</text>
+<text x="828.8000000000006" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#857e70">░</text>
+<text x="848.0000000000007" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#898174">▒</text>
+<text x="867.2000000000007" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#958c82">▒</text>
+<text x="886.4000000000008" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9a9087">▒</text>
+<text x="905.6000000000008" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#979086">▒</text>
+<text x="924.8000000000009" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8e8b80">▒</text>
+<text x="944.0000000000009" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#807b71">░</text>
+<text x="963.200000000001" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#79746d">░</text>
+<text x="982.400000000001" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#76716a">░</text>
+<text x="1001.600000000001" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#77726b">░</text>
+<text x="1020.8000000000011" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6d6861">░</text>
+<text x="1040.0000000000011" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#656059">░</text>
+<text x="1059.2000000000012" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5e5b54">░</text>
+<text x="1078.4000000000012" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#58554e">░</text>
+<text x="1097.6000000000013" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#524f48">░</text>
+<text x="156.79999999999998" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9b9289">▒</text>
+<text x="175.99999999999997" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9c938a">▒</text>
+<text x="195.19999999999996" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9b9289">▒</text>
+<text x="214.39999999999995" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a1988f">▒</text>
+<text x="233.59999999999994" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a29990">▒</text>
+<text x="252.79999999999993" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9e958c">▒</text>
+<text x="271.99999999999994" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9d948b">▒</text>
+<text x="291.19999999999993" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9f968d">▒</text>
+<text x="310.3999999999999" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9e958c">▒</text>
+<text x="329.5999999999999" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a19990">▒</text>
+<text x="348.7999999999999" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a6a398">▒</text>
+<text x="367.9999999999999" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a8a399">▒</text>
+<text x="387.1999999999999" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a7a298">▒</text>
+<text x="406.39999999999986" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#aba69c">▒</text>
+<text x="425.59999999999985" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#aaa59b">▒</text>
+<text x="444.79999999999984" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#aba59c">▒</text>
+<text x="463.99999999999983" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#aea095">▒</text>
+<text x="483.1999999999998" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ac8e7b">▒</text>
+<text x="502.3999999999998" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#af8875">▒</text>
+<text x="521.5999999999998" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bd917e">▒</text>
+<text x="540.7999999999998" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#be8d7d">▒</text>
+<text x="559.9999999999999" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a87666">░</text>
+<text x="579.1999999999999" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a1715f">░</text>
+<text x="598.4" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#805644">░</text>
+<text x="617.6" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6a4737">░</text>
+<text x="636.8000000000001" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#674539">░</text>
+<text x="656.0000000000001" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6a4c3a">░</text>
+<text x="675.2000000000002" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#72523e">░</text>
+<text x="694.4000000000002" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#714e3a">░</text>
+<text x="713.6000000000003" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#623f2c">░</text>
+<text x="732.8000000000003" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#593522"> </text>
+<text x="752.0000000000003" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4e311f"> </text>
+<text x="771.2000000000004" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8d7e71">▒</text>
+<text x="790.4000000000004" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9b9184">▒</text>
+<text x="809.6000000000005" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8d8276">▒</text>
+<text x="828.8000000000005" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#95897e">▒</text>
+<text x="848.0000000000006" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9c9085">▒</text>
+<text x="867.2000000000006" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8a7f74">▒</text>
+<text x="886.4000000000007" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8f857a">▒</text>
+<text x="905.6000000000007" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#90877c">▒</text>
+<text x="924.8000000000008" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8a867a">▒</text>
+<text x="944.0000000000008" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7d786e">░</text>
+<text x="963.2000000000008" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7a756b">░</text>
+<text x="982.4000000000009" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7c776d">░</text>
+<text x="1001.6000000000009" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7e796f">░</text>
+<text x="1020.800000000001" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#726d63">░</text>
+<text x="1040.000000000001" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#686359">░</text>
+<text x="1059.200000000001" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#635f58">░</text>
+<text x="1078.400000000001" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5a564f">░</text>
+<text x="1097.600000000001" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4d4a44">░</text>
+<text x="156.79999999999998" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9f968d">▒</text>
+<text x="175.99999999999997" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a59c93">▒</text>
+<text x="195.19999999999996" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a49b92">▒</text>
+<text x="214.39999999999995" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a39a91">▒</text>
+<text x="233.59999999999994" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a39b91">▒</text>
+<text x="252.79999999999993" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9e988e">▒</text>
+<text x="271.99999999999994" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#999389">▒</text>
+<text x="291.19999999999993" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9c968c">▒</text>
+<text x="310.3999999999999" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a09a90">▒</text>
+<text x="329.5999999999999" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a5a096">▒</text>
+<text x="348.7999999999999" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a9a59c">▒</text>
+<text x="367.9999999999999" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#aba69e">▒</text>
+<text x="387.1999999999999" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a49f97">▒</text>
+<text x="406.39999999999986" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a6a199">▒</text>
+<text x="425.59999999999985" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a6a097">▒</text>
+<text x="444.79999999999984" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a9a49b">▒</text>
+<text x="463.99999999999983" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c8c4bf">▓</text>
+<text x="483.1999999999998" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ccb4a9">▒</text>
+<text x="502.3999999999998" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b7907e">▒</text>
+<text x="521.5999999999998" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a88572">▒</text>
+<text x="540.7999999999998" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a07969">▒</text>
+<text x="559.9999999999999" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#936c5c">░</text>
+<text x="579.1999999999999" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#896453">░</text>
+<text x="598.4" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7a5a49">░</text>
+<text x="617.6" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#745343">░</text>
+<text x="636.8000000000001" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#785343">░</text>
+<text x="656.0000000000001" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#785240">░</text>
+<text x="675.2000000000002" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#724d39">░</text>
+<text x="694.4000000000002" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6a4531">░</text>
+<text x="713.6000000000003" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#613c2a">░</text>
+<text x="732.8000000000003" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#664535">░</text>
+<text x="752.0000000000003" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a6968a">▒</text>
+<text x="771.2000000000004" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a1988d">▒</text>
+<text x="790.4000000000004" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a3988f">▒</text>
+<text x="809.6000000000005" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b3aca4">▒</text>
+<text x="828.8000000000005" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b3aea7">▒</text>
+<text x="848.0000000000006" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b5aea8">▒</text>
+<text x="867.2000000000006" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#948a81">▒</text>
+<text x="886.4000000000007" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9a9188">▒</text>
+<text x="905.6000000000007" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9d968e">▒</text>
+<text x="924.8000000000008" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9f978e">▒</text>
+<text x="944.0000000000008" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#979087">▒</text>
+<text x="963.2000000000008" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8f8a81">▒</text>
+<text x="982.4000000000009" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8c877f">▒</text>
+<text x="1001.6000000000009" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#827d75">░</text>
+<text x="1020.800000000001" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#757068">░</text>
+<text x="1040.000000000001" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#666159">░</text>
+<text x="1059.200000000001" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5f5c55">░</text>
+<text x="1078.400000000001" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5a5751">░</text>
+<text x="1097.600000000001" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4f4c47">░</text>
+<text x="156.79999999999998" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a19890">▒</text>
+<text x="175.99999999999997" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a9a199">▒</text>
+<text x="195.19999999999996" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ada59d">▒</text>
+<text x="214.39999999999995" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#aca39b">▒</text>
+<text x="233.59999999999994" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a69e96">▒</text>
+<text x="252.79999999999993" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a09b91">▒</text>
+<text x="271.99999999999994" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9a958b">▒</text>
+<text x="291.19999999999993" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#99948a">▒</text>
+<text x="310.3999999999999" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9f9a90">▒</text>
+<text x="329.5999999999999" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a39f96">▒</text>
+<text x="348.7999999999999" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a7a29b">▒</text>
+<text x="367.9999999999999" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ada8a1">▒</text>
+<text x="387.1999999999999" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#aca8a2">▒</text>
+<text x="406.39999999999986" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a7a39c">▒</text>
+<text x="425.59999999999985" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a49f99">▒</text>
+<text x="444.79999999999984" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c8c5c0">▓</text>
+<text x="463.99999999999983" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#e3e1db">▓</text>
+<text x="483.1999999999998" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c1a899">▒</text>
+<text x="502.3999999999998" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c59682">▒</text>
+<text x="521.5999999999998" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c29884">▒</text>
+<text x="540.7999999999998" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#be9381">▒</text>
+<text x="559.9999999999999" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a67a67">▒</text>
+<text x="579.1999999999999" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#946956">░</text>
+<text x="598.4" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8f6350">░</text>
+<text x="617.6" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#936352">░</text>
+<text x="636.8000000000001" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#90614e">░</text>
+<text x="656.0000000000001" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#92624f">░</text>
+<text x="675.2000000000002" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#925f4c">░</text>
+<text x="694.4000000000002" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#885442">░</text>
+<text x="713.6000000000003" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8b695a">░</text>
+<text x="732.8000000000003" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b9ada4">▒</text>
+<text x="752.0000000000003" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#adaaa2">▒</text>
+<text x="771.2000000000004" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bbb7af">▒</text>
+<text x="790.4000000000004" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c2bfb8">▒</text>
+<text x="809.6000000000005" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bbb8b4">▒</text>
+<text x="828.8000000000005" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c2bfbb">▓</text>
+<text x="848.0000000000006" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#aea9a4">▒</text>
+<text x="867.2000000000006" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#908881">▒</text>
+<text x="886.4000000000007" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b5aea9">▒</text>
+<text x="905.6000000000007" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b5b0ad">▒</text>
+<text x="924.8000000000008" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b5b1ab">▒</text>
+<text x="944.0000000000008" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ada8a2">▒</text>
+<text x="963.2000000000008" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a09c96">▒</text>
+<text x="982.4000000000009" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#97938d">▒</text>
+<text x="1001.6000000000009" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9b958f">▒</text>
+<text x="1020.800000000001" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8c8680">▒</text>
+<text x="1040.000000000001" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#77716a">░</text>
+<text x="1059.200000000001" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#5f5c55">░</text>
+<text x="1078.400000000001" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#58554f">░</text>
+<text x="1097.600000000001" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#4f4c47">░</text>
+<text x="156.79999999999998" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a39e97">▒</text>
+<text x="175.99999999999997" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#aaa69f">▒</text>
+<text x="195.19999999999996" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#afaaa4">▒</text>
+<text x="214.39999999999995" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ada8a2">▒</text>
+<text x="233.59999999999994" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a6a09a">▒</text>
+<text x="252.79999999999993" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a19c96">▒</text>
+<text x="271.99999999999994" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9c9690">▒</text>
+<text x="291.19999999999993" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9b9690">▒</text>
+<text x="310.3999999999999" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9f9a94">▒</text>
+<text x="329.5999999999999" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a3a099">▒</text>
+<text x="348.7999999999999" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a5a39b">▒</text>
+<text x="367.9999999999999" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a9a69f">▒</text>
+<text x="387.1999999999999" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#adaba6">▒</text>
+<text x="406.39999999999986" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bbbab5">▒</text>
+<text x="425.59999999999985" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cbc9c7">▓</text>
+<text x="444.79999999999984" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#e0dddf">▓</text>
+<text x="463.99999999999983" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ded7d1">▓</text>
+<text x="483.1999999999998" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6f4d3e">░</text>
+<text x="502.3999999999998" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c3937e">▒</text>
+<text x="521.5999999999998" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cb9a8a">▒</text>
+<text x="540.7999999999998" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c59684">▒</text>
+<text x="559.9999999999999" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b88773">▒</text>
+<text x="579.1999999999999" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ad7c69">▒</text>
+<text x="598.4" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b07f6c">▒</text>
+<text x="617.6" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b2816e">▒</text>
+<text x="636.8000000000001" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b7846f">▒</text>
+<text x="656.0000000000001" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b57f6c">▒</text>
+<text x="675.2000000000002" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ac7660">▒</text>
+<text x="694.4000000000002" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b08b7a">▒</text>
+<text x="713.6000000000003" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d1c9c5">▓</text>
+<text x="732.8000000000003" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c0beba">▒</text>
+<text x="752.0000000000003" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c3bf">▓</text>
+<text x="771.2000000000004" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c3c2be">▓</text>
+<text x="790.4000000000004" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c7c6c0">▓</text>
+<text x="809.6000000000005" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c6c4bf">▓</text>
+<text x="828.8000000000005" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9e9994">▒</text>
+<text x="848.0000000000006" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#867d77">░</text>
+<text x="867.2000000000006" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b0aba5">▒</text>
+<text x="886.4000000000007" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bbb8b3">▒</text>
+<text x="905.6000000000007" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bab7b4">▒</text>
+<text x="924.8000000000008" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bbb8b5">▒</text>
+<text x="944.0000000000008" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bab7b3">▒</text>
+<text x="963.2000000000008" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b3b0ac">▒</text>
+<text x="982.4000000000009" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a8a5a0">▒</text>
+<text x="1001.6000000000009" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9f9a95">▒</text>
+<text x="1020.800000000001" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#968d89">▒</text>
+<text x="1040.000000000001" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8a817d">▒</text>
+<text x="1059.200000000001" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#837d77">░</text>
+<text x="1078.400000000001" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#77716b">░</text>
+<text x="1097.600000000001" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#625f5a">░</text>
+<text x="156.79999999999998" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a39e97">▒</text>
+<text x="175.99999999999997" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#aba69f">▒</text>
+<text x="195.19999999999996" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ada8a1">▒</text>
+<text x="214.39999999999995" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#aca7a0">▒</text>
+<text x="233.59999999999994" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a6a19a">▒</text>
+<text x="252.79999999999993" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a09b94">▒</text>
+<text x="271.99999999999994" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9b9891">▒</text>
+<text x="291.19999999999993" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9e9a94">▒</text>
+<text x="310.3999999999999" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a4a099">▒</text>
+<text x="329.5999999999999" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#aeaba4">▒</text>
+<text x="348.7999999999999" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b9b8b0">▒</text>
+<text x="367.9999999999999" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c6c3bd">▓</text>
+<text x="387.1999999999999" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cdcbc7">▓</text>
+<text x="406.39999999999986" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d4d2d0">▓</text>
+<text x="425.59999999999985" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d7d6d5">▓</text>
+<text x="444.79999999999984" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#dfe0df">▓</text>
+<text x="463.99999999999983" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ded7d0">▓</text>
+<text x="483.1999999999998" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#987566">░</text>
+<text x="502.3999999999998" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#996853">░</text>
+<text x="521.5999999999998" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ce9787">▒</text>
+<text x="540.7999999999998" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ce9a89">▒</text>
+<text x="559.9999999999999" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ca9784">▒</text>
+<text x="579.1999999999999" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c79684">▒</text>
+<text x="598.4" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c89685">▒</text>
+<text x="617.6" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c99886">▒</text>
+<text x="636.8000000000001" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cb9782">▒</text>
+<text x="656.0000000000001" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#be8875">▒</text>
+<text x="675.2000000000002" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c4a192">▒</text>
+<text x="694.4000000000002" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d3cbc5">▓</text>
+<text x="713.6000000000003" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bcbab7">▒▒</text>
+<text x="752.0000000000002" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cccac7">▓</text>
+<text x="771.2000000000003" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d8d7d3">▓</text>
+<text x="790.4000000000003" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bcb7b1">▒</text>
+<text x="809.6000000000004" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7f786e">░</text>
+<text x="828.8000000000004" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#857c73">░</text>
+<text x="848.0000000000005" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b0a8a4">▒</text>
+<text x="867.2000000000005" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c0bdb9">▒</text>
+<text x="886.4000000000005" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bfbcb9">▒</text>
+<text x="905.6000000000006" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c7c4c1">▓</text>
+<text x="924.8000000000006" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c8c5c2">▓</text>
+<text x="944.0000000000007" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c4c0bd">▓</text>
+<text x="963.2000000000007" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bebbb8">▒</text>
+<text x="982.4000000000008" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bab7b3">▒</text>
+<text x="1001.6000000000008" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#afaba7">▒</text>
+<text x="1020.8000000000009" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a29a97">▒</text>
+<text x="1040.000000000001" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#958d89">▒</text>
+<text x="1059.200000000001" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#857c78">░</text>
+<text x="1078.400000000001" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#786f6b">░</text>
+<text x="1097.600000000001" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#726a66">░</text>
+<text x="156.79999999999998" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9f9a93">▒</text>
+<text x="175.99999999999997" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a6a19a">▒</text>
+<text x="195.19999999999996" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a7a29b">▒</text>
+<text x="214.39999999999995" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a49f98">▒</text>
+<text x="233.59999999999994" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9f9a93">▒</text>
+<text x="252.79999999999993" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a29c95">▒</text>
+<text x="271.99999999999994" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#aba6a0">▒</text>
+<text x="291.19999999999993" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bdb8b5">▒</text>
+<text x="310.3999999999999" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cccac8">▓</text>
+<text x="329.5999999999999" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d0cecc">▓</text>
+<text x="348.7999999999999" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d3d2d0">▓</text>
+<text x="367.9999999999999" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d4d2d1">▓</text>
+<text x="387.1999999999999" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d3d1d1">▓</text>
+<text x="406.39999999999986" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d7d5d4">▓</text>
+<text x="425.59999999999985" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#e4e1e1">▓</text>
+<text x="444.79999999999984" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#dedfdd">▓</text>
+<text x="463.99999999999983" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d9d5d0">▓</text>
+<text x="483.1999999999998" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#dbcfcc">▓</text>
+<text x="502.3999999999998" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a68679">▒</text>
+<text x="521.5999999999998" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#976250">░</text>
+<text x="540.7999999999998" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bc8171">▒</text>
+<text x="559.9999999999999" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c48a7a">▒</text>
+<text x="579.1999999999999" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cd9989">▒</text>
+<text x="598.4" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d6a494">▒</text>
+<text x="617.6" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d6a799">▒</text>
+<text x="636.8000000000001" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cfaa9b">▒</text>
+<text x="656.0000000000001" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c6b1a5">▒</text>
+<text x="675.2000000000002" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bdb4af">▒</text>
+<text x="694.4000000000002" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b3aea7">▒</text>
+<text x="713.6000000000003" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bbb8b4">▒</text>
+<text x="732.8000000000003" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d6d4d1">▓</text>
+<text x="752.0000000000003" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c0bebc">▒</text>
+<text x="771.2000000000004" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a49b98">▒</text>
+<text x="790.4000000000004" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a39b96">▒</text>
+<text x="809.6000000000005" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b2aaa5">▒</text>
+<text x="828.8000000000005" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c3beba">▒</text>
+<text x="848.0000000000006" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bfbdbb">▒</text>
+<text x="867.2000000000006" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c3c2c0">▓</text>
+<text x="886.4000000000007" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cfcdcb">▓</text>
+<text x="905.6000000000007" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cdcbc9">▓</text>
+<text x="924.8000000000008" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cac7c6">▓</text>
+<text x="944.0000000000008" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cbc5c4">▓</text>
+<text x="963.2000000000008" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c1bf">▓</text>
+<text x="982.4000000000009" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b5b1ae">▒</text>
+<text x="1001.6000000000009" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b4b2ae">▒</text>
+<text x="1020.800000000001" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b7b6b1">▒</text>
+<text x="1040.000000000001" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#97948f">▒</text>
+<text x="1059.200000000001" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7c726e">░</text>
+<text x="1078.400000000001" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7e7470">░</text>
+<text x="1097.600000000001" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#706662">░</text>
+<text x="156.79999999999998" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#959089">▒</text>
+<text x="175.99999999999997" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9a958e">▒</text>
+<text x="195.19999999999996" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#97928b">▒</text>
+<text x="214.39999999999995" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#948f88">▒</text>
+<text x="233.59999999999994" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#aeaaa3">▒</text>
+<text x="252.79999999999993" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cbcac4">▓</text>
+<text x="271.99999999999994" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ceccca">▓</text>
+<text x="291.19999999999993" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d4d2d1">▓</text>
+<text x="310.3999999999999" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d6d4d4">▓</text>
+<text x="329.5999999999999" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d7d5d4">▓</text>
+<text x="348.7999999999999" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d7d5d5">▓</text>
+<text x="367.9999999999999" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d7d5d4">▓</text>
+<text x="387.1999999999999" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d6d4d3">▓</text>
+<text x="406.39999999999986" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#dbd9d8">▓</text>
+<text x="425.59999999999985" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#e8e7e6">▓</text>
+<text x="444.79999999999984" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d0cac7">▓</text>
+<text x="463.99999999999983" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b5aea7">▒</text>
+<text x="483.1999999999998" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ded9d6">▓</text>
+<text x="502.3999999999998" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d9cfcc">▓</text>
+<text x="521.5999999999998" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b89e92">▒</text>
+<text x="540.7999999999998" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#966658">░</text>
+<text x="559.9999999999999" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a96d5d">░</text>
+<text x="579.1999999999999" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c18575">▒</text>
+<text x="598.4" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d3a495">▒</text>
+<text x="617.6" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d1c2bb">▓</text>
+<text x="636.8000000000001" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#aba29d">▒</text>
+<text x="656.0000000000001" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9e8f86">▒</text>
+<text x="675.2000000000002" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9e9289">▒</text>
+<text x="694.4000000000002" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a39a95">▒</text>
+<text x="713.6000000000003" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bbb3b1">▒</text>
+<text x="732.8000000000003" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c8c2c0">▓</text>
+<text x="752.0000000000003" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ccc7c5">▓</text>
+<text x="771.2000000000004" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d4d1d0">▓</text>
+<text x="790.4000000000004" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d5d3d3">▓</text>
+<text x="809.6000000000005" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cccac7">▓</text>
+<text x="828.8000000000005" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c6c3c0">▓</text>
+<text x="848.0000000000006" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ccc9c7">▓</text>
+<text x="867.2000000000006" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d2d0cf">▓</text>
+<text x="886.4000000000007" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d1cfcf">▓</text>
+<text x="905.6000000000007" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cccaca">▓</text>
+<text x="924.8000000000008" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cdcbca">▓</text>
+<text x="944.0000000000008" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c4c2c1">▓</text>
+<text x="963.2000000000008" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b0adab">▒</text>
+<text x="982.4000000000009" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c0bbb8">▒</text>
+<text x="1001.6000000000009" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bab9b5">▒</text>
+<text x="1020.800000000001" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bfbeba">▒</text>
+<text x="1040.000000000001" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#857d78">░</text>
+<text x="1059.200000000001" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7e736c">░</text>
+<text x="1078.400000000001" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#837974">░</text>
+<text x="1097.600000000001" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#6f6763">░</text>
+<text x="156.79999999999998" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#96918a">▒</text>
+<text x="175.99999999999997" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9b968f">▒</text>
+<text x="195.19999999999996" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#939089">▒</text>
+<text x="214.39999999999995" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#aca9a3">▒</text>
+<text x="233.59999999999994" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cdc9c8">▓</text>
+<text x="252.79999999999993" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d3d1d0">▓</text>
+<text x="271.99999999999994" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d1cfce">▓</text>
+<text x="291.19999999999993" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d7d5d5">▓</text>
+<text x="310.3999999999999" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#dad8d7">▓</text>
+<text x="329.5999999999999" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d7d5d4">▓</text>
+<text x="348.7999999999999" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d9d7d6">▓</text>
+<text x="367.9999999999999" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#dad8d7">▓</text>
+<text x="387.1999999999999" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d6d4d3">▓</text>
+<text x="406.39999999999986" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#dbd9d8">▓</text>
+<text x="425.59999999999985" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#e1dfde">▓</text>
+<text x="444.79999999999984" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#dedbda">▓</text>
+<text x="463.99999999999983" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#e2dfde">▓</text>
+<text x="483.1999999999998" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#e4e2e1">▓</text>
+<text x="502.3999999999998" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#dad7d6">▓</text>
+<text x="521.5999999999998" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#e2e1df">▓</text>
+<text x="540.7999999999998" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#e9e5df">▓</text>
+<text x="559.9999999999999" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cbb4ae">▒</text>
+<text x="579.1999999999999" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b59288">▒</text>
+<text x="598.4" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bfb4ab">▒</text>
+<text x="617.6" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9f928c">▒</text>
+<text x="636.8000000000001" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9f9188">▒</text>
+<text x="656.0000000000001" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a9a09a">▒</text>
+<text x="675.2000000000002" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b4b0ac">▒</text>
+<text x="694.4000000000002" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c7c3bf">▓</text>
+<text x="713.6000000000003" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d2cecc">▓</text>
+<text x="732.8000000000003" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d7d5d3">▓</text>
+<text x="752.0000000000003" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d9d8d6">▓</text>
+<text x="771.2000000000004" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d3d2d1">▓</text>
+<text x="790.4000000000004" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cdcbcb">▓</text>
+<text x="809.6000000000005" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cecbca">▓</text>
+<text x="828.8000000000005" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d2cece">▓</text>
+<text x="848.0000000000006" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cecaca">▓</text>
+<text x="867.2000000000006" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d2d0cf">▓</text>
+<text x="886.4000000000007" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cecccb">▓</text>
+<text x="905.6000000000007" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d1cfce">▓</text>
+<text x="924.8000000000008" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c3c1">▓</text>
+<text x="944.0000000000008" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#aeaba8">▒</text>
+<text x="963.2000000000008" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c8c6c3">▓</text>
+<text x="982.4000000000009" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b3adab">▒</text>
+<text x="1001.6000000000009" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c1c0bd">▓</text>
+<text x="1020.800000000001" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a5a19d">▒</text>
+<text x="1040.000000000001" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7d746e">░</text>
+<text x="1059.200000000001" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8a837e">▒</text>
+<text x="1078.400000000001" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#86807b">▒</text>
+<text x="1097.600000000001" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#69625e">░</text>
+<text x="156.79999999999998" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#98938c">▒</text>
+<text x="175.99999999999997" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9f9a94">▒</text>
+<text x="195.19999999999996" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#9a9791">▒</text>
+<text x="214.39999999999995" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c9c7c5">▓</text>
+<text x="233.59999999999994" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d3d1d0">▓</text>
+<text x="252.79999999999993" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d1cfce">▓</text>
+<text x="271.99999999999994" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d0cecd">▓</text>
+<text x="291.19999999999993" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d8d6d5">▓</text>
+<text x="310.3999999999999" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#dad8d7">▓</text>
+<text x="329.5999999999999" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d7d5d4">▓</text>
+<text x="348.7999999999999" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d8d6d5">▓</text>
+<text x="367.9999999999999" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#dddbda">▓▓</text>
+<text x="406.39999999999986" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#dbd9d8">▓▓</text>
+<text x="444.79999999999984" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#dedcdb">▓</text>
+<text x="463.99999999999983" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#e0dedd">▓</text>
+<text x="483.1999999999998" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#dfdddc">▓</text>
+<text x="502.3999999999998" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#dddcdb">▓</text>
+<text x="521.5999999999998" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#dededc">▓</text>
+<text x="540.7999999999998" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#e7e6e7">▓</text>
+<text x="559.9999999999999" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d2cece">▓</text>
+<text x="579.1999999999999" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b1ada6">▒</text>
+<text x="598.4" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#a9a09a">▒</text>
+<text x="617.6" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b6aea7">▒</text>
+<text x="636.8000000000001" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c0bab5">▒</text>
+<text x="656.0000000000001" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cec9c5">▓</text>
+<text x="675.2000000000002" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d4d1cf">▓</text>
+<text x="694.4000000000002" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d9d6d5">▓</text>
+<text x="713.6000000000003" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d9d7d6">▓▓</text>
+<text x="752.0000000000002" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d4d2d1">▓</text>
+<text x="771.2000000000003" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d0cecd">▓</text>
+<text x="790.4000000000003" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d3d1d0">▓</text>
+<text x="809.6000000000004" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d2cece">▓</text>
+<text x="828.8000000000004" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#ccc8c8">▓</text>
+<text x="848.0000000000005" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cfcbcb">▓</text>
+<text x="867.2000000000005" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#cecbcb">▓</text>
+<text x="886.4000000000005" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#d0cecd">▓</text>
+<text x="905.6000000000006" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c9c5c3">▓</text>
+<text x="924.8000000000006" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#adaaa7">▒</text>
+<text x="944.0000000000007" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c9c7c3">▓</text>
+<text x="963.2000000000007" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#bab5b3">▒</text>
+<text x="982.4000000000008" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b4acab">▒</text>
+<text x="1001.6000000000008" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#b8b7b4">▒</text>
+<text x="1020.8000000000009" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#8b8582">▒</text>
+<text x="1040.000000000001" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#897f7c">▒</text>
+<text x="1059.200000000001" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#938d89">▒</text>
+<text x="1078.400000000001" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#7b7671">░</text>
+<text x="1097.600000000001" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#746d69">░</text>
+<text x="1273.6" y="1257.6" font-size="117.6" font-family="Segoe UI, Arial, sans-serif" fill="#58a6ff" font-weight="700">Linus Torvalds</text>
+<text x="1273.6" y="1386.4" font-size="89.6" font-family="Consolas, Menlo, monospace" fill="#98c379">@torvalds</text>
+<text x="1273.6" y="1509.6" font-size="67.19999999999999" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">color ascii · 50 cols</text>
+</g>
+<g class="line-bottom">
+<text x="156.79999999999998" y="2022.4" font-size="78.39999999999999" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">torvalds@MacBook</tspan><tspan fill="#61afef"> ~ </tspan><tspan fill="#c5c8c6">% </tspan></text>
+<text class="cursor" x="1078.7839999999999" y="2022.4" fill="#c5c8c6" font-size="78.39999999999999" font-family="Consolas, Menlo, monospace">█</text>
+</g>
+</svg>

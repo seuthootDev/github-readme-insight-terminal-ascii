@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="272" height="216" viewBox="0 0 2718 2162.4" role="img" aria-label="ASCII avatar for torvalds">
+<title>torvalds — zsh</title>
+<defs>
+<style>
+  .line-fetch { opacity: 0; animation: show-fetch 2.4s linear forwards; }
+  .line-success { opacity: 0; animation: show-success 2.4s linear forwards; }
+  .line-ascii { opacity: 0; animation: show-ascii 2.4s linear forwards; }
+  .line-bottom { opacity: 0; animation: show-bottom 2.4s linear forwards; }
+  .cursor {
+    opacity: 1;
+    visibility: hidden;
+    animation: cursor-window 2.4s steps(1, end) forwards, blink 0.8s steps(1,end) infinite;
+  }
+  .typing-cursor {
+    opacity: 1;
+    animation: typing-cursor-window 2.4s steps(1, end) forwards;
+  }
+  @keyframes show-fetch { 0%, 49.5833% { opacity: 0; } 50.0000%, 100% { opacity: 1; } }
+  @keyframes show-success { 0%, 80.8333% { opacity: 0; } 81.2500%, 100% { opacity: 1; } }
+  @keyframes show-ascii { 0%, 85.0000% { opacity: 0; } 85.4167%, 100% { opacity: 1; } }
+  @keyframes show-bottom { 0%, 99.5833% { opacity: 0; } 100.0000%, 100% { opacity: 1; } }
+  @keyframes cursor-window { 0%, 99.5833% { visibility: hidden; } 100.0000%, 100% { visibility: visible; } }
+  @keyframes typing-cursor-window { 0%, 50.0000% { opacity: 1; } 50.4167%, 100% { opacity: 0; } }
+  @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+  </style>
+<clipPath id="ascii-command-typing-clip"><rect x="1082.7839999999999" y="313.6" width="0" height="112"><animate attributeName="width" values="0;1563.456;1563.456" keyTimes="0;0.500000;1" dur="2.4s" fill="freeze" /></rect></clipPath>
+<clipPath id="ascii-fetch-typing-clip"><rect x="156.79999999999998" y="431.20000000000005" width="0" height="100.8"><animate attributeName="width" values="0;0;1424.5759999999998;1424.5759999999998" keyTimes="0;0.500000;0.812500;1" dur="2.4s" fill="freeze" /></rect></clipPath>
+</defs>
+<rect x="78.39999999999999" y="78.39999999999999" width="2561.2" height="2056" rx="14" fill="#292929"/>
+<rect x="80.39999999999999" y="280" width="2557.2" height="1852.4" rx="0" fill="#1e1e1e"/>
+<rect x="80.39999999999999" y="80.39999999999999" width="2557.2" height="201.6" rx="12" fill="#3a3a3a"/>
+
+      <circle cx="156.79999999999998" cy="179.39999999999998" r="6" fill="#ff5f56" />
+      <circle cx="176.79999999999998" cy="179.39999999999998" r="6" fill="#ffbd2e" />
+      <circle cx="196.79999999999998" cy="179.39999999999998" r="6" fill="#27c93f" />
+    
+<text x="1359" y="201.59999999999997" font-size="67.19999999999999" font-family="Consolas, Menlo, monospace" fill="#a8a8a8" text-anchor="middle">torvalds — zsh</text>
+<text x="156.79999999999998" y="392" font-size="78.39999999999999" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">torvalds@MacBook</tspan><tspan fill="#61afef"> ~ </tspan><tspan fill="#c5c8c6">% </tspan></text>
+<text x="1082.7839999999999" y="392" fill="#c5c8c6" font-size="78.39999999999999" font-family="Consolas, Menlo, monospace" clip-path="url(#ascii-command-typing-clip)">github-cli ascii --user torvalds</text>
+<text class="typing-cursor" x="1082.7839999999999" y="392" fill="#c5c8c6" font-size="78.39999999999999" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="1082.7839999999999;2640.24;2640.24" keyTimes="0;0.500000;1" dur="2.4s" fill="freeze" /></text>
+<g class="line-fetch">
+<text x="156.79999999999998" y="509.6" fill="#8b949e" font-size="67.19999999999999" font-family="Consolas, Menlo, monospace" clip-path="url(#ascii-fetch-typing-clip)">Fetching avatar from GitHub API...</text>
+</g>
+<g class="line-success">
+<text x="156.79999999999998" y="616" font-size="67.19999999999999" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">✔ </tspan><tspan fill="#c5c8c6">Success! Generated mono ASCII avatar for &#39;torvalds&#39;.</tspan></text>
+</g>
+<g class="line-ascii">
+<text x="156.79999999999998" y="728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">                                 ░                </text>
+<text x="156.79999999999998" y="768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">                       ░░  ░░░░░░                 </text>
+<text x="156.79999999999998" y="808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">                            ░░░░░░                </text>
+<text x="156.79999999999998" y="848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">                               ░░░  ░             </text>
+<text x="156.79999999999998" y="888" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">       ░    ░     ░░             ░░░░░░           </text>
+<text x="156.79999999999998" y="928" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6"> ░░░░░░░░░░░    ░░░░░░░░          ░░░░░░░         </text>
+<text x="156.79999999999998" y="968" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">░░░░░░░░░░░    ░▒▒▒▒░░░░░          ░░░░░░         </text>
+<text x="156.79999999999998" y="1008" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">░░░░░░░░░░░   ▒▒▒▒▒▒▒▒░░░░          ░░░░░         </text>
+<text x="156.79999999999998" y="1048" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">░░░░░░░░░░░  ░▒▒▒▒▒▒▒▒▒░░░░         ░░░░░░        </text>
+<text x="156.79999999999998" y="1088" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">░░░░░░░░░░░  ░▒▒▒▒▒▒▒▒▒░░░░░        ░░░░░░░       </text>
+<text x="156.79999999999998" y="1128" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">░░░░░░░░░░░░ ░▒▒▒▒▒▒▒▒▒░░░         ░░░░░░░░░      </text>
+<text x="156.79999999999998" y="1168" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">░░░░░░░░▒▒▒▒ ░░░░░░░▒▒░░░░    ░    ░░░░░░░░░░░    </text>
+<text x="156.79999999999998" y="1208" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">░░░░░░░▒▒▒▒░░░▒▒▒░░░▒░  ░░░░ ░░░   ░░░░░░░░░░░░   </text>
+<text x="156.79999999999998" y="1248" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">░░░░░░▒▒▒▒░░▒▒▒▒▒▒▒▒▒░  ░░░░░░░░   ░░░░░░░░░░░░░  </text>
+<text x="156.79999999999998" y="1288" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░   ░░░░░░░░  ░░░░░░░░░░░░░  </text>
+<text x="156.79999999999998" y="1328" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░   ░░░░░░░  ░▒░▒▒░░░░░░░░░  </text>
+<text x="156.79999999999998" y="1368" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░   ░░░░░░░░▒▒▒▒░░░░░░░░░░  </text>
+<text x="156.79999999999998" y="1408" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░  ░░░░░░░░▒▒▒▒▒▒░░░░░░░░░ </text>
+<text x="156.79999999999998" y="1448" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░  ░▒▒▒▒▒▒░░░░░░░░░</text>
+<text x="156.79999999999998" y="1488" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░  ░▒░▒▒▒▒▒░░░░░░░░░</text>
+<text x="156.79999999999998" y="1528" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░  ▒▒▒▒▒▒▒▒▒░░░░░░░░░</text>
+<text x="156.79999999999998" y="1568" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒▒▒▒░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░</text>
+<text x="156.79999999999998" y="1608" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒░░░░░░░░▒▒▒▒▒▓▒▒▒▒▒▒▒▒▒▒░░░░</text>
+<text x="156.79999999999998" y="1648" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓░▒▒▒▒▒▒▒▒▒▒▒▓▒▓▓▓▓▒░▒▒▒▒▒▒▒▒▒▒░░░</text>
+<text x="156.79999999999998" y="1688" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓░░▒▒▒▒▒▒▒▒▒▓▒▒▓▓▒░░▒▒▒▓▓▓▒▒▒▒▒░░░</text>
+<text x="156.79999999999998" y="1728" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▒░▒▒▒▒▒▒▒▒▒▒▓▒▒▒▒▒▒▓▓▓▓▓▓▒▒▒▒░░░</text>
+<text x="156.79999999999998" y="1768" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▒▓▓▒░░▒▒▓▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒░░░░</text>
+<text x="156.79999999999998" y="1808" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▒▓▒▓▒░▒▒░</text>
+<text x="156.79999999999998" y="1848" font-size="32" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▓▒▒▒▒▒▒░░</text>
+<text x="1273.6" y="1257.6" font-size="117.6" font-family="Segoe UI, Arial, sans-serif" fill="#58a6ff" font-weight="700">Linus Torvalds</text>
+<text x="1273.6" y="1386.4" font-size="89.6" font-family="Consolas, Menlo, monospace" fill="#98c379">@torvalds</text>
+<text x="1273.6" y="1509.6" font-size="67.19999999999999" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">mono ascii · 50 cols</text>
+</g>
+<g class="line-bottom">
+<text x="156.79999999999998" y="2022.4" font-size="78.39999999999999" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">torvalds@MacBook</tspan><tspan fill="#61afef"> ~ </tspan><tspan fill="#c5c8c6">% </tspan></text>
+<text class="cursor" x="1078.7839999999999" y="2022.4" fill="#c5c8c6" font-size="78.39999999999999" font-family="Consolas, Menlo, monospace">█</text>
+</g>
+</svg>

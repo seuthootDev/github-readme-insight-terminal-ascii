@@ -7,7 +7,10 @@ import { Jimp } from "jimp";
 import { THEMES } from "./themes.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
-const ASCII_CHARS = " .:-=+*#%@";
+// Solid shade blocks stay legible at small render sizes; thin-stroke glyphs
+// (e.g. ".", "#", "%") blur into noise once cols is high enough for a
+// recognizable portrait, since each cell then renders only a few px wide.
+const ASCII_CHARS = " ░▒▓█";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -92,7 +95,7 @@ function resolveColorMode(input) {
 
 function clampCols(input) {
   const parsed = Number.parseInt(String(input ?? ""), 10);
-  if (!Number.isFinite(parsed)) return 100;
+  if (!Number.isFinite(parsed)) return 50;
   return Math.min(140, Math.max(24, parsed));
 }
 
@@ -253,31 +256,37 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
   const profile = await fetchAsciiProfile(githubId);
   const asciiRows = await imageToAsciiGrid(profile.avatarUrl, { cols, color });
 
-  // Sized for readability after the small default display scale (~0.28).
+  // The ascii portrait grid keeps its own fixed cell size regardless of
+  // output scale (block glyphs stay legible small). The surrounding chrome
+  // (prompt/log/name) does not have that property, so its layout is scaled
+  // up by chromeScale to stay legible at the small display scales the
+  // portrait can tolerate — cols is lowered instead to keep the total
+  // canvas (and therefore output size) from growing along with it.
   const fontSize = 32;
-  const uiFontSize = 28;
-  const titleFontSize = 24;
-  const nameFontSize = 42;
-  const loginFontSize = 32;
-  const metaFontSize = 24;
+  const chromeScale = 2.8;
+  const uiFontSize = 28 * chromeScale;
+  const titleFontSize = 24 * chromeScale;
+  const nameFontSize = 42 * chromeScale;
+  const loginFontSize = 32 * chromeScale;
+  const metaFontSize = 24 * chromeScale;
   const charW = fontSize * 0.6;
   const lineH = fontSize + 8;
   const asciiW = Math.ceil(cols * charW);
   const asciiH = Math.ceil(asciiRows.length * lineH);
 
-  const termX = 28;
-  const termY = 28;
-  const headerH = 72;
-  const promptY = 140;
-  const contentX = 56;
-  const contentY = 260;
-  const infoGap = 56;
-  const infoW = 420;
-  const contentH = Math.max(asciiH, 220);
-  const fetchLineY = promptY + 42;
-  const successLineY = fetchLineY + 38;
-  const bottomPromptY = contentY + contentH + 48;
-  const termBottomPadding = 40;
+  const termX = 28 * chromeScale;
+  const termY = 28 * chromeScale;
+  const headerH = 72 * chromeScale;
+  const promptY = 140 * chromeScale;
+  const contentX = 56 * chromeScale;
+  const contentY = 260 * chromeScale;
+  const infoGap = 56 * chromeScale;
+  const infoW = 420 * chromeScale;
+  const contentH = Math.max(asciiH, 220 * chromeScale);
+  const fetchLineY = promptY + 42 * chromeScale;
+  const successLineY = fetchLineY + 38 * chromeScale;
+  const bottomPromptY = contentY + contentH + 48 * chromeScale;
+  const termBottomPadding = 40 * chromeScale;
 
   const promptParts = buildAsciiPrompt(themeName, githubId);
   const commandText = buildAsciiCommand(themeName, githubId, color);
@@ -290,7 +299,7 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
   );
 
   const minWidthForPrompt = Math.ceil(contentX + maxPromptCommandWidth + 80);
-  const minWidthForContent = Math.ceil(contentX + asciiW + infoGap + infoW + 56);
+  const minWidthForContent = Math.ceil(contentX + asciiW + infoGap + infoW + 56 * chromeScale);
   const width = Math.max(1200, minWidthForPrompt, minWidthForContent);
   const termW = width - termX * 2;
   const termBodyTop = termY + headerH;
@@ -327,8 +336,8 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
 
   const controlsY = termY + Math.round(headerH / 2);
   const controlsX = themeName === "mac"
-    ? termX + 28
-    : (themeName === "windows" ? termX + termW - 74 : termX + termW - 62);
+    ? termX + 28 * chromeScale
+    : (themeName === "windows" ? termX + termW - 74 * chromeScale : termX + termW - 62 * chromeScale);
 
   const infoX = contentX + asciiW + infoGap;
   const infoCenterY = contentY + Math.floor(asciiH / 2);
@@ -340,18 +349,18 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
   svg.push(`<title>${escapeXml(theme.title(githubId))}</title>`);
   svg.push(`<defs>`);
   svg.push(`<style>${createAnimationCss(timeline)}</style>`);
-  svg.push(`<clipPath id="${commandClipId}"><rect x="${commandX}" y="${promptY - 28}" width="0" height="40"><animate attributeName="width" values="0;${commandW + 8};${commandW + 8}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></rect></clipPath>`);
-  svg.push(`<clipPath id="${fetchClipId}"><rect x="${promptStartX}" y="${fetchLineY - 28}" width="0" height="36"><animate attributeName="width" values="0;0;${fetchWidth + 8};${fetchWidth + 8}" keyTimes="0;${timeline.fetchStartRatio};${timeline.fetchEndRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></rect></clipPath>`);
+  svg.push(`<clipPath id="${commandClipId}"><rect x="${commandX}" y="${promptY - 28 * chromeScale}" width="0" height="${40 * chromeScale}"><animate attributeName="width" values="0;${commandW + 8};${commandW + 8}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></rect></clipPath>`);
+  svg.push(`<clipPath id="${fetchClipId}"><rect x="${promptStartX}" y="${fetchLineY - 28 * chromeScale}" width="0" height="${36 * chromeScale}"><animate attributeName="width" values="0;0;${fetchWidth + 8};${fetchWidth + 8}" keyTimes="0;${timeline.fetchStartRatio};${timeline.fetchEndRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></rect></clipPath>`);
   svg.push(`</defs>`);
 
   svg.push(`<rect x="${termX}" y="${termY}" width="${termW}" height="${termH}" rx="14" fill="${theme.frameBg}"/>`);
   svg.push(`<rect x="${termX + 2}" y="${termBodyTop}" width="${termW - 4}" height="${termH - headerH - 2}" rx="0" fill="${theme.bodyBg}"/>`);
   svg.push(`<rect x="${termX + 2}" y="${termY + 2}" width="${termW - 4}" height="${headerH}" rx="12" fill="${theme.headerBg}"/>`);
   if (themeName === "windows" && POWERSHELL_ICON_DATA_URI) {
-    svg.push(`<image href="${POWERSHELL_ICON_DATA_URI}" x="${termX + 18}" y="${termY + 18}" width="36" height="36" />`);
+    svg.push(`<image href="${POWERSHELL_ICON_DATA_URI}" x="${termX + 18 * chromeScale}" y="${termY + 18 * chromeScale}" width="${36 * chromeScale}" height="${36 * chromeScale}" />`);
   }
   svg.push(theme.controlsSvg(controlsX, controlsY));
-  svg.push(`<text x="${termX + termW / 2}" y="${termY + 44}" font-size="${titleFontSize}" font-family="Consolas, Menlo, monospace" fill="#a8a8a8" text-anchor="middle">${escapeXml(theme.title(githubId))}</text>`);
+  svg.push(`<text x="${termX + termW / 2}" y="${termY + 44 * chromeScale}" font-size="${titleFontSize}" font-family="Consolas, Menlo, monospace" fill="#a8a8a8" text-anchor="middle">${escapeXml(theme.title(githubId))}</text>`);
 
   svg.push(addTextSpans(promptParts, promptStartX, promptY, uiFontSize));
   svg.push(`<text x="${commandX}" y="${promptY}" fill="${theme.text}" font-size="${uiFontSize}" font-family="Consolas, Menlo, monospace" clip-path="url(#${commandClipId})">${escapeXml(commandText)}</text>`);
@@ -375,12 +384,12 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
     monoFill
   }));
 
-  svg.push(`<text x="${infoX}" y="${infoCenterY - 18}" font-size="${nameFontSize}" font-family="Segoe UI, Arial, sans-serif" fill="#58a6ff" font-weight="700">${escapeXml(profile.name)}</text>`);
-  svg.push(`<text x="${infoX}" y="${infoCenterY + 28}" font-size="${loginFontSize}" font-family="Consolas, Menlo, monospace" fill="${theme.accentSuccess}">@${escapeXml(profile.login)}</text>`);
-  svg.push(`<text x="${infoX}" y="${infoCenterY + 72}" font-size="${metaFontSize}" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">${color ? "color ascii" : "mono ascii"} · ${cols} cols</text>`);
+  svg.push(`<text x="${infoX}" y="${infoCenterY - 18 * chromeScale}" font-size="${nameFontSize}" font-family="Segoe UI, Arial, sans-serif" fill="#58a6ff" font-weight="700">${escapeXml(profile.name)}</text>`);
+  svg.push(`<text x="${infoX}" y="${infoCenterY + 28 * chromeScale}" font-size="${loginFontSize}" font-family="Consolas, Menlo, monospace" fill="${theme.accentSuccess}">@${escapeXml(profile.login)}</text>`);
+  svg.push(`<text x="${infoX}" y="${infoCenterY + 72 * chromeScale}" font-size="${metaFontSize}" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">${color ? "color ascii" : "mono ascii"} · ${cols} cols</text>`);
   if (profile.bio) {
     const bio = profile.bio.length > 48 ? `${profile.bio.slice(0, 45)}...` : profile.bio;
-    svg.push(`<text x="${infoX}" y="${infoCenterY + 112}" font-size="${metaFontSize}" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">${escapeXml(bio)}</text>`);
+    svg.push(`<text x="${infoX}" y="${infoCenterY + 112 * chromeScale}" font-size="${metaFontSize}" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">${escapeXml(bio)}</text>`);
   }
   svg.push(`</g>`);
 
