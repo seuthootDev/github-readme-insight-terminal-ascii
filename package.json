@@ -7,9 +7,25 @@
   "bin": {
     "github-graph-ascii": "src/cli.js"
   },
+  "files": [
+    "src",
+    "resources"
+  ],
   "scripts": {
     "cli": "node src/cli.js",
     "serve": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seuthootDev/github-readme-insight-terminal-ascii.git"
+  },
+  "homepage": "https://github-readme-insight-terminal-asci.vercel.app",
+  "bugs": {
+    "url": "https://github.com/seuthootDev/github-readme-insight-terminal-ascii/issues"
+  },
+  "author": "Jung Seunghoon (https://github.com/seuthootDev)",
+  "engines": {
+    "node": ">=18"
   },
   "keywords": [
     "github",

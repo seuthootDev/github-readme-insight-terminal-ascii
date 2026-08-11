@@ -1,5 +1,6 @@
 # GitHub README Insight Terminal ASCII
 
+[![npm version](https://img.shields.io/npm/v/github-readme-insight-terminal-ascii)](https://www.npmjs.com/package/github-readme-insight-terminal-ascii)
 [![Stars](https://img.shields.io/github/stars/seuthootDev/github-readme-insight-terminal-ascii?style=flat)](https://github.com/seuthootDev/github-readme-insight-terminal-ascii/stargazers)
 [![License](https://img.shields.io/github/license/seuthootDev/github-readme-insight-terminal-ascii)](LICENSE)
 [![Live demo](https://img.shields.io/website?url=https%3A%2F%2Fgithub-readme-insight-terminal-asci.vercel.app&label=live%20demo)](https://github-readme-insight-terminal-asci.vercel.app)
