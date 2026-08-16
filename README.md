@@ -17,15 +17,15 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 
 **theme=mac** — macOS Terminal (zsh)
 
-![mac](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=mac&scale=0.4)
+![mac](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=mac&scale=0.6)
 
 **theme=windows** — Windows PowerShell
 
-![windows](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=windows&scale=0.4)
+![windows](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=windows&scale=0.6)
 
 **theme=ubuntu** — Ubuntu GNOME Terminal
 
-![ubuntu](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=ubuntu&scale=0.4)
+![ubuntu](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=ubuntu&scale=0.6)
 
 **Stats**
 
