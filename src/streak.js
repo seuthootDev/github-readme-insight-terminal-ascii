@@ -7,6 +7,7 @@ import { THEMES } from "./themes.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
 const FLAME_COLOR = "#f0883e";
+const ASCII_ACCENT = "░▒▓█▓▒░";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -31,6 +32,12 @@ function escapeXml(text) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
+}
+
+function truncateFit(text, maxChars) {
+  const t = String(text);
+  if (t.length <= maxChars) return t;
+  return `${t.slice(0, Math.max(1, maxChars - 1))}…`;
 }
 
 function formatNumber(value) {
@@ -257,7 +264,6 @@ export async function generateStreakSvg(themeName, githubId, options = {}) {
   }
 
   const login = profile?.login || githubId;
-  const name = profile?.name || login;
 
   const termX = 20;
   const termY = 20;
@@ -265,7 +271,8 @@ export async function generateStreakSvg(themeName, githubId, options = {}) {
   const promptY = 86;
   const statsCardX = 44;
   const statsCardY = 152;
-  const statsCardH = 219;
+  const statsCardH = 168;
+  const stripWidth = 150;
   const fetchLineY = promptY + 22;
   const successLineY = fetchLineY + 20;
   const bottomPromptY = statsCardY + statsCardH + 28;
@@ -281,7 +288,7 @@ export async function generateStreakSvg(themeName, githubId, options = {}) {
     })
   );
   const minWidthForPrompt = Math.ceil(44 + maxPromptCommandWidth + 60);
-  const minWidthForCard = 560;
+  const minWidthForCard = 560 + stripWidth;
   const width = Math.max(minWidthForCard, minWidthForPrompt);
 
   const termW = width - 40;
@@ -294,14 +301,12 @@ export async function generateStreakSvg(themeName, githubId, options = {}) {
   const outputWidth = Math.round(width * outputScale);
   const outputHeight = Math.round(height * outputScale);
 
-  const paddingX = statsCardX + 24;
+  const contentX0 = statsCardX + stripWidth;
   const borderColor = "#30363d";
   const labelColor = "#8b949e";
   const valueColor = theme.text;
   const titleColor = "#58a6ff";
-  const subtitle = partial
-    ? `${escapeXml(name)} (${escapeXml(login)}) · limited API data`
-    : `${escapeXml(name)} (${escapeXml(login)})`;
+  const stripHandle = partial ? `@${login} *` : `@${login}`;
 
   const promptParts = promptParts0;
   const promptStartX = 44;
@@ -334,20 +339,19 @@ export async function generateStreakSvg(themeName, githubId, options = {}) {
     ? termX + 18
     : (themeName === "windows" ? termX + termW - 74 : termX + termW - 62);
 
-  const dividerY = statsCardY + 62;
-  const flameCenterY = statsCardY + 92;
-  const ringCenterY = statsCardY + 128;
+  const ringCenterY = statsCardY + 76;
   const ringRadius = 33;
+  const flameCenterY = ringCenterY - 36;
   const numberY = ringCenterY + 7;
   const labelY = ringCenterY + ringRadius + 22;
   const rangeY = labelY + 17;
 
-  const colW = statsCardW / 3;
-  const col0X = statsCardX + colW * 0.5;
-  const col1X = statsCardX + colW * 1.5;
-  const col2X = statsCardX + colW * 2.5;
-  const sepX0 = statsCardX + colW;
-  const sepX1 = statsCardX + colW * 2;
+  const colW = (statsCardW - stripWidth) / 3;
+  const col0X = contentX0 + colW * 0.5;
+  const col1X = contentX0 + colW * 1.5;
+  const col2X = contentX0 + colW * 2.5;
+  const sepX0 = contentX0 + colW;
+  const sepX1 = contentX0 + colW * 2;
 
   const svg = [];
   svg.push(`<?xml version="1.0" encoding="UTF-8"?>`);
@@ -381,13 +385,18 @@ export async function generateStreakSvg(themeName, githubId, options = {}) {
   svg.push(`</g>`);
 
   svg.push(`<g class="line-streak">`);
-  svg.push(`<rect x="${statsCardX}" y="${statsCardY}" width="${statsCardW}" height="${statsCardH}" rx="12" fill="${theme.bodyBg}" stroke="${borderColor}"/>`);
-  svg.push(`<text x="${paddingX}" y="${statsCardY + 28}" font-size="21" font-family="Segoe UI, Arial, sans-serif" fill="${titleColor}" font-weight="700">GitHub Streak</text>`);
-  svg.push(`<text x="${paddingX}" y="${statsCardY + 49}" font-size="13" font-family="Segoe UI, Arial, sans-serif" fill="${labelColor}">${subtitle}</text>`);
-  svg.push(`<line x1="${paddingX}" y1="${dividerY}" x2="${statsCardX + statsCardW - 24}" y2="${dividerY}" stroke="${borderColor}"/>`);
+  const stripCenterX = statsCardX + stripWidth / 2;
+  const stripCenterY = statsCardY + statsCardH / 2;
 
-  svg.push(`<line x1="${sepX0}" y1="${dividerY + 14}" x2="${sepX0}" y2="${statsCardY + statsCardH - 14}" stroke="${borderColor}" stroke-dasharray="3,4"/>`);
-  svg.push(`<line x1="${sepX1}" y1="${dividerY + 14}" x2="${sepX1}" y2="${statsCardY + statsCardH - 14}" stroke="${borderColor}" stroke-dasharray="3,4"/>`);
+  svg.push(`<rect x="${statsCardX}" y="${statsCardY}" width="${statsCardW}" height="${statsCardH}" rx="12" fill="${theme.bodyBg}" stroke="${borderColor}"/>`);
+  svg.push(`<text x="${stripCenterX}" y="${stripCenterY - 30}" font-size="13" font-family="Consolas, Menlo, monospace" fill="${titleColor}" text-anchor="middle" letter-spacing="2">${ASCII_ACCENT}</text>`);
+  svg.push(`<text x="${stripCenterX}" y="${stripCenterY - 9}" font-size="17" font-family="Consolas, Menlo, monospace" fill="${titleColor}" font-weight="700" text-anchor="middle" letter-spacing="1">GITHUB</text>`);
+  svg.push(`<text x="${stripCenterX}" y="${stripCenterY + 12}" font-size="17" font-family="Consolas, Menlo, monospace" fill="${titleColor}" font-weight="700" text-anchor="middle" letter-spacing="1">STREAK</text>`);
+  svg.push(`<text x="${stripCenterX}" y="${stripCenterY + 32}" font-size="11" font-family="Consolas, Menlo, monospace" fill="${labelColor}" text-anchor="middle">${escapeXml(truncateFit(stripHandle, 18))}</text>`);
+  svg.push(`<line x1="${contentX0}" y1="${statsCardY + 16}" x2="${contentX0}" y2="${statsCardY + statsCardH - 16}" stroke="${borderColor}"/>`);
+
+  svg.push(`<line x1="${sepX0}" y1="${statsCardY + 16}" x2="${sepX0}" y2="${statsCardY + statsCardH - 16}" stroke="${borderColor}" stroke-dasharray="3,4"/>`);
+  svg.push(`<line x1="${sepX1}" y1="${statsCardY + 16}" x2="${sepX1}" y2="${statsCardY + statsCardH - 16}" stroke="${borderColor}" stroke-dasharray="3,4"/>`);
 
   svg.push(`<text x="${col0X}" y="${numberY}" font-size="25" font-family="Segoe UI, Arial, sans-serif" fill="${valueColor}" font-weight="700" text-anchor="middle">${formatNumber(streakData.totalContributions)}</text>`);
   svg.push(`<text x="${col0X}" y="${labelY}" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="${labelColor}" text-anchor="middle">Total Contributions</text>`);

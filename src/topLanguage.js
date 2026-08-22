@@ -6,6 +6,7 @@ import { THEMES } from "./themes.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
 const GITHUB_GRAPHQL_URL = "https://api.github.com/graphql";
+const ASCII_ACCENT = "░▒▓█▓▒░";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -124,9 +125,19 @@ function clampTopN(input) {
 
 function cardHeightForTop(top) {
   const rowsPerColumn = Math.ceil(clampTopN(top) / 2);
-  const baseHeight = 188;
+  const topPad = 30;
+  const barH = 9;
+  const barToRowGap = 26;
   const rowHeight = 24;
-  return baseHeight + ((rowsPerColumn - 4) * rowHeight);
+  const bottomPad = 24;
+  const rowsBlockHeight = (rowsPerColumn - 1) * rowHeight + 16;
+  return topPad + barH + barToRowGap + rowsBlockHeight + bottomPad;
+}
+
+function truncateFit(text, maxChars) {
+  const t = String(text);
+  if (t.length <= maxChars) return t;
+  return `${t.slice(0, Math.max(1, maxChars - 1))}…`;
 }
 
 function resolveOutputScale(input) {
@@ -475,6 +486,7 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
 
   const rowHeight = 24;
   const statsCardH = cardHeightForTop(top);
+  const stripWidth = 150;
   const bottomPromptY = statsCardY + statsCardH + 28;
   const termBottomPadding = 24;
 
@@ -490,7 +502,7 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
     })
   );
   const minWidthForPrompt = Math.ceil(44 + maxPromptCommandWidth + 60);
-  const minWidthForCard = 620;
+  const minWidthForCard = 620 + stripWidth;
   const width = Math.max(minWidthForCard, minWidthForPrompt);
 
   const termW = width - 40;
@@ -503,21 +515,20 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   const outputWidth = Math.round(width * outputScale);
   const outputHeight = Math.round(height * outputScale);
 
-  const paddingX = statsCardX + 24;
+  const contentX0 = statsCardX + stripWidth;
+  const paddingX = contentX0 + 24;
   const stackedBarX = paddingX;
-  const stackedBarY = statsCardY + 68;
-  const stackedBarW = statsCardW - 48;
-  const rowStartY = statsCardY + 96;
+  const stackedBarY = statsCardY + 30;
+  const stackedBarW = statsCardW - stripWidth - 48;
+  const rowStartY = stackedBarY + 26;
   const leftColX = paddingX;
-  const rightColX = statsCardX + Math.round((width - 88) * 0.52);
+  const rightColX = contentX0 + Math.round((statsCardW - stripWidth) * 0.52);
 
   const borderColor = "#30363d";
   const labelColor = "#8b949e";
   const valueColor = theme.text;
   const titleColor = "#58a6ff";
-  const subtitle = partial
-    ? `${escapeXml(displayName)} (${escapeXml(fallbackLogin)}) · limited API data`
-    : `${escapeXml(displayName)} (${escapeXml(fallbackLogin)})`;
+  const stripHandle = partial ? `@${fallbackLogin} *` : `@${fallbackLogin}`;
 
   const promptStartX = 44;
   const commandX = promptStartX + promptW + 3;
@@ -585,10 +596,16 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(`Success! Generated language card for '${githubId}'.`)}</tspan></text>`);
   svg.push(`</g>`);
 
+  const stripCenterX = statsCardX + stripWidth / 2;
+  const stripCenterY = statsCardY + statsCardH / 2;
+
   svg.push(`<g class="line-languages">`);
   svg.push(`<rect x="${statsCardX}" y="${statsCardY}" width="${statsCardW}" height="${statsCardH}" rx="12" fill="${theme.bodyBg}" stroke="${borderColor}"/>`);
-  svg.push(`<text x="${paddingX}" y="${statsCardY + 34}" font-size="24" font-family="Segoe UI, Arial, sans-serif" fill="${titleColor}" font-weight="700">Top Languages</text>`);
-  svg.push(`<text x="${paddingX}" y="${statsCardY + 58}" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="${labelColor}">${subtitle} · top ${top}</text>`);
+  svg.push(`<text x="${stripCenterX}" y="${stripCenterY - 30}" font-size="13" font-family="Consolas, Menlo, monospace" fill="${titleColor}" text-anchor="middle" letter-spacing="2">${ASCII_ACCENT}</text>`);
+  svg.push(`<text x="${stripCenterX}" y="${stripCenterY - 9}" font-size="16" font-family="Consolas, Menlo, monospace" fill="${titleColor}" font-weight="700" text-anchor="middle" letter-spacing="1">TOP</text>`);
+  svg.push(`<text x="${stripCenterX}" y="${stripCenterY + 12}" font-size="16" font-family="Consolas, Menlo, monospace" fill="${titleColor}" font-weight="700" text-anchor="middle" letter-spacing="1">LANG</text>`);
+  svg.push(`<text x="${stripCenterX}" y="${stripCenterY + 32}" font-size="11" font-family="Consolas, Menlo, monospace" fill="${labelColor}" text-anchor="middle">${escapeXml(truncateFit(`${stripHandle} · top ${top}`, 20))}</text>`);
+  svg.push(`<line x1="${contentX0}" y1="${statsCardY + 16}" x2="${contentX0}" y2="${statsCardY + statsCardH - 16}" stroke="${borderColor}"/>`);
   svg.push(`<rect x="${stackedBarX}" y="${stackedBarY - 1}" width="${combinedBar.width}" height="9" rx="2" fill="none" stroke="${borderColor}"/>`);
   svg.push(combinedBar.markup);
 

@@ -6,6 +6,7 @@ import { fetchContributions, sumContributions } from "./githubContributions.js";
 import { THEMES } from "./themes.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
+const ASCII_ACCENT = "░▒▓█▓▒░";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -30,6 +31,12 @@ function escapeXml(text) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
+}
+
+function truncateFit(text, maxChars) {
+  const t = String(text);
+  if (t.length <= maxChars) return t;
+  return `${t.slice(0, Math.max(1, maxChars - 1))}…`;
 }
 
 function formatNumber(value) {
@@ -276,7 +283,8 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
   const promptY = 86;
   const statsCardX = 44;
   const statsCardY = 152;
-  const statsCardH = 188;
+  const statsCardH = 130;
+  const stripWidth = 150;
   const fetchLineY = promptY + 22;
   const successLineY = fetchLineY + 20;
   const bottomPromptY = statsCardY + statsCardH + 28;
@@ -292,7 +300,7 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
     })
   );
   const minWidthForPrompt = Math.ceil(44 + maxPromptCommandWidth + 60);
-  const minWidthForCard = 620;
+  const minWidthForCard = 620 + stripWidth;
   const width = Math.max(minWidthForCard, minWidthForPrompt);
 
   const termW = width - 40;
@@ -305,20 +313,19 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
   const outputWidth = Math.round(width * outputScale);
   const outputHeight = Math.round(height * outputScale);
 
-  const paddingX = statsCardX + 24;
-  const rowStartY = statsCardY + 92;
+  const contentX0 = statsCardX + stripWidth;
+  const paddingX = contentX0 + 24;
   const rowHeight = 28;
+  const rowStartY = statsCardY + statsCardH / 2 - rowHeight;
   const leftColX = paddingX;
-  const rightColX = statsCardX + Math.round((width - 88) * 0.52);
+  const rightColX = contentX0 + Math.round((statsCardW - stripWidth) * 0.52);
 
   const borderColor = "#30363d";
   const labelColor = "#8b949e";
   const valueColor = theme.text;
   const titleColor = "#58a6ff";
   const iconColor = theme.accentSuccess;
-  const subtitle = data.partial
-    ? `${escapeXml(data.name)} (${escapeXml(data.login)}) · limited API data`
-    : `${escapeXml(data.name)} (${escapeXml(data.login)})`;
+  const stripHandle = data.partial ? `@${data.login} *` : `@${data.login}`;
   const promptParts = promptParts0;
   const promptStartX = 44;
   const commandText = commandText0;
@@ -385,11 +392,16 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
   svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(`Success! Generated GitHub stats for '${githubId}'.`)}</tspan></text>`);
   svg.push(`</g>`);
 
+  const stripCenterX = statsCardX + stripWidth / 2;
+  const stripCenterY = statsCardY + statsCardH / 2;
+
   svg.push(`<g class="line-stats">`);
   svg.push(`<rect x="${statsCardX}" y="${statsCardY}" width="${statsCardW}" height="${statsCardH}" rx="12" fill="${theme.bodyBg}" stroke="${borderColor}"/>`);
-  svg.push(`<text x="${paddingX}" y="${statsCardY + 34}" font-size="25" font-family="Segoe UI, Arial, sans-serif" fill="${titleColor}" font-weight="700">GitHub Stats</text>`);
-  svg.push(`<text x="${paddingX}" y="${statsCardY + 58}" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="${labelColor}">${subtitle}</text>`);
-  svg.push(`<line x1="${paddingX}" y1="${statsCardY + 70}" x2="${statsCardX + statsCardW - 24}" y2="${statsCardY + 70}" stroke="${borderColor}"/>`);
+  svg.push(`<text x="${stripCenterX}" y="${stripCenterY - 30}" font-size="13" font-family="Consolas, Menlo, monospace" fill="${titleColor}" text-anchor="middle" letter-spacing="2">${ASCII_ACCENT}</text>`);
+  svg.push(`<text x="${stripCenterX}" y="${stripCenterY - 9}" font-size="17" font-family="Consolas, Menlo, monospace" fill="${titleColor}" font-weight="700" text-anchor="middle" letter-spacing="1">GITHUB</text>`);
+  svg.push(`<text x="${stripCenterX}" y="${stripCenterY + 12}" font-size="17" font-family="Consolas, Menlo, monospace" fill="${titleColor}" font-weight="700" text-anchor="middle" letter-spacing="1">STATS</text>`);
+  svg.push(`<text x="${stripCenterX}" y="${stripCenterY + 32}" font-size="11" font-family="Consolas, Menlo, monospace" fill="${labelColor}" text-anchor="middle">${escapeXml(truncateFit(stripHandle, 18))}</text>`);
+  svg.push(`<line x1="${contentX0}" y1="${statsCardY + 16}" x2="${contentX0}" y2="${statsCardY + statsCardH - 16}" stroke="${borderColor}"/>`);
 
   for (let i = 0; i < leftRows.length; i += 1) {
     const y = rowStartY + i * rowHeight;

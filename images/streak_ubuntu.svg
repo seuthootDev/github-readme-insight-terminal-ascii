@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="224" height="177" viewBox="0 0 560 443" role="img" aria-label="GitHub streak card for torvalds">
+<svg xmlns="http://www.w3.org/2000/svg" width="284" height="157" viewBox="0 0 710 392" role="img" aria-label="GitHub streak card for torvalds">
 <title>bash — torvalds@ubuntu: ~</title>
 <defs>
 <style>
@@ -27,15 +27,15 @@
 <clipPath id="streak-command-typing-clip"><rect x="206.60000000000002" y="70" width="0" height="22"><animate attributeName="width" values="0;219.9;219.9" keyTimes="0;0.500000;1" dur="2.4s" fill="freeze" /></rect></clipPath>
 <clipPath id="streak-fetch-typing-clip"><rect x="44" y="92" width="0" height="20"><animate attributeName="width" values="0;0;304.22;304.22" keyTimes="0;0.500000;0.812500;1" dur="2.4s" fill="freeze" /></rect></clipPath>
 </defs>
-<rect x="20" y="20" width="520" height="403" rx="10" fill="#1e1e1e"/>
-<rect x="21" y="60" width="518" height="362" rx="0" fill="#1e1e1e"/>
-<rect x="21" y="21" width="518" height="40" rx="8" fill="#2d2d2d"/>
+<rect x="20" y="20" width="670" height="352" rx="10" fill="#1e1e1e"/>
+<rect x="21" y="60" width="668" height="311" rx="0" fill="#1e1e1e"/>
+<rect x="21" y="21" width="668" height="40" rx="8" fill="#2d2d2d"/>
 
-      <circle cx="478" cy="40" r="7" fill="#5a5a5a" />
-      <circle cx="500" cy="40" r="7" fill="#5a5a5a" />
-      <circle cx="522" cy="40" r="7" fill="#e95420" />
+      <circle cx="628" cy="40" r="7" fill="#5a5a5a" />
+      <circle cx="650" cy="40" r="7" fill="#5a5a5a" />
+      <circle cx="672" cy="40" r="7" fill="#e95420" />
     
-<text x="280" y="45" font-size="13" font-family="Consolas, Menlo, monospace" fill="#a8a8a8" text-anchor="middle">bash — torvalds@ubuntu: ~</text>
+<text x="355" y="45" font-size="13" font-family="Consolas, Menlo, monospace" fill="#a8a8a8" text-anchor="middle">bash — torvalds@ubuntu: ~</text>
 <text x="44" y="86" font-size="15" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">torvalds@ubuntu</tspan><tspan fill="#c5c8c6">:~</tspan><tspan fill="#c5c8c6">$ </tspan></text>
 <text x="206.60000000000002" y="86" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace" clip-path="url(#streak-command-typing-clip)">gh streak view torvalds</text>
 <text class="typing-cursor" x="206.60000000000002" y="86" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="206.60000000000002;422.5;422.5" keyTimes="0;0.500000;1" dur="2.4s" fill="freeze" /></text>
@@ -46,26 +46,28 @@
 <text x="44" y="128" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">✔ </tspan><tspan fill="#c5c8c6">Success! Generated GitHub streak for &#39;torvalds&#39;.</tspan></text>
 </g>
 <g class="line-streak">
-<rect x="44" y="152" width="472" height="219" rx="12" fill="#1e1e1e" stroke="#30363d"/>
-<text x="68" y="180" font-size="21" font-family="Segoe UI, Arial, sans-serif" fill="#58a6ff" font-weight="700">GitHub Streak</text>
-<text x="68" y="201" font-size="13" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">Linus Torvalds (torvalds)</text>
-<line x1="68" y1="214" x2="492" y2="214" stroke="#30363d"/>
-<line x1="201.33333333333334" y1="228" x2="201.33333333333334" y2="357" stroke="#30363d" stroke-dasharray="3,4"/>
-<line x1="358.6666666666667" y1="228" x2="358.6666666666667" y2="357" stroke="#30363d" stroke-dasharray="3,4"/>
-<text x="122.66666666666667" y="287" font-size="25" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="middle">3,601</text>
-<text x="122.66666666666667" y="335" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e" text-anchor="middle">Total Contributions</text>
-<text x="122.66666666666667" y="352" font-size="10" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e" text-anchor="middle">Aug 17, 2025 - Aug 22, 2026</text>
-<path d="M280,228.25 C284.725,235.6 287.35,242.95 285.25,249.25 C280,252.4 274.75,249.25 272.65,242.95 C275.275,235.6 280,228.25 280,228.25 Z" fill="#f0883e"/>
-<circle cx="280" cy="280" r="33" fill="none" stroke="#f0883e" stroke-width="2.5"/>
-<text x="280" y="287" font-size="25" font-family="Segoe UI, Arial, sans-serif" fill="#f0883e" font-weight="700" text-anchor="middle">53</text>
-<text x="280" y="335" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e" text-anchor="middle">Current Streak</text>
-<text x="280" y="352" font-size="10" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e" text-anchor="middle">Jun 30, 2026 - Aug 21, 2026</text>
-<text x="437.33333333333337" y="287" font-size="25" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="middle">80</text>
-<text x="437.33333333333337" y="335" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e" text-anchor="middle">Longest Streak</text>
-<text x="437.33333333333337" y="352" font-size="10" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e" text-anchor="middle">Dec 19, 2025 - Mar 8, 2026</text>
+<rect x="44" y="152" width="622" height="168" rx="12" fill="#1e1e1e" stroke="#30363d"/>
+<text x="119" y="206" font-size="13" font-family="Consolas, Menlo, monospace" fill="#58a6ff" text-anchor="middle" letter-spacing="2">░▒▓█▓▒░</text>
+<text x="119" y="227" font-size="17" font-family="Consolas, Menlo, monospace" fill="#58a6ff" font-weight="700" text-anchor="middle" letter-spacing="1">GITHUB</text>
+<text x="119" y="248" font-size="17" font-family="Consolas, Menlo, monospace" fill="#58a6ff" font-weight="700" text-anchor="middle" letter-spacing="1">STREAK</text>
+<text x="119" y="268" font-size="11" font-family="Consolas, Menlo, monospace" fill="#8b949e" text-anchor="middle">@torvalds</text>
+<line x1="194" y1="168" x2="194" y2="304" stroke="#30363d"/>
+<line x1="351.33333333333337" y1="168" x2="351.33333333333337" y2="304" stroke="#30363d" stroke-dasharray="3,4"/>
+<line x1="508.6666666666667" y1="168" x2="508.6666666666667" y2="304" stroke="#30363d" stroke-dasharray="3,4"/>
+<text x="272.6666666666667" y="235" font-size="25" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="middle">3,601</text>
+<text x="272.6666666666667" y="283" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e" text-anchor="middle">Total Contributions</text>
+<text x="272.6666666666667" y="300" font-size="10" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e" text-anchor="middle">Aug 17, 2025 - Aug 22, 2026</text>
+<path d="M430,176.25 C434.725,183.6 437.35,190.95 435.25,197.25 C430,200.4 424.75,197.25 422.65,190.95 C425.275,183.6 430,176.25 430,176.25 Z" fill="#f0883e"/>
+<circle cx="430" cy="228" r="33" fill="none" stroke="#f0883e" stroke-width="2.5"/>
+<text x="430" y="235" font-size="25" font-family="Segoe UI, Arial, sans-serif" fill="#f0883e" font-weight="700" text-anchor="middle">53</text>
+<text x="430" y="283" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e" text-anchor="middle">Current Streak</text>
+<text x="430" y="300" font-size="10" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e" text-anchor="middle">Jun 30, 2026 - Aug 21, 2026</text>
+<text x="587.3333333333334" y="235" font-size="25" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="middle">80</text>
+<text x="587.3333333333334" y="283" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e" text-anchor="middle">Longest Streak</text>
+<text x="587.3333333333334" y="300" font-size="10" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e" text-anchor="middle">Dec 19, 2025 - Mar 8, 2026</text>
 </g>
 <g class="line-bottom">
-<text x="44" y="399" font-size="15" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">torvalds@ubuntu</tspan><tspan fill="#c5c8c6">:~</tspan><tspan fill="#c5c8c6">$ </tspan></text>
-<text class="cursor" x="203.60000000000002" y="399" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█</text>
+<text x="44" y="348" font-size="15" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">torvalds@ubuntu</tspan><tspan fill="#c5c8c6">:~</tspan><tspan fill="#c5c8c6">$ </tspan></text>
+<text class="cursor" x="203.60000000000002" y="348" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█</text>
 </g>
 </svg>
