@@ -254,7 +254,13 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
   const color = resolveColorMode(options.color ?? options.mode);
   const cols = clampCols(options.cols ?? options.size);
   const profile = await fetchAsciiProfile(githubId);
-  const asciiRows = await imageToAsciiGrid(profile.avatarUrl, { cols, color });
+
+  let asciiRows;
+  try {
+    asciiRows = await imageToAsciiGrid(profile.avatarUrl, { cols, color });
+  } catch (error) {
+    throw new Error(`Failed to process avatar image for '${githubId}': ${error?.message ?? error}`);
+  }
 
   // The ascii portrait grid keeps its own fixed cell size regardless of
   // output scale (block glyphs stay legible small). The surrounding chrome

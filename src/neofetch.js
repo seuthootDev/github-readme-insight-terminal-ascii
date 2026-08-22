@@ -215,12 +215,21 @@ function topLanguages(repos, limit = 3) {
 }
 
 async function fetchNeofetchData(username) {
+  // Contributions are scraped unauthenticated from github.com and reliably 404
+  // for a nonexistent user, so it's left unwrapped as the existence check.
+  // Everything else degrades gracefully (partial=true) if the API is flaky.
+  const contributions = await fetchContributions(username);
+  const contributionsYear = sumContributions(contributions);
+
   let profile = null;
   let repos = [];
-  let contributionsYear = 0;
   let partial = false;
 
-  profile = await fetchJson(`${GITHUB_API_BASE}/users/${encodeURIComponent(username)}`);
+  try {
+    profile = await fetchJson(`${GITHUB_API_BASE}/users/${encodeURIComponent(username)}`);
+  } catch {
+    partial = true;
+  }
 
   try {
     repos = await fetchAllRepos(username);
@@ -228,29 +237,22 @@ async function fetchNeofetchData(username) {
     partial = true;
   }
 
-  try {
-    const contributions = await fetchContributions(username);
-    contributionsYear = sumContributions(contributions);
-  } catch {
-    partial = true;
-  }
-
-  const login = profile.login || username;
-  const name = profile.name || login;
+  const login = profile?.login || username;
+  const name = profile?.name || login;
   const totalStars = repos.reduce((acc, repo) => acc + Number(repo.stargazers_count ?? 0), 0);
   const languages = topLanguages(repos, 3);
 
   return {
     login,
     name,
-    bio: profile.bio || "",
-    company: profile.company || "",
-    location: profile.location || "",
-    blog: profile.blog || "",
-    createdAt: profile.created_at,
-    publicRepos: profile.public_repos ?? repos.length,
-    followers: profile.followers ?? 0,
-    following: profile.following ?? 0,
+    bio: profile?.bio || "",
+    company: profile?.company || "",
+    location: profile?.location || "",
+    blog: profile?.blog || "",
+    createdAt: profile?.created_at,
+    publicRepos: profile?.public_repos ?? repos.length,
+    followers: profile?.followers ?? 0,
+    following: profile?.following ?? 0,
     totalStars,
     contributionsYear,
     languages,

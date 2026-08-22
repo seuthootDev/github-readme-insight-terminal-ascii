@@ -148,7 +148,14 @@ export async function generateGraphSvg(themeName, githubId, options = {}) {
   const { firstSunday, today } = getGraphRange();
   const grid = buildGridData(firstSunday, today, contributions);
 
-  const width = 1180;
+  const maxPromptCommandWidth = Math.max(
+    ...Object.keys(THEMES).map((themeVariant) => {
+      const variantTheme = THEMES[themeVariant];
+      return promptPartsWidth(variantTheme.prompt(githubId), 16) + 3 + textWidth(variantTheme.command(githubId), 16);
+    })
+  );
+  const minWidthForPrompt = Math.ceil(44 + maxPromptCommandWidth + 60);
+  const width = Math.max(1180, minWidthForPrompt);
   const termX = 20;
   const termY = 20;
   const headerH = 40;
