@@ -137,7 +137,7 @@ async function fetchAllRepos(username) {
   let page = 1;
 
   while (true) {
-    const url = `${GITHUB_API_BASE}/users/${encodeURIComponent(username)}/repos?type=all&per_page=100&page=${page}`;
+    const url = `${GITHUB_API_BASE}/users/${encodeURIComponent(username)}/repos?type=owner&per_page=100&page=${page}`;
     const chunk = await fetchJson(url);
     if (!Array.isArray(chunk) || chunk.length === 0) {
       break;
@@ -195,8 +195,9 @@ async function fetchStatsData(username) {
     partial = true;
   }
 
-  const totalStars = repos.reduce((acc, repo) => acc + Number(repo.stargazers_count ?? 0), 0);
-  const totalForks = repos.reduce((acc, repo) => acc + Number(repo.forks_count ?? 0), 0);
+  const ownedRepos = repos.filter((repo) => !repo.fork);
+  const totalStars = ownedRepos.reduce((acc, repo) => acc + Number(repo.stargazers_count ?? 0), 0);
+  const totalForks = ownedRepos.reduce((acc, repo) => acc + Number(repo.forks_count ?? 0), 0);
   const totalContributionsYear = sumContributions(contributions);
   const fallbackLogin = profile?.login || username;
 

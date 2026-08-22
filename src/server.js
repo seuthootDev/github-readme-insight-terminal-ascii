@@ -3,6 +3,7 @@ import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import express from "express";
+import { generateErrorSvg } from "./errorCard.js";
 import { generateSvg, getAvailableRenderTypes } from "./renderer.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -25,6 +26,12 @@ import { THEMES } from "./themes.js";
 const app = express();
 const PORT = Number.parseInt(process.env.PORT ?? "8000", 10);
 
+function sendErrorCard(res, { theme, user, type, message }) {
+  const svg = generateErrorSvg(theme, { user, type, message });
+  res.set("Cache-Control", "no-store");
+  res.type("image/svg+xml").status(200).send(svg);
+}
+
 async function handleSvgRequest(req, res, forcedType = null) {
   const user = String(req.query.user ?? "").trim();
   const theme = String(req.query.theme ?? "mac").trim() || "mac";
@@ -43,18 +50,20 @@ async function handleSvgRequest(req, res, forcedType = null) {
   const colsParsed = Number.parseInt(String(colsRaw ?? ""), 10);
   const cols = Number.isNaN(colsParsed) ? undefined : colsParsed;
 
+  const safeTheme = THEMES[theme] ? theme : "mac";
+
   if (!user) {
-    res.status(400).type("text/plain").send("Query parameter 'user' is required.");
+    sendErrorCard(res, { theme: safeTheme, user: "", type: renderType, message: "Query parameter 'user' is required." });
     return;
   }
 
   if (!THEMES[theme]) {
-    res.status(400).type("text/plain").send(`Unknown theme: ${theme}. Use one of: ${Object.keys(THEMES).join(", ")}`);
+    sendErrorCard(res, { theme: safeTheme, user, type: renderType, message: `Unknown theme: ${theme}. Use one of: ${Object.keys(THEMES).join(", ")}` });
     return;
   }
 
   if (!getAvailableRenderTypes().includes(renderType)) {
-    res.status(400).type("text/plain").send(`Unknown render type: ${renderType}. Use one of: ${getAvailableRenderTypes().join(", ")}`);
+    sendErrorCard(res, { theme: safeTheme, user, type: renderType, message: `Unknown render type: ${renderType}. Use one of: ${getAvailableRenderTypes().join(", ")}` });
     return;
   }
 
@@ -72,8 +81,7 @@ async function handleSvgRequest(req, res, forcedType = null) {
     res.type("image/svg+xml").send(svg);
   } catch (error) {
     const message = String(error?.message ?? error);
-    const isNotImplemented = message.toLowerCase().includes("not implemented");
-    res.status(isNotImplemented ? 501 : 502).type("text/plain").send(message);
+    sendErrorCard(res, { theme: safeTheme, user, type: renderType, message });
   }
 }
 
