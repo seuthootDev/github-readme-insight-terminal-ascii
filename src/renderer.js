@@ -2,6 +2,7 @@ import { generateAsciiAvatarSvg } from "./asciiAvatar.js";
 import { generateGraphSvg } from "./graph.js";
 import { generateNeofetchSvg } from "./neofetch.js";
 import { generateStatsSvg } from "./stats.js";
+import { generateStreakSvg } from "./streak.js";
 import { generateTopLanguageSvg } from "./topLanguage.js";
 
 const DEFAULT_RENDER_TYPE = "graph";
@@ -11,7 +12,8 @@ const RENDERERS = {
   stats: generateStatsSvg,
   "top-lang": generateTopLanguageSvg,
   ascii: generateAsciiAvatarSvg,
-  neofetch: generateNeofetchSvg
+  neofetch: generateNeofetchSvg,
+  streak: generateStreakSvg
 };
 
 function normalizeRenderType(type) {
