@@ -41,14 +41,14 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 
 **Streak** — current / longest contribution streak
 
-![mac streak](images/streak_mac.svg)
-![windows streak](images/streak_windows.svg)
-![ubuntu streak](images/streak_ubuntu.svg)
+![mac streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=mac&scale=0.6)
+![windows streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=windows&scale=0.6)
+![ubuntu streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=ubuntu&scale=0.6)
 
 **ASCII avatar** (mono / color)
 
-![mac ascii mono](images/ascii_mono.svg)
-![mac ascii color](images/ascii_color.svg)
+![mac ascii mono](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=torvalds&theme=mac&scale=0.15)
+![mac ascii color](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=torvalds&theme=mac&color=1&scale=0.15)
 
 **GitHub neofetch** — Octocat ASCII + profile fields (Repos, Stars, Contributions, …)
 
