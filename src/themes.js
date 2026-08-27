@@ -34,10 +34,10 @@ export const THEMES = {
     accentSuccess: "#98c379",
     prompt: macPrompt,
     command: (user) => `github-cli --user ${user} --theme mac`,
-    controlsSvg: (x, y) => `
-      <circle cx="${x}" cy="${y}" r="6" fill="#ff5f56" />
-      <circle cx="${x + 20}" cy="${y}" r="6" fill="#ffbd2e" />
-      <circle cx="${x + 40}" cy="${y}" r="6" fill="#27c93f" />
+    controlsSvg: (x, y, scale = 1) => `
+      <circle cx="${x}" cy="${y}" r="${6 * scale}" fill="#ff5f56" />
+      <circle cx="${x + 20 * scale}" cy="${y}" r="${6 * scale}" fill="#ffbd2e" />
+      <circle cx="${x + 40 * scale}" cy="${y}" r="${6 * scale}" fill="#27c93f" />
     `
   },
   windows: {
@@ -49,10 +49,10 @@ export const THEMES = {
     accentSuccess: "#98c379",
     prompt: windowsPrompt,
     command: (user) => `github-cli --user ${user} --theme windows`,
-    controlsSvg: (x, y) => `
-      <text x="${x}" y="${y + 5}" font-size="13" text-anchor="middle" fill="#c5c8c6">&#x2500;</text>
-      <text x="${x + 28}" y="${y + 5}" font-size="13" text-anchor="middle" fill="#c5c8c6">&#x25A1;</text>
-      <text x="${x + 56}" y="${y + 5}" font-size="13" text-anchor="middle" fill="#e74856">&#x2715;</text>
+    controlsSvg: (x, y, scale = 1) => `
+      <text x="${x}" y="${y + 5 * scale}" font-size="${13 * scale}" text-anchor="middle" fill="#c5c8c6">&#x2500;</text>
+      <text x="${x + 28 * scale}" y="${y + 5 * scale}" font-size="${13 * scale}" text-anchor="middle" fill="#c5c8c6">&#x25A1;</text>
+      <text x="${x + 56 * scale}" y="${y + 5 * scale}" font-size="${13 * scale}" text-anchor="middle" fill="#e74856">&#x2715;</text>
     `
   },
   ubuntu: {
@@ -64,10 +64,10 @@ export const THEMES = {
     accentSuccess: "#98c379",
     prompt: ubuntuPrompt,
     command: (user) => `./github-cli --target=${user}`,
-    controlsSvg: (x, y) => `
-      <circle cx="${x}" cy="${y}" r="7" fill="#5a5a5a" />
-      <circle cx="${x + 22}" cy="${y}" r="7" fill="#5a5a5a" />
-      <circle cx="${x + 44}" cy="${y}" r="7" fill="#e95420" />
+    controlsSvg: (x, y, scale = 1) => `
+      <circle cx="${x}" cy="${y}" r="${7 * scale}" fill="#5a5a5a" />
+      <circle cx="${x + 22 * scale}" cy="${y}" r="${7 * scale}" fill="#5a5a5a" />
+      <circle cx="${x + 44 * scale}" cy="${y}" r="${7 * scale}" fill="#e95420" />
     `
   }
 };

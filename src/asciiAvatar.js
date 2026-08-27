@@ -365,7 +365,7 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
   if (themeName === "windows" && POWERSHELL_ICON_DATA_URI) {
     svg.push(`<image href="${POWERSHELL_ICON_DATA_URI}" x="${termX + 18 * chromeScale}" y="${termY + 18 * chromeScale}" width="${36 * chromeScale}" height="${36 * chromeScale}" />`);
   }
-  svg.push(theme.controlsSvg(controlsX, controlsY));
+  svg.push(theme.controlsSvg(controlsX, controlsY, chromeScale));
   svg.push(`<text x="${termX + termW / 2}" y="${termY + 44 * chromeScale}" font-size="${titleFontSize}" font-family="Consolas, Menlo, monospace" fill="#a8a8a8" text-anchor="middle">${escapeXml(theme.title(githubId))}</text>`);
 
   svg.push(addTextSpans(promptParts, promptStartX, promptY, uiFontSize));
