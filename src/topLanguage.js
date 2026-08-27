@@ -123,8 +123,8 @@ function clampTopN(input) {
   return Math.min(12, Math.max(6, parsed));
 }
 
-function cardHeightForTop(top) {
-  const rowsPerColumn = Math.ceil(clampTopN(top) / 2);
+function cardHeightForRowCount(rowCount) {
+  const rowsPerColumn = Math.max(1, Math.ceil(Math.max(rowCount, 1) / 2));
   const topPad = 30;
   const barH = 9;
   const barToRowGap = 26;
@@ -485,7 +485,7 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   const successLineY = fetchLineY + 20;
 
   const rowHeight = 24;
-  const statsCardH = cardHeightForTop(top);
+  const statsCardH = cardHeightForRowCount(languageRows.length);
   const stripWidth = 150;
   const bottomPromptY = statsCardY + statsCardH + 28;
   const termBottomPadding = 24;
