@@ -195,15 +195,17 @@ function buildAsciiPrompt(themeName, githubId) {
   ];
 }
 
-function buildAsciiCommand(themeName, githubId, color) {
-  const modeFlag = color ? " --color" : "";
+function buildAsciiCommand(themeName, githubId) {
+  // Mode (mono/color) is already shown in the success/meta lines below, so
+  // the typed command stays identical between modes — that keeps the card
+  // width identical too instead of the color render growing wider.
   if (themeName === "windows") {
-    return `Get-GHAscii ${githubId}${modeFlag}`;
+    return `Get-GHAscii ${githubId}`;
   }
   if (themeName === "ubuntu") {
-    return `ascii-avatar ${githubId}${modeFlag}`;
+    return `ascii-avatar ${githubId}`;
   }
-  return `github-cli ascii --user ${githubId}${modeFlag}`;
+  return `github-cli ascii --user ${githubId}`;
 }
 
 function renderAsciiBlock(rows, { x, y, fontSize, charW, lineH, monoFill }) {
@@ -295,11 +297,11 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
   const termBottomPadding = 40 * chromeScale;
 
   const promptParts = buildAsciiPrompt(themeName, githubId);
-  const commandText = buildAsciiCommand(themeName, githubId, color);
+  const commandText = buildAsciiCommand(themeName, githubId);
   const maxPromptCommandWidth = Math.max(
     ...["mac", "windows", "ubuntu"].map((themeVariant) => {
       const p = buildAsciiPrompt(themeVariant, githubId);
-      const c = buildAsciiCommand(themeVariant, githubId, color);
+      const c = buildAsciiCommand(themeVariant, githubId);
       return promptPartsWidth(p, uiFontSize) + 3 + textWidth(c, uiFontSize);
     })
   );
