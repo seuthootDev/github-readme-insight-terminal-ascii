@@ -49,6 +49,8 @@ async function handleSvgRequest(req, res, forcedType = null) {
   const colsRaw = req.query.cols ?? req.query.size;
   const colsParsed = Number.parseInt(String(colsRaw ?? ""), 10);
   const cols = Number.isNaN(colsParsed) ? undefined : colsParsed;
+  const linesParsed = Number.parseInt(String(req.query.lines ?? ""), 10);
+  const lines = Number.isNaN(linesParsed) ? undefined : linesParsed;
 
   const safeTheme = THEMES[theme] ? theme : "mac";
 
@@ -75,7 +77,8 @@ async function handleSvgRequest(req, res, forcedType = null) {
       topN,
       scale,
       color,
-      cols
+      cols,
+      lines
     });
     res.set("Cache-Control", "public, max-age=1800");
     res.type("image/svg+xml").send(svg);

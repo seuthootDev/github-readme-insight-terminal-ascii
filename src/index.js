@@ -5,4 +5,6 @@ export { generateStatsSvg } from "./stats.js";
 export { generateTopLanguageSvg } from "./topLanguage.js";
 export { generateAsciiAvatarSvg } from "./asciiAvatar.js";
 export { generateNeofetchSvg } from "./neofetch.js";
+export { generateStreakSvg } from "./streak.js";
+export { generateGitLogSvg } from "./gitLog.js";
 export { generateSvg, getAvailableRenderTypes } from "./renderer.js";

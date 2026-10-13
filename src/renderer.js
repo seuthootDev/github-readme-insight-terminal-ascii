@@ -1,4 +1,5 @@
 import { generateAsciiAvatarSvg } from "./asciiAvatar.js";
+import { generateGitLogSvg } from "./gitLog.js";
 import { generateGraphSvg } from "./graph.js";
 import { generateNeofetchSvg } from "./neofetch.js";
 import { generateStatsSvg } from "./stats.js";
@@ -13,7 +14,8 @@ const RENDERERS = {
   "top-lang": generateTopLanguageSvg,
   ascii: generateAsciiAvatarSvg,
   neofetch: generateNeofetchSvg,
-  streak: generateStreakSvg
+  streak: generateStreakSvg,
+  "git-log": generateGitLogSvg
 };
 
 function normalizeRenderType(type) {
@@ -33,7 +35,8 @@ function resolveGenerateOptions(input, githubIdFallback) {
       topN: input.topN,
       scale: input.scale,
       color: input.color,
-      cols: input.cols
+      cols: input.cols,
+      lines: input.lines
     };
   }
 
@@ -44,17 +47,18 @@ function resolveGenerateOptions(input, githubIdFallback) {
     topN: undefined,
     scale: undefined,
     color: undefined,
-    cols: undefined
+    cols: undefined,
+    lines: undefined
   };
 }
 
 export async function generateSvg(input, githubIdFallback) {
-  const { type, themeName, githubId, topN, scale, color, cols } = resolveGenerateOptions(input, githubIdFallback);
+  const { type, themeName, githubId, topN, scale, color, cols, lines } = resolveGenerateOptions(input, githubIdFallback);
   const renderer = RENDERERS[type];
 
   if (!renderer) {
     throw new Error(`Unknown render type: ${type}. Use one of: ${getAvailableRenderTypes().join(", ")}`);
   }
 
-  return renderer(themeName, githubId, { topN, scale, color, cols });
+  return renderer(themeName, githubId, { topN, scale, color, cols, lines });
 }

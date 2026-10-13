@@ -10,7 +10,7 @@ A tool to generate **terminal-style ASCII SVGs** from your GitHub profile data.
 Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), you can embed it in your README or GitHub profile with a single URL.
 
 - **Themes**: macOS Terminal / Windows PowerShell / Ubuntu GNOME
-- **Types**: contribution graph · stats · top languages · streak · ASCII avatar · GitHub neofetch
+- **Types**: contribution graph · stats · top languages · streak · git log · ASCII avatar · GitHub neofetch
 - **CLI**: Run locally to print the graph and save SVG
 - **API**: `GET /svg?user=USER&theme=...` (default graph) or `GET /svg/:type?user=USER&theme=...`
 - **Tooltip**: Hover contribution cells to see date and count
@@ -45,6 +45,12 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 ![windows streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=windows&scale=0.6)
 ![ubuntu streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=ubuntu&scale=0.6)
 
+**Git log** — recent commits as `git log --oneline --graph`
+
+![mac git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=mac&scale=0.6)
+![windows git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=windows&scale=0.6)
+![ubuntu git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=ubuntu&scale=0.6)
+
 **ASCII avatar** (mono / color)
 
 ![mac ascii mono](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=torvalds&theme=mac&scale=0.15)
@@ -68,6 +74,7 @@ Pass a GitHub username to fetch profile data and render a terminal-style SVG in 
 | `stats` | Stars, PRs, issues, yearly contributions |
 | `top-lang` | Most used languages |
 | `streak` | Current streak, longest streak, and total contributions |
+| `git-log` | Recent commits (hash, repo, message, relative time) in `git log --oneline` style |
 | `ascii` | Profile photo as ASCII art |
 | `neofetch` | GitHub “neofetch” card — Octocat ASCII + fields like Name, Repos, Followers, Stars, Contributions, Languages |
 
@@ -113,6 +120,7 @@ npm run serve
 | stats | `http://127.0.0.1:8000/svg/stats?user=YOUR_GITHUB_ID&theme=mac` |
 | top-lang | `http://127.0.0.1:8000/svg/top-lang?user=YOUR_GITHUB_ID&theme=mac&top=8` |
 | streak | `http://127.0.0.1:8000/svg/streak?user=YOUR_GITHUB_ID&theme=mac` |
+| git-log | `http://127.0.0.1:8000/svg/git-log?user=YOUR_GITHUB_ID&theme=mac&lines=8` |
 | ascii | `http://127.0.0.1:8000/svg/ascii?user=YOUR_GITHUB_ID&theme=mac` |
 | ascii (color) | `http://127.0.0.1:8000/svg/ascii?user=YOUR_GITHUB_ID&theme=mac&color=1` |
 | neofetch | `http://127.0.0.1:8000/svg/neofetch?user=YOUR_GITHUB_ID&theme=mac&color=1` |
@@ -127,6 +135,7 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/graph?user=GITHUB_USE
 https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=GITHUB_USERNAME&theme=THEME
 https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=GITHUB_USERNAME&theme=THEME&top=8
 https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=GITHUB_USERNAME&theme=THEME
+https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=GITHUB_USERNAME&theme=THEME&lines=8
 https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=GITHUB_USERNAME&theme=THEME
 https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=GITHUB_USERNAME&theme=THEME&color=1
 https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=GITHUB_USERNAME&theme=THEME&color=1
@@ -138,6 +147,7 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=GITHUB_
 | `theme` | ❌ (default: `mac`) | `mac` / `windows` / `ubuntu` |
 | `top` | ❌ (`top-lang` only, default: `6`) | `6`–`12` |
 | `color` | ❌ (`ascii` / `neofetch`, default: mono) | `1` / `true` / `color` |
+| `lines` | ❌ (`git-log` only, default: `8`) | Number of commits `3`–`15` |
 | `cols` | ❌ (`ascii` only, default: `50`) | ASCII width `24`–`140` |
 | `scale` | ❌ (default: `1`, ascii: `0.28`) | Size multiplier `0.05`–`3` |
 
@@ -146,6 +156,7 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=GITHUB_
 ![GitHub stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=YOUR_GITHUB_ID&theme=mac)
 ![GitHub top languages](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=YOUR_GITHUB_ID&theme=mac&top=8)
 ![GitHub streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=YOUR_GITHUB_ID&theme=mac)
+![GitHub git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=YOUR_GITHUB_ID&theme=mac)
 ![ASCII avatar](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=YOUR_GITHUB_ID&theme=mac&color=1)
 ![GitHub neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=YOUR_GITHUB_ID&theme=mac&color=1)
 ```
