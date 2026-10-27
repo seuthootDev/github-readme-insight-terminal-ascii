@@ -1,4 +1,5 @@
 import { generateAsciiAvatarSvg } from "./asciiAvatar.js";
+import { generateDashboardSvg } from "./dashboard.js";
 import { generateGitLogSvg } from "./gitLog.js";
 import { generateGraphSvg } from "./graph.js";
 import { generateNeofetchSvg } from "./neofetch.js";
@@ -17,7 +18,8 @@ const RENDERERS = {
   neofetch: generateNeofetchSvg,
   streak: generateStreakSvg,
   "git-log": generateGitLogSvg,
-  "pr-issue": generatePrIssueSvg
+  "pr-issue": generatePrIssueSvg,
+  dashboard: generateDashboardSvg
 };
 
 function normalizeRenderType(type) {

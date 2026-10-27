@@ -8,4 +8,5 @@ export { generateNeofetchSvg } from "./neofetch.js";
 export { generateStreakSvg } from "./streak.js";
 export { generateGitLogSvg } from "./gitLog.js";
 export { generatePrIssueSvg } from "./prIssue.js";
+export { generateDashboardSvg } from "./dashboard.js";
 export { generateSvg, getAvailableRenderTypes } from "./renderer.js";

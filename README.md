@@ -10,7 +10,7 @@ A tool to generate **terminal-style ASCII SVGs** from your GitHub profile data.
 Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), you can embed it in your README or GitHub profile with a single URL.
 
 - **Themes**: macOS Terminal / Windows PowerShell / Ubuntu GNOME
-- **Types**: contribution graph · stats · top languages · streak · git log · PRs & issues · ASCII avatar · GitHub neofetch
+- **Types**: contribution graph · stats · top languages · streak · git log · PRs & issues · ASCII avatar · GitHub neofetch · dashboard
 - **CLI**: Run locally to print the graph and save SVG
 - **API**: `GET /svg?user=USER&theme=...` (default graph) or `GET /svg/:type?user=USER&theme=...`
 - **Tooltip**: Hover contribution cells to see date and count
@@ -57,6 +57,12 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 ![windows pr-issue](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=windows&scale=0.6)
 ![ubuntu pr-issue](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=ubuntu&scale=0.6)
 
+**Dashboard** — tmux-style split panes: profile, stats, streak, 26-week graph and languages in one window
+
+![mac dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=mac&scale=0.6)
+![windows dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=windows&scale=0.6)
+![ubuntu dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=ubuntu&scale=0.6)
+
 **ASCII avatar** (mono / color)
 
 ![mac ascii mono](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=torvalds&theme=mac&scale=0.15)
@@ -82,12 +88,13 @@ Pass a GitHub username to fetch profile data and render a terminal-style SVG in 
 | `streak` | Current streak, longest streak, and total contributions |
 | `git-log` | Recent commits (hash, repo, message, relative time) in `git log --oneline` style |
 | `pr-issue` | Recent public PRs and issues (state, repo, number, title, last update) in `gh search issues` style |
+| `dashboard` | tmux-style split screen with profile, stats, streak, a 26-week contribution graph and languages, drawn on a character grid with ASCII-art icons |
 | `ascii` | Profile photo as ASCII art |
 | `neofetch` | GitHub “neofetch” card — Octocat ASCII + fields like Name, Repos, Followers, Stars, Contributions, Languages |
 
 A **streak** is how many days in a row you've had at least one contribution — like a Duolingo streak, but for commits. `streak` shows your current streak (counting from today, or yesterday if today has no contributions yet), your longest streak ever, and total contributions, all computed from the last year of contribution data.
 
-Themes only change the terminal chrome (title bar, controls, colors).
+Themes only change the terminal chrome (title bar, controls, colors). The `dashboard` card also uses a palette per theme (One Dark / PowerShell Campbell / Ubuntu Tango).
 
 ---
 
@@ -129,6 +136,7 @@ npm run serve
 | streak | `http://127.0.0.1:8000/svg/streak?user=YOUR_GITHUB_ID&theme=mac` |
 | git-log | `http://127.0.0.1:8000/svg/git-log?user=YOUR_GITHUB_ID&theme=mac&lines=8` |
 | pr-issue | `http://127.0.0.1:8000/svg/pr-issue?user=YOUR_GITHUB_ID&theme=mac&lines=8` |
+| dashboard | `http://127.0.0.1:8000/svg/dashboard?user=YOUR_GITHUB_ID&theme=mac` |
 | ascii | `http://127.0.0.1:8000/svg/ascii?user=YOUR_GITHUB_ID&theme=mac` |
 | ascii (color) | `http://127.0.0.1:8000/svg/ascii?user=YOUR_GITHUB_ID&theme=mac&color=1` |
 | neofetch | `http://127.0.0.1:8000/svg/neofetch?user=YOUR_GITHUB_ID&theme=mac&color=1` |
@@ -145,6 +153,7 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=GITHUB_
 https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=GITHUB_USERNAME&theme=THEME
 https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=GITHUB_USERNAME&theme=THEME&lines=8
 https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=GITHUB_USERNAME&theme=THEME&lines=8
+https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=GITHUB_USERNAME&theme=THEME
 https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=GITHUB_USERNAME&theme=THEME
 https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=GITHUB_USERNAME&theme=THEME&color=1
 https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=GITHUB_USERNAME&theme=THEME&color=1
@@ -167,6 +176,7 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=GITHUB_
 ![GitHub streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=YOUR_GITHUB_ID&theme=mac)
 ![GitHub git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=YOUR_GITHUB_ID&theme=mac)
 ![GitHub PRs and issues](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=YOUR_GITHUB_ID&theme=mac)
+![GitHub dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=YOUR_GITHUB_ID&theme=mac&scale=0.7)
 ![ASCII avatar](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=YOUR_GITHUB_ID&theme=mac&color=1)
 ![GitHub neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=YOUR_GITHUB_ID&theme=mac&color=1)
 ```
@@ -184,7 +194,7 @@ To host your own instance:
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `GITHUB_TOKEN` (or `GH_TOKEN`) | Recommended | GitHub personal access token used for GitHub API calls (`stats`, `top-lang`, `streak`, `git-log`, `pr-issue`, `ascii`, `neofetch`). It needs no scopes, since only public data is read. Without it, requests share the 60 req/hour unauthenticated rate limit and cards will start failing quickly. |
+| `GITHUB_TOKEN` (or `GH_TOKEN`) | Recommended | GitHub personal access token used for GitHub API calls (`stats`, `top-lang`, `streak`, `git-log`, `pr-issue`, `ascii`, `neofetch`, `dashboard`). It needs no scopes, since only public data is read. Without it, requests share the 60 req/hour unauthenticated rate limit and cards will start failing quickly. |
 | `PORT` | ❌ (default: `8000`) | Port for the local server |
 | `LOG_GITHUB_TOKEN_USAGE` | ❌ | Set to `1` to log whether a token was used for each `stats` API call |
 
