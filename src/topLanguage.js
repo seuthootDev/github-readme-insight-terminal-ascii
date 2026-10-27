@@ -123,15 +123,17 @@ function clampTopN(input) {
   return Math.min(12, Math.max(6, parsed));
 }
 
+const BAR_TO_ROW_GAP = 40;
+
 function cardHeightForRowCount(rowCount) {
   const rowsPerColumn = Math.max(1, Math.ceil(Math.max(rowCount, 1) / 2));
   const topPad = 30;
-  const barH = 9;
-  const barToRowGap = 26;
   const rowHeight = 24;
-  const bottomPad = 24;
+  const bottomPad = 18;
   const rowsBlockHeight = (rowsPerColumn - 1) * rowHeight + 16;
-  return topPad + barH + barToRowGap + rowsBlockHeight + bottomPad;
+  // Keep enough room for the left strip (accent, TOP, LANG, handle) on short lists.
+  const minHeight = 124;
+  return Math.max(minHeight, topPad + BAR_TO_ROW_GAP + rowsBlockHeight + bottomPad);
 }
 
 function truncateFit(text, maxChars) {
@@ -522,7 +524,7 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   const stackedBarX = paddingX;
   const stackedBarY = statsCardY + 30;
   const stackedBarW = statsCardW - stripWidth - 48;
-  const rowStartY = stackedBarY + 26;
+  const rowStartY = stackedBarY + BAR_TO_ROW_GAP;
   const leftColX = paddingX;
   const rightColX = contentX0 + Math.round((statsCardW - stripWidth) * 0.52);
 
