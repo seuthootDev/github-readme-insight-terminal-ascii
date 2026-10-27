@@ -1,7 +1,7 @@
 {
   "name": "github-readme-insight-terminal-ascii",
-  "version": "1.1.0",
-  "description": "Terminal-style GitHub README cards as SVG: contribution graph, stats, top languages, streak, git log, ASCII avatar and neofetch (macOS / PowerShell / Ubuntu themes)",
+  "version": "1.2.0",
+  "description": "Terminal-style GitHub README cards as SVG: contribution graph, stats, top languages, streak, git log, PRs & issues, ASCII avatar and neofetch (macOS / PowerShell / Ubuntu themes)",
   "type": "module",
   "main": "src/index.js",
   "bin": {
@@ -43,7 +43,9 @@
     "streak",
     "neofetch",
     "git-log",
-    "ascii-art"
+    "ascii-art",
+    "pull-requests",
+    "issues"
   ],
   "license": "MIT",
   "dependencies": {
