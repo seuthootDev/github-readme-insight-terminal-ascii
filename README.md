@@ -64,9 +64,9 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 
 **Language history** — share of commits by language, year by year
 
-![mac lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=sindresorhus&theme=mac&scale=0.6)
-![windows lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=sindresorhus&theme=windows&scale=0.6)
-![ubuntu lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=sindresorhus&theme=ubuntu&scale=0.6)
+![mac lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=mac&scale=0.6)
+![windows lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=windows&scale=0.6)
+![ubuntu lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=ubuntu&scale=0.6)
 
 **Stats**
 
