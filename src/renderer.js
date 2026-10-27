@@ -2,6 +2,7 @@ import { generateAsciiAvatarSvg } from "./asciiAvatar.js";
 import { generateGitLogSvg } from "./gitLog.js";
 import { generateGraphSvg } from "./graph.js";
 import { generateNeofetchSvg } from "./neofetch.js";
+import { generatePrIssueSvg } from "./prIssue.js";
 import { generateStatsSvg } from "./stats.js";
 import { generateStreakSvg } from "./streak.js";
 import { generateTopLanguageSvg } from "./topLanguage.js";
@@ -15,7 +16,8 @@ const RENDERERS = {
   ascii: generateAsciiAvatarSvg,
   neofetch: generateNeofetchSvg,
   streak: generateStreakSvg,
-  "git-log": generateGitLogSvg
+  "git-log": generateGitLogSvg,
+  "pr-issue": generatePrIssueSvg
 };
 
 function normalizeRenderType(type) {
