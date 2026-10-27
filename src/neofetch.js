@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 
 import { fetchContributions, sumContributions } from "./githubContributions.js";
 import { THEMES } from "./themes.js";
+import { REDUCED_MOTION_CSS } from "./constants.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
 
@@ -577,7 +578,7 @@ export async function generateNeofetchSvg(themeName, githubId, options = {}) {
   svg.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${outputWidth}" height="${outputHeight}" viewBox="0 0 ${width} ${height}" role="img" aria-label="GitHub neofetch card for ${escapeXml(githubId)}">`);
   svg.push(`<title>${escapeXml(theme.title(githubId))}</title>`);
   svg.push(`<defs>`);
-  svg.push(`<style>${createAnimationCss(timeline)}</style>`);
+  svg.push(`<style>${createAnimationCss(timeline)}${REDUCED_MOTION_CSS}</style>`);
   svg.push(`<clipPath id="${commandClipId}"><rect x="${commandX}" y="${promptY - 16}" width="0" height="22"><animate attributeName="width" values="0;${commandW + 6};${commandW + 6}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></rect></clipPath>`);
   svg.push(`<clipPath id="${fetchClipId}"><rect x="${promptStartX}" y="${fetchLineY - 16}" width="0" height="20"><animate attributeName="width" values="0;0;${fetchWidth + 6};${fetchWidth + 6}" keyTimes="0;${timeline.fetchStartRatio};${timeline.fetchEndRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></rect></clipPath>`);
   svg.push(`</defs>`);

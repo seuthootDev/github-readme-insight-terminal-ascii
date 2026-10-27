@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import {
   DAY_LABELS,
   NUM_WEEKS,
+  REDUCED_MOTION_CSS,
   addDays,
   getGraphRange,
   levelFromCount,
@@ -210,7 +211,7 @@ export async function generateGraphSvg(themeName, githubId, options = {}) {
   svgParts.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${outputWidth}" height="${outputHeight}" viewBox="0 0 ${width} ${height}" role="img" aria-label="GitHub contribution graph for ${escapeXml(githubId)}">`);
   svgParts.push(`<title>${escapeXml(theme.title(githubId))}</title>`);
   svgParts.push(`<defs>`);
-  svgParts.push(`<style>${createAnimationCss(timeline)}</style>`);
+  svgParts.push(`<style>${createAnimationCss(timeline)}${REDUCED_MOTION_CSS}</style>`);
   svgParts.push(
     `<clipPath id="${commandClipId}"><rect x="${commandX}" y="${promptY - 16}" width="0" height="22"><animate attributeName="width" values="0;${commandWidth + 6};${commandWidth + 6}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></rect></clipPath>`
   );

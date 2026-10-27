@@ -63,3 +63,15 @@ export function buildMonthLine(firstSunday) {
 
   return monthChars.join("");
 }
+
+// Appended to every card's <style>: with "reduce motion" enabled, skip the typing/reveal
+// animations and show the final frame right away (SMIL typing clips are lifted via CSS).
+export const REDUCED_MOTION_CSS = `
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; }
+    [clip-path] { clip-path: none !important; }
+    [class*="line-"], .log-row, .list-row, .p0, .p1, .p2, .p3, .p4, .bar { opacity: 1 !important; }
+    .typing-cursor { visibility: hidden !important; }
+    .cursor { visibility: visible !important; opacity: 1 !important; }
+  }
+  `;

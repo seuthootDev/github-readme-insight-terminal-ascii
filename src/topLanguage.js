@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { THEMES } from "./themes.js";
+import { REDUCED_MOTION_CSS } from "./constants.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
 const GITHUB_GRAPHQL_URL = "https://api.github.com/graphql";
@@ -134,6 +135,27 @@ function cardHeightForRowCount(rowCount) {
   // Keep enough room for the left strip (accent, TOP, LANG, handle) on short lists.
   const minHeight = 124;
   return Math.max(minHeight, topPad + BAR_TO_ROW_GAP + rowsBlockHeight + bottomPad);
+}
+
+// "@handle · top 8" when it fits, otherwise just the handle (truncated if needed).
+function stripLabel(handle, top) {
+  const full = `${handle} · top ${top}`;
+  return full.length <= 20 ? full : truncateFit(handle, 20);
+}
+
+// Explain why no languages were found instead of a bare "no data" when GitHub refused the request.
+function emptyStateLines(error) {
+  const message = error?.message ?? "";
+  if (/rate limit/i.test(message)) {
+    return ["GitHub API rate limit exceeded", "Set GITHUB_TOKEN or GH_TOKEN to raise the limit."];
+  }
+  if (/forbidden|HTTP 401|HTTP 403/i.test(message)) {
+    return ["GitHub API request was refused", "Check that GITHUB_TOKEN / GH_TOKEN is valid."];
+  }
+  if (/not found|HTTP 404/i.test(message)) {
+    return ["GitHub user not found", ""];
+  }
+  return ["No language data found", ""];
 }
 
 function truncateFit(text, maxChars) {
@@ -451,17 +473,20 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   let repos = [];
   let languageRows = [];
   let partial = false;
+  let fetchError = null;
 
   try {
     profile = await fetchJson(`${GITHUB_API_BASE}/users/${encodeURIComponent(githubId)}`);
-  } catch {
+  } catch (error) {
     partial = true;
+    fetchError ??= error;
   }
 
   try {
     repos = await fetchAllRepos(githubId);
-  } catch {
+  } catch (error) {
     partial = true;
+    fetchError ??= error;
   }
 
   try {
@@ -471,8 +496,9 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
     } else {
       languageRows = aggregateLanguages(repos).slice(0, top);
     }
-  } catch {
+  } catch (error) {
     partial = true;
+    fetchError ??= error;
     languageRows = aggregateLanguages(repos).slice(0, top);
   }
 
@@ -575,7 +601,7 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   svg.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${outputWidth}" height="${outputHeight}" viewBox="0 0 ${width} ${height}" role="img" aria-label="Top languages card for ${escapeXml(githubId)}">`);
   svg.push(`<title>${escapeXml(theme.title(githubId))}</title>`);
   svg.push(`<defs>`);
-  svg.push(`<style>${createAnimationCss(timeline)}</style>`);
+  svg.push(`<style>${createAnimationCss(timeline)}${REDUCED_MOTION_CSS}</style>`);
   svg.push(`<clipPath id="${commandClipId}"><rect x="${commandX}" y="${promptY - 16}" width="0" height="22"><animate attributeName="width" values="0;${commandW + 6};${commandW + 6}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></rect></clipPath>`);
   svg.push(`<clipPath id="${fetchClipId}"><rect x="${promptStartX}" y="${fetchLineY - 16}" width="0" height="20"><animate attributeName="width" values="0;0;${fetchWidth + 6};${fetchWidth + 6}" keyTimes="0;${timeline.fetchStartRatio};${timeline.fetchEndRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></rect></clipPath>`);
   svg.push(`</defs>`);
@@ -597,8 +623,12 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   svg.push(`<text x="${promptStartX}" y="${fetchLineY}" fill="${palette.mute}" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#${fetchClipId})">${escapeXml(fetchText)}</text>`);
   svg.push(`</g>`);
 
+  const failed = languageRows.length === 0 && fetchError;
+  const statusLine = failed
+    ? `<tspan fill="${palette.red}">\u2716 </tspan><tspan fill="${theme.text}">${escapeXml(`Failed to fetch languages for '${githubId}'.`)}</tspan>`
+    : `<tspan fill="${palette.green}">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(`Success! Generated language card for '${githubId}'.`)}</tspan>`;
   svg.push(`<g class="line-success">`);
-  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="${palette.green}">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(`Success! Generated language card for '${githubId}'.`)}</tspan></text>`);
+  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="13" font-family="Consolas, Menlo, monospace">${statusLine}</text>`);
   svg.push(`</g>`);
 
   const stripCenterX = statsCardX + stripWidth / 2;
@@ -609,13 +639,17 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   svg.push(`<text x="${stripCenterX}" y="${stripCenterY - 30}" font-size="13" font-family="Consolas, Menlo, monospace" fill="${titleColor}" text-anchor="middle" letter-spacing="2">${ASCII_ACCENT}</text>`);
   svg.push(`<text x="${stripCenterX}" y="${stripCenterY - 9}" font-size="16" font-family="Consolas, Menlo, monospace" fill="${titleColor}" font-weight="700" text-anchor="middle" letter-spacing="1">TOP</text>`);
   svg.push(`<text x="${stripCenterX}" y="${stripCenterY + 12}" font-size="16" font-family="Consolas, Menlo, monospace" fill="${titleColor}" font-weight="700" text-anchor="middle" letter-spacing="1">LANG</text>`);
-  svg.push(`<text x="${stripCenterX}" y="${stripCenterY + 32}" font-size="11" font-family="Consolas, Menlo, monospace" fill="${labelColor}" text-anchor="middle">${escapeXml(truncateFit(`${stripHandle} · top ${top}`, 20))}</text>`);
+  svg.push(`<text x="${stripCenterX}" y="${stripCenterY + 32}" font-size="11" font-family="Consolas, Menlo, monospace" fill="${labelColor}" text-anchor="middle">${escapeXml(stripLabel(stripHandle, top))}</text>`);
   svg.push(`<line x1="${contentX0}" y1="${statsCardY + 16}" x2="${contentX0}" y2="${statsCardY + statsCardH - 16}" stroke="${borderColor}"/>`);
   svg.push(`<rect x="${stackedBarX}" y="${stackedBarY - 1}" width="${combinedBar.width}" height="9" rx="2" fill="none" stroke="${borderColor}"/>`);
   svg.push(combinedBar.markup);
 
   if (languageRows.length === 0) {
-    svg.push(`<text x="${paddingX}" y="${rowStartY + 10}" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="${labelColor}">No language data found</text>`);
+    const [emptyText, hintText] = emptyStateLines(fetchError);
+    svg.push(`<text x="${paddingX}" y="${rowStartY + 10}" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="${hintText ? palette.yellow : labelColor}">${escapeXml(emptyText)}</text>`);
+    if (hintText) {
+      svg.push(`<text x="${paddingX}" y="${rowStartY + 30}" font-size="12" font-family="Consolas, Menlo, monospace" fill="${labelColor}">${escapeXml(hintText)}</text>`);
+    }
   }
 
   for (let i = 0; i < leftRows.length; i += 1) {

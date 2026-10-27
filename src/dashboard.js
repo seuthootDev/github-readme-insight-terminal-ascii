@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { addDays, toIsoDate } from "./constants.js";
+import { addDays, toIsoDate, REDUCED_MOTION_CSS } from "./constants.js";
 import { fetchContributions, sumContributions } from "./githubContributions.js";
 import { THEMES } from "./themes.js";
 
@@ -564,7 +564,7 @@ export async function generateDashboardSvg(themeName, githubId, options = {}) {
   svg.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${Math.round(width * outputScale)}" height="${Math.round(height * outputScale)}" viewBox="0 0 ${width} ${height}" role="img" aria-label="GitHub dashboard card for ${escapeXml(githubId)}">`);
   svg.push(`<title>${escapeXml(theme.title(githubId))}</title>`);
   svg.push(`<defs>`);
-  svg.push(`<style>${createAnimationCss(timeline)}</style>`);
+  svg.push(`<style>${createAnimationCss(timeline)}${REDUCED_MOTION_CSS}</style>`);
   svg.push(`<clipPath id="${typingClipId}"><rect x="${commandX}" y="${promptY - 16}" width="0" height="22"><animate attributeName="width" values="0;${commandWidth + 6}" dur="${timeline.typingDuration}s" fill="freeze" /></rect></clipPath>`);
   svg.push(`</defs>`);
 
