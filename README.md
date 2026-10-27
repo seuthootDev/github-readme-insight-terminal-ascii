@@ -10,7 +10,7 @@ A tool to generate **terminal-style ASCII SVGs** from your GitHub profile data.
 Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), you can embed it in your README or GitHub profile with a single URL.
 
 - **Themes**: macOS Terminal / Windows PowerShell / Ubuntu GNOME
-- **Types**: contribution graph · stats · top languages · streak · git log · PRs & issues · ASCII avatar · GitHub neofetch · dashboard
+- **Types**: contribution graph · stats · top languages · streak · git log · PRs & issues · repo · language history · ASCII avatar · GitHub neofetch · dashboard
 - **CLI**: Run locally to print the graph and save SVG
 - **API**: `GET /svg?user=USER&theme=...` (default graph) or `GET /svg/:type?user=USER&theme=...`
 - **Tooltip**: Hover contribution cells to see date and count
@@ -56,6 +56,18 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 ![windows pr-issue](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=windows&scale=0.6)
 ![ubuntu pr-issue](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=ubuntu&scale=0.6)
 
+**Repo** — a single repository as `gh repo view`: stars, forks, language, license, latest release, topics and 52-week commit activity
+
+![mac repo](https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=mac&scale=0.6)
+![windows repo](https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=windows&scale=0.6)
+![ubuntu repo](https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=ubuntu&scale=0.6)
+
+**Language history** — share of commits by language, year by year
+
+![mac lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=sindresorhus&theme=mac&scale=0.6)
+![windows lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=sindresorhus&theme=windows&scale=0.6)
+![ubuntu lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=sindresorhus&theme=ubuntu&scale=0.6)
+
 **Stats**
 
 ![mac stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=mac&scale=0.6)
@@ -88,6 +100,8 @@ Pass a GitHub username to fetch profile data and render a terminal-style SVG in 
 | `streak` | Current streak, longest streak, and total contributions |
 | `git-log` | Recent commits (hash, repo, message, relative time) in `git log --oneline` style |
 | `pr-issue` | Recent public PRs and issues (state, repo, number, title, last update) in `gh search issues` style |
+| `repo` | One repository in `gh repo view` style: stars, forks, watchers, language, license, branch, latest release, topics and 52-week commit activity |
+| `lang-history` | Share of commits by language for each of the last N years, with the top two languages and the biggest shift (needs `GITHUB_TOKEN`) |
 | `dashboard` | tmux-style split screen with profile, stats, streak, a 26-week contribution graph and languages, drawn on a character grid with ASCII-art icons |
 | `ascii` | Profile photo as ASCII art |
 | `neofetch` | GitHub “neofetch” card — Octocat ASCII + fields like Name, Repos, Followers, Stars, Contributions, Languages |
@@ -137,6 +151,8 @@ npm run serve
 | git-log | `http://127.0.0.1:8000/svg/git-log?user=YOUR_GITHUB_ID&theme=mac&lines=8` |
 | pr-issue | `http://127.0.0.1:8000/svg/pr-issue?user=YOUR_GITHUB_ID&theme=mac&lines=8` |
 | dashboard | `http://127.0.0.1:8000/svg/dashboard?user=YOUR_GITHUB_ID&theme=mac` |
+| repo | `http://127.0.0.1:8000/svg/repo?repo=OWNER/REPO&theme=mac` |
+| lang-history | `http://127.0.0.1:8000/svg/lang-history?user=YOUR_GITHUB_ID&theme=mac&years=6` |
 | ascii | `http://127.0.0.1:8000/svg/ascii?user=YOUR_GITHUB_ID&theme=mac` |
 | ascii (color) | `http://127.0.0.1:8000/svg/ascii?user=YOUR_GITHUB_ID&theme=mac&color=1` |
 | neofetch | `http://127.0.0.1:8000/svg/neofetch?user=YOUR_GITHUB_ID&theme=mac&color=1` |
@@ -154,6 +170,8 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=GITHUB_US
 https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=GITHUB_USERNAME&theme=THEME&lines=8
 https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=GITHUB_USERNAME&theme=THEME&lines=8
 https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=GITHUB_USERNAME&theme=THEME
+https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=OWNER/REPO&theme=THEME
+https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=GITHUB_USERNAME&theme=THEME&years=6
 https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=GITHUB_USERNAME&theme=THEME
 https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=GITHUB_USERNAME&theme=THEME&color=1
 https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=GITHUB_USERNAME&theme=THEME&color=1
@@ -161,11 +179,13 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=GITHUB_
 
 | Query | Required | Description |
 |-------|----------|-------------|
-| `user` | ✅ | GitHub username |
+| `user` | ✅ (optional for `repo` when `repo=owner/name`) | GitHub username |
 | `theme` | ❌ (default: `mac`) | `mac` / `windows` / `ubuntu` |
 | `top` | ❌ (`top-lang` only, default: `6`) | `6`–`12` |
 | `color` | ❌ (`ascii` / `neofetch`, default: mono) | `1` / `true` / `color` (alias: `mode`) |
 | `lines` | ❌ (`git-log` / `pr-issue`, default: `8`) | Number of rows `3`–`15` |
+| `repo` | ✅ for `repo` | `owner/name`, or just `name` together with `user=owner` |
+| `years` | ❌ (`lang-history` only, default: `6`) | Number of years `3`–`10` |
 | `cols` | ❌ (`ascii` only, default: `50`) | ASCII width `24`–`140` (alias: `size`) |
 | `scale` | ❌ (default: `1`, ascii: `0.28`) | Size multiplier `0.05`–`3` |
 
@@ -177,6 +197,8 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=GITHUB_
 ![GitHub git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=YOUR_GITHUB_ID&theme=mac)
 ![GitHub PRs and issues](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=YOUR_GITHUB_ID&theme=mac)
 ![GitHub dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=YOUR_GITHUB_ID&theme=mac&scale=0.7)
+![GitHub repo](https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=YOUR_GITHUB_ID/YOUR_REPO&theme=mac)
+![GitHub language history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=YOUR_GITHUB_ID&theme=mac)
 ![ASCII avatar](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=YOUR_GITHUB_ID&theme=mac&color=1)
 ![GitHub neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=YOUR_GITHUB_ID&theme=mac&color=1)
 ```
@@ -194,7 +216,7 @@ To host your own instance:
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `GITHUB_TOKEN` (or `GH_TOKEN`) | Recommended | GitHub personal access token used for GitHub API calls (`stats`, `top-lang`, `streak`, `git-log`, `pr-issue`, `ascii`, `neofetch`, `dashboard`). It needs no scopes, since only public data is read. Without it, requests share the 60 req/hour unauthenticated rate limit and cards will start failing quickly. |
+| `GITHUB_TOKEN` (or `GH_TOKEN`) | Recommended | GitHub personal access token used for GitHub API calls (`stats`, `top-lang`, `streak`, `git-log`, `pr-issue`, `repo`, `lang-history`, `ascii`, `neofetch`, `dashboard`). It needs no scopes, since only public data is read. Without it, requests share the 60 req/hour unauthenticated rate limit and cards will start failing quickly. `lang-history` uses the GraphQL API and always requires a token. |
 | `PORT` | ❌ (default: `8000`) | Port for the local server |
 | `LOG_GITHUB_TOKEN_USAGE` | ❌ | Set to `1` to log whether a token was used for each `stats` API call |
 

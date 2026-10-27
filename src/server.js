@@ -33,7 +33,9 @@ function sendErrorCard(res, { theme, user, type, message }) {
 }
 
 async function handleSvgRequest(req, res, forcedType = null) {
-  const user = String(req.query.user ?? "").trim();
+  const repo = String(req.query.repo ?? "").trim() || undefined;
+  // The repo card can take everything from repo=owner/name, so user becomes optional there.
+  const user = String(req.query.user ?? "").trim() || (repo?.includes("/") ? repo.split("/")[0] : "");
   const theme = String(req.query.theme ?? "mac").trim() || "mac";
   const renderType = String(forcedType ?? req.params.type ?? "graph").trim().toLowerCase();
   const topRaw = req.query.top;
@@ -51,6 +53,8 @@ async function handleSvgRequest(req, res, forcedType = null) {
   const cols = Number.isNaN(colsParsed) ? undefined : colsParsed;
   const linesParsed = Number.parseInt(String(req.query.lines ?? ""), 10);
   const lines = Number.isNaN(linesParsed) ? undefined : linesParsed;
+  const yearsParsed = Number.parseInt(String(req.query.years ?? ""), 10);
+  const years = Number.isNaN(yearsParsed) ? undefined : yearsParsed;
 
   const safeTheme = THEMES[theme] ? theme : "mac";
 
@@ -78,7 +82,9 @@ async function handleSvgRequest(req, res, forcedType = null) {
       scale,
       color,
       cols,
-      lines
+      lines,
+      repo,
+      years
     });
     res.set("Cache-Control", "public, max-age=1800");
     res.type("image/svg+xml").send(svg);

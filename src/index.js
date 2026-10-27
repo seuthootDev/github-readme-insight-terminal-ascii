@@ -9,4 +9,6 @@ export { generateStreakSvg } from "./streak.js";
 export { generateGitLogSvg } from "./gitLog.js";
 export { generatePrIssueSvg } from "./prIssue.js";
 export { generateDashboardSvg } from "./dashboard.js";
+export { generateRepoCardSvg } from "./repoCard.js";
+export { generateLangHistorySvg } from "./langHistory.js";
 export { generateSvg, getAvailableRenderTypes } from "./renderer.js";

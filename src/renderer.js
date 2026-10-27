@@ -2,8 +2,10 @@ import { generateAsciiAvatarSvg } from "./asciiAvatar.js";
 import { generateDashboardSvg } from "./dashboard.js";
 import { generateGitLogSvg } from "./gitLog.js";
 import { generateGraphSvg } from "./graph.js";
+import { generateLangHistorySvg } from "./langHistory.js";
 import { generateNeofetchSvg } from "./neofetch.js";
 import { generatePrIssueSvg } from "./prIssue.js";
+import { generateRepoCardSvg } from "./repoCard.js";
 import { generateStatsSvg } from "./stats.js";
 import { generateStreakSvg } from "./streak.js";
 import { generateTopLanguageSvg } from "./topLanguage.js";
@@ -19,7 +21,9 @@ const RENDERERS = {
   streak: generateStreakSvg,
   "git-log": generateGitLogSvg,
   "pr-issue": generatePrIssueSvg,
-  dashboard: generateDashboardSvg
+  dashboard: generateDashboardSvg,
+  repo: generateRepoCardSvg,
+  "lang-history": generateLangHistorySvg
 };
 
 function normalizeRenderType(type) {
@@ -40,7 +44,9 @@ function resolveGenerateOptions(input, githubIdFallback) {
       scale: input.scale,
       color: input.color,
       cols: input.cols,
-      lines: input.lines
+      lines: input.lines,
+      repo: input.repo,
+      years: input.years
     };
   }
 
@@ -52,17 +58,19 @@ function resolveGenerateOptions(input, githubIdFallback) {
     scale: undefined,
     color: undefined,
     cols: undefined,
-    lines: undefined
+    lines: undefined,
+    repo: undefined,
+    years: undefined
   };
 }
 
 export async function generateSvg(input, githubIdFallback) {
-  const { type, themeName, githubId, topN, scale, color, cols, lines } = resolveGenerateOptions(input, githubIdFallback);
+  const { type, themeName, githubId, topN, scale, color, cols, lines, repo, years } = resolveGenerateOptions(input, githubIdFallback);
   const renderer = RENDERERS[type];
 
   if (!renderer) {
     throw new Error(`Unknown render type: ${type}. Use one of: ${getAvailableRenderTypes().join(", ")}`);
   }
 
-  return renderer(themeName, githubId, { topN, scale, color, cols, lines });
+  return renderer(themeName, githubId, { topN, scale, color, cols, lines, repo, years });
 }
