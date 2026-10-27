@@ -27,41 +27,17 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 
 ![ubuntu](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=ubuntu&scale=0.6)
 
-**Stats**
+**Dashboard** — tmux-style split panes: profile, stats, streak, 26-week graph and languages in one window
 
-![mac stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=mac&scale=0.6)
-![windows stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=windows&scale=0.6)
-![ubuntu stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=ubuntu&scale=0.6)
-
-**Top languages**
-
-![mac top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=mac&top=8&scale=0.6)
-![windows top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=windows&top=8&scale=0.6)
-![ubuntu top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=ubuntu&top=8&scale=0.6)
-
-**Streak** — current / longest contribution streak
-
-![mac streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=mac&scale=0.6)
-![windows streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=windows&scale=0.6)
-![ubuntu streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=ubuntu&scale=0.6)
+![mac dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=mac&scale=0.6)
+![windows dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=windows&scale=0.6)
+![ubuntu dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=ubuntu&scale=0.6)
 
 **Git log** — recent commits as `git log --oneline --graph`
 
 ![mac git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=mac&scale=0.6)
 ![windows git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=windows&scale=0.6)
 ![ubuntu git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=ubuntu&scale=0.6)
-
-**PRs & issues** — recent pull requests and issues as `gh search issues --include-prs`
-
-![mac pr-issue](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=mac&scale=0.6)
-![windows pr-issue](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=windows&scale=0.6)
-![ubuntu pr-issue](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=ubuntu&scale=0.6)
-
-**Dashboard** — tmux-style split panes: profile, stats, streak, 26-week graph and languages in one window
-
-![mac dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=mac&scale=0.6)
-![windows dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=windows&scale=0.6)
-![ubuntu dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=ubuntu&scale=0.6)
 
 **ASCII avatar** (mono / color)
 
@@ -73,6 +49,30 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 ![mac neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=mac&color=1&scale=0.6)
 ![windows neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=windows&color=1&scale=0.6)
 ![ubuntu neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=ubuntu&color=1&scale=0.6)
+
+**PRs & issues** — recent pull requests and issues as `gh search issues --include-prs`
+
+![mac pr-issue](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=mac&scale=0.6)
+![windows pr-issue](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=windows&scale=0.6)
+![ubuntu pr-issue](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=ubuntu&scale=0.6)
+
+**Stats**
+
+![mac stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=mac&scale=0.6)
+![windows stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=windows&scale=0.6)
+![ubuntu stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=ubuntu&scale=0.6)
+
+**Streak** — current / longest contribution streak
+
+![mac streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=mac&scale=0.6)
+![windows streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=windows&scale=0.6)
+![ubuntu streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=ubuntu&scale=0.6)
+
+**Top languages**
+
+![mac top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=mac&top=8&scale=0.6)
+![windows top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=windows&top=8&scale=0.6)
+![ubuntu top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=ubuntu&top=8&scale=0.6)
 
 ---
 
