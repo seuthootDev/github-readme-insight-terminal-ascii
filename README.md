@@ -146,9 +146,9 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=GITHUB_
 | `user` | ✅ | GitHub username |
 | `theme` | ❌ (default: `mac`) | `mac` / `windows` / `ubuntu` |
 | `top` | ❌ (`top-lang` only, default: `6`) | `6`–`12` |
-| `color` | ❌ (`ascii` / `neofetch`, default: mono) | `1` / `true` / `color` |
+| `color` | ❌ (`ascii` / `neofetch`, default: mono) | `1` / `true` / `color` (alias: `mode`) |
 | `lines` | ❌ (`git-log` only, default: `8`) | Number of commits `3`–`15` |
-| `cols` | ❌ (`ascii` only, default: `50`) | ASCII width `24`–`140` |
+| `cols` | ❌ (`ascii` only, default: `50`) | ASCII width `24`–`140` (alias: `size`) |
 | `scale` | ❌ (default: `1`, ascii: `0.28`) | Size multiplier `0.05`–`3` |
 
 ```markdown
@@ -165,7 +165,24 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=GITHUB_
 
 ## Deployment
 
-Deployed on **Vercel**.
+The public instance runs on **Vercel**. `src/server.js` exports the Express app, which Vercel picks up as a serverless function. Outside Vercel it listens on `PORT`.
+
+To host your own instance:
+
+1. Fork this repository and import it into Vercel (or run `npm run serve` on any Node.js 18+ host).
+2. Set the environment variables below. For local runs you can put them in a `.env` file at the repo root, which `src/server.js` loads automatically.
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `GITHUB_TOKEN` (or `GH_TOKEN`) | Recommended | GitHub personal access token used for GitHub API calls (`stats`, `top-lang`, `streak`, `git-log`, `ascii`, `neofetch`). It needs no scopes, since only public data is read. Without it, requests share the 60 req/hour unauthenticated rate limit and cards will start failing quickly. |
+| `PORT` | ❌ (default: `8000`) | Port for the local server |
+| `LOG_GITHUB_TOKEN_USAGE` | ❌ | Set to `1` to log whether a token was used for each `stats` API call |
+
+The `graph` card reads the public contribution calendar and does not need a token.
+
+### Caching
+
+Successful responses are sent with `Cache-Control: public, max-age=1800`, so cards may take up to **30 minutes** to reflect new activity. GitHub's image proxy (camo) can cache them for a while on top of that. Error cards are sent with `no-store`, so they are never cached.
 
 ---
 
