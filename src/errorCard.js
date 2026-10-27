@@ -66,27 +66,28 @@ function wrapText(text, maxCharsPerLine) {
 }
 
 function buildErrorPrompt(themeName, githubId) {
+  const palette = (THEMES[themeName] ?? THEMES.mac).palette;
   const user = githubId || "user";
   if (themeName === "windows") {
     return [
-      { text: "PS ", fill: "#c678dd" },
-      { text: `C:\\Users\\${user}`, fill: "#e5c07b" },
-      { text: "> ", fill: "#c5c8c6" }
+      { text: "PS ", fill: palette.purple },
+      { text: `C:\\Users\\${user}`, fill: palette.yellow },
+      { text: "> ", fill: palette.fg }
     ];
   }
 
   if (themeName === "ubuntu") {
     return [
-      { text: `${user}@ubuntu`, fill: "#98c379" },
-      { text: ":~", fill: "#c5c8c6" },
-      { text: "$ ", fill: "#c5c8c6" }
+      { text: `${user}@ubuntu`, fill: palette.green },
+      { text: ":~", fill: palette.fg },
+      { text: "$ ", fill: palette.fg }
     ];
   }
 
   return [
-    { text: `${user}@MacBook`, fill: "#98c379" },
-    { text: " ~ ", fill: "#61afef" },
-    { text: "% ", fill: "#c5c8c6" }
+    { text: `${user}@MacBook`, fill: palette.green },
+    { text: " ~ ", fill: palette.blue },
+    { text: "% ", fill: palette.fg }
   ];
 }
 
@@ -97,6 +98,7 @@ function buildErrorCommand(type, githubId) {
 }
 
 export function generateErrorSvg(themeName, options = {}) {
+  const palette = (THEMES[themeName] ?? THEMES.mac).palette;
   const theme = THEMES[themeName] ?? THEMES.mac;
   const safeThemeName = THEMES[themeName] ? themeName : "mac";
   const user = String(options.user ?? "").trim();
@@ -156,11 +158,11 @@ export function generateErrorSvg(themeName, options = {}) {
   svg.push(`<text x="${promptStartX}" y="${errorLabelY}" font-size="14" font-family="Consolas, Menlo, monospace"><tspan fill="#f85149">\u2717 </tspan><tspan fill="${theme.text}">Error</tspan></text>`);
   for (let i = 0; i < messageLines.length; i += 1) {
     const y = errorLinesStartY + i * lineHeight;
-    svg.push(`<text x="${promptStartX}" y="${y}" font-size="13" font-family="Consolas, Menlo, monospace" fill="#8b949e">${escapeXml(messageLines[i])}</text>`);
+    svg.push(`<text x="${promptStartX}" y="${y}" font-size="13" font-family="Consolas, Menlo, monospace" fill="${palette.mute}">${escapeXml(messageLines[i])}</text>`);
   }
 
   svg.push(addTextSpans(promptParts, promptStartX, bottomPromptY, 15));
-  svg.push(`<text x="${promptStartX + promptW}" y="${bottomPromptY}" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█</text>`);
+  svg.push(`<text x="${promptStartX + promptW}" y="${bottomPromptY}" fill="${palette.fg}" font-size="15" font-family="Consolas, Menlo, monospace">█</text>`);
 
   svg.push(`</svg>`);
   return svg.join("\n");

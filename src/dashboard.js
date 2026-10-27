@@ -25,7 +25,7 @@ const PALETTES = {
   mac: {
     fg: "#c5c8c6", dim: "#5c6370", mute: "#8b949e", green: "#98c379", blue: "#61afef",
     cyan: "#56b6c2", yellow: "#e5c07b", purple: "#c678dd", orange: "#d19a66",
-    border: "#4b5263", active: "#98c379", cat: "#61afef",
+    border: "#4b5263", active: "#98c379", cat: "#3fb950",
     bar: "#98c379", barText: "#0d1117",
     levels: ["#2d333b", "#0e4429", "#006d32", "#26a641", "#39d353"],
     blocks: ["#3b4252", "#bf616a", "#a3be8c", "#ebcb8b", "#81a1c1", "#b48ead", "#88c0d0", "#e5e9f0"]

@@ -4,7 +4,6 @@ import { fileURLToPath } from "node:url";
 
 import {
   DAY_LABELS,
-  GRAPH_COLORS,
   NUM_WEEKS,
   addDays,
   getGraphRange,
@@ -138,6 +137,7 @@ function resolveOutputScale(input) {
 }
 
 export async function generateGraphSvg(themeName, githubId, options = {}) {
+  const palette = (THEMES[themeName] ?? THEMES.mac).palette;
   const theme = THEMES[themeName];
   if (!theme) {
     throw new Error(`Unknown theme: ${themeName}. Use one of: ${Object.keys(THEMES).join(", ")}`);
@@ -229,14 +229,14 @@ export async function generateGraphSvg(themeName, githubId, options = {}) {
   svgParts.push(`<g>`);
   svgParts.push(addTextSpans(promptParts, promptStartX, promptY));
   svgParts.push(`<text x="${commandX}" y="${promptY}" fill="${theme.text}" font-size="16" font-family="Consolas, Menlo, monospace" clip-path="url(#${commandClipId})">${escapeXml(commandText)}</text>`);
-  svgParts.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="16" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandWidth + 2};${commandX + commandWidth + 2}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></text>`);
+  svgParts.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="${palette.fg}" font-size="16" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandWidth + 2};${commandX + commandWidth + 2}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></text>`);
   svgParts.push(`</g>`);
 
   const dateRange = `${formatDate(firstSunday)} ~ ${formatDate(today)}`;
   const dateRangeX = termX + termW - 24;
-  svgParts.push(`<text class="line-fetch" x="44" y="113" fill="#8b949e" font-size="16" font-family="Consolas, Menlo, monospace">Fetching data from GitHub API...</text>`);
+  svgParts.push(`<text class="line-fetch" x="44" y="113" fill="${palette.mute}" font-size="16" font-family="Consolas, Menlo, monospace">Fetching data from GitHub API...</text>`);
   svgParts.push(`<text class="line-success" x="44" y="136" fill="${theme.accentSuccess}" font-size="16" font-family="Consolas, Menlo, monospace">✔ Success! Generated contribution graph for '${escapeXml(githubId)}'.</text>`);
-  svgParts.push(`<text class="line-success" x="${dateRangeX}" y="136" fill="#8b949e" font-size="14" font-family="Consolas, Menlo, monospace" text-anchor="end">${dateRange}</text>`);
+  svgParts.push(`<text class="line-success" x="${dateRangeX}" y="136" fill="${palette.mute}" font-size="14" font-family="Consolas, Menlo, monospace" text-anchor="end">${dateRange}</text>`);
 
   svgParts.push(`<g class="line-graph">`);
   for (const monthItem of monthLabelItems) {
@@ -250,7 +250,7 @@ export async function generateGraphSvg(themeName, githubId, options = {}) {
     for (let col = 0; col < NUM_WEEKS; col += 1) {
       const cell = grid[row][col];
       const x = gridStartX + col * colStep;
-      const fill = GRAPH_COLORS[cell.level];
+      const fill = palette.graph[cell.level];
       const tooltip = cell.count > 0
         ? `${cell.iso} (${DAY_LABELS[row]}) — ${cell.count} contribution${cell.count === 1 ? "" : "s"}`
         : `${cell.iso} (${DAY_LABELS[row]}) — No contributions`;
@@ -262,20 +262,20 @@ export async function generateGraphSvg(themeName, githubId, options = {}) {
   const contribText = `${total} contribution${total === 1 ? "" : "s"} in the last year`;
   const footerY = 388;
   const legendY = footerY - 12;
-  svgParts.push(`<text x="44" y="${footerY}" fill="#8b949e" font-size="14" font-family="Consolas, Menlo, monospace">${contribText}</text>`);
-  svgParts.push(`<text x="930" y="${footerY}" fill="#8b949e" font-size="14" font-family="Consolas, Menlo, monospace">Less</text>`);
+  svgParts.push(`<text x="44" y="${footerY}" fill="${palette.mute}" font-size="14" font-family="Consolas, Menlo, monospace">${contribText}</text>`);
+  svgParts.push(`<text x="930" y="${footerY}" fill="${palette.mute}" font-size="14" font-family="Consolas, Menlo, monospace">Less</text>`);
 
   let legendX = 970;
-  for (const color of GRAPH_COLORS) {
+  for (const color of palette.graph) {
     svgParts.push(`<rect x="${legendX}" y="${legendY}" width="12" height="12" fill="${color}" rx="2" />`);
     legendX += 18;
   }
-  svgParts.push(`<text x="${legendX + 2}" y="${footerY}" fill="#8b949e" font-size="14" font-family="Consolas, Menlo, monospace">More</text>`);
+  svgParts.push(`<text x="${legendX + 2}" y="${footerY}" fill="${palette.mute}" font-size="14" font-family="Consolas, Menlo, monospace">More</text>`);
   svgParts.push(`</g>`);
 
   svgParts.push(`<g class="line-bottom">`);
   svgParts.push(addTextSpans(promptParts, promptStartX, bottomPromptY));
-  svgParts.push(`<text class="cursor" x="${promptStartX + promptWidth + promptCursorGap}" y="${bottomPromptY}" fill="#c5c8c6" font-size="16" font-family="Consolas, Menlo, monospace">█</text>`);
+  svgParts.push(`<text class="cursor" x="${promptStartX + promptWidth + promptCursorGap}" y="${bottomPromptY}" fill="${palette.fg}" font-size="16" font-family="Consolas, Menlo, monospace">█</text>`);
   svgParts.push(`</g>`);
 
   svgParts.push(`</svg>`);

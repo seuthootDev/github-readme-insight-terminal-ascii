@@ -6,7 +6,6 @@ import { fetchContributions } from "./githubContributions.js";
 import { THEMES } from "./themes.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
-const FLAME_COLOR = "#f0883e";
 const ASCII_ACCENT = "░▒▓█▓▒░";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -203,26 +202,27 @@ function computeStreaks(contributions) {
 }
 
 function buildStreakPrompt(themeName, githubId) {
+  const palette = (THEMES[themeName] ?? THEMES.mac).palette;
   if (themeName === "windows") {
     return [
-      { text: "PS ", fill: "#c678dd" },
-      { text: `C:\\Users\\${githubId}`, fill: "#e5c07b" },
-      { text: "> ", fill: "#c5c8c6" }
+      { text: "PS ", fill: palette.purple },
+      { text: `C:\\Users\\${githubId}`, fill: palette.yellow },
+      { text: "> ", fill: palette.fg }
     ];
   }
 
   if (themeName === "ubuntu") {
     return [
-      { text: `${githubId}@ubuntu`, fill: "#98c379" },
-      { text: ":~", fill: "#c5c8c6" },
-      { text: "$ ", fill: "#c5c8c6" }
+      { text: `${githubId}@ubuntu`, fill: palette.green },
+      { text: ":~", fill: palette.fg },
+      { text: "$ ", fill: palette.fg }
     ];
   }
 
   return [
-    { text: `${githubId}@MacBook`, fill: "#98c379" },
-    { text: " ~ ", fill: "#61afef" },
-    { text: "% ", fill: "#c5c8c6" }
+    { text: `${githubId}@MacBook`, fill: palette.green },
+    { text: " ~ ", fill: palette.blue },
+    { text: "% ", fill: palette.fg }
   ];
 }
 
@@ -247,6 +247,7 @@ function flamePath(cx, cy, scale = 1) {
 }
 
 export async function generateStreakSvg(themeName, githubId, options = {}) {
+  const palette = (THEMES[themeName] ?? THEMES.mac).palette;
   const theme = THEMES[themeName];
   if (!theme) {
     throw new Error(`Unknown theme: ${themeName}. Use one of: ${Object.keys(THEMES).join(", ")}`);
@@ -302,10 +303,10 @@ export async function generateStreakSvg(themeName, githubId, options = {}) {
   const outputHeight = Math.round(height * outputScale);
 
   const contentX0 = statsCardX + stripWidth;
-  const borderColor = "#30363d";
-  const labelColor = "#8b949e";
+  const borderColor = palette.border;
+  const labelColor = palette.mute;
   const valueColor = theme.text;
-  const titleColor = "#58a6ff";
+  const titleColor = palette.accent;
   const stripHandle = partial ? `@${login} *` : `@${login}`;
 
   const promptParts = promptParts0;
@@ -374,14 +375,14 @@ export async function generateStreakSvg(themeName, githubId, options = {}) {
 
   svg.push(addTextSpans(promptParts, promptStartX, promptY, 15));
   svg.push(`<text x="${commandX}" y="${promptY}" fill="${theme.text}" font-size="15" font-family="Consolas, Menlo, monospace" clip-path="url(#${commandClipId})">${escapeXml(commandText)}</text>`);
-  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandWidth + 2};${commandX + commandWidth + 2}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></text>`);
+  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="${palette.fg}" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandWidth + 2};${commandX + commandWidth + 2}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></text>`);
 
   svg.push(`<g class="line-fetch">`);
-  svg.push(`<text x="${promptStartX}" y="${fetchLineY}" fill="#8b949e" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#${fetchClipId})">${escapeXml(fetchText)}</text>`);
+  svg.push(`<text x="${promptStartX}" y="${fetchLineY}" fill="${palette.mute}" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#${fetchClipId})">${escapeXml(fetchText)}</text>`);
   svg.push(`</g>`);
 
   svg.push(`<g class="line-success">`);
-  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(`Success! Generated GitHub streak for '${githubId}'.`)}</tspan></text>`);
+  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="${palette.green}">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(`Success! Generated GitHub streak for '${githubId}'.`)}</tspan></text>`);
   svg.push(`</g>`);
 
   svg.push(`<g class="line-streak">`);
@@ -402,9 +403,9 @@ export async function generateStreakSvg(themeName, githubId, options = {}) {
   svg.push(`<text x="${col0X}" y="${labelY}" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="${labelColor}" text-anchor="middle">Total Contributions</text>`);
   svg.push(`<text x="${col0X}" y="${rangeY}" font-size="10" font-family="Segoe UI, Arial, sans-serif" fill="${labelColor}" text-anchor="middle">${escapeXml(formatRange(streakData.totalRange))}</text>`);
 
-  svg.push(`<path d="${flamePath(col1X, flameCenterY, 1.05)}" fill="${FLAME_COLOR}"/>`);
-  svg.push(`<circle cx="${col1X}" cy="${ringCenterY}" r="${ringRadius}" fill="none" stroke="${FLAME_COLOR}" stroke-width="2.5"/>`);
-  svg.push(`<text x="${col1X}" y="${numberY}" font-size="25" font-family="Segoe UI, Arial, sans-serif" fill="${FLAME_COLOR}" font-weight="700" text-anchor="middle">${formatNumber(streakData.currentStreak)}</text>`);
+  svg.push(`<path d="${flamePath(col1X, flameCenterY, 1.05)}" fill="${palette.orange}"/>`);
+  svg.push(`<circle cx="${col1X}" cy="${ringCenterY}" r="${ringRadius}" fill="none" stroke="${palette.orange}" stroke-width="2.5"/>`);
+  svg.push(`<text x="${col1X}" y="${numberY}" font-size="25" font-family="Segoe UI, Arial, sans-serif" fill="${palette.orange}" font-weight="700" text-anchor="middle">${formatNumber(streakData.currentStreak)}</text>`);
   svg.push(`<text x="${col1X}" y="${labelY}" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="${labelColor}" text-anchor="middle">Current Streak</text>`);
   svg.push(`<text x="${col1X}" y="${rangeY}" font-size="10" font-family="Segoe UI, Arial, sans-serif" fill="${labelColor}" text-anchor="middle">${escapeXml(formatRange(streakData.currentRange))}</text>`);
 
@@ -415,7 +416,7 @@ export async function generateStreakSvg(themeName, githubId, options = {}) {
 
   svg.push(`<g class="line-bottom">`);
   svg.push(addTextSpans(promptParts, promptStartX, bottomPromptY, 15));
-  svg.push(`<text class="cursor" x="${promptStartX + promptPartsWidth(promptParts, 15)}" y="${bottomPromptY}" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█</text>`);
+  svg.push(`<text class="cursor" x="${promptStartX + promptPartsWidth(promptParts, 15)}" y="${bottomPromptY}" fill="${palette.fg}" font-size="15" font-family="Consolas, Menlo, monospace">█</text>`);
   svg.push(`</g>`);
 
   svg.push(`</svg>`);

@@ -174,24 +174,25 @@ async function fetchAsciiProfile(githubId) {
 }
 
 function buildAsciiPrompt(themeName, githubId) {
+  const palette = (THEMES[themeName] ?? THEMES.mac).palette;
   if (themeName === "windows") {
     return [
-      { text: "PS ", fill: "#c678dd" },
-      { text: `C:\\Users\\${githubId}`, fill: "#e5c07b" },
-      { text: "> ", fill: "#c5c8c6" }
+      { text: "PS ", fill: palette.purple },
+      { text: `C:\\Users\\${githubId}`, fill: palette.yellow },
+      { text: "> ", fill: palette.fg }
     ];
   }
   if (themeName === "ubuntu") {
     return [
-      { text: `${githubId}@ubuntu`, fill: "#98c379" },
-      { text: ":~", fill: "#c5c8c6" },
-      { text: "$ ", fill: "#c5c8c6" }
+      { text: `${githubId}@ubuntu`, fill: palette.green },
+      { text: ":~", fill: palette.fg },
+      { text: "$ ", fill: palette.fg }
     ];
   }
   return [
-    { text: `${githubId}@MacBook`, fill: "#98c379" },
-    { text: " ~ ", fill: "#61afef" },
-    { text: "% ", fill: "#c5c8c6" }
+    { text: `${githubId}@MacBook`, fill: palette.green },
+    { text: " ~ ", fill: palette.blue },
+    { text: "% ", fill: palette.fg }
   ];
 }
 
@@ -248,6 +249,7 @@ function renderAsciiBlock(rows, { x, y, fontSize, charW, lineH, monoFill }) {
 }
 
 export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) {
+  const palette = (THEMES[themeName] ?? THEMES.mac).palette;
   const theme = THEMES[themeName];
   if (!theme) {
     throw new Error(`Unknown theme: ${themeName}. Use one of: ${Object.keys(THEMES).join(", ")}`);
@@ -372,14 +374,14 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
 
   svg.push(addTextSpans(promptParts, promptStartX, promptY, uiFontSize));
   svg.push(`<text x="${commandX}" y="${promptY}" fill="${theme.text}" font-size="${uiFontSize}" font-family="Consolas, Menlo, monospace" clip-path="url(#${commandClipId})">${escapeXml(commandText)}</text>`);
-  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="${uiFontSize}" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandW + 2};${commandX + commandW + 2}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></text>`);
+  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="${palette.fg}" font-size="${uiFontSize}" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandW + 2};${commandX + commandW + 2}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></text>`);
 
   svg.push(`<g class="line-fetch">`);
-  svg.push(`<text x="${promptStartX}" y="${fetchLineY}" fill="#8b949e" font-size="${metaFontSize}" font-family="Consolas, Menlo, monospace" clip-path="url(#${fetchClipId})">${escapeXml(fetchText)}</text>`);
+  svg.push(`<text x="${promptStartX}" y="${fetchLineY}" fill="${palette.mute}" font-size="${metaFontSize}" font-family="Consolas, Menlo, monospace" clip-path="url(#${fetchClipId})">${escapeXml(fetchText)}</text>`);
   svg.push(`</g>`);
 
   svg.push(`<g class="line-success">`);
-  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="${metaFontSize}" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(`Success! Generated ${modeLabel} ASCII avatar for '${githubId}'.`)}</tspan></text>`);
+  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="${metaFontSize}" font-family="Consolas, Menlo, monospace"><tspan fill="${palette.green}">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(`Success! Generated ${modeLabel} ASCII avatar for '${githubId}'.`)}</tspan></text>`);
   svg.push(`</g>`);
 
   svg.push(`<g class="line-ascii">`);
@@ -392,18 +394,18 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
     monoFill
   }));
 
-  svg.push(`<text x="${infoX}" y="${infoCenterY - 18 * chromeScale}" font-size="${nameFontSize}" font-family="Segoe UI, Arial, sans-serif" fill="#58a6ff" font-weight="700">${escapeXml(profile.name)}</text>`);
+  svg.push(`<text x="${infoX}" y="${infoCenterY - 18 * chromeScale}" font-size="${nameFontSize}" font-family="Segoe UI, Arial, sans-serif" fill="${palette.accent}" font-weight="700">${escapeXml(profile.name)}</text>`);
   svg.push(`<text x="${infoX}" y="${infoCenterY + 28 * chromeScale}" font-size="${loginFontSize}" font-family="Consolas, Menlo, monospace" fill="${theme.accentSuccess}">@${escapeXml(profile.login)}</text>`);
-  svg.push(`<text x="${infoX}" y="${infoCenterY + 72 * chromeScale}" font-size="${metaFontSize}" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">${color ? "color ascii" : "mono ascii"} · ${cols} cols</text>`);
+  svg.push(`<text x="${infoX}" y="${infoCenterY + 72 * chromeScale}" font-size="${metaFontSize}" font-family="Segoe UI, Arial, sans-serif" fill="${palette.mute}">${color ? "color ascii" : "mono ascii"} · ${cols} cols</text>`);
   if (profile.bio) {
     const bio = profile.bio.length > 48 ? `${profile.bio.slice(0, 45)}...` : profile.bio;
-    svg.push(`<text x="${infoX}" y="${infoCenterY + 112 * chromeScale}" font-size="${metaFontSize}" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">${escapeXml(bio)}</text>`);
+    svg.push(`<text x="${infoX}" y="${infoCenterY + 112 * chromeScale}" font-size="${metaFontSize}" font-family="Segoe UI, Arial, sans-serif" fill="${palette.mute}">${escapeXml(bio)}</text>`);
   }
   svg.push(`</g>`);
 
   svg.push(`<g class="line-bottom">`);
   svg.push(addTextSpans(promptParts, promptStartX, bottomPromptY, uiFontSize));
-  svg.push(`<text class="cursor" x="${promptStartX + promptPartsWidth(promptParts, uiFontSize)}" y="${bottomPromptY}" fill="#c5c8c6" font-size="${uiFontSize}" font-family="Consolas, Menlo, monospace">█</text>`);
+  svg.push(`<text class="cursor" x="${promptStartX + promptPartsWidth(promptParts, uiFontSize)}" y="${bottomPromptY}" fill="${palette.fg}" font-size="${uiFontSize}" font-family="Consolas, Menlo, monospace">█</text>`);
   svg.push(`</g>`);
 
   svg.push(`</svg>`);

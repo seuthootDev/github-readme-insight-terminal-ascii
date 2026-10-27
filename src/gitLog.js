@@ -13,11 +13,6 @@ const REPO_LABEL_MAX_CHARS = 16;
 const MAX_REPOS = 5;
 const ACTIVITY_EVENT_TYPES = new Set(["PushEvent", "PullRequestEvent", "CreateEvent"]);
 
-const GRAPH_COLOR = "#98c379";
-const HASH_COLOR = "#e5c07b";
-const REPO_COLOR = "#56b6c2";
-const TIME_COLOR = "#8b949e";
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const POWERSHELL_ICON_PATH = path.resolve(__dirname, "..", "resources", "PowerShell_icon.svg");
@@ -197,26 +192,27 @@ function repoLabel(commit, githubId) {
 }
 
 function buildGitLogPrompt(themeName, githubId) {
+  const palette = (THEMES[themeName] ?? THEMES.mac).palette;
   if (themeName === "windows") {
     return [
-      { text: "PS ", fill: "#c678dd" },
-      { text: `C:\\Users\\${githubId}`, fill: "#e5c07b" },
-      { text: "> ", fill: "#c5c8c6" }
+      { text: "PS ", fill: palette.purple },
+      { text: `C:\\Users\\${githubId}`, fill: palette.yellow },
+      { text: "> ", fill: palette.fg }
     ];
   }
 
   if (themeName === "ubuntu") {
     return [
-      { text: `${githubId}@ubuntu`, fill: "#98c379" },
-      { text: ":~", fill: "#c5c8c6" },
-      { text: "$ ", fill: "#c5c8c6" }
+      { text: `${githubId}@ubuntu`, fill: palette.green },
+      { text: ":~", fill: palette.fg },
+      { text: "$ ", fill: palette.fg }
     ];
   }
 
   return [
-    { text: `${githubId}@MacBook`, fill: "#98c379" },
-    { text: " ~ ", fill: "#61afef" },
-    { text: "% ", fill: "#c5c8c6" }
+    { text: `${githubId}@MacBook`, fill: palette.green },
+    { text: " ~ ", fill: palette.blue },
+    { text: "% ", fill: palette.fg }
   ];
 }
 
@@ -267,6 +263,7 @@ function createAnimationCss(timeline, rowCount) {
 }
 
 export async function generateGitLogSvg(themeName, githubId, options = {}) {
+  const palette = (THEMES[themeName] ?? THEMES.mac).palette;
   const theme = THEMES[themeName];
   if (!theme) {
     throw new Error(`Unknown theme: ${themeName}. Use one of: ${Object.keys(THEMES).join(", ")}`);
@@ -318,9 +315,9 @@ export async function generateGitLogSvg(themeName, githubId, options = {}) {
 
   const contentX0 = cardX + stripWidth;
   const contentRight = cardX + cardW - 20;
-  const borderColor = "#30363d";
-  const labelColor = "#8b949e";
-  const titleColor = "#58a6ff";
+  const borderColor = palette.border;
+  const labelColor = palette.mute;
+  const titleColor = palette.accent;
 
   const graphX = contentX0 + 20;
   const hashX = graphX + charW * 2;
@@ -387,14 +384,14 @@ export async function generateGitLogSvg(themeName, githubId, options = {}) {
 
   svg.push(addTextSpans(promptParts, promptStartX, promptY, 15));
   svg.push(`<text x="${commandX}" y="${promptY}" fill="${theme.text}" font-size="15" font-family="Consolas, Menlo, monospace" clip-path="url(#${commandClipId})">${escapeXml(commandText)}</text>`);
-  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandWidth + 2};${commandX + commandWidth + 2}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></text>`);
+  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="${palette.fg}" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandWidth + 2};${commandX + commandWidth + 2}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></text>`);
 
   svg.push(`<g class="line-fetch">`);
-  svg.push(`<text x="${promptStartX}" y="${fetchLineY}" fill="#8b949e" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#${fetchClipId})">${escapeXml(fetchText)}</text>`);
+  svg.push(`<text x="${promptStartX}" y="${fetchLineY}" fill="${palette.mute}" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#${fetchClipId})">${escapeXml(fetchText)}</text>`);
   svg.push(`</g>`);
 
   svg.push(`<g class="line-success">`);
-  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(successText)}</tspan></text>`);
+  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="${palette.green}">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(successText)}</tspan></text>`);
   svg.push(`</g>`);
 
   svg.push(`<g class="line-card">`);
@@ -408,7 +405,7 @@ export async function generateGitLogSvg(themeName, githubId, options = {}) {
   svg.push(`<line x1="${contentX0}" y1="${cardY + 16}" x2="${contentX0}" y2="${cardY + cardH - 16}" stroke="${borderColor}"/>`);
 
   if (commits.length === 0) {
-    svg.push(`<text x="${graphX}" y="${rowsTop}" font-size="${rowFontSize}" font-family="Consolas, Menlo, monospace"><tspan fill="#e06c75">fatal: </tspan><tspan fill="${theme.text}">your current branch does not have any commits yet</tspan></text>`);
+    svg.push(`<text x="${graphX}" y="${rowsTop}" font-size="${rowFontSize}" font-family="Consolas, Menlo, monospace"><tspan fill="${palette.red}">fatal: </tspan><tspan fill="${theme.text}">your current branch does not have any commits yet</tspan></text>`);
   }
   commits.forEach((commit, i) => {
     const y = rowsTop + i * rowH;
@@ -418,12 +415,12 @@ export async function generateGitLogSvg(themeName, githubId, options = {}) {
     const timeText = formatRelativeTime(commit.date, now);
     svg.push(`<g class="log-row row-${i}">`);
     if (graphGlyph) {
-      svg.push(`<text x="${graphX}" y="${y}" font-size="${rowFontSize}" font-family="Consolas, Menlo, monospace" fill="${GRAPH_COLOR}" font-weight="700">*</text>`);
+      svg.push(`<text x="${graphX}" y="${y}" font-size="${rowFontSize}" font-family="Consolas, Menlo, monospace" fill="${palette.green}" font-weight="700">*</text>`);
     }
-    svg.push(`<text x="${graphGlyph ? hashX : graphX}" y="${y}" font-size="${rowFontSize}" font-family="Consolas, Menlo, monospace" fill="${HASH_COLOR}">${escapeXml(commit.sha)}</text>`);
-    svg.push(`<text x="${graphGlyph ? repoX : repoX - charW * 2}" y="${y}" font-size="${rowFontSize}" font-family="Consolas, Menlo, monospace"><tspan fill="${HASH_COLOR}">(</tspan><tspan fill="${REPO_COLOR}">${escapeXml(repoText)}</tspan><tspan fill="${HASH_COLOR}">)</tspan></text>`);
+    svg.push(`<text x="${graphGlyph ? hashX : graphX}" y="${y}" font-size="${rowFontSize}" font-family="Consolas, Menlo, monospace" fill="${palette.yellow}">${escapeXml(commit.sha)}</text>`);
+    svg.push(`<text x="${graphGlyph ? repoX : repoX - charW * 2}" y="${y}" font-size="${rowFontSize}" font-family="Consolas, Menlo, monospace"><tspan fill="${palette.yellow}">(</tspan><tspan fill="${palette.cyan}">${escapeXml(repoText)}</tspan><tspan fill="${palette.yellow}">)</tspan></text>`);
     svg.push(`<text x="${graphGlyph ? messageX : messageX - charW * 2}" y="${y}" font-size="${rowFontSize}" font-family="Consolas, Menlo, monospace" fill="${theme.text}">${escapeXml(messageText)}</text>`);
-    svg.push(`<text x="${contentRight}" y="${y}" font-size="12" font-family="Consolas, Menlo, monospace" fill="${TIME_COLOR}" text-anchor="end">${escapeXml(timeText)}</text>`);
+    svg.push(`<text x="${contentRight}" y="${y}" font-size="12" font-family="Consolas, Menlo, monospace" fill="${palette.mute}" text-anchor="end">${escapeXml(timeText)}</text>`);
     svg.push(`</g>`);
   });
 
@@ -434,7 +431,7 @@ export async function generateGitLogSvg(themeName, githubId, options = {}) {
 
   svg.push(`<g class="line-bottom">`);
   svg.push(addTextSpans(promptParts, promptStartX, bottomPromptY, 15));
-  svg.push(`<text class="cursor" x="${promptStartX + promptPartsWidth(promptParts, 15)}" y="${bottomPromptY}" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█</text>`);
+  svg.push(`<text class="cursor" x="${promptStartX + promptPartsWidth(promptParts, 15)}" y="${bottomPromptY}" fill="${palette.fg}" font-size="15" font-family="Consolas, Menlo, monospace">█</text>`);
   svg.push(`</g>`);
 
   svg.push(`</svg>`);

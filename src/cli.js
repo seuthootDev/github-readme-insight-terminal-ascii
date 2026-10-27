@@ -5,7 +5,6 @@ import { fileURLToPath } from "node:url";
 
 import {
   DAY_LABELS,
-  GRAPH_COLORS,
   NUM_WEEKS,
   addDays,
   buildMonthLine,
@@ -58,7 +57,7 @@ function colorBlock(hex) {
   return `\x1b[38;2;${r};${g};${b}m■\x1b[0m`;
 }
 
-function printGrid(contributions) {
+function printGrid(contributions, palette) {
   const { firstSunday, today } = getGraphRange();
   const monthLine = buildMonthLine(firstSunday);
 
@@ -69,14 +68,14 @@ function printGrid(contributions) {
       const date = addDays(firstSunday, col * 7 + row);
       const count = date > today ? 0 : (contributions[toIsoDate(date)] ?? 0);
       const level = levelFromCount(count);
-      line += `${colorBlock(GRAPH_COLORS[level])} `;
+      line += `${colorBlock(palette.graph[level])} `;
     }
     console.log(line);
   }
 
   const total = sumContributions(contributions);
   const left = `${toIsoDate(firstSunday)} ~ ${toIsoDate(today)}`;
-  const legend = `Less ${GRAPH_COLORS.map(colorBlock).join(" ")} More`;
+  const legend = `Less ${palette.graph.map(colorBlock).join(" ")} More`;
   console.log(`  ${left}`);
   console.log(`  ${total} contribution${total === 1 ? "" : "s"} in the last year  ${legend}`);
 }
@@ -104,7 +103,7 @@ async function main() {
 
   try {
     const contributions = await fetchContributions(args.user);
-    printGrid(contributions);
+    printGrid(contributions, THEMES[args.theme].palette);
 
     const svg = await generateSvg(args.theme, args.user);
     const output = args.output ?? `${args.theme}_style.svg`;

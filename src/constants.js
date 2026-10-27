@@ -1,6 +1,5 @@
 export const NUM_WEEKS = 52;
 export const DAY_LABELS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-export const GRAPH_COLORS = ["#2d333b", "#0e4429", "#26a641", "#39d353"];
 
 export function levelFromCount(count) {
   if (count <= 0) return 0;

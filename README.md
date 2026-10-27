@@ -94,7 +94,7 @@ Pass a GitHub username to fetch profile data and render a terminal-style SVG in 
 
 A **streak** is how many days in a row you've had at least one contribution — like a Duolingo streak, but for commits. `streak` shows your current streak (counting from today, or yesterday if today has no contributions yet), your longest streak ever, and total contributions, all computed from the last year of contribution data.
 
-Themes only change the terminal chrome (title bar, controls, colors). The `dashboard` card also uses a palette per theme (One Dark / PowerShell Campbell / Ubuntu Tango).
+Each theme has its own color palette shared by every card: `mac` = One Dark with GitHub green, `windows` = PowerShell Campbell with blue, `ubuntu` = Tango with Ubuntu orange/aubergine. The contribution graph, PR/issue states, git log, and accent strips all follow it.
 
 ---
 

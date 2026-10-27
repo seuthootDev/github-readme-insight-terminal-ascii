@@ -233,26 +233,27 @@ function buildStatsRows(data) {
 }
 
 function buildStatsPrompt(themeName, githubId) {
+  const palette = (THEMES[themeName] ?? THEMES.mac).palette;
   if (themeName === "windows") {
     return [
-      { text: "PS ", fill: "#c678dd" },
-      { text: `C:\\Users\\${githubId}`, fill: "#e5c07b" },
-      { text: "> ", fill: "#c5c8c6" }
+      { text: "PS ", fill: palette.purple },
+      { text: `C:\\Users\\${githubId}`, fill: palette.yellow },
+      { text: "> ", fill: palette.fg }
     ];
   }
 
   if (themeName === "ubuntu") {
     return [
-      { text: `${githubId}@ubuntu`, fill: "#98c379" },
-      { text: ":~", fill: "#c5c8c6" },
-      { text: "$ ", fill: "#c5c8c6" }
+      { text: `${githubId}@ubuntu`, fill: palette.green },
+      { text: ":~", fill: palette.fg },
+      { text: "$ ", fill: palette.fg }
     ];
   }
 
   return [
-    { text: `${githubId}@MacBook`, fill: "#98c379" },
-    { text: " ~ ", fill: "#61afef" },
-    { text: "% ", fill: "#c5c8c6" }
+    { text: `${githubId}@MacBook`, fill: palette.green },
+    { text: " ~ ", fill: palette.blue },
+    { text: "% ", fill: palette.fg }
   ];
 }
 
@@ -269,6 +270,7 @@ function buildStatsCommand(themeName, githubId) {
 }
 
 export async function generateStatsSvg(themeName, githubId, options = {}) {
+  const palette = (THEMES[themeName] ?? THEMES.mac).palette;
   const theme = THEMES[themeName];
   if (!theme) {
     throw new Error(`Unknown theme: ${themeName}. Use one of: ${Object.keys(THEMES).join(", ")}`);
@@ -320,10 +322,10 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
   const leftColX = paddingX;
   const rightColX = contentX0 + Math.round((statsCardW - stripWidth) * 0.52);
 
-  const borderColor = "#30363d";
-  const labelColor = "#8b949e";
+  const borderColor = palette.border;
+  const labelColor = palette.mute;
   const valueColor = theme.text;
-  const titleColor = "#58a6ff";
+  const titleColor = palette.accent;
   const iconColor = theme.accentSuccess;
   const stripHandle = data.partial ? `@${data.login} *` : `@${data.login}`;
   const promptParts = promptParts0;
@@ -382,14 +384,14 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
 
   svg.push(addTextSpans(promptParts, promptStartX, promptY, 15));
   svg.push(`<text x="${commandX}" y="${promptY}" fill="${theme.text}" font-size="15" font-family="Consolas, Menlo, monospace" clip-path="url(#${commandClipId})">${escapeXml(commandText)}</text>`);
-  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandWidth + 2};${commandX + commandWidth + 2}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></text>`);
+  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="${palette.fg}" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandWidth + 2};${commandX + commandWidth + 2}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></text>`);
 
   svg.push(`<g class="line-fetch">`);
-  svg.push(`<text x="${promptStartX}" y="${fetchLineY}" fill="#8b949e" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#${fetchClipId})">${escapeXml(fetchText)}</text>`);
+  svg.push(`<text x="${promptStartX}" y="${fetchLineY}" fill="${palette.mute}" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#${fetchClipId})">${escapeXml(fetchText)}</text>`);
   svg.push(`</g>`);
 
   svg.push(`<g class="line-success">`);
-  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(`Success! Generated GitHub stats for '${githubId}'.`)}</tspan></text>`);
+  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="${palette.green}">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(`Success! Generated GitHub stats for '${githubId}'.`)}</tspan></text>`);
   svg.push(`</g>`);
 
   const stripCenterX = statsCardX + stripWidth / 2;
@@ -422,7 +424,7 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
 
   svg.push(`<g class="line-bottom">`);
   svg.push(addTextSpans(promptParts, promptStartX, bottomPromptY, 15));
-  svg.push(`<text class="cursor" x="${promptStartX + promptPartsWidth(promptParts, 15)}" y="${bottomPromptY}" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█</text>`);
+  svg.push(`<text class="cursor" x="${promptStartX + promptPartsWidth(promptParts, 15)}" y="${bottomPromptY}" fill="${palette.fg}" font-size="15" font-family="Consolas, Menlo, monospace">█</text>`);
   svg.push(`</g>`);
 
   svg.push(`</svg>`);

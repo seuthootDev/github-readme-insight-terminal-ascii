@@ -11,17 +11,6 @@ const MIN_LINES = 3;
 const MAX_LINES = 15;
 const REPO_LABEL_MAX_CHARS = 18;
 
-const STATE_COLORS = {
-  open: "#98c379",
-  draft: "#8b949e",
-  merged: "#c678dd",
-  closed: "#e06c75"
-};
-const NUMBER_COLOR = "#e5c07b";
-const KIND_COLOR = "#61afef";
-const REPO_COLOR = "#56b6c2";
-const TIME_COLOR = "#8b949e";
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const POWERSHELL_ICON_PATH = path.resolve(__dirname, "..", "resources", "PowerShell_icon.svg");
@@ -172,26 +161,27 @@ function repoLabel(item, githubId) {
 }
 
 function buildPrIssuePrompt(themeName, githubId) {
+  const palette = (THEMES[themeName] ?? THEMES.mac).palette;
   if (themeName === "windows") {
     return [
-      { text: "PS ", fill: "#c678dd" },
-      { text: `C:\\Users\\${githubId}`, fill: "#e5c07b" },
-      { text: "> ", fill: "#c5c8c6" }
+      { text: "PS ", fill: palette.purple },
+      { text: `C:\\Users\\${githubId}`, fill: palette.yellow },
+      { text: "> ", fill: palette.fg }
     ];
   }
 
   if (themeName === "ubuntu") {
     return [
-      { text: `${githubId}@ubuntu`, fill: "#98c379" },
-      { text: ":~", fill: "#c5c8c6" },
-      { text: "$ ", fill: "#c5c8c6" }
+      { text: `${githubId}@ubuntu`, fill: palette.green },
+      { text: ":~", fill: palette.fg },
+      { text: "$ ", fill: palette.fg }
     ];
   }
 
   return [
-    { text: `${githubId}@MacBook`, fill: "#98c379" },
-    { text: " ~ ", fill: "#61afef" },
-    { text: "% ", fill: "#c5c8c6" }
+    { text: `${githubId}@MacBook`, fill: palette.green },
+    { text: " ~ ", fill: palette.blue },
+    { text: "% ", fill: palette.fg }
   ];
 }
 
@@ -234,6 +224,7 @@ function createAnimationCss(timeline, rowCount) {
 }
 
 export async function generatePrIssueSvg(themeName, githubId, options = {}) {
+  const palette = (THEMES[themeName] ?? THEMES.mac).palette;
   const theme = THEMES[themeName];
   if (!theme) {
     throw new Error(`Unknown theme: ${themeName}. Use one of: ${Object.keys(THEMES).join(", ")}`);
@@ -284,9 +275,9 @@ export async function generatePrIssueSvg(themeName, githubId, options = {}) {
 
   const contentX0 = cardX + stripWidth;
   const contentRight = cardX + cardW - 20;
-  const borderColor = "#30363d";
-  const labelColor = "#8b949e";
-  const titleColor = "#58a6ff";
+  const borderColor = palette.border;
+  const labelColor = palette.mute;
+  const titleColor = palette.accent;
 
   const stateX = contentX0 + 20;
   const kindX = stateX + charW * 8;
@@ -354,14 +345,14 @@ export async function generatePrIssueSvg(themeName, githubId, options = {}) {
 
   svg.push(addTextSpans(promptParts, promptStartX, promptY, 15));
   svg.push(`<text x="${commandX}" y="${promptY}" fill="${theme.text}" font-size="15" font-family="Consolas, Menlo, monospace" clip-path="url(#${commandClipId})">${escapeXml(commandText)}</text>`);
-  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandWidth + 2};${commandX + commandWidth + 2}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></text>`);
+  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="${palette.fg}" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandWidth + 2};${commandX + commandWidth + 2}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></text>`);
 
   svg.push(`<g class="line-fetch">`);
-  svg.push(`<text x="${promptStartX}" y="${fetchLineY}" fill="#8b949e" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#${fetchClipId})">${escapeXml(fetchText)}</text>`);
+  svg.push(`<text x="${promptStartX}" y="${fetchLineY}" fill="${palette.mute}" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#${fetchClipId})">${escapeXml(fetchText)}</text>`);
   svg.push(`</g>`);
 
   svg.push(`<g class="line-success">`);
-  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(successText)}</tspan></text>`);
+  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="${palette.green}">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(successText)}</tspan></text>`);
   svg.push(`</g>`);
 
   svg.push(`<g class="line-card">`);
@@ -383,12 +374,12 @@ export async function generatePrIssueSvg(themeName, githubId, options = {}) {
     const titleText = truncateFit(item.title, titleMaxChars);
     const timeText = formatRelativeTime(item.date, now);
     svg.push(`<g class="list-row row-${i}">`);
-    svg.push(`<text x="${stateX}" y="${y}" font-size="${rowFontSize}" font-family="Consolas, Menlo, monospace" fill="${STATE_COLORS[item.state]}" font-weight="700">${item.state}</text>`);
-    svg.push(`<text x="${kindX}" y="${y}" font-size="${rowFontSize}" font-family="Consolas, Menlo, monospace" fill="${KIND_COLOR}">${item.kind}</text>`);
-    svg.push(`<text x="${repoX}" y="${y}" font-size="${rowFontSize}" font-family="Consolas, Menlo, monospace" fill="${REPO_COLOR}">${escapeXml(repoText)}</text>`);
-    svg.push(`<text x="${numberX}" y="${y}" font-size="${rowFontSize}" font-family="Consolas, Menlo, monospace" fill="${NUMBER_COLOR}">#${item.number}</text>`);
+    svg.push(`<text x="${stateX}" y="${y}" font-size="${rowFontSize}" font-family="Consolas, Menlo, monospace" fill="${palette.states[item.state]}" font-weight="700">${item.state}</text>`);
+    svg.push(`<text x="${kindX}" y="${y}" font-size="${rowFontSize}" font-family="Consolas, Menlo, monospace" fill="${palette.blue}">${item.kind}</text>`);
+    svg.push(`<text x="${repoX}" y="${y}" font-size="${rowFontSize}" font-family="Consolas, Menlo, monospace" fill="${palette.cyan}">${escapeXml(repoText)}</text>`);
+    svg.push(`<text x="${numberX}" y="${y}" font-size="${rowFontSize}" font-family="Consolas, Menlo, monospace" fill="${palette.yellow}">#${item.number}</text>`);
     svg.push(`<text x="${titleX}" y="${y}" font-size="${rowFontSize}" font-family="Consolas, Menlo, monospace" fill="${theme.text}">${escapeXml(titleText)}</text>`);
-    svg.push(`<text x="${contentRight}" y="${y}" font-size="12" font-family="Consolas, Menlo, monospace" fill="${TIME_COLOR}" text-anchor="end">${escapeXml(timeText)}</text>`);
+    svg.push(`<text x="${contentRight}" y="${y}" font-size="12" font-family="Consolas, Menlo, monospace" fill="${palette.mute}" text-anchor="end">${escapeXml(timeText)}</text>`);
     svg.push(`</g>`);
   });
 
@@ -397,14 +388,14 @@ export async function generatePrIssueSvg(themeName, githubId, options = {}) {
     .map((state) => ({ state, count: items.filter((item) => item.state === state).length }))
     .filter(({ count }) => count > 0);
   const footerSpans = stateCounts.length > 0
-    ? stateCounts.map(({ state, count }, i) => `${i > 0 ? `<tspan fill="${labelColor}"> · </tspan>` : ""}<tspan fill="${STATE_COLORS[state]}">${count} ${state}</tspan>`).join("")
+    ? stateCounts.map(({ state, count }, i) => `${i > 0 ? `<tspan fill="${labelColor}"> · </tspan>` : ""}<tspan fill="${palette.states[state]}">${count} ${state}</tspan>`).join("")
     : `<tspan fill="${labelColor}">0 results</tspan>`;
   svg.push(`<text x="${stateX}" y="${footerY}" font-size="12" font-family="Consolas, Menlo, monospace">${footerSpans}</text>`);
   svg.push(`</g>`);
 
   svg.push(`<g class="line-bottom">`);
   svg.push(addTextSpans(promptParts, promptStartX, bottomPromptY, 15));
-  svg.push(`<text class="cursor" x="${promptStartX + promptPartsWidth(promptParts, 15)}" y="${bottomPromptY}" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█</text>`);
+  svg.push(`<text class="cursor" x="${promptStartX + promptPartsWidth(promptParts, 15)}" y="${bottomPromptY}" fill="${palette.fg}" font-size="15" font-family="Consolas, Menlo, monospace">█</text>`);
   svg.push(`</g>`);
 
   svg.push(`</svg>`);

@@ -260,10 +260,10 @@ async function fetchNeofetchData(username) {
   };
 }
 
-function buildNeofetchRows(data) {
+function buildNeofetchRows(data, palette) {
   const labelColor = "#88c0d0";
   const valueColor = "#e5e9f0";
-  const dimColor = "#8b949e";
+  const dimColor = palette.mute;
   const title = `${data.login}@github`;
   const separator = "-".repeat(Math.max(8, title.length));
   const joined = String(data.createdAt ?? "").slice(0, 10) || "unknown";
@@ -305,24 +305,25 @@ function buildNeofetchRows(data) {
 }
 
 function buildNeofetchPrompt(themeName, githubId) {
+  const palette = (THEMES[themeName] ?? THEMES.mac).palette;
   if (themeName === "windows") {
     return [
-      { text: "PS ", fill: "#c678dd" },
-      { text: `C:\\Users\\${githubId}`, fill: "#e5c07b" },
-      { text: "> ", fill: "#c5c8c6" }
+      { text: "PS ", fill: palette.purple },
+      { text: `C:\\Users\\${githubId}`, fill: palette.yellow },
+      { text: "> ", fill: palette.fg }
     ];
   }
   if (themeName === "ubuntu") {
     return [
-      { text: `${githubId}@ubuntu`, fill: "#98c379" },
-      { text: ":~", fill: "#c5c8c6" },
-      { text: "$ ", fill: "#c5c8c6" }
+      { text: `${githubId}@ubuntu`, fill: palette.green },
+      { text: ":~", fill: palette.fg },
+      { text: "$ ", fill: palette.fg }
     ];
   }
   return [
-    { text: `${githubId}@MacBook`, fill: "#98c379" },
-    { text: " ~ ", fill: "#61afef" },
-    { text: "% ", fill: "#c5c8c6" }
+    { text: `${githubId}@MacBook`, fill: palette.green },
+    { text: " ~ ", fill: palette.blue },
+    { text: "% ", fill: palette.fg }
   ];
 }
 
@@ -334,14 +335,16 @@ function buildNeofetchCommand(themeName, githubId, color) {
   return `neofetch --github ${githubId}${modeFlag}`;
 }
 
-function logoToCells(color) {
+function logoToCells(color, palette) {
   const logo = GITHUB_LOGO;
+  // The eyes and shading follow the theme accent; the outline stays white.
+  const colors = [logo.colors[0], palette.accent, palette.mute];
   const rows = [];
   for (const lineParts of logo.lines) {
     const cells = [];
     for (const part of lineParts) {
       const fill = color
-        ? (logo.colors[(part.c ?? 1) - 1] ?? logo.colors[0])
+        ? (colors[(part.c ?? 1) - 1] ?? colors[0])
         : logo.mono;
       for (const ch of part.t) {
         cells.push({ ch, fill: ch === " " ? null : fill });
@@ -459,6 +462,7 @@ function renderColorBars(x, y) {
 }
 
 export async function generateNeofetchSvg(themeName, githubId, options = {}) {
+  const palette = (THEMES[themeName] ?? THEMES.mac).palette;
   const theme = THEMES[themeName];
   if (!theme) {
     throw new Error(`Unknown theme: ${themeName}. Use one of: ${Object.keys(THEMES).join(", ")}`);
@@ -466,8 +470,8 @@ export async function generateNeofetchSvg(themeName, githubId, options = {}) {
 
   const color = resolveColorMode(options.color ?? options.mode);
   const data = await fetchNeofetchData(githubId);
-  const asciiRows = logoToCells(color);
-  const infoRows = buildNeofetchRows(data);
+  const asciiRows = logoToCells(color, palette);
+  const infoRows = buildNeofetchRows(data, palette);
 
   const fontSize = 14;
   const uiFontSize = 15;
@@ -589,14 +593,14 @@ export async function generateNeofetchSvg(themeName, githubId, options = {}) {
 
   svg.push(addTextSpans(promptParts, promptStartX, promptY, uiFontSize));
   svg.push(`<text x="${commandX}" y="${promptY}" fill="${theme.text}" font-size="${uiFontSize}" font-family="Consolas, Menlo, monospace" clip-path="url(#${commandClipId})">${escapeXml(commandText)}</text>`);
-  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="#c5c8c6" font-size="${uiFontSize}" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandW + 2};${commandX + commandW + 2}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></text>`);
+  svg.push(`<text class="typing-cursor" x="${commandX}" y="${promptY}" fill="${palette.fg}" font-size="${uiFontSize}" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="${commandX};${commandX + commandW + 2};${commandX + commandW + 2}" keyTimes="0;${timeline.typingRatio};1" dur="${timeline.cycleDuration}s" fill="freeze" /></text>`);
 
   svg.push(`<g class="line-fetch">`);
-  svg.push(`<text x="${promptStartX}" y="${fetchLineY}" fill="#8b949e" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#${fetchClipId})">${escapeXml(fetchText)}</text>`);
+  svg.push(`<text x="${promptStartX}" y="${fetchLineY}" fill="${palette.mute}" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#${fetchClipId})">${escapeXml(fetchText)}</text>`);
   svg.push(`</g>`);
 
   svg.push(`<g class="line-success">`);
-  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(`Success! Generated ${modeLabel} neofetch for '${githubId}'.`)}</tspan></text>`);
+  svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="${palette.green}">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(`Success! Generated ${modeLabel} neofetch for '${githubId}'.`)}</tspan></text>`);
   svg.push(`</g>`);
 
   svg.push(`<g class="line-neofetch">`);
@@ -613,7 +617,7 @@ export async function generateNeofetchSvg(themeName, githubId, options = {}) {
 
   svg.push(`<g class="line-bottom">`);
   svg.push(addTextSpans(promptParts, promptStartX, bottomPromptY, uiFontSize));
-  svg.push(`<text class="cursor" x="${promptStartX + promptPartsWidth(promptParts, uiFontSize)}" y="${bottomPromptY}" fill="#c5c8c6" font-size="${uiFontSize}" font-family="Consolas, Menlo, monospace">█</text>`);
+  svg.push(`<text class="cursor" x="${promptStartX + promptPartsWidth(promptParts, uiFontSize)}" y="${bottomPromptY}" fill="${palette.fg}" font-size="${uiFontSize}" font-family="Consolas, Menlo, monospace">█</text>`);
   svg.push(`</g>`);
 
   svg.push(`</svg>`);
