@@ -95,6 +95,11 @@ async function handleSvgRequest(req, res, forcedType = null) {
 }
 
 app.get(["/", "/svg"], async (req, res) => {
+  // People opening the bare site in a browser should land on the project, not an error card.
+  if (req.path === "/" && !req.query.user && !req.query.repo) {
+    res.redirect(302, "https://github.com/seuthootDev/github-readme-insight-terminal-ascii");
+    return;
+  }
   await handleSvgRequest(req, res, "graph");
 });
 

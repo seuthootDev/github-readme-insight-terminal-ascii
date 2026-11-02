@@ -3,7 +3,7 @@
 [![npm version](https://terminal-shields.vercel.app/npm/v/github-readme-insight-terminal-ascii?theme=cyan)](https://www.npmjs.com/package/github-readme-insight-terminal-ascii)
 [![Stars](https://terminal-shields.vercel.app/github/stars/seuthootDev/github-readme-insight-terminal-ascii?theme=amber&blink=1)](https://github.com/seuthootDev/github-readme-insight-terminal-ascii/stargazers)
 [![License](https://terminal-shields.vercel.app/github/license/seuthootDev/github-readme-insight-terminal-ascii?theme=green)](LICENSE)
-[![Live demo](https://terminal-shields.vercel.app/website?url=https://github-readme-insight-terminal-asci.vercel.app&theme=cyan)](https://github-readme-insight-terminal-asci.vercel.app)
+[![Live demo](https://terminal-shields.vercel.app/website?url=https://github-readme-insight-terminal-asci.vercel.app&theme=cyan)](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=mac)
 [![Last commit](https://terminal-shields.vercel.app/github/last-commit/seuthootDev/github-readme-insight-terminal-ascii?theme=green)](https://github.com/seuthootDev/github-readme-insight-terminal-ascii/commits/main)
 
 A tool to generate **terminal-style ASCII SVGs** from your GitHub profile data.  
