@@ -58,7 +58,10 @@ function addTextSpans(parts, startX, y, fontSize = 16) {
     const safe = escapeXml(part.text);
     spans.push(`<tspan fill="${part.fill}">${safe}</tspan>`);
   }
-  return `<text x="${startX}" y="${y}" font-size="${fontSize}" font-family="Consolas, Menlo, monospace">${spans.join("")}</text>`;
+  // textLength pins the prompt to the width the layout assumes, so the
+  // command after it never overlaps when Consolas/Menlo fall back to a wider
+  // font (Linux); preserve keeps the trailing "% " space inside that width.
+  return `<text x="${startX}" y="${y}" font-size="${fontSize}" font-family="Consolas, Menlo, monospace" xml:space="preserve" textLength="${promptPartsWidth(parts, fontSize)}" lengthAdjust="spacingAndGlyphs">${spans.join("")}</text>`;
 }
 
 function monthLabels(firstSunday, gridStartX, colStep) {

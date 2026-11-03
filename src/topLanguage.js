@@ -68,7 +68,10 @@ function addTextSpans(parts, startX, y, fontSize = 16) {
   for (const part of parts) {
     spans.push(`<tspan fill="${part.fill}">${escapeXml(part.text)}</tspan>`);
   }
-  return `<text x="${startX}" y="${y}" font-size="${fontSize}" font-family="Consolas, Menlo, monospace">${spans.join("")}</text>`;
+  // textLength pins the prompt to the width the layout assumes, so the
+  // command after it never overlaps when Consolas/Menlo fall back to a wider
+  // font (Linux); preserve keeps the trailing "% " space inside that width.
+  return `<text x="${startX}" y="${y}" font-size="${fontSize}" font-family="Consolas, Menlo, monospace" xml:space="preserve" textLength="${promptPartsWidth(parts, fontSize)}" lengthAdjust="spacingAndGlyphs">${spans.join("")}</text>`;
 }
 
 function hashColorFromLanguage(language) {

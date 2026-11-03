@@ -42,6 +42,11 @@ function textWidth(text, fontSize = 16) {
   return text.length * (fontSize * 0.62);
 }
 
+function fitText(text, maxChars) {
+  const chars = [...text];
+  return chars.length > maxChars ? `${chars.slice(0, maxChars - 3).join("").replace(/[\s.,;:]+$/, "")}...` : text;
+}
+
 function promptPartsWidth(parts, fontSize = 16) {
   const promptCharFactor = 0.56;
   return parts.reduce((acc, part) => acc + (part.text.length * (fontSize * promptCharFactor)), 0);
@@ -52,7 +57,10 @@ function addTextSpans(parts, startX, y, fontSize = 16) {
   for (const part of parts) {
     spans.push(`<tspan fill="${part.fill}">${escapeXml(part.text)}</tspan>`);
   }
-  return `<text x="${startX}" y="${y}" font-size="${fontSize}" font-family="Consolas, Menlo, monospace">${spans.join("")}</text>`;
+  // textLength pins the prompt to the width the layout assumes, so the
+  // command after it never overlaps when Consolas/Menlo fall back to a wider
+  // font (Linux); preserve keeps the trailing "% " space inside that width.
+  return `<text x="${startX}" y="${y}" font-size="${fontSize}" font-family="Consolas, Menlo, monospace" xml:space="preserve" textLength="${promptPartsWidth(parts, fontSize)}" lengthAdjust="spacingAndGlyphs">${spans.join("")}</text>`;
 }
 
 function createAnimationCss(timeline) {
@@ -220,16 +228,27 @@ function renderAsciiBlock(rows, { x, y, fontSize, charW, lineH, monoFill }) {
     let runFill = null;
     let runX = x;
 
+    // Each run gets an explicit textLength so it occupies exactly
+    // run.length * charW regardless of which monospace font the viewer
+    // falls back to. Blank cells are never emitted as text: SVG collapses
+    // consecutive spaces, which used to shift the rest of the row left.
     const flush = () => {
       if (!run) return;
+      const runW = run.length * charW;
       parts.push(
-        `<text x="${runX}" y="${lineY}" font-size="${fontSize}" font-family="Consolas, Menlo, monospace" fill="${runFill}">${escapeXml(run)}</text>`
+        `<text x="${runX}" y="${lineY}" font-size="${fontSize}" font-family="Consolas, Menlo, monospace" fill="${runFill}" textLength="${runW}" lengthAdjust="spacingAndGlyphs">${escapeXml(run)}</text>`
       );
-      runX += run.length * charW;
+      runX += runW;
       run = "";
+      runFill = null;
     };
 
     for (const cell of cells) {
+      if (cell.ch === " ") {
+        flush();
+        runX += charW;
+        continue;
+      }
       const fill = cell.fill ?? monoFill;
       if (runFill === null) {
         runFill = fill;
@@ -292,7 +311,14 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
   const contentX = 56 * chromeScale;
   const contentY = 260 * chromeScale;
   const infoGap = 56 * chromeScale;
-  const infoW = 420 * chromeScale;
+  // Widen the info column for long names/logins. Factors are deliberately
+  // generous (bold DejaVu Sans ~0.65em, mono fallbacks ~0.6em) so the text
+  // stays inside the frame on Linux, not only with Segoe UI/Consolas.
+  const infoW = Math.max(
+    420 * chromeScale,
+    [...(profile.name || "")].length * nameFontSize * 0.66,
+    ([...(profile.login || "")].length + 1) * loginFontSize * 0.62
+  );
   const contentH = Math.max(asciiH, 220 * chromeScale);
   const fetchLineY = promptY + 42 * chromeScale;
   const successLineY = fetchLineY + 38 * chromeScale;
@@ -399,7 +425,12 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
   svg.push(`<text x="${infoX}" y="${infoCenterY + 28 * chromeScale}" font-size="${loginFontSize}" font-family="Consolas, Menlo, monospace" fill="${theme.accentSuccess}">@${escapeXml(profile.login)}</text>`);
   svg.push(`<text x="${infoX}" y="${infoCenterY + 72 * chromeScale}" font-size="${metaFontSize}" font-family="Segoe UI, Arial, sans-serif" fill="${palette.mute}">${color ? "color ascii" : "mono ascii"} · ${cols} cols</text>`);
   if (profile.bio) {
-    const bio = profile.bio.length > 48 ? `${profile.bio.slice(0, 45)}...` : profile.bio;
+    // Budget by the space left inside the frame, not a fixed char count.
+    // 0.58em is a conservative average for proportional sans fallbacks
+    // (DejaVu Sans is wider than Segoe UI/Arial), so it fits everywhere.
+    const infoRight = termX + termW - 40 * chromeScale;
+    const maxBioChars = Math.max(8, Math.floor((infoRight - infoX) / (metaFontSize * 0.58)));
+    const bio = fitText(profile.bio, maxBioChars);
     svg.push(`<text x="${infoX}" y="${infoCenterY + 112 * chromeScale}" font-size="${metaFontSize}" font-family="Segoe UI, Arial, sans-serif" fill="${palette.mute}">${escapeXml(bio)}</text>`);
   }
   svg.push(`</g>`);
