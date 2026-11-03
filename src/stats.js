@@ -361,6 +361,19 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
 
   const leftRows = statsRows.slice(0, 3);
   const rightRows = statsRows.slice(3);
+  // Right-aligned values sit past the longest label plus the widest value,
+  // sized for wide sans fallbacks (Verdana/DejaVu ~0.6em) so a label like
+  // "Contributions (1y)" never runs into its number on Linux.
+  const valueAnchor = (rows, colX, minOffset) => {
+    const labelW = Math.max(...rows.map((r) => r.label.length)) * 14 * 0.6;
+    const valueW = Math.max(...rows.map((r) => String(r.value).length)) * 15 * 0.66;
+    return colX + Math.max(minOffset, Math.ceil(12 + labelW + 10 + valueW));
+  };
+  const leftValueX = valueAnchor(leftRows, leftColX, 160);
+  const rightValueX = Math.min(
+    valueAnchor(rightRows, rightColX, 190),
+    statsCardX + statsCardW - 20
+  );
 
   const controlsY = termY + 20;
   const controlsX = themeName === "mac"
@@ -414,7 +427,7 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
     const row = leftRows[i];
     svg.push(`<circle cx="${leftColX}" cy="${y - 5}" r="4" fill="${iconColor}"/>`);
     svg.push(`<text x="${leftColX + 12}" y="${y}" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="${labelColor}">${escapeXml(row.label)}</text>`);
-    svg.push(`<text x="${leftColX + 160}" y="${y}" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="${valueColor}" font-weight="700" text-anchor="end">${escapeXml(row.value)}</text>`);
+    svg.push(`<text x="${leftValueX}" y="${y}" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="${valueColor}" font-weight="700" text-anchor="end">${escapeXml(row.value)}</text>`);
   }
 
   for (let i = 0; i < rightRows.length; i += 1) {
@@ -422,7 +435,7 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
     const row = rightRows[i];
     svg.push(`<circle cx="${rightColX}" cy="${y - 5}" r="4" fill="${iconColor}"/>`);
     svg.push(`<text x="${rightColX + 12}" y="${y}" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="${labelColor}">${escapeXml(row.label)}</text>`);
-    svg.push(`<text x="${rightColX + 190}" y="${y}" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="${valueColor}" font-weight="700" text-anchor="end">${escapeXml(row.value)}</text>`);
+    svg.push(`<text x="${rightValueX}" y="${y}" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="${valueColor}" font-weight="700" text-anchor="end">${escapeXml(row.value)}</text>`);
   }
   svg.push(`</g>`);
 
