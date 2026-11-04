@@ -10,7 +10,7 @@ A tool to generate **terminal-style ASCII SVGs** from your GitHub profile data.
 Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), you can embed it in your README or GitHub profile with a single URL.
 
 - **Themes**: macOS Terminal / Windows PowerShell / Ubuntu GNOME
-- **Types**: contribution graph · stats · top languages · streak · git log · PRs & issues · repo · language history · ASCII avatar · GitHub neofetch · dashboard
+- **Types**: contribution graph · stats · top languages · streak · git log · PRs & issues · repo · language history · ASCII avatar · GitHub neofetch · dashboard · skill icons
 - **CLI**: Run locally to print the graph and save SVG
 - **API**: `GET /svg?user=USER&theme=...` (default graph) or `GET /svg/:type?user=USER&theme=...`
 - **Tooltip**: Hover contribution cells to see date and count
@@ -68,6 +68,12 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 ![windows lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=windows&scale=0.6)
 ![ubuntu lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=ubuntu&scale=0.6)
 
+**Skills** — tech-stack icons as pixel-art ASCII, like [skillicons.dev](https://skillicons.dev) but in a terminal. No GitHub account needed: list the icons with `i=`
+
+![mac skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=js,ts,react,nodejs,python,go,rust,docker&theme=mac&perline=8&scale=0.6)
+![windows skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=java,spring,kotlin,mysql,redis,git&theme=windows&scale=0.6)
+![ubuntu skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=linux,ubuntu,vim,bash,nginx,k8s&theme=ubuntu&scale=0.6)
+
 **Stats**
 
 ![mac stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=mac&scale=0.6)
@@ -105,6 +111,9 @@ Pass a GitHub username to fetch profile data and render a terminal-style SVG in 
 | `dashboard` | tmux-style split screen with profile, stats, streak, a 26-week contribution graph and languages, drawn on a character grid with ASCII-art icons |
 | `ascii` | Profile photo as ASCII art |
 | `neofetch` | GitHub “neofetch” card — Octocat ASCII + fields like Name, Repos, Followers, Stars, Contributions, Languages |
+| `skills` | Tech-stack icons (3,400+ from [Simple Icons](https://simpleicons.org)) as pixel-art ASCII — takes an icon list, not a username |
+
+Icon names for `skills` are [Simple Icons](https://simpleicons.org) slugs (`nextdotjs`, `postgresql`, …) or the title as shown there (`Next.js`, `PostgreSQL`). Short skillicons-style ids also work: `js`, `ts`, `py`, `java`, `cpp`, `cs`, `go`, `rs`, `kt`, `node`, `vue`, `next`, `tailwind`, `k8s`, `aws`, `azure`, `gcp`, `postgres`, `mongo`, `vscode`, `bash`, and more. Unknown names are listed in a `not found` line instead of failing the whole card. A few brands that Simple Icons no longer ships (C#, AWS, Azure, VS Code, Windows, Slack) are drawn as letter tiles.
 
 A **streak** is how many days in a row you've had at least one contribution — like a Duolingo streak, but for commits. `streak` shows your current streak (counting from today, or yesterday if today has no contributions yet), your longest streak ever, and total contributions, all computed from the last year of contribution data.
 
@@ -156,6 +165,7 @@ npm run serve
 | ascii | `http://127.0.0.1:8000/svg/ascii?user=YOUR_GITHUB_ID&theme=mac` |
 | ascii (color) | `http://127.0.0.1:8000/svg/ascii?user=YOUR_GITHUB_ID&theme=mac&color=1` |
 | neofetch | `http://127.0.0.1:8000/svg/neofetch?user=YOUR_GITHUB_ID&theme=mac&color=1` |
+| skills | `http://127.0.0.1:8000/svg/skills?i=js,ts,react,docker&theme=mac` |
 
 ---
 
@@ -175,17 +185,21 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=GIT
 https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=GITHUB_USERNAME&theme=THEME
 https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=GITHUB_USERNAME&theme=THEME&color=1
 https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=GITHUB_USERNAME&theme=THEME&color=1
+https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=ICON1,ICON2,ICON3&theme=THEME
 ```
 
 | Query | Required | Description |
 |-------|----------|-------------|
-| `user` | ✅ (optional for `repo` when `repo=owner/name`) | GitHub username |
+| `user` | ✅ (optional for `repo` when `repo=owner/name`; optional for `skills`, only names the prompt) | GitHub username |
 | `theme` | ❌ (default: `mac`) | `mac` / `windows` / `ubuntu` |
 | `top` | ❌ (`top-lang` only, default: `6`) | `6`–`12` |
 | `color` | ❌ (`ascii` / `neofetch`, default: mono) | `1` / `true` / `color` (alias: `mode`) |
 | `lines` | ❌ (`git-log` / `pr-issue`, default: `8`) | Number of rows `3`–`15` |
 | `repo` | ✅ for `repo` | `owner/name`, or just `name` together with `user=owner` |
 | `years` | ❌ (`lang-history` only, default: `6`) | Number of years `3`–`10` |
+| `i` | ✅ for `skills` | Comma-separated icon names, up to 60 (alias: `icons`) |
+| `perline` | ❌ (`skills` only, default: `6`) | Icons per row `1`–`12` |
+| `labels` | ❌ (`skills` only, default: on) | `0` / `false` hides the name under each icon |
 | `cols` | ❌ (`ascii` only, default: `50`) | ASCII width `24`–`140` (alias: `size`) |
 | `scale` | ❌ (default: `1`, ascii: `0.28`) | Size multiplier `0.05`–`3` |
 
@@ -201,6 +215,7 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=GITHUB_
 ![GitHub language history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=YOUR_GITHUB_ID&theme=mac)
 ![ASCII avatar](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=YOUR_GITHUB_ID&theme=mac&color=1)
 ![GitHub neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=YOUR_GITHUB_ID&theme=mac&color=1)
+![Skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=js,ts,react,nodejs,docker,postgres&theme=mac)
 ```
 
 ---
@@ -236,6 +251,8 @@ Bug reports, new themes, and docs/code improvements are welcome.
 2. Create a branch (`git checkout -b feature/your-feature`).
 3. Commit and push your changes.
 4. Open a Pull Request.
+
+The `skills` icons are precomputed into `src/skillIconsData.js`. After bumping the `simple-icons` devDependency, regenerate it with `npm run build:icons` (takes a couple of minutes).
 
 ---
 

@@ -13,7 +13,8 @@
   ],
   "scripts": {
     "cli": "node src/cli.js",
-    "serve": "node src/server.js"
+    "serve": "node src/server.js",
+    "build:icons": "node scripts/build-skill-icons.mjs"
   },
   "repository": {
     "type": "git",
@@ -51,5 +52,9 @@
   "dependencies": {
     "express": "^4.21.2",
     "jimp": "^1.6.1"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "simple-icons": "^16.36.0"
   }
 }

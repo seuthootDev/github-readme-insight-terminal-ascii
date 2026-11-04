@@ -11,4 +11,5 @@ export { generatePrIssueSvg } from "./prIssue.js";
 export { generateDashboardSvg } from "./dashboard.js";
 export { generateRepoCardSvg } from "./repoCard.js";
 export { generateLangHistorySvg } from "./langHistory.js";
+export { generateSkillsSvg, resolveSkillIcon, getSkillIconSlugs } from "./skillIcons.js";
 export { generateSvg, getAvailableRenderTypes } from "./renderer.js";

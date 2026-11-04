@@ -6,6 +6,7 @@ import { generateLangHistorySvg } from "./langHistory.js";
 import { generateNeofetchSvg } from "./neofetch.js";
 import { generatePrIssueSvg } from "./prIssue.js";
 import { generateRepoCardSvg } from "./repoCard.js";
+import { generateSkillsSvg } from "./skillIcons.js";
 import { generateStatsSvg } from "./stats.js";
 import { generateStreakSvg } from "./streak.js";
 import { generateTopLanguageSvg } from "./topLanguage.js";
@@ -23,7 +24,8 @@ const RENDERERS = {
   "pr-issue": generatePrIssueSvg,
   dashboard: generateDashboardSvg,
   repo: generateRepoCardSvg,
-  "lang-history": generateLangHistorySvg
+  "lang-history": generateLangHistorySvg,
+  skills: generateSkillsSvg
 };
 
 function normalizeRenderType(type) {
@@ -46,7 +48,10 @@ function resolveGenerateOptions(input, githubIdFallback) {
       cols: input.cols,
       lines: input.lines,
       repo: input.repo,
-      years: input.years
+      years: input.years,
+      icons: input.icons,
+      perline: input.perline,
+      labels: input.labels
     };
   }
 
@@ -60,17 +65,20 @@ function resolveGenerateOptions(input, githubIdFallback) {
     cols: undefined,
     lines: undefined,
     repo: undefined,
-    years: undefined
+    years: undefined,
+    icons: undefined,
+    perline: undefined,
+    labels: undefined
   };
 }
 
 export async function generateSvg(input, githubIdFallback) {
-  const { type, themeName, githubId, topN, scale, color, cols, lines, repo, years } = resolveGenerateOptions(input, githubIdFallback);
+  const { type, themeName, githubId, topN, scale, color, cols, lines, repo, years, icons, perline, labels } = resolveGenerateOptions(input, githubIdFallback);
   const renderer = RENDERERS[type];
 
   if (!renderer) {
     throw new Error(`Unknown render type: ${type}. Use one of: ${getAvailableRenderTypes().join(", ")}`);
   }
 
-  return renderer(themeName, githubId, { topN, scale, color, cols, lines, repo, years });
+  return renderer(themeName, githubId, { topN, scale, color, cols, lines, repo, years, icons, perline, labels });
 }

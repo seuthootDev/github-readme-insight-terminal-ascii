@@ -56,9 +56,17 @@ async function handleSvgRequest(req, res, forcedType = null) {
   const yearsParsed = Number.parseInt(String(req.query.years ?? ""), 10);
   const years = Number.isNaN(yearsParsed) ? undefined : yearsParsed;
 
+  const iconsRaw = String(req.query.i ?? req.query.icons ?? "").trim();
+  const icons = iconsRaw || undefined;
+  const perlineParsed = Number.parseInt(String(req.query.perline ?? ""), 10);
+  const perline = Number.isNaN(perlineParsed) ? undefined : perlineParsed;
+  const labelsRaw = String(req.query.labels ?? "").trim().toLowerCase();
+  const labels = labelsRaw ? !["0", "false", "no", "off"].includes(labelsRaw) : undefined;
+
   const safeTheme = THEMES[theme] ? theme : "mac";
 
-  if (!user) {
+  // The skills card is driven by the icon list, not a GitHub account.
+  if (!user && renderType !== "skills") {
     sendErrorCard(res, { theme: safeTheme, user: "", type: renderType, message: "Query parameter 'user' is required." });
     return;
   }
@@ -84,7 +92,10 @@ async function handleSvgRequest(req, res, forcedType = null) {
       cols,
       lines,
       repo,
-      years
+      years,
+      icons,
+      perline,
+      labels
     });
     res.set("Cache-Control", "public, max-age=1800");
     res.type("image/svg+xml").send(svg);
