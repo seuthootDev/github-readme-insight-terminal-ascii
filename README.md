@@ -27,6 +27,12 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 
 ![ubuntu](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=ubuntu&scale=0.6)
 
+**Skills** — tech-stack icons as pixel-art ASCII, like [skillicons.dev](https://skillicons.dev) but in a terminal. No GitHub account needed: list the icons with `i=`
+
+![mac skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=js,ts,react,nodejs,python,go,rust,docker&theme=mac&perline=8&scale=0.6)
+![windows skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=java,spring,kotlin,mysql,redis,git&theme=windows&scale=0.6)
+![ubuntu skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=linux,ubuntu,vim,bash,nginx,k8s&theme=ubuntu&scale=0.6)
+
 **Dashboard** — tmux-style split panes: profile, stats, streak, 26-week graph and languages in one window
 
 ![mac dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=mac&scale=0.6)
@@ -67,12 +73,6 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 ![mac lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=mac&scale=0.6)
 ![windows lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=windows&scale=0.6)
 ![ubuntu lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=ubuntu&scale=0.6)
-
-**Skills** — tech-stack icons as pixel-art ASCII, like [skillicons.dev](https://skillicons.dev) but in a terminal. No GitHub account needed: list the icons with `i=`
-
-![mac skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=js,ts,react,nodejs,python,go,rust,docker&theme=mac&perline=8&scale=0.6)
-![windows skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=java,spring,kotlin,mysql,redis,git&theme=windows&scale=0.6)
-![ubuntu skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=linux,ubuntu,vim,bash,nginx,k8s&theme=ubuntu&scale=0.6)
 
 **Stats**
 
