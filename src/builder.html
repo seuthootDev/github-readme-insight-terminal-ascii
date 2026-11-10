@@ -18,20 +18,22 @@
     --field: #0d1117;
     --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
   }
-  @media (prefers-color-scheme: light) {
-    :root {
-      --bg: #f6f8fa;
-      --panel: #ffffff;
-      --border: #d0d7de;
-      --fg: #1f2328;
-      --mute: #59636e;
-      --accent: #1a7f37;
-      --accent-fg: #ffffff;
-      --blue: #0969da;
-      --field: #f6f8fa;
-    }
+  :root { color-scheme: dark; }
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --bg: #f6f8fa;
+    --panel: #ffffff;
+    --border: #d0d7de;
+    --fg: #1f2328;
+    --mute: #59636e;
+    --accent: #1a7f37;
+    --accent-fg: #ffffff;
+    --blue: #0969da;
+    --field: #f6f8fa;
   }
   * { box-sizing: border-box; }
+  .header-links { display: flex; align-items: center; gap: 14px; }
+  #mode { font-size: 13px; padding: 4px 10px; }
   body {
     margin: 0;
     background: var(--bg);
@@ -145,6 +147,9 @@
   footer { max-width: 1180px; margin: 0 auto; padding: 8px 16px 32px; color: var(--mute); font-size: 12px; }
   [hidden] { display: none !important; }
 </style>
+<script>
+  try { if (localStorage.getItem("builder-mode") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}
+</script>
 </head>
 <body>
 <header>
@@ -152,7 +157,10 @@
     <h1><span class="prompt">$</span> readme-card --build<span class="cursor">&nbsp;</span></h1>
     <p class="sub">Terminal-style GitHub README cards. Pick a card, preview it, copy the Markdown.</p>
   </div>
-  <a href="https://github.com/seuthootDev/github-readme-insight-terminal-ascii">★ Star on GitHub</a>
+  <div class="header-links">
+    <button type="button" id="mode" aria-label="Switch to light mode">☀ light</button>
+    <a href="https://github.com/seuthootDev/github-readme-insight-terminal-ascii">★ Star on GitHub</a>
+  </div>
 </header>
 
 <main>
@@ -318,31 +326,50 @@
     return encodeURIComponent(text).replace(/%2C/gi, ",").replace(/%2F/gi, "/");
   }
 
-  function readState() {
-    var type = value("type");
-    var theme = form.querySelector("input[name=theme]:checked").value;
+  // Empty inputs: the preview shows an example card, the copied snippets show a placeholder to replace.
+  var DEMO = { user: "torvalds", repo: "seuthootDev/github-readme-insight-terminal-ascii", icons: "js,ts,react,nodejs,docker,postgres" };
+  var PLACEHOLDER = { user: "YOUR_GITHUB_USERNAME", repo: "OWNER/REPO", icons: "ICON1,ICON2,ICON3" };
+
+  // mode: "raw" (only what was typed, for the shareable hash), "snippet" or "preview".
+  function buildParams(type, mode) {
     var used = FIELDS[type] || [];
-    var params = [];
+    var fill = mode === "preview" ? DEMO : mode === "snippet" ? PLACEHOLDER : null;
     var user = value("user");
-    if (type !== "skills" && user) params.push(["user", user]);
-    if (used.indexOf("repo") !== -1 && value("repo")) params.push(["repo", value("repo")]);
-    if (used.indexOf("icons") !== -1 && value("i")) params.push(["i", value("i").replace(/\s+/g, "")]);
-    params.push(["theme", theme]);
+    var params = [];
+    var example = false;
+
+    if (type === "repo") {
+      var repo = value("repo");
+      var full = repo.indexOf("/") !== -1 ? repo : (repo && user ? user + "/" + repo : "");
+      if (full || !fill) {
+        if (!full && user) params.push(["user", user]);
+        if (full || repo) params.push(["repo", full || repo]);
+      } else {
+        example = true;
+        params.push(["repo", mode === "snippet" ? (user || "OWNER") + "/" + (repo || "REPO") : fill.repo]);
+      }
+    } else if (type === "skills") {
+      var icons = value("i").replace(/\s+/g, "");
+      if (icons) params.push(["i", icons]);
+      else if (fill) { example = true; params.push(["i", fill.icons]); }
+    } else if (user) {
+      params.push(["user", user]);
+    } else if (fill) {
+      example = true;
+      params.push(["user", fill.user]);
+    }
+
+    params.push(["theme", form.querySelector("input[name=theme]:checked").value]);
     OPTIONAL.forEach(function (name) {
       if ((name === "scale" || used.indexOf(name) !== -1) && value(name)) params.push([name, value(name)]);
     });
     if (used.indexOf("color") !== -1 && field("color").checked) params.push(["color", "1"]);
     if (used.indexOf("labels") !== -1 && !field("labels").checked) params.push(["labels", "0"]);
-    return { type: type, params: params, user: user };
+    return { params: params, example: example };
   }
 
-  function ready(state) {
-    if (state.type === "skills") return state.params.some(function (p) { return p[0] === "i"; });
-    if (state.type === "repo") {
-      var repo = value("repo");
-      return repo.indexOf("/") !== -1 || (repo && state.user);
-    }
-    return Boolean(state.user);
+  function toQuery(params) {
+    return params.map(function (p) { return p[0] + "=" + encode(p[1]); }).join("&");
   }
 
   function syncVisibility(type) {
@@ -351,36 +378,41 @@
       var name = el.getAttribute("data-for");
       el.hidden = name === "user" ? type === "skills" : used.indexOf(name) === -1;
     });
-    field("user").placeholder = type === "repo" ? "optional with owner/name" : "octocat";
+    field("user").placeholder = type === "repo" ? "optional with owner/name" : "your-github-username";
   }
 
   function render() {
-    var state = readState();
-    syncVisibility(state.type);
-    var query = state.params.map(function (p) { return p[0] + "=" + encode(p[1]); }).join("&");
-    var url = location.origin + "/svg/" + state.type + "?" + query;
-    var alt = ALT[state.type] || "GitHub card";
-    out.url.textContent = url;
-    out.md.textContent = "![" + alt + "](" + url + ")";
-    out.html.textContent = '<img src="' + url.replace(/&/g, "&amp;") + '" alt="' + alt + '">';
+    var type = value("type");
+    syncVisibility(type);
+    var alt = ALT[type] || "GitHub card";
+    var base = location.origin + "/svg/" + type + "?";
 
-    try { history.replaceState(null, "", "#" + state.type + "?" + query); } catch (e) {}
+    var snippetUrl = base + toQuery(buildParams(type, "snippet").params);
+    out.url.textContent = snippetUrl;
+    out.md.textContent = "![" + alt + "](" + snippetUrl + ")";
+    out.html.textContent = '<img src="' + snippetUrl.replace(/&/g, "&amp;") + '" alt="' + alt + '">';
+
+    try { history.replaceState(null, "", "#" + type + "?" + toQuery(buildParams(type, "raw").params)); } catch (e) {}
+
+    var preview_ = buildParams(type, "preview");
+    var previewUrl = base + toQuery(preview_.params);
+    var label = preview_.example ? "example · " + (type === "repo" ? DEMO.repo.split("/")[1] : type === "skills" ? "sample icons" : DEMO.user) : "";
 
     clearTimeout(timer);
-    if (!ready(state)) {
-      img.removeAttribute("src");
-      status.textContent = state.type === "skills" ? "enter some icons" : state.type === "repo" ? "enter owner/name" : "enter a username";
+    if (img.getAttribute("src") === previewUrl) {
+      status.textContent = label;
       return;
     }
     status.textContent = "loading…";
     preview.classList.add("loading");
     timer = setTimeout(function () {
       img.alt = alt;
-      img.src = url;
+      img.dataset.label = label;
+      img.src = previewUrl;
     }, 450);
   }
 
-  img.addEventListener("load", function () { preview.classList.remove("loading"); status.textContent = ""; });
+  img.addEventListener("load", function () { preview.classList.remove("loading"); status.textContent = img.dataset.label || ""; });
   img.addEventListener("error", function () { preview.classList.remove("loading"); status.textContent = "failed to load"; });
 
   // Restore a shared link: #type?user=...&theme=...
@@ -418,6 +450,21 @@
       }
     });
   });
+
+  var modeButton = document.getElementById("mode");
+  function syncModeButton() {
+    var light = document.documentElement.getAttribute("data-theme") === "light";
+    modeButton.textContent = light ? "☾ dark" : "☀ light";
+    modeButton.setAttribute("aria-label", light ? "Switch to dark mode" : "Switch to light mode");
+  }
+  modeButton.addEventListener("click", function () {
+    var light = document.documentElement.getAttribute("data-theme") !== "light";
+    if (light) document.documentElement.setAttribute("data-theme", "light");
+    else document.documentElement.removeAttribute("data-theme");
+    try { localStorage.setItem("builder-mode", light ? "light" : "dark"); } catch (e) {}
+    syncModeButton();
+  });
+  syncModeButton();
 
   form.addEventListener("input", render);
   form.addEventListener("change", render);
