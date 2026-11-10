@@ -233,13 +233,20 @@ To host your own instance:
 |----------|----------|-------------|
 | `GITHUB_TOKEN` (or `GH_TOKEN`) | Recommended | GitHub personal access token used for GitHub API calls (`stats`, `top-lang`, `streak`, `git-log`, `pr-issue`, `repo`, `lang-history`, `ascii`, `neofetch`, `dashboard`). It needs no scopes, since only public data is read. Without it, requests share the 60 req/hour unauthenticated rate limit and cards will start failing quickly. `lang-history` uses the GraphQL API and always requires a token. |
 | `PORT` | ❌ (default: `8000`) | Port for the local server |
+| `CACHE_TTL_SECONDS` | ❌ (default: `1800`) | How long a rendered card is reused, both in memory and by the CDN. `0` disables caching |
+| `CACHE_MAX_ENTRIES` | ❌ (default: `500`) | Max number of rendered cards kept in memory per server instance (least recently used are dropped first) |
 | `LOG_GITHUB_TOKEN_USAGE` | ❌ | Set to `1` to log whether a token was used for each `stats` API call |
 
 The `graph` card reads the public contribution calendar and does not need a token.
 
 ### Caching
 
-Successful responses are sent with `Cache-Control: public, max-age=1800`, so cards may take up to **30 minutes** to reflect new activity. GitHub's image proxy (camo) can cache them for a while on top of that. Error cards are sent with `no-store`, so they are never cached.
+Cards are cached in two layers so popular cards don't burn through the GitHub API rate limit:
+
+- **In memory**: each server instance keeps rendered cards for `CACHE_TTL_SECONDS` (default 30 minutes), and identical requests that arrive while a card is rendering share the same result. The `X-Cache: HIT | MISS` response header shows which one you got.
+- **CDN / browser**: successful responses are sent with `Cache-Control: public, max-age=1800, s-maxage=1800, stale-while-revalidate=86400`, so Vercel's CDN can answer repeat requests without running the function at all.
+
+As a result cards may take up to **30 minutes** to reflect new activity, and GitHub's image proxy (camo) can cache them for a while on top of that. Error cards are sent with `no-store`, so they are never cached.
 
 ---
 

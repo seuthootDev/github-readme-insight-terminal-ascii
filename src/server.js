@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import express from "express";
 import { generateErrorSvg } from "./errorCard.js";
 import { generateSvg, getAvailableRenderTypes } from "./renderer.js";
+import { createTtlCache } from "./cache.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 try {
@@ -25,6 +26,20 @@ import { THEMES } from "./themes.js";
 
 const app = express();
 const PORT = Number.parseInt(process.env.PORT ?? "8000", 10);
+
+function envInt(name, fallback) {
+  const parsed = Number.parseInt(String(process.env[name] ?? ""), 10);
+  return Number.isNaN(parsed) ? fallback : parsed;
+}
+
+const CACHE_TTL_SECONDS = Math.max(0, envInt("CACHE_TTL_SECONDS", 1800));
+const CACHE_MAX_ENTRIES = Math.max(0, envInt("CACHE_MAX_ENTRIES", 500));
+// Browsers/camo use max-age; s-maxage lets Vercel's CDN serve repeats without invoking the function,
+// and stale-while-revalidate keeps cards up while a refresh happens in the background.
+const SUCCESS_CACHE_CONTROL = CACHE_TTL_SECONDS > 0
+  ? `public, max-age=${CACHE_TTL_SECONDS}, s-maxage=${CACHE_TTL_SECONDS}, stale-while-revalidate=86400`
+  : "no-store";
+const svgCache = createTtlCache({ ttlMs: CACHE_TTL_SECONDS * 1000, maxEntries: CACHE_MAX_ENTRIES });
 
 function sendErrorCard(res, { theme, user, type, message }) {
   const svg = generateErrorSvg(theme, { user, type, message });
@@ -81,23 +96,26 @@ async function handleSvgRequest(req, res, forcedType = null) {
     return;
   }
 
+  const options = {
+    type: renderType,
+    themeName: theme,
+    githubId: user,
+    topN,
+    scale,
+    color,
+    cols,
+    lines,
+    repo,
+    years,
+    icons,
+    perline,
+    labels
+  };
+
   try {
-    const svg = await generateSvg({
-      type: renderType,
-      themeName: theme,
-      githubId: user,
-      topN,
-      scale,
-      color,
-      cols,
-      lines,
-      repo,
-      years,
-      icons,
-      perline,
-      labels
-    });
-    res.set("Cache-Control", "public, max-age=1800");
+    const { value: svg, hit } = await svgCache.getOrCompute(JSON.stringify(options), () => generateSvg(options));
+    res.set("Cache-Control", SUCCESS_CACHE_CONTROL);
+    res.set("X-Cache", hit ? "HIT" : "MISS");
     res.type("image/svg+xml").send(svg);
   } catch (error) {
     const message = String(error?.message ?? error);
