@@ -3,11 +3,13 @@
 [![npm version](https://terminal-shields.vercel.app/npm/v/github-readme-insight-terminal-ascii?theme=cyan)](https://www.npmjs.com/package/github-readme-insight-terminal-ascii)
 [![Stars](https://terminal-shields.vercel.app/github/stars/seuthootDev/github-readme-insight-terminal-ascii?theme=amber&blink=1)](https://github.com/seuthootDev/github-readme-insight-terminal-ascii/stargazers)
 [![License](https://terminal-shields.vercel.app/github/license/seuthootDev/github-readme-insight-terminal-ascii?theme=green)](LICENSE)
-[![Live demo](https://terminal-shields.vercel.app/website?url=https://github-readme-insight-terminal-asci.vercel.app&theme=cyan)](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=mac)
+[![Live demo](https://terminal-shields.vercel.app/website?url=https://github-readme-insight-terminal-asci.vercel.app&theme=cyan)](https://github-readme-insight-terminal-asci.vercel.app/)
 [![Last commit](https://terminal-shields.vercel.app/github/last-commit/seuthootDev/github-readme-insight-terminal-ascii?theme=green)](https://github.com/seuthootDev/github-readme-insight-terminal-ascii/commits/main)
 
 A tool to generate **terminal-style ASCII SVGs** from your GitHub profile data.  
 Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), you can embed it in your README or GitHub profile with a single URL.
+
+> **Card builder:** open **[github-readme-insight-terminal-asci.vercel.app](https://github-readme-insight-terminal-asci.vercel.app/)**, pick a card and theme, preview it live and copy the Markdown.
 
 - **Themes**: macOS Terminal / Windows PowerShell / Ubuntu GNOME
 - **Types**: contribution graph · stats · top languages · streak · git log · PRs & issues · repo · language history · ASCII avatar · GitHub neofetch · dashboard · skill icons
@@ -170,6 +172,8 @@ npm run serve
 ---
 
 ## Embedding in GitHub Profile / README
+
+The easiest way is the [card builder](https://github-readme-insight-terminal-asci.vercel.app/): it fills in the URL for you and copies ready-made Markdown or HTML. The URLs below are what it produces.
 
 ```
 https://github-readme-insight-terminal-asci.vercel.app/svg?user=GITHUB_USERNAME&theme=THEME

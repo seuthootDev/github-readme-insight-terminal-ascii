@@ -39,6 +39,14 @@ const CACHE_MAX_ENTRIES = Math.max(0, envInt("CACHE_MAX_ENTRIES", 500));
 const SUCCESS_CACHE_CONTROL = CACHE_TTL_SECONDS > 0
   ? `public, max-age=${CACHE_TTL_SECONDS}, s-maxage=${CACHE_TTL_SECONDS}, stale-while-revalidate=86400`
   : "no-store";
+// URL builder page served at the bare site root. Falls back to a redirect if the file is missing.
+let BUILDER_HTML = null;
+try {
+  BUILDER_HTML = readFileSync(new URL("./builder.html", import.meta.url), "utf8");
+} catch {
+}
+const REPO_URL = "https://github.com/seuthootDev/github-readme-insight-terminal-ascii";
+
 const svgCache = createTtlCache({ ttlMs: CACHE_TTL_SECONDS * 1000, maxEntries: CACHE_MAX_ENTRIES });
 
 function sendErrorCard(res, { theme, user, type, message }) {
@@ -124,9 +132,14 @@ async function handleSvgRequest(req, res, forcedType = null) {
 }
 
 app.get(["/", "/svg"], async (req, res) => {
-  // People opening the bare site in a browser should land on the project, not an error card.
+  // People opening the bare site in a browser get the URL builder, not an error card.
   if (req.path === "/" && !req.query.user && !req.query.repo) {
-    res.redirect(302, "https://github.com/seuthootDev/github-readme-insight-terminal-ascii");
+    if (BUILDER_HTML) {
+      res.set("Cache-Control", "public, max-age=300, s-maxage=3600");
+      res.type("html").send(BUILDER_HTML);
+    } else {
+      res.redirect(302, REPO_URL);
+    }
     return;
   }
   await handleSvgRequest(req, res, "graph");

@@ -16,10 +16,22 @@ before(async () => {
 
 after(() => new Promise((resolve) => server.close(resolve)));
 
-test("bare root redirects to the repository", async () => {
-  const res = await fetch(`${base}/`, { redirect: "manual" });
-  assert.equal(res.status, 302);
-  assert.match(res.headers.get("location"), /github\.com\/seuthootDev\/github-readme-insight-terminal-ascii/);
+test("bare root serves the URL builder page", async () => {
+  const res = await fetch(`${base}/`);
+  assert.equal(res.status, 200);
+  assert.match(res.headers.get("content-type"), /text\/html/);
+  const html = await res.text();
+  assert.match(html, /<title>Terminal Card Builder<\/title>/);
+  // Every card type the server knows must be selectable in the builder.
+  const { getAvailableRenderTypes } = await import("../src/renderer.js");
+  for (const type of getAvailableRenderTypes()) {
+    assert.match(html, new RegExp(`<option value="${type}">`), `builder is missing ${type}`);
+  }
+});
+
+test("root with a user still renders the graph card", async () => {
+  const res = await fetch(`${base}/?theme=nope&user=x`);
+  assert.match(res.headers.get("content-type"), /image\/svg\+xml/);
 });
 
 test("skills card is cached and sent with CDN cache headers", async () => {
