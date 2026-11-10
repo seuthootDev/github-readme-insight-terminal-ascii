@@ -259,6 +259,17 @@ Bug reports, new themes, and docs/code improvements are welcome.
 3. Commit and push your changes.
 4. Open a Pull Request.
 
+### Tests
+
+```bash
+npm test
+```
+
+Every card type has an SVG snapshot in `test/__snapshots__/`, rendered offline from GitHub responses recorded in `test/fixtures/github.json` at a frozen date, so tests don't need a token or network access. CI runs them on Node 20, 22 and 24 for every push and pull request.
+
+- Changed how a card looks on purpose? Run `UPDATE_SNAPSHOTS=1 npm test` and check the SVG diff before committing.
+- Changed which GitHub endpoints a card calls? Re-record with `RECORD_FIXTURES=1 npm test` (needs `GITHUB_TOKEN` in `.env`).
+
 The `skills` icons are precomputed into `src/skillIconsData.js`. After bumping the `simple-icons` devDependency, regenerate it with `npm run build:icons` (takes a couple of minutes).
 
 ---

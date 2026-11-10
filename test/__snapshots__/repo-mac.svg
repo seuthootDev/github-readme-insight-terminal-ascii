@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="472" viewBox="0 0 940 472" role="img" aria-label="GitHub repository card for seuthootDev/github-readme-insight-terminal-ascii">
+<title>seuthootDev — zsh</title>
+<defs>
+<style>
+  .line-fetch { opacity: 0; animation: show-fetch 2.1s linear forwards; }
+  .line-success { opacity: 0; animation: show-success 2.1s linear forwards; }
+  .line-card { opacity: 0; animation: show-card 2.1s linear forwards; }
+  .line-bottom { opacity: 0; animation: show-bottom 2.1s linear forwards; }
+  .cursor {
+    opacity: 1;
+    visibility: hidden;
+    animation: cursor-window 2.1s steps(1, end) forwards, blink 0.8s steps(1,end) infinite;
+  }
+  .typing-cursor {
+    opacity: 1;
+    animation: typing-cursor-window 2.1s steps(1, end) forwards;
+  }
+  @keyframes show-fetch { 0%, 47.1429% { opacity: 0; } 47.6190%, 100% { opacity: 1; } }
+  @keyframes show-success { 0%, 78.0952% { opacity: 0; } 78.5714%, 100% { opacity: 1; } }
+  @keyframes show-card { 0%, 85.2381% { opacity: 0; } 85.7143%, 100% { opacity: 1; } }
+  @keyframes show-bottom { 0%, 99.5238% { opacity: 0; } 100.0000%, 100% { opacity: 1; } }
+  @keyframes cursor-window { 0%, 99.5238% { visibility: hidden; } 100.0000%, 100% { visibility: visible; } }
+  @keyframes typing-cursor-window { 0%, 47.6190% { opacity: 1; } 48.0952%, 100% { opacity: 0; } }
+  @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+  
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; }
+    [clip-path] { clip-path: none !important; }
+    [class*="line-"], .log-row, .list-row, .p0, .p1, .p2, .p3, .p4, .bar { opacity: 1 !important; }
+    .typing-cursor { visibility: hidden !important; }
+    .cursor { visibility: visible !important; opacity: 1 !important; }
+  }
+  </style>
+<clipPath id="repo-command-typing-clip"><rect x="248.60000000000002" y="70" width="0" height="22"><animate attributeName="width" values="0;573.3000000000001;573.3000000000001" keyTimes="0;0.476190;1" dur="2.1s" fill="freeze" /></rect></clipPath>
+<clipPath id="repo-fetch-typing-clip"><rect x="44" y="92" width="0" height="20"><animate attributeName="width" values="0;0;578.26;578.26" keyTimes="0;0.476190;0.761905;1" dur="2.1s" fill="freeze" /></rect></clipPath>
+</defs>
+<rect x="20" y="20" width="900" height="432" rx="10" fill="#292929"/>
+<rect x="21" y="60" width="898" height="391" rx="0" fill="#1e1e1e"/>
+<rect x="21" y="21" width="898" height="40" rx="8" fill="#3a3a3a"/>
+
+      <circle cx="38" cy="40" r="6" fill="#ff5f56" />
+      <circle cx="58" cy="40" r="6" fill="#ffbd2e" />
+      <circle cx="78" cy="40" r="6" fill="#27c93f" />
+    
+<text x="470" y="45" font-size="13" font-family="Consolas, Menlo, monospace" fill="#a8a8a8" text-anchor="middle">seuthootDev — zsh</text>
+<text x="44" y="86" font-size="15" font-family="Consolas, Menlo, monospace" xml:space="preserve" textLength="201.60000000000002" lengthAdjust="spacingAndGlyphs"><tspan fill="#98c379">seuthootDev@MacBook</tspan><tspan fill="#61afef"> ~ </tspan><tspan fill="#c5c8c6">% </tspan></text>
+<text x="248.60000000000002" y="86" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace" clip-path="url(#repo-command-typing-clip)">gh repo view seuthootDev/github-readme-insight-terminal-ascii</text>
+<text class="typing-cursor" x="248.60000000000002" y="86" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="248.60000000000002;817.9000000000001;817.9000000000001" keyTimes="0;0.476190;1" dur="2.1s" fill="freeze" /></text>
+<g class="line-fetch">
+<text x="44" y="108" fill="#8b949e" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#repo-fetch-typing-clip)">Fetching repository seuthootDev/github-readme-insight-terminal-ascii...</text>
+</g>
+<g class="line-success">
+<text x="44" y="128" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">✔ </tspan><tspan fill="#c5c8c6">Success! Loaded repository &#39;seuthootDev/github-readme-insight-terminal-ascii&#39;.</tspan></text>
+</g>
+<g class="line-card">
+<rect x="44" y="152" width="852" height="248" rx="12" fill="#1e1e1e" stroke="#30363d"/>
+<text x="68" y="188" font-size="20" font-weight="700" font-family="Consolas, Menlo, monospace"><tspan fill="#8b949e">seuthootDev/</tspan><tspan fill="#3fb950">github-readme-insight-terminal-ascii</tspan></text>
+<text x="872" y="187" font-size="14" font-family="Consolas, Menlo, monospace" text-anchor="end"><tspan fill="#e5c07b">★ </tspan><tspan fill="#c5c8c6">17</tspan><tspan fill="#8b949e">   forks </tspan><tspan fill="#c5c8c6">3</tspan><tspan fill="#8b949e">   watch </tspan><tspan fill="#c5c8c6">0</tspan></text>
+<text x="68" y="216" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6">A tool to generate terminal-style ASCII SVGs from your GitHub profile contribution data</text>
+<text x="68" y="250" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#8b949e">language:</tspan><tspan x="148" fill="#f1e05a">● </tspan><tspan fill="#c5c8c6">JavaScript 100%</tspan></text>
+<text x="336" y="250" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#8b949e">license:</tspan><tspan x="416" fill="#c5c8c6">MIT</tspan></text>
+<text x="604" y="250" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#8b949e">branch:</tspan><tspan x="684" fill="#56b6c2">main</tspan></text>
+<text x="68" y="272" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#8b949e">release:</tspan><tspan x="148" fill="#98c379">v1.3.0 · 5d ago</tspan></text>
+<text x="336" y="272" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#8b949e">pushed:</tspan><tspan x="416" fill="#c5c8c6">5d ago</tspan></text>
+<text x="604" y="272" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#8b949e">open:</tspan><tspan x="684" fill="#c5c8c6">0 issues/PRs</tspan></text>
+<rect x="68" y="290" width="90" height="20" rx="10" fill="none" stroke="#30363d"/>
+<text x="77" y="304" font-size="12" font-family="Consolas, Menlo, monospace" fill="#61afef">#ascii-art</text>
+<rect x="166" y="290" width="154.79999999999998" height="20" rx="10" fill="none" stroke="#30363d"/>
+<text x="175" y="304" font-size="12" font-family="Consolas, Menlo, monospace" fill="#61afef">#contribution-graph</text>
+<rect x="328.79999999999995" y="290" width="205.2" height="20" rx="10" fill="none" stroke="#30363d"/>
+<text x="337.79999999999995" y="304" font-size="12" font-family="Consolas, Menlo, monospace" fill="#61afef">#contribution-graph-github</text>
+<rect x="542" y="290" width="68.4" height="20" rx="10" fill="none" stroke="#30363d"/>
+<text x="551" y="304" font-size="12" font-family="Consolas, Menlo, monospace" fill="#61afef">#github</text>
+<rect x="618.4" y="290" width="169.2" height="20" rx="10" fill="none" stroke="#30363d"/>
+<text x="627.4" y="304" font-size="12" font-family="Consolas, Menlo, monospace" fill="#61afef">#github-contributions</text>
+<text x="68" y="340" font-size="12" font-family="Consolas, Menlo, monospace" fill="#8b949e">commit activity · last 52 weeks · 70 commits</text>
+<rect x="68.0" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="83.5" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="98.9" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="114.4" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="129.8" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="145.3" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="160.8" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="176.2" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="191.7" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="207.2" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="222.6" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="238.1" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="253.5" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="269.0" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="284.5" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="299.9" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="315.4" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="330.8" y="352" width="13.0" height="26" rx="1.5" fill="#39d353"/>
+<rect x="346.3" y="367" width="13.0" height="11" rx="1.5" fill="#0e4429"/>
+<rect x="361.8" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="377.2" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="392.7" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="408.2" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="423.6" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="439.1" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="454.5" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="470.0" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="485.5" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="500.9" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="516.4" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="531.8" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="547.3" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="562.8" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="578.2" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="593.7" y="365" width="13.0" height="13" rx="1.5" fill="#0e4429"/>
+<rect x="609.2" y="371" width="13.0" height="7" rx="1.5" fill="#0e4429"/>
+<rect x="624.6" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="640.1" y="355" width="13.0" height="23" rx="1.5" fill="#39d353"/>
+<rect x="655.5" y="365" width="13.0" height="13" rx="1.5" fill="#0e4429"/>
+<rect x="671.0" y="362" width="13.0" height="16" rx="1.5" fill="#26a641"/>
+<rect x="686.5" y="362" width="13.0" height="16" rx="1.5" fill="#26a641"/>
+<rect x="701.9" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="717.4" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="732.8" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="748.3" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="763.8" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="779.2" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="794.7" y="371" width="13.0" height="7" rx="1.5" fill="#0e4429"/>
+<rect x="810.2" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+<rect x="825.6" y="356" width="13.0" height="22" rx="1.5" fill="#39d353"/>
+<rect x="841.1" y="362" width="13.0" height="16" rx="1.5" fill="#26a641"/>
+<rect x="856.5" y="376" width="13.0" height="2" rx="1.5" fill="#2d333b"/>
+</g>
+<g class="line-bottom">
+<text x="44" y="428" font-size="15" font-family="Consolas, Menlo, monospace" xml:space="preserve" textLength="201.60000000000002" lengthAdjust="spacingAndGlyphs"><tspan fill="#98c379">seuthootDev@MacBook</tspan><tspan fill="#61afef"> ~ </tspan><tspan fill="#c5c8c6">% </tspan></text>
+<text class="cursor" x="245.60000000000002" y="428" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█</text>
+</g>
+</svg>

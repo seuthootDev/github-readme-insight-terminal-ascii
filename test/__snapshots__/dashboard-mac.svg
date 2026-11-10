@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1029" height="594" viewBox="0 0 1029 594" role="img" aria-label="GitHub dashboard card for seuthootDev">
+<title>seuthootDev — zsh</title>
+<defs>
+<style>
+  .p0 { opacity: 0; animation: reveal 0.18s ease-out 1.15s forwards; }
+  .p1 { opacity: 0; animation: reveal 0.18s ease-out 1.27s forwards; }
+  .p2 { opacity: 0; animation: reveal 0.18s ease-out 1.39s forwards; }
+  .p3 { opacity: 0; animation: reveal 0.18s ease-out 1.51s forwards; }
+  .p4 { opacity: 0; animation: reveal 0.18s ease-out 1.63s forwards; }
+  .bar { opacity: 0; animation: reveal 0.18s ease-out 1.75s forwards; }
+  .typing-cursor { animation: hide-cursor 0.01s linear 1s forwards; }
+  @keyframes reveal { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes hide-cursor { to { opacity: 0; } }
+  
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; }
+    [clip-path] { clip-path: none !important; }
+    [class*="line-"], .log-row, .list-row, .p0, .p1, .p2, .p3, .p4, .bar { opacity: 1 !important; }
+    .typing-cursor { visibility: hidden !important; }
+    .cursor { visibility: visible !important; opacity: 1 !important; }
+  }
+  </style>
+<clipPath id="dashboard-command-typing-clip"><rect x="245.60000000000002" y="70" width="0" height="22"><animate attributeName="width" values="0;291.6" dur="1s" fill="freeze" /></rect></clipPath>
+</defs>
+<rect x="20" y="20" width="989" height="554" rx="10" fill="#292929"/>
+<rect x="21" y="60" width="987" height="513" rx="0" fill="#1e1e1e"/>
+<rect x="21" y="21" width="987" height="40" rx="8" fill="#3a3a3a"/>
+
+      <circle cx="38" cy="40" r="6" fill="#ff5f56" />
+      <circle cx="58" cy="40" r="6" fill="#ffbd2e" />
+      <circle cx="78" cy="40" r="6" fill="#27c93f" />
+    
+<text x="514.5" y="45" font-size="13" font-family="Consolas, Menlo, monospace" fill="#a8a8a8" text-anchor="middle">seuthootDev — zsh</text>
+<text x="44.0" y="86" font-size="15" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="159.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">seuthootDev@MacBook</text>
+<text x="203.6" y="86" font-size="15" font-family="Consolas, Menlo, monospace" fill="#61afef" textLength="16.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve"> ~</text>
+<text x="228.8" y="86" font-size="15" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">%</text>
+<text x="245.6" y="86" font-size="15" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="285.6" lengthAdjust="spacingAndGlyphs" clip-path="url(#dashboard-command-typing-clip)">github-cli dash --user seuthootDev</text>
+<text class="typing-cursor" x="245.60000000000002" y="86" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="245.60000000000002;533.2" dur="1s" fill="freeze" /></text>
+<g transform="translate(0 8.5)">
+<rect class="bar" x="21" y="532" width="987" height="17" fill="#98c379"/>
+<text class="p0" x="44.0" y="103" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="16.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">┌─</text>
+<text class="p0" x="69.2" y="103" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" font-weight="700" textLength="75.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">0:profile</text>
+<text class="p0" x="153.2" y="103" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="277.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">────────────────────────────────┐</text>
+<text class="p1" x="430.4" y="103" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="16.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">┌─</text>
+<text class="p1" x="455.6" y="103" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="58.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">1:stats</text>
+<text class="p1" x="522.8" y="103" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="462.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">──────────────────────────────────────────────────────┐</text>
+<text class="p0" x="44.0" y="120" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="170.0" y="120" font-size="14" font-family="Consolas, Menlo, monospace" fill="#56b6c2" font-weight="700" textLength="92.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">seuthootDev</text>
+<text class="p0" x="262.4" y="120" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">@</text>
+<text class="p0" x="270.8" y="120" font-size="14" font-family="Consolas, Menlo, monospace" fill="#56b6c2" font-weight="700" textLength="50.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">github</text>
+<text class="p0" x="422.0" y="120" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p1" x="430.4" y="120" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p1" x="455.6" y="120" font-size="14" font-family="Consolas, Menlo, monospace" fill="#e5c07b" font-weight="700" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">\ /</text>
+<text class="p1" x="573.2" y="120" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c678dd" font-weight="700" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">o-.</text>
+<text class="p1" x="707.6" y="120" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" font-weight="700" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">.-.</text>
+<text class="p1" x="850.4" y="120" font-size="14" font-family="Consolas, Menlo, monospace" fill="#56b6c2" font-weight="700" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">|</text>
+<text class="p1" x="976.4" y="120" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="44.0" y="137" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="77.6" y="137" font-size="14" font-family="Consolas, Menlo, monospace" fill="#3fb950" font-weight="700" textLength="42.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">/\_/\</text>
+<text class="p0" x="170.0" y="137" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="151.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">------------------</text>
+<text class="p0" x="422.0" y="137" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p1" x="430.4" y="137" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p1" x="447.2" y="137" font-size="14" font-family="Consolas, Menlo, monospace" fill="#e5c07b" font-weight="700" textLength="42.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">--*--</text>
+<text class="p1" x="497.6" y="137" font-size="14" font-family="Consolas, Menlo, monospace" fill="#e5c07b" font-weight="700" textLength="16.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">19</text>
+<text class="p1" x="573.2" y="137" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c678dd" font-weight="700" textLength="33.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">|  o</text>
+<text class="p1" x="623.6" y="137" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c678dd" font-weight="700" textLength="16.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">71</text>
+<text class="p1" x="699.2" y="137" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" font-weight="700" textLength="42.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">( ! )</text>
+<text class="p1" x="749.6" y="137" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" font-weight="700" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">2</text>
+<text class="p1" x="833.6" y="137" font-size="14" font-family="Consolas, Menlo, monospace" fill="#56b6c2" font-weight="700" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">| |</text>
+<text class="p1" x="875.6" y="137" font-size="14" font-family="Consolas, Menlo, monospace" fill="#56b6c2" font-weight="700" textLength="42.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">1,824</text>
+<text class="p1" x="976.4" y="137" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="44.0" y="154" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="69.2" y="154" font-size="14" font-family="Consolas, Menlo, monospace" fill="#3fb950" font-weight="700" textLength="58.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">( o.o )</text>
+<text class="p0" x="170.0" y="154" font-size="14" font-family="Consolas, Menlo, monospace" fill="#e5c07b" font-weight="700" textLength="33.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Name</text>
+<text class="p0" x="203.6" y="154" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">:</text>
+<text class="p0" x="262.4" y="154" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="117.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">JUNG SEUNGHOON</text>
+<text class="p0" x="422.0" y="154" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p1" x="430.4" y="154" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p1" x="455.6" y="154" font-size="14" font-family="Consolas, Menlo, monospace" fill="#e5c07b" font-weight="700" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">/ \</text>
+<text class="p1" x="497.6" y="154" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="42.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">stars</text>
+<text class="p1" x="573.2" y="154" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c678dd" font-weight="700" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">o-&#39;</text>
+<text class="p1" x="623.6" y="154" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="75.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">pull reqs</text>
+<text class="p1" x="707.6" y="154" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" font-weight="700" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">&#39;-&#39;</text>
+<text class="p1" x="749.6" y="154" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="50.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">issues</text>
+<text class="p1" x="825.2" y="154" font-size="14" font-family="Consolas, Menlo, monospace" fill="#56b6c2" font-weight="700" textLength="33.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">||||</text>
+<text class="p1" x="875.6" y="154" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="92.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">contribs/yr</text>
+<text class="p1" x="976.4" y="154" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="44.0" y="171" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="77.6" y="171" font-size="14" font-family="Consolas, Menlo, monospace" fill="#3fb950" font-weight="700" textLength="42.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">&gt; ^ &lt;</text>
+<text class="p0" x="170.0" y="171" font-size="14" font-family="Consolas, Menlo, monospace" fill="#e5c07b" font-weight="700" textLength="42.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Repos</text>
+<text class="p0" x="212.0" y="171" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">:</text>
+<text class="p0" x="262.4" y="171" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="75.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">55 public</text>
+<text class="p0" x="422.0" y="171" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p1" x="430.4" y="171" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p1" x="976.4" y="171" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="44.0" y="188" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="69.2" y="188" font-size="14" font-family="Consolas, Menlo, monospace" fill="#3fb950" font-weight="700" textLength="58.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">/|   |\</text>
+<text class="p0" x="170.0" y="188" font-size="14" font-family="Consolas, Menlo, monospace" fill="#e5c07b" font-weight="700" textLength="75.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Followers</text>
+<text class="p0" x="245.6" y="188" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">:</text>
+<text class="p0" x="262.4" y="188" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">3</text>
+<text class="p0" x="422.0" y="188" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p1" x="430.4" y="188" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="554.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">└────────────────────────────────────────────────────────────────┘</text>
+<text class="p0" x="44.0" y="205" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="60.8" y="205" font-size="14" font-family="Consolas, Menlo, monospace" fill="#3fb950" font-weight="700" textLength="75.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">(_|   |_)</text>
+<text class="p0" x="170.0" y="205" font-size="14" font-family="Consolas, Menlo, monospace" fill="#e5c07b" font-weight="700" textLength="42.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Stars</text>
+<text class="p0" x="212.0" y="205" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">:</text>
+<text class="p0" x="262.4" y="205" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="75.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">19 earned</text>
+<text class="p0" x="422.0" y="205" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p2" x="430.4" y="205" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="16.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">┌─</text>
+<text class="p2" x="455.6" y="205" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="67.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">2:streak</text>
+<text class="p2" x="531.2" y="205" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="453.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">─────────────────────────────────────────────────────┐</text>
+<text class="p0" x="44.0" y="222" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="170.0" y="222" font-size="14" font-family="Consolas, Menlo, monospace" fill="#e5c07b" font-weight="700" textLength="42.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Since</text>
+<text class="p0" x="212.0" y="222" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">:</text>
+<text class="p0" x="262.4" y="222" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="75.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">2024 (2y)</text>
+<text class="p0" x="422.0" y="222" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p2" x="430.4" y="222" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p2" x="472.4" y="222" font-size="14" font-family="Consolas, Menlo, monospace" fill="#d19a66" font-weight="700" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">(</text>
+<text class="p2" x="976.4" y="222" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="44.0" y="239" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="69.2" y="239" font-size="14" font-family="Consolas, Menlo, monospace" fill="#5c6370" textLength="67.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">~ meow ~</text>
+<text class="p0" x="170.0" y="239" font-size="14" font-family="Consolas, Menlo, monospace" fill="#e5c07b" font-weight="700" textLength="67.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Top lang</text>
+<text class="p0" x="237.2" y="239" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">:</text>
+<text class="p0" x="262.4" y="239" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="84.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">TypeScript</text>
+<text class="p0" x="422.0" y="239" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p2" x="430.4" y="239" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p2" x="464.0" y="239" font-size="14" font-family="Consolas, Menlo, monospace" fill="#d19a66" font-weight="700" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">) )</text>
+<text class="p2" x="514.4" y="239" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="58.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">current</text>
+<text class="p2" x="598.4" y="239" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="58.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">longest</text>
+<text class="p2" x="707.6" y="239" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="100.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">last 30 days</text>
+<text class="p2" x="976.4" y="239" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="44.0" y="256" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="170.0" y="256" font-size="14" font-family="Consolas, Menlo, monospace" fill="#e5c07b" font-weight="700" textLength="50.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Uptime</text>
+<text class="p0" x="220.4" y="256" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">:</text>
+<text class="p0" x="262.4" y="256" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="75.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">2d streak</text>
+<text class="p0" x="422.0" y="256" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p2" x="430.4" y="256" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p2" x="455.6" y="256" font-size="14" font-family="Consolas, Menlo, monospace" fill="#d19a66" font-weight="700" textLength="42.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">( ( )</text>
+<text class="p2" x="514.4" y="256" font-size="14" font-family="Consolas, Menlo, monospace" fill="#d19a66" font-weight="700" textLength="50.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">2 days</text>
+<text class="p2" x="598.4" y="256" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" font-weight="700" textLength="58.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">17 days</text>
+<text class="p2" x="707.6" y="256" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="42.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">▃▇▄▆▄</text>
+<text class="p2" x="749.6" y="256" font-size="14" font-family="Consolas, Menlo, monospace" fill="#5c6370" textLength="16.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">▁▁</text>
+<text class="p2" x="766.4" y="256" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="50.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">▃▆▃▄▁▁</text>
+<text class="p2" x="816.8" y="256" font-size="14" font-family="Consolas, Menlo, monospace" fill="#5c6370" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">▁</text>
+<text class="p2" x="825.2" y="256" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">▃▄▁</text>
+<text class="p2" x="850.4" y="256" font-size="14" font-family="Consolas, Menlo, monospace" fill="#5c6370" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">▁</text>
+<text class="p2" x="858.8" y="256" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">▃</text>
+<text class="p2" x="867.2" y="256" font-size="14" font-family="Consolas, Menlo, monospace" fill="#5c6370" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">▁</text>
+<text class="p2" x="875.6" y="256" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="50.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">▁█▆▅▄▃</text>
+<text class="p2" x="926.0" y="256" font-size="14" font-family="Consolas, Menlo, monospace" fill="#5c6370" textLength="16.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">▁▁</text>
+<text class="p2" x="942.8" y="256" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="16.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">▇▁</text>
+<text class="p2" x="976.4" y="256" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="44.0" y="273" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="422.0" y="273" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p2" x="430.4" y="273" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p2" x="464.0" y="273" font-size="14" font-family="Consolas, Menlo, monospace" fill="#d19a66" font-weight="700" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">)_)</text>
+<text class="p2" x="707.6" y="273" font-size="14" font-family="Consolas, Menlo, monospace" fill="#5c6370" textLength="58.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">30d ago</text>
+<text class="p2" x="917.6" y="273" font-size="14" font-family="Consolas, Menlo, monospace" fill="#5c6370" textLength="42.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">today</text>
+<text class="p2" x="976.4" y="273" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="44.0" y="290" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="170.0" y="290" font-size="14" font-family="Consolas, Menlo, monospace" fill="#3b4252" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">███</text>
+<text class="p0" x="195.2" y="290" font-size="14" font-family="Consolas, Menlo, monospace" fill="#bf616a" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">███</text>
+<text class="p0" x="220.4" y="290" font-size="14" font-family="Consolas, Menlo, monospace" fill="#a3be8c" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">███</text>
+<text class="p0" x="245.6" y="290" font-size="14" font-family="Consolas, Menlo, monospace" fill="#ebcb8b" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">███</text>
+<text class="p0" x="270.8" y="290" font-size="14" font-family="Consolas, Menlo, monospace" fill="#81a1c1" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">███</text>
+<text class="p0" x="296.0" y="290" font-size="14" font-family="Consolas, Menlo, monospace" fill="#b48ead" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">███</text>
+<text class="p0" x="321.2" y="290" font-size="14" font-family="Consolas, Menlo, monospace" fill="#88c0d0" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">███</text>
+<text class="p0" x="346.4" y="290" font-size="14" font-family="Consolas, Menlo, monospace" fill="#e5e9f0" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">███</text>
+<text class="p0" x="422.0" y="290" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p2" x="430.4" y="290" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p2" x="455.6" y="290" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" font-weight="700" textLength="42.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">[___]</text>
+<text class="p2" x="514.4" y="290" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">[</text>
+<text class="p2" x="522.8" y="290" font-size="14" font-family="Consolas, Menlo, monospace" fill="#d19a66" font-weight="700" textLength="16.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">##</text>
+<text class="p2" x="539.6" y="290" font-size="14" font-family="Consolas, Menlo, monospace" fill="#5c6370" textLength="100.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">............</text>
+<text class="p2" x="640.4" y="290" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="109.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">] 12% of best</text>
+<text class="p2" x="976.4" y="290" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="44.0" y="307" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="422.0" y="307" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p2" x="430.4" y="307" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p2" x="976.4" y="307" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p0" x="44.0" y="324" font-size="14" font-family="Consolas, Menlo, monospace" fill="#98c379" textLength="386.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">└────────────────────────────────────────────┘</text>
+<text class="p2" x="430.4" y="324" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="554.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">└────────────────────────────────────────────────────────────────┘</text>
+<text class="p3" x="44.0" y="341" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="16.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">┌─</text>
+<text class="p3" x="69.2" y="341" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="193.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">3:graph · last 26 weeks</text>
+<text class="p3" x="270.8" y="341" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="386.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">─────────────────────────────────────────────┐</text>
+<text class="p4" x="657.2" y="341" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="16.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">┌─</text>
+<text class="p4" x="682.4" y="341" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="58.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">4:langs</text>
+<text class="p4" x="749.6" y="341" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="235.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">───────────────────────────┐</text>
+<text class="p3" x="44.0" y="358" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p3" x="102.8" y="358" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">May</text>
+<text class="p3" x="153.2" y="358" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Jun</text>
+<text class="p3" x="220.4" y="358" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Jul</text>
+<text class="p3" x="287.6" y="358" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Aug</text>
+<text class="p3" x="371.6" y="358" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Sep</text>
+<text class="p3" x="438.8" y="358" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Oct</text>
+<text class="p3" x="506.0" y="358" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Nov</text>
+<text class="p3" x="648.8" y="358" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p4" x="657.2" y="358" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p4" x="976.4" y="358" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p3" x="44.0" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p3" x="102.8" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="119.6" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="136.4" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="153.2" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="170.0" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="186.8" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="203.6" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="220.4" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="237.2" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="254.0" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="270.8" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="287.6" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="304.4" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="321.2" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="338.0" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#006d32" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="354.8" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="371.6" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="388.4" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="405.2" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#006d32" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="422.0" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="438.8" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="455.6" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="472.4" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="489.2" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="506.0" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="522.8" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="648.8" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p4" x="657.2" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p4" x="674.0" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="84.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">TypeScript</text>
+<text class="p4" x="774.8" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#3178c6" textLength="134.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">████████████████</text>
+<text class="p4" x="926.0" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">41%</text>
+<text class="p4" x="976.4" y="375" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p3" x="44.0" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p3" x="60.8" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Mon</text>
+<text class="p3" x="102.8" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="119.6" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="136.4" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#006d32" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="153.2" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#006d32" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="170.0" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="186.8" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#006d32" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="203.6" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#006d32" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="220.4" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="237.2" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#006d32" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="254.0" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="270.8" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="287.6" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="304.4" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="321.2" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="338.0" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="354.8" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#006d32" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="371.6" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="388.4" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="405.2" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="422.0" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="438.8" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="455.6" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="472.4" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="489.2" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="506.0" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="522.8" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="648.8" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p4" x="657.2" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p4" x="976.4" y="392" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p3" x="44.0" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p3" x="102.8" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="119.6" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="136.4" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#006d32" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="153.2" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#006d32" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="170.0" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="186.8" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#006d32" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="203.6" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="220.4" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="237.2" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="254.0" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="270.8" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="287.6" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="304.4" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="321.2" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="338.0" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="354.8" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="371.6" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="388.4" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="405.2" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="422.0" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="438.8" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="455.6" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="472.4" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="489.2" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="506.0" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="522.8" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="648.8" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p4" x="657.2" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p4" x="674.0" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="84.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">JavaScript</text>
+<text class="p4" x="774.8" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#f1e05a" textLength="109.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">█████████████</text>
+<text class="p4" x="884.0" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#5c6370" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">···</text>
+<text class="p4" x="926.0" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">33%</text>
+<text class="p4" x="976.4" y="409" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p3" x="44.0" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p3" x="60.8" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Wed</text>
+<text class="p3" x="102.8" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="119.6" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#006d32" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="136.4" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="153.2" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#006d32" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="170.0" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="186.8" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="203.6" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="220.4" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="237.2" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="254.0" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="270.8" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="287.6" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="304.4" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="321.2" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="338.0" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="354.8" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="371.6" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#006d32" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="388.4" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="405.2" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="422.0" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="438.8" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="455.6" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="472.4" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="489.2" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="506.0" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="648.8" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p4" x="657.2" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p4" x="976.4" y="426" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p3" x="44.0" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p3" x="102.8" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="119.6" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="136.4" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="153.2" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#006d32" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="170.0" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#006d32" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="186.8" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#006d32" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="203.6" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="220.4" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="237.2" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="254.0" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="270.8" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="287.6" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="304.4" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="321.2" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="338.0" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="354.8" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="371.6" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="388.4" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="405.2" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="422.0" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="438.8" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="455.6" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="472.4" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="489.2" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="506.0" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="648.8" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p4" x="657.2" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p4" x="674.0" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="50.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Python</text>
+<text class="p4" x="774.8" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#3572A5" textLength="33.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">████</text>
+<text class="p4" x="808.4" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#5c6370" textLength="100.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">············</text>
+<text class="p4" x="926.0" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">11%</text>
+<text class="p4" x="976.4" y="443" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p3" x="44.0" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p3" x="60.8" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Fri</text>
+<text class="p3" x="102.8" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="119.6" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#006d32" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="136.4" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#006d32" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="153.2" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="170.0" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="186.8" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="203.6" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="220.4" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="237.2" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="254.0" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="270.8" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="287.6" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="304.4" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="321.2" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="338.0" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="354.8" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="371.6" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="388.4" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="405.2" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="422.0" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="438.8" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="455.6" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="472.4" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="489.2" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="506.0" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="648.8" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p4" x="657.2" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p4" x="976.4" y="460" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p3" x="44.0" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p3" x="102.8" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="119.6" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="136.4" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="153.2" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="170.0" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="186.8" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="203.6" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="220.4" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="237.2" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="254.0" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="270.8" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="287.6" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="304.4" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="321.2" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="338.0" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="354.8" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="371.6" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="388.4" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="405.2" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="422.0" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="438.8" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="455.6" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="472.4" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="489.2" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="506.0" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="648.8" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p4" x="657.2" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p4" x="674.0" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">CSS</text>
+<text class="p4" x="774.8" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#563d7c" textLength="16.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">██</text>
+<text class="p4" x="791.6" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#5c6370" textLength="117.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">··············</text>
+<text class="p4" x="934.4" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="16.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">4%</text>
+<text class="p4" x="976.4" y="477" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p3" x="44.0" y="494" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p3" x="648.8" y="494" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p4" x="657.2" y="494" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p4" x="976.4" y="494" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p3" x="44.0" y="511" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p3" x="60.8" y="511" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="260.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">1,395 contributions in 26 weeks</text>
+<text class="p3" x="514.4" y="511" font-size="14" font-family="Consolas, Menlo, monospace" fill="#5c6370" textLength="33.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">less</text>
+<text class="p3" x="556.4" y="511" font-size="14" font-family="Consolas, Menlo, monospace" fill="#2d333b" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="564.8" y="511" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0e4429" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="573.2" y="511" font-size="14" font-family="Consolas, Menlo, monospace" fill="#006d32" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="581.6" y="511" font-size="14" font-family="Consolas, Menlo, monospace" fill="#26a641" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="590.0" y="511" font-size="14" font-family="Consolas, Menlo, monospace" fill="#39d353" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">■</text>
+<text class="p3" x="606.8" y="511" font-size="14" font-family="Consolas, Menlo, monospace" fill="#5c6370" textLength="33.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">more</text>
+<text class="p3" x="648.8" y="511" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p4" x="657.2" y="511" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p4" x="674.0" y="511" font-size="14" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" textLength="42.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Other</text>
+<text class="p4" x="774.8" y="511" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="33.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">████</text>
+<text class="p4" x="808.4" y="511" font-size="14" font-family="Consolas, Menlo, monospace" fill="#5c6370" textLength="100.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">············</text>
+<text class="p4" x="926.0" y="511" font-size="14" font-family="Consolas, Menlo, monospace" fill="#8b949e" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">11%</text>
+<text class="p4" x="976.4" y="511" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">│</text>
+<text class="p3" x="44.0" y="528" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="613.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">└───────────────────────────────────────────────────────────────────────┘</text>
+<text class="p4" x="657.2" y="528" font-size="14" font-family="Consolas, Menlo, monospace" fill="#4b5263" textLength="327.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">└─────────────────────────────────────┘</text>
+<text class="bar" x="44.0" y="545" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0d1117" font-weight="700" textLength="50.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">[dash]</text>
+<text class="bar" x="102.8" y="545" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0d1117" textLength="386.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">0:profile* 1:stats  2:streak  3:graph  4:langs</text>
+<text class="bar" x="732.8" y="545" font-size="14" font-family="Consolas, Menlo, monospace" fill="#0d1117" textLength="243.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">&quot;seuthootDev&quot; 05:04 10-Nov-26</text>
+</g>
+</svg>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="404" viewBox="0 0 940 404" role="img" aria-label="Language history card for seuthootDev">
+<title>seuthootDev — zsh</title>
+<defs>
+<style>
+  .line-fetch { opacity: 0; animation: show-fetch 2.5999999999999996s linear forwards; }
+  .line-success { opacity: 0; animation: show-success 2.5999999999999996s linear forwards; }
+  .line-card { opacity: 0; animation: show-card 2.5999999999999996s linear forwards; }
+  .line-bottom { opacity: 0; animation: show-bottom 2.5999999999999996s linear forwards; }
+  .list-row { opacity: 0; animation: row-in 0.12s linear forwards; }
+  .row-0 { animation-delay: 2.15s; }
+  .row-1 { animation-delay: 2.25s; }
+  .row-2 { animation-delay: 2.35s; }
+  .cursor {
+    opacity: 1;
+    visibility: hidden;
+    animation: cursor-window 2.5999999999999996s steps(1, end) forwards, blink 0.8s steps(1,end) infinite;
+  }
+  .typing-cursor {
+    opacity: 1;
+    animation: typing-cursor-window 2.5999999999999996s steps(1, end) forwards;
+  }
+  @keyframes show-fetch { 0%, 45.7692% { opacity: 0; } 46.1538%, 100% { opacity: 1; } }
+  @keyframes show-success { 0%, 74.6154% { opacity: 0; } 75.0000%, 100% { opacity: 1; } }
+  @keyframes show-card { 0%, 78.4615% { opacity: 0; } 78.8462%, 100% { opacity: 1; } }
+  @keyframes show-bottom { 0%, 99.6154% { opacity: 0; } 100.0000%, 100% { opacity: 1; } }
+  @keyframes row-in { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes cursor-window { 0%, 99.6154% { visibility: hidden; } 100.0000%, 100% { visibility: visible; } }
+  @keyframes typing-cursor-window { 0%, 46.1538% { opacity: 1; } 46.5385%, 100% { opacity: 0; } }
+  @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+  
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; }
+    [clip-path] { clip-path: none !important; }
+    [class*="line-"], .log-row, .list-row, .p0, .p1, .p2, .p3, .p4, .bar { opacity: 1 !important; }
+    .typing-cursor { visibility: hidden !important; }
+    .cursor { visibility: visible !important; opacity: 1 !important; }
+  }
+  </style>
+<clipPath id="langhistory-command-typing-clip"><rect x="248.60000000000002" y="70" width="0" height="22"><animate attributeName="width" values="0;489.6;489.6" keyTimes="0;0.461538;1" dur="2.5999999999999996s" fill="freeze" /></rect></clipPath>
+<clipPath id="langhistory-fetch-typing-clip"><rect x="44" y="92" width="0" height="20"><animate attributeName="width" values="0;0;352.58000000000004;352.58000000000004" keyTimes="0;0.461538;0.750000;1" dur="2.5999999999999996s" fill="freeze" /></rect></clipPath>
+</defs>
+<rect x="20" y="20" width="900" height="364" rx="10" fill="#292929"/>
+<rect x="21" y="60" width="898" height="323" rx="0" fill="#1e1e1e"/>
+<rect x="21" y="21" width="898" height="40" rx="8" fill="#3a3a3a"/>
+
+      <circle cx="38" cy="40" r="6" fill="#ff5f56" />
+      <circle cx="58" cy="40" r="6" fill="#ffbd2e" />
+      <circle cx="78" cy="40" r="6" fill="#27c93f" />
+    
+<text x="470" y="45" font-size="13" font-family="Consolas, Menlo, monospace" fill="#a8a8a8" text-anchor="middle">seuthootDev — zsh</text>
+<text x="44" y="86" font-size="15" font-family="Consolas, Menlo, monospace" xml:space="preserve" textLength="201.60000000000002" lengthAdjust="spacingAndGlyphs"><tspan fill="#98c379">seuthootDev@MacBook</tspan><tspan fill="#61afef"> ~ </tspan><tspan fill="#c5c8c6">% </tspan></text>
+<text x="248.60000000000002" y="86" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace" clip-path="url(#langhistory-command-typing-clip)">github-cli lang-history --user seuthootDev --years 6</text>
+<text class="typing-cursor" x="248.60000000000002" y="86" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="248.60000000000002;734.2;734.2" keyTimes="0;0.461538;1" dur="2.5999999999999996s" fill="freeze" /></text>
+<g class="line-fetch">
+<text x="44" y="108" fill="#8b949e" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#langhistory-fetch-typing-clip)">Aggregating commit contributions by year...</text>
+</g>
+<g class="line-success">
+<text x="44" y="128" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">✔ </tspan><tspan fill="#c5c8c6">Success! 3 years of language history for &#39;seuthootDev&#39;.</tspan></text>
+</g>
+<g class="line-card">
+<rect x="44" y="152" width="852" height="180" rx="12" fill="#1e1e1e" stroke="#30363d"/>
+<text y="182" font-size="12" font-family="Consolas, Menlo, monospace" fill="#8b949e"><tspan x="68">YEAR</tspan><tspan x="120">SHARE OF COMMITS BY LANGUAGE</tspan><tspan x="502">TOP 2</tspan></text>
+<text x="868" y="182" font-size="12" font-family="Consolas, Menlo, monospace" fill="#8b949e" text-anchor="end">COMMITS</text>
+<line x1="64" y1="192" x2="872" y2="192" stroke="#30363d" stroke-dasharray="2,4"/>
+<g class="list-row row-0">
+<text x="68" y="216" font-size="14" font-family="Consolas, Menlo, monospace" fill="#e5c07b">2024</text>
+<rect x="120" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="129" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="138" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="147" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="156" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="165" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="174" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="183" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="192" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="201" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="210" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="219" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="228" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="237" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="246" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="255" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="264" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="273" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="282" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="291" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="300" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="309" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="318" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="327" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="336" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="345" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="354" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="363" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="372" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="381" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="390" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="399" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="408" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="417" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="426" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="435" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="444" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="453" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="462" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="471" y="206" width="7" height="11" rx="1" fill="#30363d"/>
+<text y="216" font-size="13" font-family="Consolas, Menlo, monospace"><tspan x="502" fill="#8b949e">—</tspan></text>
+<text x="868" y="216" font-size="13" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" text-anchor="end">60</text>
+</g>
+<g class="list-row row-1">
+<text x="68" y="242" font-size="14" font-family="Consolas, Menlo, monospace" fill="#e5c07b">2025</text>
+<rect x="120" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="129" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="138" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="147" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="156" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="165" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="174" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="183" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="192" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="201" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="210" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="219" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="228" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="237" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="246" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="255" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="264" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="273" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="282" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="291" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="300" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="309" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="318" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="327" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="336" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="345" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="354" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="363" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="372" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="381" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="390" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="399" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="408" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="417" y="232" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="426" y="232" width="7" height="11" rx="1" fill="#f1e05a"/>
+<rect x="435" y="232" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="444" y="232" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="453" y="232" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="462" y="232" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="471" y="232" width="7" height="11" rx="1" fill="#30363d"/>
+<text y="242" font-size="13" font-family="Consolas, Menlo, monospace"><tspan x="502" fill="#4c8ace">●</tspan><tspan fill="#c5c8c6"> TypeScript</tspan><tspan fill="#8b949e"> 86%</tspan><tspan x="652" fill="#f1e05a">●</tspan><tspan fill="#c5c8c6"> JavaScript</tspan><tspan fill="#8b949e"> 1%</tspan></text>
+<text x="868" y="242" font-size="13" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" text-anchor="end">560</text>
+</g>
+<g class="list-row row-2">
+<text x="68" y="268" font-size="14" font-family="Consolas, Menlo, monospace" fill="#e5c07b">2026</text>
+<rect x="120" y="258" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="129" y="258" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="138" y="258" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="147" y="258" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="156" y="258" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="165" y="258" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="174" y="258" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="183" y="258" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="192" y="258" width="7" height="11" rx="1" fill="#4c8ace"/>
+<rect x="201" y="258" width="7" height="11" rx="1" fill="#f1e05a"/>
+<rect x="210" y="258" width="7" height="11" rx="1" fill="#f1e05a"/>
+<rect x="219" y="258" width="7" height="11" rx="1" fill="#f1e05a"/>
+<rect x="228" y="258" width="7" height="11" rx="1" fill="#f1e05a"/>
+<rect x="237" y="258" width="7" height="11" rx="1" fill="#f1e05a"/>
+<rect x="246" y="258" width="7" height="11" rx="1" fill="#f1e05a"/>
+<rect x="255" y="258" width="7" height="11" rx="1" fill="#f1e05a"/>
+<rect x="264" y="258" width="7" height="11" rx="1" fill="#f1e05a"/>
+<rect x="273" y="258" width="7" height="11" rx="1" fill="#f1e05a"/>
+<rect x="282" y="258" width="7" height="11" rx="1" fill="#f1e05a"/>
+<rect x="291" y="258" width="7" height="11" rx="1" fill="#f1e05a"/>
+<rect x="300" y="258" width="7" height="11" rx="1" fill="#f1e05a"/>
+<rect x="309" y="258" width="7" height="11" rx="1" fill="#f1e05a"/>
+<rect x="318" y="258" width="7" height="11" rx="1" fill="#f1e05a"/>
+<rect x="327" y="258" width="7" height="11" rx="1" fill="#f1e05a"/>
+<rect x="336" y="258" width="7" height="11" rx="1" fill="#f1e05a"/>
+<rect x="345" y="258" width="7" height="11" rx="1" fill="#f1e05a"/>
+<rect x="354" y="258" width="7" height="11" rx="1" fill="#f1e05a"/>
+<rect x="363" y="258" width="7" height="11" rx="1" fill="#f1e05a"/>
+<rect x="372" y="258" width="7" height="11" rx="1" fill="#f1e05a"/>
+<rect x="381" y="258" width="7" height="11" rx="1" fill="#ff6514"/>
+<rect x="390" y="258" width="7" height="11" rx="1" fill="#598bb5"/>
+<rect x="399" y="258" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="408" y="258" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="417" y="258" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="426" y="258" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="435" y="258" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="444" y="258" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="453" y="258" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="462" y="258" width="7" height="11" rx="1" fill="#30363d"/>
+<rect x="471" y="258" width="7" height="11" rx="1" fill="#30363d"/>
+<text y="268" font-size="13" font-family="Consolas, Menlo, monospace"><tspan x="502" fill="#f1e05a">●</tspan><tspan fill="#c5c8c6"> JavaScript</tspan><tspan fill="#8b949e"> 49%</tspan><tspan x="652" fill="#4c8ace">●</tspan><tspan fill="#c5c8c6"> TypeScript</tspan><tspan fill="#8b949e"> 23%</tspan></text>
+<text x="868" y="268" font-size="13" font-family="Consolas, Menlo, monospace" fill="#c5c8c6" text-anchor="end">411</text>
+</g>
+<line x1="64" y1="290" x2="872" y2="290" stroke="#30363d" stroke-dasharray="2,4"/>
+<text y="308" font-size="12" font-family="Consolas, Menlo, monospace"><tspan x="68" fill="#4c8ace">■</tspan><tspan fill="#8b949e"> TypeScript</tspan><tspan x="179.6" fill="#f1e05a">■</tspan><tspan fill="#8b949e"> JavaScript</tspan><tspan x="291.2" fill="#ff6514">■</tspan><tspan fill="#8b949e"> Astro</tspan><tspan x="365.6" fill="#598bb5">■</tspan><tspan fill="#8b949e"> Python</tspan><tspan x="447.44000000000005" fill="#30363d">■</tspan><tspan fill="#8b949e"> Other</tspan></text>
+<text x="868" y="308" font-size="12" font-family="Consolas, Menlo, monospace" text-anchor="end"><tspan fill="#8b949e">JavaScript </tspan><tspan fill="#98c379">▲ 49%p</tspan><tspan fill="#8b949e"> since 2024</tspan></text>
+</g>
+<g class="line-bottom">
+<text x="44" y="360" font-size="15" font-family="Consolas, Menlo, monospace" xml:space="preserve" textLength="201.60000000000002" lengthAdjust="spacingAndGlyphs"><tspan fill="#98c379">seuthootDev@MacBook</tspan><tspan fill="#61afef"> ~ </tspan><tspan fill="#c5c8c6">% </tspan></text>
+<text class="cursor" x="245.60000000000002" y="360" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█</text>
+</g>
+</svg>

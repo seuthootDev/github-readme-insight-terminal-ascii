@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="770" height="376" viewBox="0 0 770 376" role="img" aria-label="Top languages card for seuthootDev">
+<title>seuthootDev — zsh</title>
+<defs>
+<style>
+  .line-fetch { opacity: 0; animation: show-fetch 2.4s linear forwards; }
+  .line-success { opacity: 0; animation: show-success 2.4s linear forwards; }
+  .line-languages { opacity: 0; animation: show-languages 2.4s linear forwards; }
+  .line-bottom { opacity: 0; animation: show-bottom 2.4s linear forwards; }
+  .cursor {
+    opacity: 1;
+    visibility: hidden;
+    animation: cursor-window 2.4s steps(1, end) forwards, blink 0.8s steps(1,end) infinite;
+  }
+  .typing-cursor {
+    opacity: 1;
+    animation: typing-cursor-window 2.4s steps(1, end) forwards;
+  }
+  @keyframes show-fetch { 0%, 49.5833% { opacity: 0; } 50.0000%, 100% { opacity: 1; } }
+  @keyframes show-success { 0%, 80.8333% { opacity: 0; } 81.2500%, 100% { opacity: 1; } }
+  @keyframes show-languages { 0%, 85.0000% { opacity: 0; } 85.4167%, 100% { opacity: 1; } }
+  @keyframes show-bottom { 0%, 99.5833% { opacity: 0; } 100.0000%, 100% { opacity: 1; } }
+  @keyframes cursor-window { 0%, 99.5833% { visibility: hidden; } 100.0000%, 100% { visibility: visible; } }
+  @keyframes typing-cursor-window { 0%, 50.0000% { opacity: 1; } 50.4167%, 100% { opacity: 0; } }
+  @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+  
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; }
+    [clip-path] { clip-path: none !important; }
+    [class*="line-"], .log-row, .list-row, .p0, .p1, .p2, .p3, .p4, .bar { opacity: 1 !important; }
+    .typing-cursor { visibility: hidden !important; }
+    .cursor { visibility: visible !important; opacity: 1 !important; }
+  }
+  </style>
+<clipPath id="toplang-command-typing-clip"><rect x="248.60000000000002" y="70" width="0" height="22"><animate attributeName="width" values="0;285;285" keyTimes="0;0.500000;1" dur="2.4s" fill="freeze" /></rect></clipPath>
+<clipPath id="toplang-fetch-typing-clip"><rect x="44" y="92" width="0" height="20"><animate attributeName="width" values="0;0;263.92;263.92" keyTimes="0;0.500000;0.812500;1" dur="2.4s" fill="freeze" /></rect></clipPath>
+</defs>
+<rect x="20" y="20" width="730" height="336" rx="10" fill="#292929"/>
+<rect x="21" y="60" width="728" height="295" rx="0" fill="#1e1e1e"/>
+<rect x="21" y="21" width="728" height="40" rx="8" fill="#3a3a3a"/>
+
+      <circle cx="38" cy="40" r="6" fill="#ff5f56" />
+      <circle cx="58" cy="40" r="6" fill="#ffbd2e" />
+      <circle cx="78" cy="40" r="6" fill="#27c93f" />
+    
+<text x="385" y="45" font-size="13" font-family="Consolas, Menlo, monospace" fill="#a8a8a8" text-anchor="middle">seuthootDev — zsh</text>
+<text x="44" y="86" font-size="15" font-family="Consolas, Menlo, monospace" xml:space="preserve" textLength="201.60000000000002" lengthAdjust="spacingAndGlyphs"><tspan fill="#98c379">seuthootDev@MacBook</tspan><tspan fill="#61afef"> ~ </tspan><tspan fill="#c5c8c6">% </tspan></text>
+<text x="248.60000000000002" y="86" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace" clip-path="url(#toplang-command-typing-clip)">gh api users/seuthootDev/repos</text>
+<text class="typing-cursor" x="248.60000000000002" y="86" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="248.60000000000002;529.6;529.6" keyTimes="0;0.500000;1" dur="2.4s" fill="freeze" /></text>
+<g class="line-fetch">
+<text x="44" y="108" fill="#8b949e" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#toplang-fetch-typing-clip)">Fetching data from GitHub API...</text>
+</g>
+<g class="line-success">
+<text x="44" y="128" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">✔ </tspan><tspan fill="#c5c8c6">Success! Generated language card for &#39;seuthootDev&#39;.</tspan></text>
+</g>
+<g class="line-languages">
+<rect x="44" y="152" width="682" height="152" rx="12" fill="#1e1e1e" stroke="#30363d"/>
+<text x="119" y="198" font-size="13" font-family="Consolas, Menlo, monospace" fill="#3fb950" text-anchor="middle" letter-spacing="2">░▒▓█▓▒░</text>
+<text x="119" y="219" font-size="16" font-family="Consolas, Menlo, monospace" fill="#3fb950" font-weight="700" text-anchor="middle" letter-spacing="1">TOP</text>
+<text x="119" y="240" font-size="16" font-family="Consolas, Menlo, monospace" fill="#3fb950" font-weight="700" text-anchor="middle" letter-spacing="1">LANG</text>
+<text x="119" y="260" font-size="11" font-family="Consolas, Menlo, monospace" fill="#8b949e" text-anchor="middle">@seuthootDev · top 6</text>
+<line x1="194" y1="168" x2="194" y2="288" stroke="#30363d"/>
+<rect x="218" y="181" width="481" height="9" rx="2" fill="none" stroke="#30363d"/>
+<rect x="218" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="225" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="232" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="239" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="246" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="253" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="260" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="267" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="274" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="281" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="288" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="295" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="302" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="309" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="316" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="323" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="330" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="337" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="344" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="351" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="358" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="365" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="372" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="379" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="386" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="393" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="400" y="182" width="5" height="7" rx="1" fill="#3178c6"/><rect x="407" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="414" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="421" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="428" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="435" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="442" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="449" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="456" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="463" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="470" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="477" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="484" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="491" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="498" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="505" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="512" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="519" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="526" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="533" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="540" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="547" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="554" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="561" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="568" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="575" y="182" width="5" height="7" rx="1" fill="#355570"/><rect x="582" y="182" width="5" height="7" rx="1" fill="#f1e05a"/><rect x="589" y="182" width="5" height="7" rx="1" fill="#f1e05a"/><rect x="596" y="182" width="5" height="7" rx="1" fill="#f1e05a"/><rect x="603" y="182" width="5" height="7" rx="1" fill="#f1e05a"/><rect x="610" y="182" width="5" height="7" rx="1" fill="#f1e05a"/><rect x="617" y="182" width="5" height="7" rx="1" fill="#f1e05a"/><rect x="624" y="182" width="5" height="7" rx="1" fill="#f1e05a"/><rect x="631" y="182" width="5" height="7" rx="1" fill="#f1e05a"/><rect x="638" y="182" width="5" height="7" rx="1" fill="#f1e05a"/><rect x="645" y="182" width="5" height="7" rx="1" fill="#f1e05a"/><rect x="652" y="182" width="5" height="7" rx="1" fill="#ff5a03"/><rect x="659" y="182" width="5" height="7" rx="1" fill="#ff5a03"/><rect x="666" y="182" width="5" height="7" rx="1" fill="#663399"/><rect x="673" y="182" width="5" height="7" rx="1" fill="#3572A5"/><rect x="680" y="182" width="5" height="7" rx="1" fill="#3572A5"/><rect x="687" y="182" width="5" height="7" rx="1" fill="#30363d"/><rect x="694" y="182" width="5" height="7" rx="1" fill="#30363d"/>
+<circle cx="218" cy="217" r="4" fill="#3178c6"/>
+<text x="230" y="222" font-size="13" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">TypeScript</text>
+<text x="408" y="222" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">39.66%</text>
+<circle cx="218" cy="241" r="4" fill="#355570"/>
+<text x="230" y="246" font-size="13" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">GDScript</text>
+<text x="408" y="246" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">35.61%</text>
+<circle cx="218" cy="265" r="4" fill="#f1e05a"/>
+<text x="230" y="270" font-size="13" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">JavaScript</text>
+<text x="408" y="270" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">15.23%</text>
+<circle cx="471" cy="217" r="4" fill="#ff5a03"/>
+<text x="483" y="222" font-size="13" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">Astro</text>
+<text x="661" y="222" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">2.12%</text>
+<circle cx="471" cy="241" r="4" fill="#663399"/>
+<text x="483" y="246" font-size="13" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">CSS</text>
+<text x="661" y="246" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">1.90%</text>
+<circle cx="471" cy="265" r="4" fill="#3572A5"/>
+<text x="483" y="270" font-size="13" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">Python</text>
+<text x="661" y="270" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">1.88%</text>
+</g>
+<g class="line-bottom">
+<text x="44" y="332" font-size="15" font-family="Consolas, Menlo, monospace" xml:space="preserve" textLength="201.60000000000002" lengthAdjust="spacingAndGlyphs"><tspan fill="#98c379">seuthootDev@MacBook</tspan><tspan fill="#61afef"> ~ </tspan><tspan fill="#c5c8c6">% </tspan></text>
+<text class="cursor" x="245.60000000000002" y="332" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█</text>
+</g>
+</svg>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="710" height="392" viewBox="0 0 710 392" role="img" aria-label="GitHub streak card for seuthootDev">
+<title>bash — seuthootDev@ubuntu: ~</title>
+<defs>
+<style>
+  .line-fetch { opacity: 0; animation: show-fetch 2.4s linear forwards; }
+  .line-success { opacity: 0; animation: show-success 2.4s linear forwards; }
+  .line-streak { opacity: 0; animation: show-streak 2.4s linear forwards; }
+  .line-bottom { opacity: 0; animation: show-bottom 2.4s linear forwards; }
+  .cursor {
+    opacity: 1;
+    visibility: hidden;
+    animation: cursor-window 2.4s steps(1, end) forwards, blink 0.8s steps(1,end) infinite;
+  }
+  .typing-cursor {
+    opacity: 1;
+    animation: typing-cursor-window 2.4s steps(1, end) forwards;
+  }
+  @keyframes show-fetch { 0%, 49.5833% { opacity: 0; } 50.0000%, 100% { opacity: 1; } }
+  @keyframes show-success { 0%, 80.8333% { opacity: 0; } 81.2500%, 100% { opacity: 1; } }
+  @keyframes show-streak { 0%, 85.0000% { opacity: 0; } 85.4167%, 100% { opacity: 1; } }
+  @keyframes show-bottom { 0%, 99.5833% { opacity: 0; } 100.0000%, 100% { opacity: 1; } }
+  @keyframes cursor-window { 0%, 99.5833% { visibility: hidden; } 100.0000%, 100% { visibility: visible; } }
+  @keyframes typing-cursor-window { 0%, 50.0000% { opacity: 1; } 50.4167%, 100% { opacity: 0; } }
+  @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+  
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; }
+    [clip-path] { clip-path: none !important; }
+    [class*="line-"], .log-row, .list-row, .p0, .p1, .p2, .p3, .p4, .bar { opacity: 1 !important; }
+    .typing-cursor { visibility: hidden !important; }
+    .cursor { visibility: visible !important; opacity: 1 !important; }
+  }
+  </style>
+<clipPath id="streak-command-typing-clip"><rect x="231.80000000000004" y="70" width="0" height="22"><animate attributeName="width" values="0;247.8;247.8" keyTimes="0;0.500000;1" dur="2.4s" fill="freeze" /></rect></clipPath>
+<clipPath id="streak-fetch-typing-clip"><rect x="44" y="92" width="0" height="20"><animate attributeName="width" values="0;0;304.22;304.22" keyTimes="0;0.500000;0.812500;1" dur="2.4s" fill="freeze" /></rect></clipPath>
+</defs>
+<rect x="20" y="20" width="670" height="352" rx="10" fill="#1e1e1e"/>
+<rect x="21" y="60" width="668" height="311" rx="0" fill="#1e1e1e"/>
+<rect x="21" y="21" width="668" height="40" rx="8" fill="#2d2d2d"/>
+
+      <circle cx="628" cy="40" r="7" fill="#5a5a5a" />
+      <circle cx="650" cy="40" r="7" fill="#5a5a5a" />
+      <circle cx="672" cy="40" r="7" fill="#e95420" />
+    
+<text x="355" y="45" font-size="13" font-family="Consolas, Menlo, monospace" fill="#a8a8a8" text-anchor="middle">bash — seuthootDev@ubuntu: ~</text>
+<text x="44" y="86" font-size="15" font-family="Consolas, Menlo, monospace" xml:space="preserve" textLength="184.80000000000004" lengthAdjust="spacingAndGlyphs"><tspan fill="#8ae234">seuthootDev@ubuntu</tspan><tspan fill="#d3d7cf">:~</tspan><tspan fill="#d3d7cf">$ </tspan></text>
+<text x="231.80000000000004" y="86" fill="#d3d7cf" font-size="15" font-family="Consolas, Menlo, monospace" clip-path="url(#streak-command-typing-clip)">gh streak view seuthootDev</text>
+<text class="typing-cursor" x="231.80000000000004" y="86" fill="#d3d7cf" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="231.80000000000004;475.6;475.6" keyTimes="0;0.500000;1" dur="2.4s" fill="freeze" /></text>
+<g class="line-fetch">
+<text x="44" y="108" fill="#888a85" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#streak-fetch-typing-clip)">Calculating streak from GitHub API...</text>
+</g>
+<g class="line-success">
+<text x="44" y="128" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#8ae234">✔ </tspan><tspan fill="#d3d7cf">Success! Generated GitHub streak for &#39;seuthootDev&#39;.</tspan></text>
+</g>
+<g class="line-streak">
+<rect x="44" y="152" width="622" height="168" rx="12" fill="#1e1e1e" stroke="#5e2750"/>
+<text x="119" y="206" font-size="13" font-family="Consolas, Menlo, monospace" fill="#e95420" text-anchor="middle" letter-spacing="2">░▒▓█▓▒░</text>
+<text x="119" y="227" font-size="17" font-family="Consolas, Menlo, monospace" fill="#e95420" font-weight="700" text-anchor="middle" letter-spacing="1">GITHUB</text>
+<text x="119" y="248" font-size="17" font-family="Consolas, Menlo, monospace" fill="#e95420" font-weight="700" text-anchor="middle" letter-spacing="1">STREAK</text>
+<text x="119" y="268" font-size="11" font-family="Consolas, Menlo, monospace" fill="#888a85" text-anchor="middle">@seuthootDev</text>
+<line x1="194" y1="168" x2="194" y2="304" stroke="#5e2750"/>
+<line x1="351.33333333333337" y1="168" x2="351.33333333333337" y2="304" stroke="#5e2750" stroke-dasharray="3,4"/>
+<line x1="508.6666666666667" y1="168" x2="508.6666666666667" y2="304" stroke="#5e2750" stroke-dasharray="3,4"/>
+<text x="272.6666666666667" y="235" font-size="25" font-family="Segoe UI, Arial, sans-serif" fill="#d3d7cf" font-weight="700" text-anchor="middle">1,824</text>
+<text x="272.6666666666667" y="283" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#888a85" text-anchor="middle">Total Contributions</text>
+<text x="272.6666666666667" y="300" font-size="10" font-family="Segoe UI, Arial, sans-serif" fill="#888a85" text-anchor="middle">Nov 9, 2025 - Nov 10, 2026</text>
+<path d="M430,176.25 C434.725,183.6 437.35,190.95 435.25,197.25 C430,200.4 424.75,197.25 422.65,190.95 C425.275,183.6 430,176.25 430,176.25 Z" fill="#e95420"/>
+<circle cx="430" cy="228" r="33" fill="none" stroke="#e95420" stroke-width="2.5"/>
+<text x="430" y="235" font-size="25" font-family="Segoe UI, Arial, sans-serif" fill="#e95420" font-weight="700" text-anchor="middle">2</text>
+<text x="430" y="283" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#888a85" text-anchor="middle">Current Streak</text>
+<text x="430" y="300" font-size="10" font-family="Segoe UI, Arial, sans-serif" fill="#888a85" text-anchor="middle">Nov 9, 2026 - Nov 10, 2026</text>
+<text x="587.3333333333334" y="235" font-size="25" font-family="Segoe UI, Arial, sans-serif" fill="#d3d7cf" font-weight="700" text-anchor="middle">17</text>
+<text x="587.3333333333334" y="283" font-size="12" font-family="Segoe UI, Arial, sans-serif" fill="#888a85" text-anchor="middle">Longest Streak</text>
+<text x="587.3333333333334" y="300" font-size="10" font-family="Segoe UI, Arial, sans-serif" fill="#888a85" text-anchor="middle">Mar 29, 2026 - Apr 14, 2026</text>
+</g>
+<g class="line-bottom">
+<text x="44" y="348" font-size="15" font-family="Consolas, Menlo, monospace" xml:space="preserve" textLength="184.80000000000004" lengthAdjust="spacingAndGlyphs"><tspan fill="#8ae234">seuthootDev@ubuntu</tspan><tspan fill="#d3d7cf">:~</tspan><tspan fill="#d3d7cf">$ </tspan></text>
+<text class="cursor" x="228.80000000000004" y="348" fill="#d3d7cf" font-size="15" font-family="Consolas, Menlo, monospace">█</text>
+</g>
+</svg>

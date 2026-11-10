@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="770" height="354" viewBox="0 0 770 354" role="img" aria-label="GitHub stats card for seuthootDev">
+<title>seuthootDev — zsh</title>
+<defs>
+<style>
+  .line-fetch { opacity: 0; animation: show-fetch 2.4s linear forwards; }
+  .line-success { opacity: 0; animation: show-success 2.4s linear forwards; }
+  .line-stats { opacity: 0; animation: show-stats 2.4s linear forwards; }
+  .line-bottom { opacity: 0; animation: show-bottom 2.4s linear forwards; }
+  .cursor {
+    opacity: 1;
+    visibility: hidden;
+    animation: cursor-window 2.4s steps(1, end) forwards, blink 0.8s steps(1,end) infinite;
+  }
+  .typing-cursor {
+    opacity: 1;
+    animation: typing-cursor-window 2.4s steps(1, end) forwards;
+  }
+  .fetch-typing-cursor {
+    display: none;
+  }
+  @keyframes show-fetch { 0%, 49.5833% { opacity: 0; } 50.0000%, 100% { opacity: 1; } }
+  @keyframes show-success { 0%, 80.8333% { opacity: 0; } 81.2500%, 100% { opacity: 1; } }
+  @keyframes show-stats { 0%, 85.0000% { opacity: 0; } 85.4167%, 100% { opacity: 1; } }
+  @keyframes show-bottom { 0%, 99.5833% { opacity: 0; } 100.0000%, 100% { opacity: 1; } }
+  @keyframes cursor-window { 0%, 99.5833% { visibility: hidden; } 100.0000%, 100% { visibility: visible; } }
+  @keyframes typing-cursor-window { 0%, 50.0000% { opacity: 1; } 50.4167%, 100% { opacity: 0; } }
+  @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+  
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; }
+    [clip-path] { clip-path: none !important; }
+    [class*="line-"], .log-row, .list-row, .p0, .p1, .p2, .p3, .p4, .bar { opacity: 1 !important; }
+    .typing-cursor { visibility: hidden !important; }
+    .cursor { visibility: visible !important; opacity: 1 !important; }
+  }
+  </style>
+<clipPath id="stats-command-typing-clip"><rect x="248.60000000000002" y="70" width="0" height="22"><animate attributeName="width" values="0;229.20000000000002;229.20000000000002" keyTimes="0;0.500000;1" dur="2.4s" fill="freeze" /></rect></clipPath>
+<clipPath id="stats-fetch-typing-clip"><rect x="44" y="92" width="0" height="20"><animate attributeName="width" values="0;0;263.92;263.92" keyTimes="0;0.500000;0.812500;1" dur="2.4s" fill="freeze" /></rect></clipPath>
+</defs>
+<rect x="20" y="20" width="730" height="314" rx="10" fill="#292929"/>
+<rect x="21" y="60" width="728" height="273" rx="0" fill="#1e1e1e"/>
+<rect x="21" y="21" width="728" height="40" rx="8" fill="#3a3a3a"/>
+
+      <circle cx="38" cy="40" r="6" fill="#ff5f56" />
+      <circle cx="58" cy="40" r="6" fill="#ffbd2e" />
+      <circle cx="78" cy="40" r="6" fill="#27c93f" />
+    
+<text x="385" y="45" font-size="13" font-family="Consolas, Menlo, monospace" fill="#a8a8a8" text-anchor="middle">seuthootDev — zsh</text>
+<text x="44" y="86" font-size="15" font-family="Consolas, Menlo, monospace" xml:space="preserve" textLength="201.60000000000002" lengthAdjust="spacingAndGlyphs"><tspan fill="#98c379">seuthootDev@MacBook</tspan><tspan fill="#61afef"> ~ </tspan><tspan fill="#c5c8c6">% </tspan></text>
+<text x="248.60000000000002" y="86" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace" clip-path="url(#stats-command-typing-clip)">gh api users/seuthootDev</text>
+<text class="typing-cursor" x="248.60000000000002" y="86" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="248.60000000000002;473.80000000000007;473.80000000000007" keyTimes="0;0.500000;1" dur="2.4s" fill="freeze" /></text>
+<g class="line-fetch">
+<text x="44" y="108" fill="#8b949e" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#stats-fetch-typing-clip)">Fetching data from GitHub API...</text>
+</g>
+<g class="line-success">
+<text x="44" y="128" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">✔ </tspan><tspan fill="#c5c8c6">Success! Generated GitHub stats for &#39;seuthootDev&#39;.</tspan></text>
+</g>
+<g class="line-stats">
+<rect x="44" y="152" width="682" height="130" rx="12" fill="#1e1e1e" stroke="#30363d"/>
+<text x="119" y="187" font-size="13" font-family="Consolas, Menlo, monospace" fill="#3fb950" text-anchor="middle" letter-spacing="2">░▒▓█▓▒░</text>
+<text x="119" y="208" font-size="17" font-family="Consolas, Menlo, monospace" fill="#3fb950" font-weight="700" text-anchor="middle" letter-spacing="1">GITHUB</text>
+<text x="119" y="229" font-size="17" font-family="Consolas, Menlo, monospace" fill="#3fb950" font-weight="700" text-anchor="middle" letter-spacing="1">STATS</text>
+<text x="119" y="249" font-size="11" font-family="Consolas, Menlo, monospace" fill="#8b949e" text-anchor="middle">@seuthootDev</text>
+<line x1="194" y1="168" x2="194" y2="266" stroke="#30363d"/>
+<circle cx="218" cy="184" r="4" fill="#98c379"/>
+<text x="230" y="189" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">OSS Contribs</text>
+<text x="378" y="189" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">25</text>
+<circle cx="218" cy="212" r="4" fill="#98c379"/>
+<text x="230" y="217" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">Total PRs</text>
+<text x="378" y="217" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">71</text>
+<circle cx="218" cy="240" r="4" fill="#98c379"/>
+<text x="230" y="245" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">Total Issues</text>
+<text x="378" y="245" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">2</text>
+<circle cx="471" cy="184" r="4" fill="#98c379"/>
+<text x="483" y="189" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">Total Stars</text>
+<text x="694" y="189" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">19</text>
+<circle cx="471" cy="212" r="4" fill="#98c379"/>
+<text x="483" y="217" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">Total Forks</text>
+<text x="694" y="217" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">3</text>
+<circle cx="471" cy="240" r="4" fill="#98c379"/>
+<text x="483" y="245" font-size="14" font-family="Segoe UI, Arial, sans-serif" fill="#8b949e">Contributions (1y)</text>
+<text x="694" y="245" font-size="15" font-family="Segoe UI, Arial, sans-serif" fill="#c5c8c6" font-weight="700" text-anchor="end">1,824</text>
+</g>
+<g class="line-bottom">
+<text x="44" y="310" font-size="15" font-family="Consolas, Menlo, monospace" xml:space="preserve" textLength="201.60000000000002" lengthAdjust="spacingAndGlyphs"><tspan fill="#98c379">seuthootDev@MacBook</tspan><tspan fill="#61afef"> ~ </tspan><tspan fill="#c5c8c6">% </tspan></text>
+<text class="cursor" x="245.60000000000002" y="310" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█</text>
+</g>
+</svg>

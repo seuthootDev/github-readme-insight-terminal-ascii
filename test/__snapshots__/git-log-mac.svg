@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="870" height="486" viewBox="0 0 870 486" role="img" aria-label="GitHub git log card for seuthootDev">
+<title>seuthootDev — zsh</title>
+<defs>
+<style>
+  .line-fetch { opacity: 0; animation: show-fetch 2.9199999999999995s linear forwards; }
+  .line-success { opacity: 0; animation: show-success 2.9199999999999995s linear forwards; }
+  .line-card { opacity: 0; animation: show-card 2.9199999999999995s linear forwards; }
+  .line-bottom { opacity: 0; animation: show-bottom 2.9199999999999995s linear forwards; }
+  .log-row { opacity: 0; animation: row-in 0.12s linear forwards; }
+  .row-0 { animation-delay: 2.13s; }
+  .row-1 { animation-delay: 2.21s; }
+  .row-2 { animation-delay: 2.29s; }
+  .row-3 { animation-delay: 2.37s; }
+  .row-4 { animation-delay: 2.45s; }
+  .row-5 { animation-delay: 2.53s; }
+  .row-6 { animation-delay: 2.61s; }
+  .row-7 { animation-delay: 2.69s; }
+  .cursor {
+    opacity: 1;
+    visibility: hidden;
+    animation: cursor-window 2.9199999999999995s steps(1, end) forwards, blink 0.8s steps(1,end) infinite;
+  }
+  .typing-cursor {
+    opacity: 1;
+    animation: typing-cursor-window 2.9199999999999995s steps(1, end) forwards;
+  }
+  @keyframes show-fetch { 0%, 40.7534% { opacity: 0; } 41.0959%, 100% { opacity: 1; } }
+  @keyframes show-success { 0%, 66.4384% { opacity: 0; } 66.7808%, 100% { opacity: 1; } }
+  @keyframes show-card { 0%, 69.8630% { opacity: 0; } 70.2055%, 100% { opacity: 1; } }
+  @keyframes show-bottom { 0%, 99.6575% { opacity: 0; } 100.0000%, 100% { opacity: 1; } }
+  @keyframes row-in { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes cursor-window { 0%, 99.6575% { visibility: hidden; } 100.0000%, 100% { visibility: visible; } }
+  @keyframes typing-cursor-window { 0%, 41.0959% { opacity: 1; } 41.4384%, 100% { opacity: 0; } }
+  @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+  
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; }
+    [clip-path] { clip-path: none !important; }
+    [class*="line-"], .log-row, .list-row, .p0, .p1, .p2, .p3, .p4, .bar { opacity: 1 !important; }
+    .typing-cursor { visibility: hidden !important; }
+    .cursor { visibility: visible !important; opacity: 1 !important; }
+  }
+  </style>
+<clipPath id="gitlog-command-typing-clip"><rect x="248.60000000000002" y="70" width="0" height="22"><animate attributeName="width" values="0;480.3;480.3" keyTimes="0;0.410959;1" dur="2.9199999999999995s" fill="freeze" /></rect></clipPath>
+<clipPath id="gitlog-fetch-typing-clip"><rect x="44" y="92" width="0" height="20"><animate attributeName="width" values="0;0;344.52000000000004;344.52000000000004" keyTimes="0;0.410959;0.667808;1" dur="2.9199999999999995s" fill="freeze" /></rect></clipPath>
+</defs>
+<rect x="20" y="20" width="830" height="446" rx="10" fill="#292929"/>
+<rect x="21" y="60" width="828" height="405" rx="0" fill="#1e1e1e"/>
+<rect x="21" y="21" width="828" height="40" rx="8" fill="#3a3a3a"/>
+
+      <circle cx="38" cy="40" r="6" fill="#ff5f56" />
+      <circle cx="58" cy="40" r="6" fill="#ffbd2e" />
+      <circle cx="78" cy="40" r="6" fill="#27c93f" />
+    
+<text x="435" y="45" font-size="13" font-family="Consolas, Menlo, monospace" fill="#a8a8a8" text-anchor="middle">seuthootDev — zsh</text>
+<text x="44" y="86" font-size="15" font-family="Consolas, Menlo, monospace" xml:space="preserve" textLength="201.60000000000002" lengthAdjust="spacingAndGlyphs"><tspan fill="#98c379">seuthootDev@MacBook</tspan><tspan fill="#61afef"> ~ </tspan><tspan fill="#c5c8c6">% </tspan></text>
+<text x="248.60000000000002" y="86" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace" clip-path="url(#gitlog-command-typing-clip)">git log --oneline --graph -n 8 --author=seuthootDev</text>
+<text class="typing-cursor" x="248.60000000000002" y="86" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█<animate attributeName="x" values="248.60000000000002;724.9000000000001;724.9000000000001" keyTimes="0;0.410959;1" dur="2.9199999999999995s" fill="freeze" /></text>
+<g class="line-fetch">
+<text x="44" y="108" fill="#8b949e" font-size="13" font-family="Consolas, Menlo, monospace" clip-path="url(#gitlog-fetch-typing-clip)">Fetching recent commits from GitHub API...</text>
+</g>
+<g class="line-success">
+<text x="44" y="128" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#98c379">✔ </tspan><tspan fill="#c5c8c6">Success! Loaded 8 recent commits for &#39;seuthootDev&#39;.</tspan></text>
+</g>
+<g class="line-card">
+<rect x="44" y="152" width="782" height="262" rx="12" fill="#1e1e1e" stroke="#30363d"/>
+<text x="119" y="253" font-size="13" font-family="Consolas, Menlo, monospace" fill="#3fb950" text-anchor="middle" letter-spacing="2">░▒▓█▓▒░</text>
+<text x="119" y="274" font-size="17" font-family="Consolas, Menlo, monospace" fill="#3fb950" font-weight="700" text-anchor="middle" letter-spacing="1">GIT</text>
+<text x="119" y="295" font-size="17" font-family="Consolas, Menlo, monospace" fill="#3fb950" font-weight="700" text-anchor="middle" letter-spacing="1">LOG</text>
+<text x="119" y="315" font-size="11" font-family="Consolas, Menlo, monospace" fill="#8b949e" text-anchor="middle">@seuthootDev</text>
+<line x1="194" y1="168" x2="194" y2="398" stroke="#30363d"/>
+<g class="log-row row-0">
+<text x="214" y="186" font-size="13" font-family="Consolas, Menlo, monospace" fill="#98c379" font-weight="700">*</text>
+<text x="230.12" y="186" font-size="13" font-family="Consolas, Menlo, monospace" fill="#e5c07b">72f513a</text>
+<text x="294.6" y="186" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#e5c07b">(</tspan><tspan fill="#56b6c2">seuthootDev</tspan><tspan fill="#e5c07b">)</tspan></text>
+<text x="447.74" y="186" font-size="13" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">Merge pull request #1 from seuthoo…</text>
+<text x="806" y="186" font-size="12" font-family="Consolas, Menlo, monospace" fill="#8b949e" text-anchor="end">7d ago</text>
+</g>
+<g class="log-row row-1">
+<text x="214" y="210" font-size="13" font-family="Consolas, Menlo, monospace" fill="#98c379" font-weight="700">*</text>
+<text x="230.12" y="210" font-size="13" font-family="Consolas, Menlo, monospace" fill="#e5c07b">fae1ab0</text>
+<text x="294.6" y="210" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#e5c07b">(</tspan><tspan fill="#56b6c2">seuthootDev</tspan><tspan fill="#e5c07b">)</tspan></text>
+<text x="447.74" y="210" font-size="13" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">docs: link open source projects</text>
+<text x="806" y="210" font-size="12" font-family="Consolas, Menlo, monospace" fill="#8b949e" text-anchor="end">7d ago</text>
+</g>
+<g class="log-row row-2">
+<text x="214" y="234" font-size="13" font-family="Consolas, Menlo, monospace" fill="#98c379" font-weight="700">*</text>
+<text x="230.12" y="234" font-size="13" font-family="Consolas, Menlo, monospace" fill="#e5c07b">46e9b91</text>
+<text x="294.6" y="234" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#e5c07b">(</tspan><tspan fill="#56b6c2">jcubic/awesome-…</tspan><tspan fill="#e5c07b">)</tspan></text>
+<text x="447.74" y="234" font-size="13" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">Add github-readme-insight-terminal…</text>
+<text x="806" y="234" font-size="12" font-family="Consolas, Menlo, monospace" fill="#8b949e" text-anchor="end">7d ago</text>
+</g>
+<g class="log-row row-3">
+<text x="214" y="258" font-size="13" font-family="Consolas, Menlo, monospace" fill="#98c379" font-weight="700">*</text>
+<text x="230.12" y="258" font-size="13" font-family="Consolas, Menlo, monospace" fill="#e5c07b">cf348a2</text>
+<text x="294.6" y="258" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#e5c07b">(</tspan><tspan fill="#56b6c2">seuthootDev</tspan><tspan fill="#e5c07b">)</tspan></text>
+<text x="447.74" y="258" font-size="13" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">Update README.md</text>
+<text x="806" y="258" font-size="12" font-family="Consolas, Menlo, monospace" fill="#8b949e" text-anchor="end">7d ago</text>
+</g>
+<g class="log-row row-4">
+<text x="214" y="282" font-size="13" font-family="Consolas, Menlo, monospace" fill="#98c379" font-weight="700">*</text>
+<text x="230.12" y="282" font-size="13" font-family="Consolas, Menlo, monospace" fill="#e5c07b">b7a535d</text>
+<text x="294.6" y="282" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#e5c07b">(</tspan><tspan fill="#56b6c2">seuthootDev</tspan><tspan fill="#e5c07b">)</tspan></text>
+<text x="447.74" y="282" font-size="13" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">Update README.md</text>
+<text x="806" y="282" font-size="12" font-family="Consolas, Menlo, monospace" fill="#8b949e" text-anchor="end">7d ago</text>
+</g>
+<g class="log-row row-5">
+<text x="214" y="306" font-size="13" font-family="Consolas, Menlo, monospace" fill="#98c379" font-weight="700">*</text>
+<text x="230.12" y="306" font-size="13" font-family="Consolas, Menlo, monospace" fill="#e5c07b">904f8b4</text>
+<text x="294.6" y="306" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#e5c07b">(</tspan><tspan fill="#56b6c2">seuthootDev</tspan><tspan fill="#e5c07b">)</tspan></text>
+<text x="447.74" y="306" font-size="13" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">Update README.md</text>
+<text x="806" y="306" font-size="12" font-family="Consolas, Menlo, monospace" fill="#8b949e" text-anchor="end">8d ago</text>
+</g>
+<g class="log-row row-6">
+<text x="214" y="330" font-size="13" font-family="Consolas, Menlo, monospace" fill="#98c379" font-weight="700">*</text>
+<text x="230.12" y="330" font-size="13" font-family="Consolas, Menlo, monospace" fill="#e5c07b">339ad66</text>
+<text x="294.6" y="330" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#e5c07b">(</tspan><tspan fill="#56b6c2">awesome-github-…</tspan><tspan fill="#e5c07b">)</tspan></text>
+<text x="447.74" y="330" font-size="13" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">add(tool): Readme X Cards to Tools…</text>
+<text x="806" y="330" font-size="12" font-family="Consolas, Menlo, monospace" fill="#8b949e" text-anchor="end">12d ago</text>
+</g>
+<g class="log-row row-7">
+<text x="214" y="354" font-size="13" font-family="Consolas, Menlo, monospace" fill="#98c379" font-weight="700">*</text>
+<text x="230.12" y="354" font-size="13" font-family="Consolas, Menlo, monospace" fill="#e5c07b">7a00eee</text>
+<text x="294.6" y="354" font-size="13" font-family="Consolas, Menlo, monospace"><tspan fill="#e5c07b">(</tspan><tspan fill="#56b6c2">seuthootDev</tspan><tspan fill="#e5c07b">)</tspan></text>
+<text x="447.74" y="354" font-size="13" font-family="Consolas, Menlo, monospace" fill="#c5c8c6">Update README.md</text>
+<text x="806" y="354" font-size="12" font-family="Consolas, Menlo, monospace" fill="#8b949e" text-anchor="end">18d ago</text>
+</g>
+<line x1="214" y1="374" x2="806" y2="374" stroke="#30363d" stroke-dasharray="3,4"/>
+<text x="214" y="392" font-size="12" font-family="Consolas, Menlo, monospace" fill="#8b949e">8 recent commits across 3 active repos</text>
+</g>
+<g class="line-bottom">
+<text x="44" y="442" font-size="15" font-family="Consolas, Menlo, monospace" xml:space="preserve" textLength="201.60000000000002" lengthAdjust="spacingAndGlyphs"><tspan fill="#98c379">seuthootDev@MacBook</tspan><tspan fill="#61afef"> ~ </tspan><tspan fill="#c5c8c6">% </tspan></text>
+<text class="cursor" x="245.60000000000002" y="442" fill="#c5c8c6" font-size="15" font-family="Consolas, Menlo, monospace">█</text>
+</g>
+</svg>
