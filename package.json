@@ -1,6 +1,6 @@
 {
   "name": "github-readme-insight-terminal-ascii",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Terminal-style GitHub README cards as SVG: contribution graph, stats, top languages, streak, git log, PRs & issues, repo, language history, dashboard, skill icons, ASCII avatar and neofetch (macOS / PowerShell / Ubuntu themes)",
   "type": "module",
   "main": "src/index.js",
