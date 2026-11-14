@@ -6,6 +6,7 @@ import { Jimp } from "jimp";
 
 import { THEMES, isWin98 } from "./themes.js";
 import { renderWin98Ascii } from "./win98/ascii.js";
+import { avatarToPaintBitmap } from "./win98/bitmap.js";
 import { REDUCED_MOTION_CSS } from "./constants.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
@@ -280,14 +281,21 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
   const cols = clampCols(options.cols ?? options.size);
   const profile = await fetchAsciiProfile(githubId);
 
+  if (isWin98(themeName)) {
+    let bitmap;
+    try {
+      bitmap = await avatarToPaintBitmap(profile.avatarUrl, { cols, color });
+    } catch (error) {
+      throw new Error(`Failed to process avatar image for '${githubId}': ${error?.message ?? error}`);
+    }
+    return renderWin98Ascii(profile, bitmap, { githubId, scale: options.scale, color });
+  }
+
   let asciiRows;
   try {
     asciiRows = await imageToAsciiGrid(profile.avatarUrl, { cols, color });
   } catch (error) {
     throw new Error(`Failed to process avatar image for '${githubId}': ${error?.message ?? error}`);
-  }
-  if (isWin98(themeName)) {
-    return renderWin98Ascii(profile, asciiRows, { githubId, scale: options.scale, cols, color });
   }
 
   // The ascii portrait grid keeps its own fixed cell size regardless of

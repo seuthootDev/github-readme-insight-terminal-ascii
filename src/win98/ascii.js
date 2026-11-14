@@ -1,7 +1,8 @@
-// Windows 98 "Paint" window for the ascii avatar card: the portrait sits on the bitmap canvas.
+// Windows 98 "Paint" window for the ascii avatar card: the avatar sits on the canvas as a
+// low-colour dithered bitmap (see bitmap.js), like a photo saved as an old .bmp.
 import { C, fit, menuBar, raised, sunken, svgDocument, statusBar, text, windowFrame } from "./kit.js";
 
-const ART_W = 520; // target width of the portrait on the canvas
+const ART_W = 512; // max width of the portrait on the canvas
 const TOOL = 25; // tool button size
 const SWATCH = 16;
 
@@ -10,9 +11,6 @@ const PAINT_PALETTE = [
   ["#000000", "#808080", "#800000", "#808000", "#008000", "#008080", "#000080", "#800080", "#808040", "#004040", "#0080ff", "#004080", "#8000ff", "#804000"],
   ["#ffffff", "#c0c0c0", "#ff0000", "#ffff00", "#00ff00", "#00ffff", "#0000ff", "#ff00ff", "#ffff80", "#00ff80", "#80ffff", "#8080ff", "#ff0080", "#ff8040"]
 ];
-
-// On a white canvas the mono portrait is drawn in black, so density is inverted.
-const INVERT = { " ": "█", "░": "▓", "▒": "▒", "▓": "░", "█": " " };
 
 const K = C.dark;
 const line = (d, extra = "") => `<path d="${d}" stroke="${K}" fill="none"${extra}/>`;
@@ -62,70 +60,11 @@ function paintIcon(x, y) {
     + `<path d="M${x + 5} ${y + 12}L${x + 8} ${y + 9}" stroke="#804000" stroke-width="1.5"/>`;
 }
 
-// Each glyph's ink density, used to draw the shade blocks as crisp 1-bit dithers (mono) or as
-// colour at that density over a black bitmap (color). Fonts can't then leave gaps between cells.
-const DENSITY = { "░": 1, "▒": 2, "▓": 3, "█": 4 };
-const OPACITY = [0, 0.25, 0.5, 0.75, 1];
-
-function ditherDefs() {
-  const dot = (x, y) => `<rect x="${x}" y="${y}" width="2" height="2" fill="${K}"/>`;
-  const tiles = [
-    dot(0, 0),
-    dot(0, 0) + dot(2, 2),
-    dot(0, 0) + dot(2, 2) + dot(2, 0)
-  ];
-  return tiles.map((inner, i) => `<pattern id="w98-ink${i + 1}" width="4" height="4" patternUnits="userSpaceOnUse">${inner}</pattern>`).join("");
-}
-
-function renderArt(rows, { x, y, charW, lineH, color }) {
-  const out = [];
-  rows.forEach((cells, row) => {
-    let start = 0;
-    let key = null;
-    let paint = null;
-    const flush = (end) => {
-      if (paint) {
-        // Snap to whole units so neighbouring cells meet without hairline seams.
-        const x0 = Math.round(x + start * charW), x1 = Math.round(x + end * charW);
-        const y0 = Math.round(y + row * lineH), y1 = Math.round(y + (row + 1) * lineH);
-        out.push(`<rect x="${x0}" y="${y0}" width="${x1 - x0}" height="${y1 - y0}" ${paint}/>`);
-      }
-    };
-    cells.forEach((cell, col) => {
-      const ch = color ? cell.ch : (INVERT[cell.ch] ?? cell.ch);
-      const density = DENSITY[ch] ?? 0;
-      let nextKey = null;
-      let nextPaint = null;
-      if (density > 0) {
-        if (color) {
-          const fill = cell.fill ?? C.white;
-          nextKey = `${fill}/${density}`;
-          nextPaint = `fill="${fill}"${density < 4 ? ` fill-opacity="${OPACITY[density]}"` : ""}`;
-        } else {
-          nextKey = String(density);
-          nextPaint = `fill="${density === 4 ? K : `url(#w98-ink${density})`}"`;
-        }
-      }
-      if (nextKey !== key) {
-        flush(col);
-        start = col;
-        key = nextKey;
-        paint = nextPaint;
-      }
-    });
-    flush(cells.length);
-  });
-  return out.join("");
-}
-
-export function renderWin98Ascii(profile, rows, { githubId, scale, cols, color = false } = {}) {
+export function renderWin98Ascii(profile, bitmap, { githubId, scale, color = false } = {}) {
   const user = profile.login || githubId;
-  const gridCols = Math.max(1, cols ?? rows[0]?.length ?? 1);
-  const gridRows = Math.max(1, rows.length);
-  // Keep the bitmap square like the avatar: rows already compensate for glyph aspect.
-  const charW = ART_W / gridCols;
-  const lineH = ART_W / gridRows;
-  const artW = ART_W, artH = ART_W;
+  // Show the bitmap at a whole-number zoom so every pixel is the same size.
+  const zoom = Math.max(1, Math.floor(ART_W / bitmap.size));
+  const artW = bitmap.size * zoom, artH = artW;
   const pad = 8;
   const canvasW = artW + pad * 2, canvasH = artH + pad * 2;
 
@@ -178,10 +117,7 @@ export function renderWin98Ascii(profile, rows, { githubId, scale, cols, color =
   body += sunken(waX, top, workW, workH, { fill: C.shadow });
   const cx = waX + 4, cy = top + 4;
   body += `<rect x="${cx}" y="${cy}" width="${canvasW}" height="${canvasH}" fill="${C.white}"/>`;
-  if (color) {
-    body += `<rect x="${cx + pad}" y="${cy + pad}" width="${artW}" height="${artH}" fill="${K}"/>`;
-  }
-  body += `<g class="w98-fade" shape-rendering="crispEdges">${renderArt(rows, { x: cx + pad, y: cy + pad, charW, lineH, color })}</g>`;
+  body += `<image class="w98-fade" x="${cx + pad}" y="${cy + pad}" width="${artW}" height="${artH}" preserveAspectRatio="none" style="image-rendering:crisp-edges;image-rendering:pixelated" href="${bitmap.dataUri}"/>`;
   const handle = (hx, hy) => `<rect x="${hx}" y="${hy}" width="3" height="3" fill="${C.select}"/>`;
   body += handle(cx + canvasW, cy + canvasH / 2 - 1) + handle(cx + canvasW / 2 - 1, cy + canvasH) + handle(cx + canvasW, cy + canvasH);
 
@@ -206,8 +142,8 @@ export function renderWin98Ascii(profile, rows, { githubId, scale, cols, color =
   // Status bar.
   const sY = client.y + client.h - statusH - 1;
   const help = profile.bio ? profile.bio.replace(/\s+/g, " ").trim() : "For Help, click Help Topics on the Help Menu.";
-  const sizeLabel = `${gridCols}x${gridRows}`;
-  const modeLabel = color ? "color" : "mono";
+  const sizeLabel = `${bitmap.size}x${bitmap.size}`;
+  const modeLabel = color ? `${bitmap.colors} colors` : `${bitmap.colors} greys`;
   const smallW = 86;
   body += statusBar(client.x, sY, client.w, [
     { text: help, w: client.w - smallW * 2 - 4 },
@@ -215,7 +151,7 @@ export function renderWin98Ascii(profile, rows, { githubId, scale, cols, color =
     { text: modeLabel }
   ]);
 
-  const defs = `<pattern id="w98-dither" width="2" height="2" patternUnits="userSpaceOnUse"><rect width="2" height="2" fill="${C.white}"/><rect width="1" height="1" fill="${C.face}"/><rect x="1" y="1" width="1" height="1" fill="${C.face}"/></pattern>${ditherDefs()}`;
+  const defs = `<pattern id="w98-dither" width="2" height="2" patternUnits="userSpaceOnUse"><rect width="2" height="2" fill="${C.white}"/><rect width="1" height="1" fill="${C.face}"/><rect x="1" y="1" width="1" height="1" fill="${C.face}"/></pattern>`;
 
   return svgDocument({
     width: WIDTH,
