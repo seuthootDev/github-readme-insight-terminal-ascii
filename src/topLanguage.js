@@ -2,7 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { THEMES } from "./themes.js";
+import { THEMES, isWin98 } from "./themes.js";
+import { renderWin98TopLang } from "./win98/topLang.js";
 import { REDUCED_MOTION_CSS } from "./constants.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
@@ -507,6 +508,16 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
 
   const fallbackLogin = profile?.login || githubId;
   const displayName = profile?.name || fallbackLogin;
+  if (isWin98(themeName)) {
+    return renderWin98TopLang({
+      login: fallbackLogin,
+      top,
+      rows: languageRows.map((row) => ({ ...row, color: getRowColor(row) })),
+      // GraphQL language edges (rows carry a `color` key) are in bytes; the REST repo `size` is in KB.
+      sizeUnit: languageRows.length > 0 && "color" in languageRows[0] ? 1 : 1024,
+      emptyLines: languageRows.length === 0 ? emptyStateLines(fetchError) : null
+    }, { githubId, scale: options.scale });
+  }
 
   const termX = 20;
   const termY = 20;

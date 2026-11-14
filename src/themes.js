@@ -54,6 +54,13 @@ const UBUNTU_PALETTE = createPalette({
   graph: ["#2d2d2d", "#5e2750", "#c34113", "#f0814f"]
 });
 
+const WIN98_PALETTE = createPalette({
+  fg: "#000000", mute: "#808080", border: "#808080", accent: "#000080",
+  green: "#008000", blue: "#000080", yellow: "#808000", purple: "#800080",
+  cyan: "#008080", red: "#ff0000", orange: "#808000",
+  graph: ["#ffffff", "#8080ff", "#0000ff", "#000080"]
+});
+
 export const THEMES = {
   mac: {
     palette: MAC_PALETTE,
@@ -102,5 +109,24 @@ export const THEMES = {
       <circle cx="${x + 22 * scale}" cy="${y}" r="${7 * scale}" fill="#5a5a5a" />
       <circle cx="${x + 44 * scale}" cy="${y}" r="${7 * scale}" fill="#e95420" />
     `
+  },
+  // Windows 98: cards are drawn by src/win98/* as classic program windows, not as a terminal.
+  // The terminal-style fields below only exist so shared lookups never crash.
+  win98: {
+    kind: "win98",
+    palette: WIN98_PALETTE,
+    title: (user) => `GitHub - ${user}`,
+    frameBg: "#c0c0c0",
+    bodyBg: "#ffffff",
+    headerBg: "#000080",
+    text: WIN98_PALETTE.fg,
+    accentSuccess: WIN98_PALETTE.green,
+    prompt: (user) => [{ text: `C:\\GITHUB\\${user}>`, fill: WIN98_PALETTE.fg }],
+    command: (user) => `github-cli --user ${user} --theme win98`,
+    controlsSvg: () => ""
   }
 };
+
+export function isWin98(themeName) {
+  return THEMES[themeName]?.kind === "win98";
+}

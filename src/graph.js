@@ -12,7 +12,8 @@ import {
   toIsoDate
 } from "./constants.js";
 import { fetchContributions, sumContributions } from "./githubContributions.js";
-import { THEMES } from "./themes.js";
+import { THEMES, isWin98 } from "./themes.js";
+import { renderWin98Graph } from "./win98/graph.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -150,6 +151,9 @@ export async function generateGraphSvg(themeName, githubId, options = {}) {
   const contributions = await fetchContributions(githubId);
   const total = sumContributions(contributions);
   const { firstSunday, today } = getGraphRange();
+  if (isWin98(themeName)) {
+    return renderWin98Graph({ contributions, total, firstSunday, today }, { githubId, scale: options.scale });
+  }
   const grid = buildGridData(firstSunday, today, contributions);
 
   const maxPromptCommandWidth = Math.max(

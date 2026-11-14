@@ -2,7 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { THEMES } from "./themes.js";
+import { THEMES, isWin98 } from "./themes.js";
+import { renderWin98LangHistory } from "./win98/langHistory.js";
 import { REDUCED_MOTION_CSS } from "./constants.js";
 
 const GITHUB_GRAPHQL_URL = "https://api.github.com/graphql";
@@ -294,6 +295,10 @@ export async function generateLangHistorySvg(themeName, githubId, options = {}) 
   const legend = pickLegendLanguages(rows);
   const colorOf = (language) => (language === OTHER ? palette.border : readableColor(colors[language] ?? palette.mute));
   const mover = biggestMover(rows, legend);
+  if (isWin98(themeName)) {
+    const chartRows = rows.map((row) => ({ ...row, segments: rowSegments(row, legend) }));
+    return renderWin98LangHistory({ rows: chartRows, colors, legend, mover, yearCount }, { githubId, scale: options.scale });
+  }
 
   const termX = 20;
   const termY = 20;

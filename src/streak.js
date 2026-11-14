@@ -3,7 +3,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { fetchContributions } from "./githubContributions.js";
-import { THEMES } from "./themes.js";
+import { THEMES, isWin98 } from "./themes.js";
+import { renderWin98Streak } from "./win98/streak.js";
 import { REDUCED_MOTION_CSS } from "./constants.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
@@ -269,6 +270,9 @@ export async function generateStreakSvg(themeName, githubId, options = {}) {
   }
 
   const login = profile?.login || githubId;
+  if (isWin98(themeName)) {
+    return renderWin98Streak({ contributions, streak: streakData }, { githubId: login, scale: options.scale });
+  }
 
   const termX = 20;
   const termY = 20;

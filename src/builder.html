@@ -207,6 +207,7 @@
         <label><input type="radio" name="theme" value="mac" checked><span>mac</span></label>
         <label><input type="radio" name="theme" value="windows"><span>windows</span></label>
         <label><input type="radio" name="theme" value="ubuntu"><span>ubuntu</span></label>
+        <label><input type="radio" name="theme" value="win98"><span>win98</span></label>
       </div>
     </div>
 
@@ -424,7 +425,7 @@
     var params = new URLSearchParams(parts[1] || "");
     params.forEach(function (val, key) {
       if (key === "theme") {
-        var radio = form.querySelector("input[name=theme][value='" + val.replace(/[^a-z]/g, "") + "']");
+        var radio = form.querySelector("input[name=theme][value='" + val.replace(/[^a-z0-9]/g, "") + "']");
         if (radio) radio.checked = true;
       } else if (key === "color") {
         field("color").checked = val === "1";

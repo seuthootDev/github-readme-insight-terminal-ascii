@@ -3,7 +3,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { fetchContributions, sumContributions } from "./githubContributions.js";
-import { THEMES } from "./themes.js";
+import { THEMES, isWin98 } from "./themes.js";
+import { renderWin98Stats } from "./win98/stats.js";
 import { REDUCED_MOTION_CSS } from "./constants.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
@@ -281,6 +282,9 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
   }
 
   const data = await fetchStatsData(githubId);
+  if (isWin98(themeName)) {
+    return renderWin98Stats(data, { githubId, scale: options.scale });
+  }
   const statsRows = buildStatsRows(data);
 
   const termX = 20;

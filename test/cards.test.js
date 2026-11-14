@@ -53,7 +53,19 @@ const CASES = [
   ["dashboard-mac", { type: "dashboard", themeName: "mac" }],
   ["neofetch-mac-color", { type: "neofetch", themeName: "mac", color: true }],
   ["ascii-mac-mono", { type: "ascii", themeName: "mac" }],
-  ["skills-mac", { type: "skills", themeName: "mac", icons: "js,ts,react,nodejs,docker,postgres,unknown-icon-xyz" }]
+  ["skills-mac", { type: "skills", themeName: "mac", icons: "js,ts,react,nodejs,docker,postgres,unknown-icon-xyz" }],
+  ["stats-win98", { type: "stats", themeName: "win98" }],
+  ["graph-win98", { type: "graph", themeName: "win98" }],
+  ["top-lang-win98", { type: "top-lang", themeName: "win98" }],
+  ["streak-win98", { type: "streak", themeName: "win98" }],
+  ["git-log-win98", { type: "git-log", themeName: "win98" }],
+  ["pr-issue-win98", { type: "pr-issue", themeName: "win98" }],
+  ["repo-win98", { type: "repo", themeName: "win98", repo: REPO }],
+  ["lang-history-win98", { type: "lang-history", themeName: "win98" }],
+  ["dashboard-win98", { type: "dashboard", themeName: "win98" }],
+  ["neofetch-win98", { type: "neofetch", themeName: "win98", color: true }],
+  ["ascii-win98", { type: "ascii", themeName: "win98" }],
+  ["skills-win98", { type: "skills", themeName: "win98", icons: "js,ts,react,nodejs,docker,postgres,unknown-icon-xyz" }]
 ];
 
 for (const [name, options] of CASES) {
@@ -66,4 +78,9 @@ for (const [name, options] of CASES) {
 test("renders error card", () => {
   const svg = generateErrorSvg("windows", { user: USER, type: "stats", message: "GitHub API rate limit exceeded." });
   matchSnapshot("error-windows", svg);
+});
+
+test("renders win98 error card", () => {
+  const svg = generateErrorSvg("win98", { user: USER, type: "stats", message: "GitHub API rate limit exceeded." });
+  matchSnapshot("error-win98", svg);
 });

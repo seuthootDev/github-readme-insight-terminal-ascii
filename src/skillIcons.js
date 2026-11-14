@@ -1,4 +1,5 @@
-import { THEMES } from "./themes.js";
+import { THEMES, isWin98 } from "./themes.js";
+import { renderWin98Skills } from "./win98/skills.js";
 import { REDUCED_MOTION_CSS } from "./constants.js";
 import { ICONS, ICON_GRID } from "./skillIconsData.js";
 
@@ -145,6 +146,12 @@ export function generateSkillsSvg(themeName = "mac", githubId = "", options = {}
 
   const showLabels = options.labels !== false;
   const perLine = Math.min(clampInt(options.perline, 1, 12, DEFAULT_PER_LINE), Math.max(1, icons.length));
+  if (isWin98(themeName)) {
+    return renderWin98Skills({
+      icons: icons.map((icon) => ({ ...icon, path: bitmapToPath(icon.bitmap) })),
+      missing
+    }, { githubId: user, scale: options.scale, perline: perLine, labels: showLabels });
+  }
   const rows = Math.ceil(icons.length / perLine);
   const rowH = showLabels ? ROW_H : TILE + 22;
 

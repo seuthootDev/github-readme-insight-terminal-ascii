@@ -11,7 +11,7 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 
 > **Card builder:** open **[github-readme-insight-terminal-asci.vercel.app](https://github-readme-insight-terminal-asci.vercel.app/)**, pick a card and theme, preview it live and copy the Markdown.
 
-- **Themes**: macOS Terminal / Windows PowerShell / Ubuntu GNOME
+- **Themes**: macOS Terminal / Windows PowerShell / Ubuntu GNOME / Windows 98
 - **Types**: contribution graph · stats · top languages · streak · git log · PRs & issues · repo · language history · ASCII avatar · GitHub neofetch · dashboard · skill icons
 - **CLI**: Run locally to print the graph and save SVG
 - **API**: `GET /svg?user=USER&theme=...` (default graph) or `GET /svg/:type?user=USER&theme=...`
@@ -28,6 +28,11 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 **theme=ubuntu** — Ubuntu GNOME Terminal
 
 ![ubuntu](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=ubuntu&scale=0.6)
+
+**theme=win98** — Windows 98. Not a terminal: every card turns into the classic program window that fits it (Disk Defragmenter for the graph, a Properties dialog for stats, Explorer for git log, an inbox for PRs & issues, Paint for the ASCII avatar, a full desktop for the dashboard…)
+
+![win98 graph](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=win98&scale=0.6)
+![win98 stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=win98&scale=0.6)
 
 **Skills** — tech-stack icons as pixel-art ASCII, like [skillicons.dev](https://skillicons.dev) but in a terminal. No GitHub account needed: list the icons with `i=`
 

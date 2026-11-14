@@ -2,7 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { THEMES } from "./themes.js";
+import { THEMES, isWin98 } from "./themes.js";
+import { renderWin98Repo } from "./win98/repo.js";
 import { REDUCED_MOTION_CSS } from "./constants.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
@@ -270,6 +271,32 @@ export async function generateRepoCardSvg(themeName, githubId, options = {}) {
   const user = String(githubId ?? "").trim() || repo.owner?.login || owner;
   const fullName = repo.full_name ?? `${owner}/${name}`;
   const [ownerLabel, repoNameLabel] = fullName.split("/");
+  if (isWin98(themeName)) {
+    const total = Object.values(languages).reduce((acc, size) => acc + Number(size), 0);
+    const language = repo.language ?? Object.keys(languages)[0] ?? null;
+    return renderWin98Repo({
+      fullName,
+      owner: ownerLabel,
+      name: repoNameLabel ?? name,
+      description: String(repo.description ?? "").replace(/\s+/g, " ").trim(),
+      language,
+      languagePct: language && total > 0 ? `${((Number(languages[language] ?? 0) / total) * 100).toFixed(1).replace(/\.0$/, "")}%` : "",
+      languageColor: LANGUAGE_COLORS[language] ?? "#808080",
+      license: repo.license?.spdx_id && repo.license.spdx_id !== "NOASSERTION" ? repo.license.spdx_id : (repo.license?.name ?? ""),
+      branch: repo.default_branch ?? "main",
+      release: release?.tag_name ? `${release.tag_name} (${formatRelativeTime(release.published_at, now)})` : "",
+      pushed: formatRelativeTime(repo.pushed_at, now),
+      pushedAt: repo.pushed_at,
+      openIssues: repo.open_issues_count,
+      stars: repo.stargazers_count,
+      forks: repo.forks_count,
+      watchers: repo.subscribers_count ?? repo.watchers_count,
+      topics: (Array.isArray(repo.topics) ? repo.topics : []).slice(0, MAX_TOPICS),
+      activity,
+      archived: Boolean(repo.archived),
+      fork: Boolean(repo.fork)
+    }, { githubId, scale: options.scale });
+  }
 
   const termX = 20;
   const termY = 20;

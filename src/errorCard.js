@@ -2,7 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { THEMES } from "./themes.js";
+import { THEMES, isWin98 } from "./themes.js";
+import { renderWin98Error } from "./win98/errorCard.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -101,6 +102,14 @@ function buildErrorCommand(type, githubId) {
 }
 
 export function generateErrorSvg(themeName, options = {}) {
+  if (isWin98(themeName)) {
+    return renderWin98Error({
+      user: String(options.user ?? "").trim(),
+      type: String(options.type ?? "svg").trim(),
+      message: String(options.message ?? "Something went wrong.").trim(),
+      scale: options.scale
+    });
+  }
   const palette = (THEMES[themeName] ?? THEMES.mac).palette;
   const theme = THEMES[themeName] ?? THEMES.mac;
   const safeThemeName = THEMES[themeName] ? themeName : "mac";
