@@ -198,6 +198,59 @@ function languagesWindow(win, data, languageColors) {
   return out;
 }
 
+// 32px XP-style desktop icons: original vector drawings with soft gradients, in the spirit of
+// the Luna icon set (no Microsoft artwork).
+function xpComputerIcon(x, y) {
+  return `<ellipse cx="${x + 16}" cy="${y + 30}" rx="12" ry="2" fill="#000" opacity=".2"/>`
+    + `<rect x="${x + 3.5}" y="${y + 2.5}" width="25" height="19" rx="2.5" fill="url(#xpi-case)" stroke="#7d7660"/>`
+    + `<rect x="${x + 6}" y="${y + 5}" width="20" height="13.5" rx="1" fill="url(#xpi-screen)" stroke="#1f3f7a" stroke-width=".8"/>`
+    + `<path d="M${x + 7} ${y + 6}H${x + 25}L${x + 7} ${y + 14}Z" fill="#fff" opacity=".22"/>`
+    + `<path d="M${x + 12} ${y + 21.5}H${x + 20}L${x + 21.5} ${y + 25.5}H${x + 10.5}Z" fill="url(#xpi-case)" stroke="#7d7660"/>`
+    + `<rect x="${x + 7.5}" y="${y + 25.5}" width="17" height="3.5" rx="1.5" fill="url(#xpi-case)" stroke="#7d7660"/>`;
+}
+
+function xpFolderIcon(x, y) {
+  return `<ellipse cx="${x + 16}" cy="${y + 29.5}" rx="13" ry="2" fill="#000" opacity=".2"/>`
+    + `<path d="M${x + 2.5} ${y + 8.5}q0 -2 2 -2H${x + 11}l2.5 2.5H${x + 27.5}q2 0 2 2V${y + 26.5}q0 1.5 -1.5 1.5H${x + 4}q-1.5 0 -1.5 -1.5Z" fill="#e2a72e" stroke="#b07a14"/>`
+    + `<rect x="${x + 6.5}" y="${y + 9.5}" width="19" height="12" fill="#fff" stroke="#b9b9b9"/>`
+    + `<path d="M${x + 9} ${y + 13}H${x + 22}M${x + 9} ${y + 16}H${x + 20}" stroke="#9ab3d6"/>`
+    + `<path d="M${x + 2.5} ${y + 14.5}q0 -1.5 1.5 -1.5H${x + 28}q1.5 0 1.3 1.5L${x + 28} ${y + 26.5}q-.2 1.5 -1.7 1.5H${x + 4}q-1.5 0 -1.5 -1.5Z" fill="url(#xpi-folder)" stroke="#b07a14"/>`;
+}
+
+function xpMailIcon(x, y) {
+  return `<ellipse cx="${x + 16}" cy="${y + 28}" rx="13" ry="2" fill="#000" opacity=".2"/>`
+    + `<rect x="${x + 2.5}" y="${y + 7.5}" width="27" height="18" rx="1.5" fill="url(#xpi-paper)" stroke="#5a7fb5"/>`
+    + `<path d="M${x + 3} ${y + 8.5}L${x + 16} ${y + 18}L${x + 29} ${y + 8.5}" fill="none" stroke="#5a7fb5"/>`
+    + `<path d="M${x + 3} ${y + 25}L${x + 12.5} ${y + 15.5}M${x + 29} ${y + 25}L${x + 19.5} ${y + 15.5}" stroke="#9fb6d8"/>`
+    + `<circle cx="${x + 25}" cy="${y + 8}" r="4.5" fill="url(#xpi-badge)" stroke="#1d6a1d" stroke-width=".8"/>`
+    + `<path d="M${x + 23} ${y + 8}l1.5 1.5l2.8 -3" fill="none" stroke="#fff" stroke-width="1.4"/>`;
+}
+
+function xpBinIcon(x, y) {
+  return `<ellipse cx="${x + 16}" cy="${y + 30}" rx="11" ry="2" fill="#000" opacity=".2"/>`
+    + `<path d="M${x + 6.5} ${y + 7.5}H${x + 25.5}L${x + 23.5} ${y + 28.5}q-.2 1 -1.2 1H${x + 9.7}q-1 0 -1.2 -1Z" fill="url(#xpi-bin)" stroke="#5d8a96"/>`
+    + `<ellipse cx="${x + 16}" cy="${y + 7.5}" rx="10" ry="2.8" fill="#eaf6f9" stroke="#5d8a96"/>`
+    + [11, 16, 21].map((lx) => `<path d="M${x + lx} ${y + 11}L${x + lx + (lx - 16) * 0.08} ${y + 27}" stroke="#ffffff" stroke-opacity=".7"/>`).join("")
+    + `<path d="M${x + 12.5} ${y + 19.5}l3.5 -5l3.5 5z" fill="none" stroke="#2e9a3a" stroke-width="1.6" stroke-linejoin="round"/>`;
+}
+
+function xpDesktopIcon(x, y, icon, label) {
+  // XP desktop captions: white text with a soft dark shadow, no background.
+  const caption = fit(label, 74, 11);
+  return icon(x + 22, y)
+    + text(x + 39, y + 47, caption, { size: 11, anchor: "middle", fill: "#000", extra: 'opacity="0.75"' })
+    + text(x + 38, y + 46, caption, { size: 11, anchor: "middle", fill: C.white });
+}
+
+function xpIconDefs() {
+  return `<linearGradient id="xpi-case" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f1e6"/><stop offset="1" stop-color="#c9c2a8"/></linearGradient>`
+    + `<linearGradient id="xpi-screen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5aa0f2"/><stop offset="1" stop-color="#1a4bb0"/></linearGradient>`
+    + `<linearGradient id="xpi-folder" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe68f"/><stop offset="1" stop-color="#f2b934"/></linearGradient>`
+    + `<linearGradient id="xpi-paper" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dfe8f5"/></linearGradient>`
+    + `<linearGradient id="xpi-badge" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6fd36f"/><stop offset="1" stop-color="#2a9a2a"/></linearGradient>`
+    + `<linearGradient id="xpi-bin" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#bfe1ea"/><stop offset=".5" stop-color="#e6f5f8"/><stop offset="1" stop-color="#9ccbd7"/></linearGradient>`;
+}
+
 // ---- Windows XP desktop (winxp skin) ----
 // An original rolling-hill landscape in the spirit of the XP default desktop (not the photo).
 function xpDesktop() {
@@ -262,10 +315,17 @@ export function renderWin98Dashboard(data, { githubId, scale, languageColors = {
   let body = xp ? xpDesktop() : `<rect width="${WIDTH}" height="${HEIGHT}" fill="${C.desktop}"/>`;
 
   // Desktop icons.
-  body += desktopIcon(4, 12, (ix, iy) => ICONS.computer(ix, iy, 2), "My GitHub");
-  body += desktopIcon(4, 84, (ix, iy) => ICONS.folder(ix, iy, 2), "Repositories");
-  body += desktopIcon(4, 156, (ix, iy) => ICONS.envelope(ix, iy, 2), "Inbox");
-  body += desktopIcon(WIDTH - 88, HEIGHT - TASKBAR_H - 70, binIcon, "Recycle Bin");
+  if (xp) {
+    body += xpDesktopIcon(4, 12, xpComputerIcon, "My GitHub");
+    body += xpDesktopIcon(4, 84, xpFolderIcon, "Repositories");
+    body += xpDesktopIcon(4, 156, xpMailIcon, "Inbox");
+    body += xpDesktopIcon(WIDTH - 88, HEIGHT - TASKBAR_H - 70, xpBinIcon, "Recycle Bin");
+  } else {
+    body += desktopIcon(4, 12, (ix, iy) => ICONS.computer(ix, iy, 2), "My GitHub");
+    body += desktopIcon(4, 84, (ix, iy) => ICONS.folder(ix, iy, 2), "Repositories");
+    body += desktopIcon(4, 156, (ix, iy) => ICONS.envelope(ix, iy, 2), "Inbox");
+    body += desktopIcon(WIDTH - 88, HEIGHT - TASKBAR_H - 70, binIcon, "Recycle Bin");
+  }
 
   // Windows, back to front: profile and languages are inactive, contributions is active on top.
   const profile = windowFrame(92, 12, 392, 304, `Profile - ${user}`, { icon: ICONS.computer, active: false });
@@ -306,7 +366,7 @@ export function renderWin98Dashboard(data, { githubId, scale, languageColors = {
     body += text(trayX + trayW - 6, ty + 19, trayText, { size: 11, anchor: "end" });
   }
 
-  const defs = (xp ? xpDefs() : "") + `<pattern id="w98-desk-dither" width="2" height="2" patternUnits="userSpaceOnUse"><rect width="2" height="2" fill="${C.white}"/><rect width="1" height="1" fill="${C.face}"/><rect x="1" y="1" width="1" height="1" fill="${C.face}"/></pattern>`;
+  const defs = (xp ? xpDefs() + xpIconDefs() : "") + `<pattern id="w98-desk-dither" width="2" height="2" patternUnits="userSpaceOnUse"><rect width="2" height="2" fill="${C.white}"/><rect width="1" height="1" fill="${C.face}"/><rect x="1" y="1" width="1" height="1" fill="${C.face}"/></pattern>`;
 
   return svgDocument({
     width: WIDTH,
