@@ -34,10 +34,6 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 ![win98 graph](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=win98&scale=0.6)
 ![win98 stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=win98&scale=0.6)
 
-**theme=winxp** — Windows XP. The same program windows as `win98`, in the Luna look: blue title bars, beige dialogs, green progress bars, and a full XP desktop for the dashboard.
-
-![winxp dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=winxp&scale=0.6)
-
 **Skills** — tech-stack icons as pixel-art ASCII, like [skillicons.dev](https://skillicons.dev) but in a terminal. No GitHub account needed: list the icons with `i=`
 
 ![mac skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=js,ts,react,nodejs,python,go,rust,docker&theme=mac&perline=8&scale=0.6)
