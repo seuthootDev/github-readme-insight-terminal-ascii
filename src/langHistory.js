@@ -92,16 +92,62 @@ function resolveYearCount(input) {
   return Math.min(MAX_YEARS, Math.max(MIN_YEARS, parsed));
 }
 
-// One GraphQL request with an aliased contributionsCollection per year (each is capped at one year).
-function buildHistoryQuery(years) {
-  const fields = years.map((year) => `
-    y${year}: contributionsCollection(from: "${year}-01-01T00:00:00Z", to: "${year}-12-31T23:59:59Z") {
+// One year per request: bundling every year into a single query made busy accounts exceed
+// GitHub's ~10s GraphQL execution limit (HTTP 502). Small per-year queries run in parallel instead.
+const YEAR_QUERY = `query($login: String!, $from: DateTime!, $to: DateTime!) {
+  user(login: $login) {
+    createdAt
+    contributionsCollection(from: $from, to: $to) {
       commitContributionsByRepository(maxRepositories: 100) {
         contributions { totalCount }
         repository { isPrivate primaryLanguage { name color } }
       }
-    }`).join("");
-  return `query($login: String!) { user(login: $login) { login createdAt ${fields} } }`;
+    }
+  }
+}`;
+const RETRY_STATUSES = new Set([502, 503, 504]);
+const RETRY_DELAY_MS = 500;
+
+function isTransientGraphqlError(payload) {
+  return payload.errors?.some((error) => /timeout|something went wrong/i.test(String(error.message ?? ""))) ?? false;
+}
+
+async function fetchYear(githubToken, githubId, year, attempt = 0) {
+  const response = await fetch(GITHUB_GRAPHQL_URL, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${githubToken}`,
+      "Content-Type": "application/json",
+      "User-Agent": "github-readme-insight-terminal-ascii"
+    },
+    body: JSON.stringify({
+      query: YEAR_QUERY,
+      variables: { login: githubId, from: `${year}-01-01T00:00:00Z`, to: `${year}-12-31T23:59:59Z` }
+    })
+  });
+  if (response.status === 401) {
+    throw new Error("GitHub rejected the token (HTTP 401). Check GITHUB_TOKEN / GH_TOKEN.");
+  }
+  // GitHub's GraphQL gateway times out under load now and then; one retry clears most of those.
+  if (RETRY_STATUSES.has(response.status) && attempt === 0) {
+    await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS));
+    return fetchYear(githubToken, githubId, year, attempt + 1);
+  }
+  if (!response.ok) {
+    throw new Error(`Failed to fetch GitHub GraphQL API: HTTP ${response.status}`);
+  }
+  const payload = await response.json();
+  if (payload.errors?.some((error) => error.type === "NOT_FOUND") || (!payload.data?.user && !payload.errors)) {
+    throw new Error("GitHub user not found.");
+  }
+  if (isTransientGraphqlError(payload) && attempt === 0) {
+    await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS));
+    return fetchYear(githubToken, githubId, year, attempt + 1);
+  }
+  if (payload.errors?.length) {
+    throw new Error(`GitHub GraphQL error: ${payload.errors[0].message}`);
+  }
+  return payload.data.user;
 }
 
 async function fetchLanguageHistory(githubId, yearCount) {
@@ -112,38 +158,16 @@ async function fetchLanguageHistory(githubId, yearCount) {
 
   const currentYear = new Date().getUTCFullYear();
   const years = Array.from({ length: yearCount }, (_, i) => currentYear - yearCount + 1 + i);
-  const response = await fetch(GITHUB_GRAPHQL_URL, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${githubToken}`,
-      "Content-Type": "application/json",
-      "User-Agent": "github-readme-insight-terminal-ascii"
-    },
-    body: JSON.stringify({ query: buildHistoryQuery(years), variables: { login: githubId } })
-  });
-  if (response.status === 401) {
-    throw new Error("GitHub rejected the token (HTTP 401). Check GITHUB_TOKEN / GH_TOKEN.");
-  }
-  if (!response.ok) {
-    throw new Error(`Failed to fetch GitHub GraphQL API: HTTP ${response.status}`);
-  }
-  const payload = await response.json();
-  if (payload.errors?.some((error) => error.type === "NOT_FOUND") || (!payload.data?.user && !payload.errors)) {
-    throw new Error("GitHub user not found.");
-  }
-  if (payload.errors?.length) {
-    throw new Error(`GitHub GraphQL error: ${payload.errors[0].message}`);
-  }
-
-  const user = payload.data.user;
-  const createdYear = new Date(user.createdAt).getUTCFullYear();
+  const perYear = await Promise.all(years.map((year) => fetchYear(githubToken, githubId, year)));
+  const createdYear = new Date(perYear[0].createdAt).getUTCFullYear();
   const colors = {};
   const rows = years
-    .filter((year) => year >= createdYear)
-    .map((year) => {
+    .map((year, index) => ({ year, collection: perYear[index].contributionsCollection }))
+    .filter(({ year }) => year >= createdYear)
+    .map(({ year, collection }) => {
       const byLanguage = {};
       // Private repos only show up for a self-hoster's own token; keep them out of a public card.
-      for (const entry of user[`y${year}`]?.commitContributionsByRepository ?? []) {
+      for (const entry of collection?.commitContributionsByRepository ?? []) {
         if (entry.repository?.isPrivate) continue;
         const language = entry.repository?.primaryLanguage?.name ?? OTHER;
         if (entry.repository?.primaryLanguage?.color) colors[language] = entry.repository.primaryLanguage.color;
