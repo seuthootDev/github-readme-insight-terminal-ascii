@@ -37,146 +37,67 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 **Skills** — tech-stack icons as pixel-art ASCII, like [skillicons.dev](https://skillicons.dev) but in a terminal. No GitHub account needed: list the icons with `i=`
 
 ![mac skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=js,ts,react,nodejs,python,go,rust,docker&theme=mac&perline=8&scale=0.6)
-
-<details><summary>Other themes: windows · ubuntu · <b>win98</b> · <b>winxp</b></summary>
-
 ![windows skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=java,spring,kotlin,mysql,redis,git&theme=windows&scale=0.6)
 ![ubuntu skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=linux,ubuntu,vim,bash,nginx,k8s&theme=ubuntu&scale=0.6)
-![win98 skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=js,ts,react,nodejs,python,go,rust,docker&theme=win98&scale=0.6)
-![winxp skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=js,ts,react,nodejs,python,go,rust,docker&theme=winxp&scale=0.6)
-
-</details>
 
 **Dashboard** — tmux-style split panes: profile, stats, streak, 26-week graph and languages in one window
 
 ![mac dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=mac&scale=0.6)
-
-<details><summary>Other themes: windows · ubuntu · <b>win98</b> · <b>winxp</b></summary>
-
 ![windows dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=windows&scale=0.6)
 ![ubuntu dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=ubuntu&scale=0.6)
-![win98 dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=win98&scale=0.6)
-![winxp dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=winxp&scale=0.6)
-
-</details>
 
 **Git log** — recent commits as `git log --oneline --graph`
 
 ![mac git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=mac&scale=0.6)
-
-<details><summary>Other themes: windows · ubuntu · <b>win98</b> · <b>winxp</b></summary>
-
 ![windows git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=windows&scale=0.6)
 ![ubuntu git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=ubuntu&scale=0.6)
-![win98 git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=win98&scale=0.6)
-![winxp git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=winxp&scale=0.6)
-
-</details>
 
 **ASCII avatar** (mono / color)
 
 ![mac ascii mono](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=torvalds&theme=mac&scale=0.15)
 ![mac ascii color](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=torvalds&theme=mac&color=1&scale=0.15)
 
-<details><summary>Other themes: <b>win98</b> · <b>winxp</b> (Paint)</summary>
-
-![win98 ascii mono](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=torvalds&theme=win98&scale=0.6)
-![winxp ascii mono](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=torvalds&theme=winxp&scale=0.6)
-![win98 ascii color](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=torvalds&theme=win98&color=1&scale=0.6)
-![winxp ascii color](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=torvalds&theme=winxp&color=1&scale=0.6)
-
-</details>
-
 **GitHub neofetch** — Octocat ASCII + profile fields (Repos, Stars, Contributions, …)
 
 ![mac neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=mac&color=1&scale=0.6)
-
-<details><summary>Other themes: windows · ubuntu · <b>win98</b> · <b>winxp</b></summary>
-
 ![windows neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=windows&color=1&scale=0.6)
 ![ubuntu neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=ubuntu&color=1&scale=0.6)
-![win98 neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=win98&color=1&scale=0.6)
-![winxp neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=winxp&color=1&scale=0.6)
-
-</details>
 
 **PRs & issues** — recent pull requests and issues as `gh search issues --include-prs`
 
 ![mac pr-issue](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=mac&scale=0.6)
-
-<details><summary>Other themes: windows · ubuntu · <b>win98</b> · <b>winxp</b></summary>
-
 ![windows pr-issue](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=windows&scale=0.6)
 ![ubuntu pr-issue](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=ubuntu&scale=0.6)
-![win98 pr-issue](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=win98&scale=0.6)
-![winxp pr-issue](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=winxp&scale=0.6)
-
-</details>
 
 **Repo** — a single repository as `gh repo view`: stars, forks, language, license, latest release, topics and 52-week commit activity
 
 ![mac repo](https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=mac&scale=0.6)
-
-<details><summary>Other themes: windows · ubuntu · <b>win98</b> · <b>winxp</b></summary>
-
 ![windows repo](https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=windows&scale=0.6)
 ![ubuntu repo](https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=ubuntu&scale=0.6)
-![win98 repo](https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=win98&scale=0.6)
-![winxp repo](https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=winxp&scale=0.6)
-
-</details>
 
 **Language history** — share of commits by language, year by year
 
 ![mac lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=mac&scale=0.6)
-
-<details><summary>Other themes: windows · ubuntu · <b>win98</b> · <b>winxp</b></summary>
-
 ![windows lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=windows&scale=0.6)
 ![ubuntu lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=ubuntu&scale=0.6)
-![win98 lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=win98&scale=0.6)
-![winxp lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=winxp&scale=0.6)
-
-</details>
 
 **Stats**
 
 ![mac stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=mac&scale=0.6)
-
-<details><summary>Other themes: windows · ubuntu · <b>win98</b> · <b>winxp</b></summary>
-
 ![windows stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=windows&scale=0.6)
 ![ubuntu stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=ubuntu&scale=0.6)
-![win98 stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=win98&scale=0.6)
-![winxp stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=winxp&scale=0.6)
-
-</details>
 
 **Streak** — current / longest contribution streak
 
 ![mac streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=mac&scale=0.6)
-
-<details><summary>Other themes: windows · ubuntu · <b>win98</b> · <b>winxp</b></summary>
-
 ![windows streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=windows&scale=0.6)
 ![ubuntu streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=ubuntu&scale=0.6)
-![win98 streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=win98&scale=0.6)
-![winxp streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=winxp&scale=0.6)
-
-</details>
 
 **Top languages**
 
 ![mac top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=mac&top=8&scale=0.6)
-
-<details><summary>Other themes: windows · ubuntu · <b>win98</b> · <b>winxp</b></summary>
-
 ![windows top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=windows&top=8&scale=0.6)
 ![ubuntu top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=ubuntu&top=8&scale=0.6)
-![win98 top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=win98&top=8&scale=0.6)
-![winxp top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=winxp&top=8&scale=0.6)
-
-</details>
 
 ---
 
