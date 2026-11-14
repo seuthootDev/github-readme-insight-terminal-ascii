@@ -65,7 +65,19 @@ const CASES = [
   ["dashboard-win98", { type: "dashboard", themeName: "win98" }],
   ["neofetch-win98", { type: "neofetch", themeName: "win98", color: true }],
   ["ascii-win98", { type: "ascii", themeName: "win98" }],
-  ["skills-win98", { type: "skills", themeName: "win98", icons: "js,ts,react,nodejs,docker,postgres,unknown-icon-xyz" }]
+  ["skills-win98", { type: "skills", themeName: "win98", icons: "js,ts,react,nodejs,docker,postgres,unknown-icon-xyz" }],
+  ["stats-winxp", { type: "stats", themeName: "winxp" }],
+  ["graph-winxp", { type: "graph", themeName: "winxp" }],
+  ["top-lang-winxp", { type: "top-lang", themeName: "winxp" }],
+  ["streak-winxp", { type: "streak", themeName: "winxp" }],
+  ["git-log-winxp", { type: "git-log", themeName: "winxp" }],
+  ["pr-issue-winxp", { type: "pr-issue", themeName: "winxp" }],
+  ["repo-winxp", { type: "repo", themeName: "winxp", repo: REPO }],
+  ["lang-history-winxp", { type: "lang-history", themeName: "winxp" }],
+  ["dashboard-winxp", { type: "dashboard", themeName: "winxp" }],
+  ["neofetch-winxp", { type: "neofetch", themeName: "winxp", color: true }],
+  ["ascii-winxp", { type: "ascii", themeName: "winxp" }],
+  ["skills-winxp", { type: "skills", themeName: "winxp", icons: "js,ts,react,nodejs,docker,postgres,unknown-icon-xyz" }]
 ];
 
 for (const [name, options] of CASES) {
@@ -83,4 +95,9 @@ test("renders error card", () => {
 test("renders win98 error card", () => {
   const svg = generateErrorSvg("win98", { user: USER, type: "stats", message: "GitHub API rate limit exceeded." });
   matchSnapshot("error-win98", svg);
+});
+
+test("renders winxp error card", () => {
+  const svg = generateErrorSvg("winxp", { user: USER, type: "stats", message: "GitHub API rate limit exceeded." });
+  matchSnapshot("error-winxp", svg);
 });

@@ -124,9 +124,24 @@ export const THEMES = {
     prompt: (user) => [{ text: `C:\\GITHUB\\${user}>`, fill: WIN98_PALETTE.fg }],
     command: (user) => `github-cli --user ${user} --theme win98`,
     controlsSvg: () => ""
+  },
+  winxp: {
+    kind: "win98",
+    palette: WIN98_PALETTE,
+    title: (user) => `GitHub - ${user}`,
+    frameBg: "#ece9d8",
+    bodyBg: "#ffffff",
+    headerBg: "#0054e3",
+    text: WIN98_PALETTE.fg,
+    accentSuccess: WIN98_PALETTE.green,
+    prompt: (user) => [{ text: `C:\\GITHUB\\${user}>`, fill: WIN98_PALETTE.fg }],
+    command: (user) => `github-cli --user ${user} --theme winxp`,
+    controlsSvg: () => ""
   }
 };
 
+// Both Windows window themes (win98 and winxp) are drawn by src/win98/*; the theme name
+// picks the window skin.
 export function isWin98(themeName) {
   return THEMES[themeName]?.kind === "win98";
 }

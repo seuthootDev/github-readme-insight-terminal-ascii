@@ -74,3 +74,13 @@ terminal version of that card.
 - Existing snapshots must not change.
 - Visual check: render every win98 snapshot to PNG with headless Chrome and inspect for overflow,
   overlap and authenticity.
+
+## Addendum: `theme=winxp` (Windows XP skin)
+Added after v1.4.0. XP reuses every win98 renderer unchanged: the window-chrome primitives in
+`src/win98/kit.js` dispatch to the active skin, and `src/win98/skin.js` wraps each card's render
+call in `withSkin(themeName, …)`. `src/win98/skinXp.js` holds the Luna versions (rounded blue
+title bars, red close button, beige `#ece9d8` face, rounded buttons, orange-topped tabs, blue
+group captions, green segmented progress bars) plus the colour overrides. Rendering is
+synchronous, so the module-level skin never leaks between requests. The only card-specific XP
+code is the dashboard: an original sky/hill desktop (not the XP wallpaper photo) and the XP
+taskbar with the green start button.

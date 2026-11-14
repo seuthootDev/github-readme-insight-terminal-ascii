@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 
 import { THEMES, isWin98 } from "./themes.js";
 import { renderWin98Repo } from "./win98/repo.js";
+import { withSkin } from "./win98/skin.js";
 import { REDUCED_MOTION_CSS } from "./constants.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
@@ -274,7 +275,7 @@ export async function generateRepoCardSvg(themeName, githubId, options = {}) {
   if (isWin98(themeName)) {
     const total = Object.values(languages).reduce((acc, size) => acc + Number(size), 0);
     const language = repo.language ?? Object.keys(languages)[0] ?? null;
-    return renderWin98Repo({
+    return withSkin(themeName, () => renderWin98Repo({
       fullName,
       owner: ownerLabel,
       name: repoNameLabel ?? name,
@@ -295,7 +296,7 @@ export async function generateRepoCardSvg(themeName, githubId, options = {}) {
       activity,
       archived: Boolean(repo.archived),
       fork: Boolean(repo.fork)
-    }, { githubId, scale: options.scale });
+    }, { githubId, scale: options.scale }));
   }
 
   const termX = 20;

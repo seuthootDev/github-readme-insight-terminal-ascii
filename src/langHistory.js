@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 
 import { THEMES, isWin98 } from "./themes.js";
 import { renderWin98LangHistory } from "./win98/langHistory.js";
+import { withSkin } from "./win98/skin.js";
 import { REDUCED_MOTION_CSS } from "./constants.js";
 
 const GITHUB_GRAPHQL_URL = "https://api.github.com/graphql";
@@ -297,7 +298,7 @@ export async function generateLangHistorySvg(themeName, githubId, options = {}) 
   const mover = biggestMover(rows, legend);
   if (isWin98(themeName)) {
     const chartRows = rows.map((row) => ({ ...row, segments: rowSegments(row, legend) }));
-    return renderWin98LangHistory({ rows: chartRows, colors, legend, mover, yearCount }, { githubId, scale: options.scale });
+    return withSkin(themeName, () => renderWin98LangHistory({ rows: chartRows, colors, legend, mover, yearCount }, { githubId, scale: options.scale }));
   }
 
   const termX = 20;

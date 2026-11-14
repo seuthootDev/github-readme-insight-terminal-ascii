@@ -76,7 +76,7 @@ export function text(x, y, value, { size = 12, weight, fill = C.text, anchor, fa
 }
 
 // Raised bevel (buttons, window frame, panels).
-export function raised(x, y, w, h, { fill = C.face, thick = true } = {}) {
+function raised98(x, y, w, h, { fill = C.face, thick = true } = {}) {
   const r = x + w, b = y + h;
   return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}"/>`
     + `<path d="M${x + 0.5} ${b - 0.5}V${y + 0.5}H${r - 0.5}" stroke="${thick ? C.light : C.white}" fill="none"/>`
@@ -87,7 +87,7 @@ export function raised(x, y, w, h, { fill = C.face, thick = true } = {}) {
 }
 
 // Sunken bevel (text fields, list views, canvases).
-export function sunken(x, y, w, h, { fill = C.white } = {}) {
+function sunken98(x, y, w, h, { fill = C.white } = {}) {
   const r = x + w, b = y + h;
   return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}"/>`
     + `<path d="M${x + 0.5} ${b - 0.5}V${y + 0.5}H${r - 0.5}" stroke="${C.shadow}" fill="none"/>`
@@ -105,7 +105,7 @@ export function etchedV(x, y, h) {
   return `<path d="M${x + 0.5} ${y}V${y + h}" stroke="${C.shadow}"/><path d="M${x + 1.5} ${y}V${y + h}" stroke="${C.white}"/>`;
 }
 
-export function button(x, y, w, h, label, { isDefault = false, disabled = false, size = 12, pressed = false } = {}) {
+function button98(x, y, w, h, label, { isDefault = false, disabled = false, size = 12, pressed = false } = {}) {
   let out = "";
   if (isDefault) {
     out += `<rect x="${x - 0.5}" y="${y - 0.5}" width="${w + 1}" height="${h + 1}" fill="none" stroke="${C.dark}"/>`;
@@ -132,7 +132,7 @@ const GLYPHS = {
 };
 
 // Title bar with gradient, icon, caption and caption buttons. Returns svg.
-export function titleBar(x, y, w, title, { icon, controls = ["min", "max", "close"], active = true, gradId = "w98title", h = 18 } = {}) {
+function titleBar98(x, y, w, title, { icon, controls = ["min", "max", "close"], active = true, gradId = "w98title", h = 18 } = {}) {
   let out = `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${active ? `url(#${gradId})` : `url(#${gradId}-off)`}"/>`;
   let tx = x + 4;
   if (icon) {
@@ -152,14 +152,14 @@ export function titleBar(x, y, w, title, { icon, controls = ["min", "max", "clos
   return out;
 }
 
-export function gradientDefs(gradId = "w98title") {
+function gradientDefs98(gradId = "w98title") {
   return `<linearGradient id="${gradId}" x1="0" x2="1"><stop offset="0" stop-color="${C.navy}"/><stop offset="1" stop-color="${C.titleTo}"/></linearGradient>`
     + `<linearGradient id="${gradId}-off" x1="0" x2="1"><stop offset="0" stop-color="${C.inactive}"/><stop offset="1" stop-color="${C.inactiveTo}"/></linearGradient>`;
 }
 
 // A full window (frame + title bar). Returns { svg, client: {x, y, w, h} } where client is the area
 // under the title bar inside the frame.
-export function windowFrame(x, y, w, h, title, opts = {}) {
+function windowFrame98(x, y, w, h, title, opts = {}) {
   const titleH = opts.titleH ?? 18;
   let svg = raised(x, y, w, h);
   svg += titleBar(x + 3, y + 3, w - 6, title, { ...opts, h: titleH });
@@ -180,7 +180,7 @@ export function menuBar(x, y, items, { size = 12 } = {}) {
 }
 
 // Tab strip. Returns { svg, bodyY } where bodyY is the top of the tab page border.
-export function tabs(x, y, labels, active = 0, { size = 12 } = {}) {
+function tabs98(x, y, labels, active = 0, { size = 12 } = {}) {
   let out = "";
   let tx = x;
   const h = 20;
@@ -206,7 +206,7 @@ export function tabs(x, y, labels, active = 0, { size = 12 } = {}) {
 }
 
 // Raised page under a tab strip, with the gap under the active tab.
-export function tabPage(x, y, w, h, activeX, activeW) {
+function tabPage98(x, y, w, h, activeX, activeW) {
   const r = x + w, b = y + h;
   return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${C.face}"/>`
     + `<path d="M${x + 0.5} ${b}V${y + 0.5}H${activeX - 2}M${activeX + activeW + 2} ${y + 0.5}H${r - 1}" stroke="${C.white}" fill="none"/>`
@@ -214,7 +214,7 @@ export function tabPage(x, y, w, h, activeX, activeW) {
     + `<path d="M${x + 1} ${b - 1.5}H${r - 1.5}V${y + 2}" stroke="${C.shadow}" fill="none"/>`;
 }
 
-export function groupBox(x, y, w, h, label, { size = 12, bg = C.face } = {}) {
+function groupBox98(x, y, w, h, label, { size = 12, bg = C.face } = {}) {
   const r = x + w, b = y + h;
   let out = `<rect x="${x + 0.5}" y="${y + 0.5}" width="${w - 1}" height="${h - 1}" fill="none" stroke="${C.shadow}"/>`;
   out += `<rect x="${x + 1.5}" y="${y + 1.5}" width="${w - 1}" height="${h - 1}" fill="none" stroke="${C.white}"/>`;
@@ -228,7 +228,7 @@ export function groupBox(x, y, w, h, label, { size = 12, bg = C.face } = {}) {
 }
 
 // Classic block progress bar. ratio 0..1. animate=true makes blocks appear one by one.
-export function progressBlocks(x, y, w, h, ratio, { animate = true, delay = 0, step = 0.04, color = C.navy } = {}) {
+function progressBlocks98(x, y, w, h, ratio, { animate = true, delay = 0, step = 0.04, color = C.navy } = {}) {
   let out = sunken(x, y, w, h);
   const blockW = Math.max(6, Math.round((h - 6) * 0.75));
   const gap = 2;
@@ -242,7 +242,7 @@ export function progressBlocks(x, y, w, h, ratio, { animate = true, delay = 0, s
   return out;
 }
 
-export function statusBar(x, y, w, parts, { h = 20, size = 11 } = {}) {
+function statusBar98(x, y, w, parts, { h = 20, size = 11 } = {}) {
   // parts: [{ text, w }] — last part takes the rest.
   let out = "";
   let cx = x;
@@ -256,7 +256,7 @@ export function statusBar(x, y, w, parts, { h = 20, size = 11 } = {}) {
 }
 
 // List view column header row.
-export function columnHeaders(x, y, columns, { h = 18, size = 11 } = {}) {
+function columnHeaders98(x, y, columns, { h = 18, size = 11 } = {}) {
   // columns: [{ label, w, align }]
   let out = "";
   let cx = x;
@@ -267,6 +267,71 @@ export function columnHeaders(x, y, columns, { h = 18, size = 11 } = {}) {
     cx += col.w;
   }
   return out;
+}
+
+
+// ---- Skins ----
+// The win98 renderers also draw the Windows XP theme: the window chrome primitives below
+// dispatch to the active skin (null = Windows 98). Rendering is synchronous, so a skin set
+// around one render call can never leak into another request.
+let SKIN = null;
+const BASE_COLORS = { ...C };
+
+export function skinName() {
+  return SKIN?.name ?? "win98";
+}
+
+export function setSkin(skin) {
+  SKIN = skin;
+  Object.assign(C, BASE_COLORS, skin?.colors ?? {});
+}
+
+export function raised(...args) {
+  return SKIN?.raised ? SKIN.raised(...args) : raised98(...args);
+}
+
+export function sunken(...args) {
+  return SKIN?.sunken ? SKIN.sunken(...args) : sunken98(...args);
+}
+
+export function button(...args) {
+  return SKIN?.button ? SKIN.button(...args) : button98(...args);
+}
+
+export function titleBar(...args) {
+  return SKIN?.titleBar ? SKIN.titleBar(...args) : titleBar98(...args);
+}
+
+export function gradientDefs(...args) {
+  return SKIN?.gradientDefs ? SKIN.gradientDefs(...args) : gradientDefs98(...args);
+}
+
+export function windowFrame(...args) {
+  return SKIN?.windowFrame ? SKIN.windowFrame(...args) : windowFrame98(...args);
+}
+
+export function tabs(...args) {
+  return SKIN?.tabs ? SKIN.tabs(...args) : tabs98(...args);
+}
+
+export function tabPage(...args) {
+  return SKIN?.tabPage ? SKIN.tabPage(...args) : tabPage98(...args);
+}
+
+export function groupBox(...args) {
+  return SKIN?.groupBox ? SKIN.groupBox(...args) : groupBox98(...args);
+}
+
+export function progressBlocks(...args) {
+  return SKIN?.progressBlocks ? SKIN.progressBlocks(...args) : progressBlocks98(...args);
+}
+
+export function statusBar(...args) {
+  return SKIN?.statusBar ? SKIN.statusBar(...args) : statusBar98(...args);
+}
+
+export function columnHeaders(...args) {
+  return SKIN?.columnHeaders ? SKIN.columnHeaders(...args) : columnHeaders98(...args);
 }
 
 // ---- 16x16 / 32x32 pixel icons (original drawings, no trademarked artwork) ----

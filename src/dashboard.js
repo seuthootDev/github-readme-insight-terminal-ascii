@@ -6,6 +6,7 @@ import { addDays, toIsoDate, REDUCED_MOTION_CSS } from "./constants.js";
 import { fetchContributions, sumContributions } from "./githubContributions.js";
 import { THEMES, isWin98 } from "./themes.js";
 import { renderWin98Dashboard } from "./win98/dashboard.js";
+import { withSkin } from "./win98/skin.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
 
@@ -524,7 +525,7 @@ export async function generateDashboardSvg(themeName, githubId, options = {}) {
 
   const data = await fetchDashboardData(githubId);
   if (isWin98(themeName)) {
-    return renderWin98Dashboard(data, { githubId, scale: options.scale, languageColors: LANGUAGE_COLORS });
+    return withSkin(themeName, () => renderWin98Dashboard(data, { githubId, scale: options.scale, languageColors: LANGUAGE_COLORS }));
   }
   const now = new Date();
   const today = new Date(now);

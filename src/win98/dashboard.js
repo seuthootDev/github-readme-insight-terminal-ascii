@@ -2,7 +2,7 @@
 // (profile + stats, contributions + streak, languages) arranged like an open session.
 import { addDays, toIsoDate } from "../constants.js";
 import {
-  C, ICONS, etchedH, fit, formatNumber, groupBox, progressBlocks, raised, statusBar, sunken, svgDocument, text, windowFrame
+  C, ICONS, etchedH, fit, formatNumber, groupBox, progressBlocks, raised, skinName, statusBar, sunken, svgDocument, text, windowFrame
 } from "./kit.js";
 
 const WIDTH = 1029;
@@ -198,6 +198,51 @@ function languagesWindow(win, data, languageColors) {
   return out;
 }
 
+// ---- Windows XP desktop (winxp skin) ----
+// An original rolling-hill landscape in the spirit of the XP default desktop (not the photo).
+function xpDesktop() {
+  const horizon = HEIGHT * 0.62;
+  return `<rect width="${WIDTH}" height="${HEIGHT}" fill="url(#xp-sky)"/>`
+    + [[180, 70, 120, 26], [300, 92, 90, 18], [640, 60, 150, 30], [820, 110, 110, 20], [470, 140, 80, 14]]
+      .map(([cx, cy, rx, ry]) => `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="#ffffff" opacity="0.55"/><ellipse cx="${cx + rx * 0.35}" cy="${cy - ry * 0.4}" rx="${rx * 0.55}" ry="${ry * 0.8}" fill="#ffffff" opacity="0.45"/>`).join("")
+    + `<path d="M0 ${horizon + 40}C${WIDTH * 0.2} ${horizon - 70} ${WIDTH * 0.55} ${horizon - 60} ${WIDTH} ${horizon + 10}V${HEIGHT}H0Z" fill="url(#xp-hill-back)"/>`
+    + `<path d="M0 ${horizon + 90}C${WIDTH * 0.25} ${horizon - 10} ${WIDTH * 0.6} ${horizon + 30} ${WIDTH} ${horizon + 80}V${HEIGHT}H0Z" fill="url(#xp-hill)"/>`;
+}
+
+function xpDefs() {
+  return `<linearGradient id="xp-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f6fdc"/><stop offset=".45" stop-color="#6aa6ec"/><stop offset=".7" stop-color="#b9d9f6"/></linearGradient>`
+    + `<linearGradient id="xp-hill-back" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7cc24a"/><stop offset="1" stop-color="#3f8f25"/></linearGradient>`
+    + `<linearGradient id="xp-hill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6ab83a"/><stop offset=".5" stop-color="#3d9a24"/><stop offset="1" stop-color="#256f17"/></linearGradient>`
+    + `<linearGradient id="xp-bar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d95ff"/><stop offset=".08" stop-color="#2b71e8"/><stop offset=".5" stop-color="#245edb"/><stop offset="1" stop-color="#1941a5"/></linearGradient>`
+    + `<linearGradient id="xp-start" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5eb95e"/><stop offset=".15" stop-color="#3c9c3c"/><stop offset=".85" stop-color="#2f8a2f"/><stop offset="1" stop-color="#1f6b1f"/></linearGradient>`
+    + `<linearGradient id="xp-task" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a9bf6"/><stop offset="1" stop-color="#3876e8"/></linearGradient>`
+    + `<linearGradient id="xp-task-on" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c4fb8"/><stop offset="1" stop-color="#2a63d4"/></linearGradient>`
+    + `<linearGradient id="xp-tray" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14a3f5"/><stop offset="1" stop-color="#0d8adf"/></linearGradient>`;
+}
+
+function xpTaskbar(tasks, trayText) {
+  const ty = HEIGHT - TASKBAR_H;
+  let out = `<rect x="0" y="${ty}" width="${WIDTH}" height="${TASKBAR_H}" fill="url(#xp-bar)"/>`;
+  // Green start button with a rounded right edge.
+  out += `<path d="M0 ${ty}H92q12 0 12 ${TASKBAR_H / 2}q0 ${TASKBAR_H / 2} -12 ${TASKBAR_H / 2}H0Z" fill="url(#xp-start)"/>`;
+  out += ICONS.computer(8, ty + 6);
+  out += text(31, ty + 20, "start", { size: 17, weight: 700, fill: "#0e3d0e", extra: 'font-style="italic"', family: "'Trebuchet MS', Tahoma, sans-serif" });
+  out += text(30, ty + 19, "start", { size: 17, weight: 700, fill: "#ffffff", extra: 'font-style="italic"', family: "'Trebuchet MS', Tahoma, sans-serif" });
+  const btnW = 160;
+  tasks.forEach(([label, icon, active], i) => {
+    const x = 114 + i * (btnW + 4);
+    out += `<rect x="${x + 0.5}" y="${ty + 3.5}" width="${btnW - 1}" height="${TASKBAR_H - 7}" rx="3" fill="url(#${active ? "xp-task-on" : "xp-task"})" stroke="${active ? "#163e93" : "#2a62d6"}"/>`;
+    out += icon(x + 5, ty + 6);
+    out += text(x + 26, ty + 18, fit(label, btnW - 32, 11, active), { size: 11, weight: active ? 700 : undefined, fill: "#ffffff" });
+  });
+  const trayW = 100;
+  const trayX = WIDTH - trayW;
+  out += `<rect x="${trayX}" y="${ty}" width="${trayW}" height="${TASKBAR_H}" fill="url(#xp-tray)"/><path d="M${trayX + 0.5} ${ty}V${HEIGHT}" stroke="#0c5ec0"/>`;
+  out += chartIcon(trayX + 8, ty + 6);
+  out += text(WIDTH - 10, ty + 18, trayText, { size: 11, anchor: "end", fill: "#ffffff" });
+  return out;
+}
+
 function taskButton(x, y, w, label, icon, active) {
   let out = active ? sunken(x, y, w, 22, { fill: C.face }) : raised(x, y, w, 22);
   if (active) {
@@ -213,7 +258,8 @@ export function renderWin98Dashboard(data, { githubId, scale, languageColors = {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  let body = `<rect width="${WIDTH}" height="${HEIGHT}" fill="${C.desktop}"/>`;
+  const xp = skinName() === "winxp";
+  let body = xp ? xpDesktop() : `<rect width="${WIDTH}" height="${HEIGHT}" fill="${C.desktop}"/>`;
 
   // Desktop icons.
   body += desktopIcon(4, 12, (ix, iy) => ICONS.computer(ix, iy, 2), "My GitHub");
@@ -231,31 +277,36 @@ export function renderWin98Dashboard(data, { githubId, scale, languageColors = {
   const contrib = windowFrame(468, 28, 544, 398, `Contributions - ${user}`, { icon: chartIcon });
   body += `<g class="w98-fade" style="animation-delay:0.2s">${contrib.svg}${contributionsWindow(contrib.client, data, today)}</g>`;
 
-  // Taskbar.
-  const ty = HEIGHT - TASKBAR_H;
-  body += `<rect x="0" y="${ty}" width="${WIDTH}" height="${TASKBAR_H}" fill="${C.face}"/>`;
-  body += `<path d="M0 ${ty + 0.5}H${WIDTH}" stroke="${C.light}"/><path d="M0 ${ty + 1.5}H${WIDTH}" stroke="${C.white}"/>`;
-  body += raised(2, ty + 4, 56, 22);
-  body += ICONS.computer(6, ty + 7);
-  body += text(25, ty + 19, "Start", { weight: 700 });
-  body += `<path d="M62.5 ${ty + 4}V${ty + 26}" stroke="${C.shadow}"/><path d="M63.5 ${ty + 4}V${ty + 26}" stroke="${C.white}"/>`;
-
-  const trayW = 92;
-  const btnW = 160;
-  [[`Profile - ${user}`, ICONS.computer, false], ["Languages", ICONS.folder, false], [`Contributions - ${user}`, chartIcon, true]]
-    .forEach(([label, icon, active], i) => {
-      body += taskButton(68 + i * (btnW + 3), ty + 4, btnW, label, icon, active);
-    });
-
   // Tray: the calendar's last day, so the card never shows a live clock.
   const lastDay = Object.keys(data.contributions).sort().at(-1);
   const trayText = lastDay ? `${lastDay.slice(5, 7)}/${lastDay.slice(8, 10)}/${lastDay.slice(0, 4)}` : "";
-  const trayX = WIDTH - trayW - 3;
-  body += sunken(trayX, ty + 4, trayW, 22, { fill: C.face });
-  body += chartIcon(trayX + 4, ty + 7);
-  body += text(trayX + trayW - 6, ty + 19, trayText, { size: 11, anchor: "end" });
+  const tasks = [[`Profile - ${user}`, ICONS.computer, false], ["Languages", ICONS.folder, false], [`Contributions - ${user}`, chartIcon, true]];
 
-  const defs = `<pattern id="w98-desk-dither" width="2" height="2" patternUnits="userSpaceOnUse"><rect width="2" height="2" fill="${C.white}"/><rect width="1" height="1" fill="${C.face}"/><rect x="1" y="1" width="1" height="1" fill="${C.face}"/></pattern>`;
+  if (xp) {
+    body += xpTaskbar(tasks, trayText);
+  } else {
+    // Taskbar.
+    const ty = HEIGHT - TASKBAR_H;
+    body += `<rect x="0" y="${ty}" width="${WIDTH}" height="${TASKBAR_H}" fill="${C.face}"/>`;
+    body += `<path d="M0 ${ty + 0.5}H${WIDTH}" stroke="${C.light}"/><path d="M0 ${ty + 1.5}H${WIDTH}" stroke="${C.white}"/>`;
+    body += raised(2, ty + 4, 56, 22);
+    body += ICONS.computer(6, ty + 7);
+    body += text(25, ty + 19, "Start", { weight: 700 });
+    body += `<path d="M62.5 ${ty + 4}V${ty + 26}" stroke="${C.shadow}"/><path d="M63.5 ${ty + 4}V${ty + 26}" stroke="${C.white}"/>`;
+
+    const trayW = 92;
+    const btnW = 160;
+    tasks.forEach(([label, icon, active], i) => {
+      body += taskButton(68 + i * (btnW + 3), ty + 4, btnW, label, icon, active);
+    });
+
+    const trayX = WIDTH - trayW - 3;
+    body += sunken(trayX, ty + 4, trayW, 22, { fill: C.face });
+    body += chartIcon(trayX + 4, ty + 7);
+    body += text(trayX + trayW - 6, ty + 19, trayText, { size: 11, anchor: "end" });
+  }
+
+  const defs = (xp ? xpDefs() : "") + `<pattern id="w98-desk-dither" width="2" height="2" patternUnits="userSpaceOnUse"><rect width="2" height="2" fill="${C.white}"/><rect width="1" height="1" fill="${C.face}"/><rect x="1" y="1" width="1" height="1" fill="${C.face}"/></pattern>`;
 
   return svgDocument({
     width: WIDTH,

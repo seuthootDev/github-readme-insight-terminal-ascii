@@ -6,6 +6,7 @@ import { Jimp } from "jimp";
 
 import { THEMES, isWin98 } from "./themes.js";
 import { renderWin98Ascii } from "./win98/ascii.js";
+import { withSkin } from "./win98/skin.js";
 import { avatarToPaintBitmap } from "./win98/bitmap.js";
 import { REDUCED_MOTION_CSS } from "./constants.js";
 
@@ -288,7 +289,7 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
     } catch (error) {
       throw new Error(`Failed to process avatar image for '${githubId}': ${error?.message ?? error}`);
     }
-    return renderWin98Ascii(profile, bitmap, { githubId, scale: options.scale, color });
+    return withSkin(themeName, () => renderWin98Ascii(profile, bitmap, { githubId, scale: options.scale, color }));
   }
 
   let asciiRows;

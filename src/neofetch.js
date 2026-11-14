@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { fetchContributions, sumContributions } from "./githubContributions.js";
 import { THEMES, isWin98 } from "./themes.js";
 import { renderWin98Neofetch } from "./win98/neofetch.js";
+import { withSkin } from "./win98/skin.js";
 import { REDUCED_MOTION_CSS } from "./constants.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
@@ -476,7 +477,7 @@ export async function generateNeofetchSvg(themeName, githubId, options = {}) {
   const color = resolveColorMode(options.color ?? options.mode);
   const data = await fetchNeofetchData(githubId);
   if (isWin98(themeName)) {
-    return renderWin98Neofetch(data, { githubId, scale: options.scale, color, logo: GITHUB_LOGO });
+    return withSkin(themeName, () => renderWin98Neofetch(data, { githubId, scale: options.scale, color, logo: GITHUB_LOGO }));
   }
   const asciiRows = logoToCells(color, palette);
   const infoRows = buildNeofetchRows(data, palette);
