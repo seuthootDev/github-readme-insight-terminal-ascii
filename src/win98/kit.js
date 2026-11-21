@@ -478,14 +478,20 @@ const CLOCK = [
 ];
 const PALETTE = { K: C.dark, W: C.white, G: C.shadow, L: C.face, B: C.dark, T: C.desktop, Y: "#ffff00", D: "#808000", R: "#ff0000", N: "#00ff00" };
 
+// An icon drawer that uses the active skin's icon of the same name when it has one
+// (the winxp skin swaps the pixel icons for its own set), else the given win98 drawing.
+export function skinnedIcon(name, fallback) {
+  return (x, y, px = 1) => (SKIN?.icons?.[name] ? SKIN.icons[name](x, y, px) : fallback(x, y, px));
+}
+
 export const ICONS = {
-  computer: (x, y, px = 1) => pix(COMPUTER, x, y, PALETTE, px),
-  folder: (x, y, px = 1) => pix(FOLDER, x, y, PALETTE, px),
-  document: (x, y, px = 1) => pix(DOCUMENT, x, y, PALETTE, px),
-  envelope: (x, y, px = 1) => pix(ENVELOPE, x, y, PALETTE, px),
-  error: (x, y, px = 1) => pix(ERROR, x, y, PALETTE, px),
-  drive: (x, y, px = 1) => pix(DRIVE, x, y, PALETTE, px),
-  clock: (x, y, px = 1) => pix(CLOCK, x, y, PALETTE, px)
+  computer: skinnedIcon("computer", (x, y, px) => pix(COMPUTER, x, y, PALETTE, px)),
+  folder: skinnedIcon("folder", (x, y, px) => pix(FOLDER, x, y, PALETTE, px)),
+  document: skinnedIcon("document", (x, y, px) => pix(DOCUMENT, x, y, PALETTE, px)),
+  envelope: skinnedIcon("envelope", (x, y, px) => pix(ENVELOPE, x, y, PALETTE, px)),
+  error: skinnedIcon("error", (x, y, px) => pix(ERROR, x, y, PALETTE, px)),
+  drive: skinnedIcon("drive", (x, y, px) => pix(DRIVE, x, y, PALETTE, px)),
+  clock: skinnedIcon("clock", (x, y, px) => pix(CLOCK, x, y, PALETTE, px))
 };
 
 export const ANIM_CSS = `

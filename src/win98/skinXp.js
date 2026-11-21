@@ -2,6 +2,7 @@
 // Blue rounded title bars, red close button, beige dialogs, rounded buttons, orange tab
 // highlight, blue group-box captions and green segmented progress bars.
 import { C, fit, text, textWidth } from "./kit.js";
+import { XP_ICONS, xpIconDefs } from "./iconsXp.js";
 
 const XP = {
   border: "#0831d9",
@@ -22,7 +23,8 @@ function gradientDefs(gradId = "w98title") {
     + `<linearGradient id="xpclose" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e5937f"/><stop offset=".5" stop-color="#d8562f"/><stop offset="1" stop-color="#c0442a"/></linearGradient>`
     + `<linearGradient id="xptab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#ecebe5"/></linearGradient>`
     + `<linearGradient id="xphdr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#ebeadb"/></linearGradient>`
-    + `<linearGradient id="xpseg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a8e8a0"/><stop offset=".45" stop-color="#2ed12e"/><stop offset="1" stop-color="#18a818"/></linearGradient>`;
+    + `<linearGradient id="xpseg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a8e8a0"/><stop offset=".45" stop-color="#2ed12e"/><stop offset="1" stop-color="#18a818"/></linearGradient>`
+    + xpIconDefs();
 }
 
 // XP panels are flat: a face fill with a soft 1px edge.
@@ -160,6 +162,7 @@ export const XP_SKIN = {
     disabled: "#aca899"
   },
   gradientDefs,
+  icons: XP_ICONS,
   raised,
   sunken,
   button,

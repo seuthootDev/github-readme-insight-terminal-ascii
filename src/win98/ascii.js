@@ -1,6 +1,6 @@
 // Windows 98 "Paint" window for the ascii avatar card: the avatar sits on the canvas as a
 // low-colour dithered bitmap (see bitmap.js), like a photo saved as an old .bmp.
-import { C, fit, menuBar, raised, sunken, svgDocument, statusBar, text, windowFrame } from "./kit.js";
+import { C, fit, menuBar, raised, sunken, svgDocument, statusBar, text, windowFrame, skinnedIcon } from "./kit.js";
 
 const ART_W = 512; // max width of the portrait on the canvas
 const TOOL = 25; // tool button size
@@ -53,12 +53,13 @@ const TOOL_GLYPHS = [
 ];
 const ACTIVE_TOOL = 6; // pencil
 
-function paintIcon(x, y) {
+function paintIcon98(x, y) {
   // A small palette board with three paint dots and a brush.
   return `<path d="M${x + 1.5} ${y + 8.5}C${x + 1.5} ${y + 3.5} ${x + 13.5} ${y + 2.5} ${x + 14.5} ${y + 7.5}C${x + 15.5} ${y + 11.5} ${x + 10.5} ${y + 10.5} ${x + 9.5} ${y + 12.5}C${x + 8.5} ${y + 15.5} ${x + 1.5} ${y + 14.5} ${x + 1.5} ${y + 8.5}Z" fill="#ffff80" stroke="${K}"/>`
     + `<rect x="${x + 4}" y="${y + 6}" width="2" height="2" fill="#ff0000"/><rect x="${x + 7}" y="${y + 5}" width="2" height="2" fill="#0000ff"/><rect x="${x + 10}" y="${y + 6}" width="2" height="2" fill="#008000"/>`
     + `<path d="M${x + 5} ${y + 12}L${x + 8} ${y + 9}" stroke="#804000" stroke-width="1.5"/>`;
 }
+const paintIcon = skinnedIcon("paint", paintIcon98);
 
 export function renderWin98Ascii(profile, bitmap, { githubId, scale, color = false } = {}) {
   const user = profile.login || githubId;

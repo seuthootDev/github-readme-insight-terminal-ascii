@@ -1,5 +1,5 @@
 // Windows 98 "Control Panel" in Large Icons view for the skills card: each skill is an applet icon.
-import { C, ICONS, etchedH, fit, menuBar, raised, statusBar, sunken, svgDocument, text, textWidth, windowFrame } from "./kit.js";
+import { C, ICONS, etchedH, fit, menuBar, raised, statusBar, sunken, svgDocument, text, textWidth, windowFrame, skinnedIcon } from "./kit.js";
 
 const CELL_W = 104;
 const ICON_PX = 2;            // 20x20 bitmaps -> 40px icons
@@ -39,12 +39,13 @@ function iconSvg(icon, x, y) {
 }
 
 // Small 16px control-panel glyph for the title/address bar (original drawing: a window with a gear-ish dot grid).
-function panelIcon(x, y) {
+function panelIcon98(x, y) {
   return `<rect x="${x + 1.5}" y="${y + 2.5}" width="13" height="11" fill="${C.white}" stroke="${C.dark}"/>`
     + `<rect x="${x + 2}" y="${y + 3}" width="12" height="2" fill="${C.navy}"/>`
     + `<rect x="${x + 4}" y="${y + 7}" width="3" height="3" fill="#ff0000"/><rect x="${x + 9}" y="${y + 7}" width="3" height="3" fill="#008000"/>`
     + `<rect x="${x + 4}" y="${y + 11}" width="8" height="1" fill="${C.shadow}"/>`;
 }
+const panelIcon = skinnedIcon("panel", panelIcon98);
 
 export function renderWin98Skills(data, { githubId, scale, perline, labels } = {}) {
   const icons = Array.isArray(data.icons) ? data.icons : [];

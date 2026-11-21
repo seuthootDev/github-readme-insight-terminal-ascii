@@ -1,6 +1,6 @@
 // Windows 98 "Disk Defragmenter" (details view) for the contribution graph card.
 import { DAY_LABELS, NUM_WEEKS, addDays, levelFromCount, toIsoDate } from "../constants.js";
-import { C, button, esc, fit, formatNumber, progressBlocks, statusBar, sunken, svgDocument, text, textWidth, windowFrame } from "./kit.js";
+import { C, button, esc, fit, formatNumber, progressBlocks, statusBar, sunken, svgDocument, text, textWidth, windowFrame, skinnedIcon } from "./kit.js";
 
 const WIDTH = 944;
 const CELL = 14;
@@ -11,7 +11,7 @@ const LEVEL_FILL = [C.white, "#8080ff", "#0000ff", C.navy];
 const LEVEL_STROKE = ["#b0b0b0", "#4040c0", "#000080", "#000040"];
 
 // Small defrag icon: a drive with a coloured block strip.
-function defragIcon(x, y) {
+function defragIcon98(x, y) {
   const rect = (rx, ry, w, h, fill) => `<rect x="${x + rx}" y="${y + ry}" width="${w}" height="${h}" fill="${fill}"/>`;
   return rect(1, 3, 14, 10, C.dark)
     + rect(2, 4, 12, 8, C.face)
@@ -19,6 +19,7 @@ function defragIcon(x, y) {
     + rect(3, 8, 2, 2, "#0000ff") + rect(6, 8, 2, 2, C.white) + rect(9, 8, 2, 2, C.navy) + rect(12, 8, 1, 2, C.white)
     + rect(2, 13, 12, 1, C.shadow);
 }
+const defragIcon = skinnedIcon("defrag", defragIcon98);
 
 function monthLabels(firstSunday) {
   const labels = [];

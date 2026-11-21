@@ -1,17 +1,18 @@
 // Windows 98 "System Monitor" window for the language history card.
-import { C, button, esc, etchedH, etchedV, fit, formatNumber, menuBar, raised, statusBar, sunken, svgDocument, text, textWidth, windowFrame } from "./kit.js";
+import { C, button, esc, etchedH, etchedV, fit, formatNumber, menuBar, raised, statusBar, sunken, svgDocument, text, textWidth, windowFrame, skinnedIcon } from "./kit.js";
 
 const WIDTH = 940;
 const OTHER = "Other";
 const OTHER_FILL = C.shadow;
 
 // Small monitor icon with a green trace.
-function monitorIcon(x, y) {
+function monitorIcon98(x, y) {
   const r = (rx, ry, w, h, fill) => `<rect x="${x + rx}" y="${y + ry}" width="${w}" height="${h}" fill="${fill}"/>`;
   return r(1, 2, 14, 11, C.dark) + r(2, 3, 12, 9, C.dark)
     + `<path d="M${x + 2.5} ${y + 9.5}h3l2 -4l2 5l2 -3h2.5" stroke="#00ff00" fill="none"/>`
     + r(5, 13, 6, 1, C.shadow) + r(3, 14, 10, 1, C.dark);
 }
+const monitorIcon = skinnedIcon("monitor", monitorIcon98);
 
 function toolButton(x, y, glyph) {
   return raised(x, y, 23, 22, { thick: false }) + glyph(x + 4, y + 3);
