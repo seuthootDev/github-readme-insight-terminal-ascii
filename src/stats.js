@@ -7,6 +7,7 @@ import { THEMES, isEditor, isWin98 } from "./themes.js";
 import { renderWin98Stats } from "./win98/stats.js";
 import { withSkin } from "./win98/skin.js";
 import { renderEditorStats } from "./editor/stats.js";
+import { avatarDataUri, sizedAvatarUrl } from "./editor/avatar.js";
 import { REDUCED_MOTION_CSS } from "./constants.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
@@ -218,6 +219,7 @@ async function fetchStatsData(username) {
   return {
     name: profile?.name || fallbackLogin,
     login: fallbackLogin,
+    avatarUrl: profile?.avatar_url ?? null,
     totalStars,
     totalForks,
     totalPRs,
@@ -285,7 +287,8 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
 
   const data = await fetchStatsData(githubId);
   if (isEditor(themeName)) {
-    return renderEditorStats(data, { githubId, scale: options.scale, scheme: options.scheme });
+    const avatar = await avatarDataUri(sizedAvatarUrl(data.avatarUrl), 192);
+    return renderEditorStats(data, { githubId, scale: options.scale, scheme: options.scheme, avatar });
   }
   if (isWin98(themeName)) {
     return withSkin(themeName, () => renderWin98Stats(data, { githubId, scale: options.scale }));

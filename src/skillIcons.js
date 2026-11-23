@@ -1,7 +1,7 @@
 import { THEMES, isEditor, isWin98 } from "./themes.js";
 import { renderWin98Skills } from "./win98/skills.js";
 import { withSkin } from "./win98/skin.js";
-import { renderEditorSkills } from "./editor/skills.js";
+import { renderEditorSkills, vectorIconPaths } from "./editor/skills.js";
 import { REDUCED_MOTION_CSS } from "./constants.js";
 import { ICONS, ICON_GRID } from "./skillIconsData.js";
 
@@ -148,11 +148,13 @@ export function generateSkillsSvg(themeName = "mac", githubId = "", options = {}
 
   const showLabels = options.labels !== false;
   const perLine = Math.min(clampInt(options.perline, 1, 12, DEFAULT_PER_LINE), Math.max(1, icons.length));
+  // The editor theme draws the real vector logos (loaded on first use); brands that only exist
+  // as letter tiles keep their bitmap.
   if (isEditor(themeName)) {
-    return renderEditorSkills({
-      icons: icons.map((icon) => ({ ...icon, path: bitmapToPath(icon.bitmap) })),
+    return vectorIconPaths().then((vectors) => renderEditorSkills({
+      icons: icons.map((icon) => ({ ...icon, path: bitmapToPath(icon.bitmap), vector: vectors.get(icon.slug) ?? null })),
       missing
-    }, { githubId: user, scale: options.scale, scheme: options.scheme, perline: perLine, labels: showLabels });
+    }, { githubId: user, scale: options.scale, scheme: options.scheme, perline: perLine, labels: showLabels }));
   }
   if (isWin98(themeName)) {
     return withSkin(themeName, () => renderWin98Skills({

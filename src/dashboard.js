@@ -8,6 +8,7 @@ import { THEMES, isEditor, isWin98 } from "./themes.js";
 import { renderWin98Dashboard } from "./win98/dashboard.js";
 import { withSkin } from "./win98/skin.js";
 import { renderEditorDashboard } from "./editor/dashboard.js";
+import { avatarDataUri, sizedAvatarUrl } from "./editor/avatar.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
 
@@ -247,6 +248,7 @@ async function fetchDashboardData(username) {
   return {
     login: profile?.login || username,
     name: profile?.name || "",
+    avatarUrl: profile?.avatar_url ?? null,
     createdAt: profile?.created_at ?? null,
     publicRepos: profile?.public_repos ?? null,
     followers: profile?.followers ?? null,
@@ -526,7 +528,8 @@ export async function generateDashboardSvg(themeName, githubId, options = {}) {
 
   const data = await fetchDashboardData(githubId);
   if (isEditor(themeName)) {
-    return renderEditorDashboard(data, { githubId, scale: options.scale, scheme: options.scheme, languageColors: LANGUAGE_COLORS });
+    const avatar = await avatarDataUri(sizedAvatarUrl(data.avatarUrl), 112);
+    return renderEditorDashboard(data, { avatar, githubId, scale: options.scale, scheme: options.scheme, languageColors: LANGUAGE_COLORS });
   }
   if (isWin98(themeName)) {
     return withSkin(themeName, () => renderWin98Dashboard(data, { githubId, scale: options.scale, languageColors: LANGUAGE_COLORS }));

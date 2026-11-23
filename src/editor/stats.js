@@ -1,4 +1,5 @@
 // Editor theme, stats card: the profile shown as an extension's details page.
+import { avatarImage } from "./avatar.js";
 import { button, editorWindow, fadeIn, fit, formatNumber, hline, palette, rect, svgDocument, text, textWidth, windowEnd } from "./kit.js";
 
 const WIDTH = 800;
@@ -15,7 +16,7 @@ function rating(stars) {
   return Math.min(5, Math.max(1, Math.ceil(Math.log10(Number(stars ?? 0) + 1) * 3)));
 }
 
-export function renderEditorStats(data, { githubId, scale, scheme } = {}) {
+export function renderEditorStats(data, { githubId, scale, scheme, avatar = null } = {}) {
   const p = palette(scheme);
   const user = data.login || githubId;
   const name = data.name || user;
@@ -36,9 +37,8 @@ export function renderEditorStats(data, { githubId, scale, scheme } = {}) {
 
   // Header: icon, name + version, publisher line, description, buttons.
   const ix = e.x + 24, iy = e.y + 18;
-  body += `<defs><linearGradient id="ed-icon" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b6cb0"/><stop offset="1" stop-color="#0e3a75"/></linearGradient></defs>`;
-  body += rect(ix, iy, 96, 96, "url(#ed-icon)", 'rx="6"');
-  body += text(ix + 48, iy + 62, initials(user), { size: 40, weight: 600, fill: "#ffffff", anchor: "middle", family: "Consolas, Menlo, monospace" });
+  // The extension icon is the profile photo.
+  body += avatarImage(avatar, ix, iy, 96, { id: "ed-avatar", round: false, radius: 6, fallbackText: initials(user), fallbackFill: p.accent });
 
   const hx = ix + 96 + 20, hw = e.x + e.w - 24 - hx;
   const nameText = fit(user, hw - 90, 22);

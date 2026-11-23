@@ -1,6 +1,7 @@
 // Editor theme, dashboard: a whole workspace — profile in the sidebar, stats.json and the
 // language list as two editor groups, the contribution heatmap in the bottom panel.
 import { NUM_WEEKS, addDays, levelFromCount, toIsoDate } from "../constants.js";
+import { avatarImage } from "./avatar.js";
 import { MONO, codeBlock, compact, editorWindow, esc, fadeIn, fit, formatNumber, palette, rect, sectionHeader, shortDate, svgDocument, tabStrip, text, vline, windowEnd } from "./kit.js";
 
 const WIDTH = 1040;
@@ -18,7 +19,7 @@ function valueOrNa(value) {
   return value === null || value === undefined ? "null" : String(value);
 }
 
-export function renderEditorDashboard(data, { githubId, scale, scheme, languageColors = {} } = {}) {
+export function renderEditorDashboard(data, { githubId, scale, scheme, languageColors = {}, avatar = null } = {}) {
   const p = palette(scheme);
   const user = data.login || githubId;
   const streak = data.streak ?? { current: 0, longest: 0 };
@@ -44,8 +45,7 @@ export function renderEditorDashboard(data, { githubId, scale, scheme, languageC
 
   // ---- Sidebar: avatar, name, profile rows.
   const ax = s.x + 20, ay = s.y + 8;
-  body += `<circle cx="${ax + 28}" cy="${ay + 28}" r="28" fill="${p.accent}"/>`;
-  body += text(ax + 28, ay + 36, initials(data), { size: 20, weight: 600, fill: "#ffffff", anchor: "middle" });
+  body += avatarImage(avatar, ax, ay, 56, { id: "ed-avatar", fallbackText: initials(data), fallbackFill: p.accent });
   body += text(ax + 70, ay + 24, fit(data.name || user, s.w - 96, 14, true), { size: 14, weight: 600, fill: p.fg });
   body += text(ax + 70, ay + 44, fit(`@${user}`, s.w - 100, 13), { size: 13, fill: p.dim });
   let y = ay + 76;

@@ -144,7 +144,7 @@ export function icon(name, x, y, size, color, strokeWidth = 1.5) {
 const FILE_BADGES = {
   js: ["JS", "#cbcb41"], ts: ["TS", "#3178c6"], md: ["M↓", "#519aba"], json: ["{}", "#cbcb41"],
   txt: ["≡", "#9d9d9d"], ipynb: ["◫", "#f57c00"], heat: ["▦", "#3fb950"], svg: ["◇", "#f1a22b"],
-  git: ["⎇", "#f14c4c"], ext: ["▣", "#4daafc"], gh: ["◉", "#9d9d9d"]
+  git: ["⎇", "#f14c4c"], img: ["▨", "#a074c4"], ext: ["▣", "#4daafc"], gh: ["◉", "#9d9d9d"]
 };
 
 export function fileBadge(kind, x, y, p) {

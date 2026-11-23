@@ -1,9 +1,12 @@
-// Editor theme, neofetch card: neofetch running in the editor's integrated terminal panel.
-import { MONO, codeBlock, codeTokens, editorWindow, esc, fadeIn, fit, formatNumber, palette, rect, svgDocument, text, windowEnd } from "./kit.js";
+// Editor theme, neofetch card: neofetch running in the editor's integrated terminal panel, with the
+// profile photo where neofetch would draw its logo (like its image backends do).
+import { avatarImage } from "./avatar.js";
+import { MONO, codeBlock, codeTokens, editorWindow, fadeIn, fit, formatNumber, palette, rect, svgDocument, text, windowEnd } from "./kit.js";
 
 const FONT = 12.5;
 const CHAR_W = FONT * 0.6;
 const LINE_H = 16;
+const PHOTO = 200;
 
 function uptime(createdAt) {
   if (!createdAt) return "unknown";
@@ -16,26 +19,7 @@ function uptime(createdAt) {
   return [years ? `${years} year${years === 1 ? "" : "s"}` : "", rest ? `${rest} month${rest === 1 ? "" : "s"}` : ""].filter(Boolean).join(", ") || "less than a month";
 }
 
-// Same-colour runs of the logo, each pinned to its column with textLength.
-function renderLogo(logo, colors, mono, x, y) {
-  let out = "";
-  logo.lines.forEach((parts, row) => {
-    let col = 0;
-    for (const part of parts) {
-      const fill = mono ?? colors[(part.c ?? 1) - 1] ?? colors[0];
-      const value = part.t;
-      const lead = value.length - value.trimStart().length;
-      const trimmed = value.trim();
-      if (trimmed) {
-        out += `<text x="${(x + (col + lead) * CHAR_W).toFixed(1)}" y="${y + row * LINE_H}" font-size="${FONT}" font-family="${MONO}" fill="${fill}" textLength="${(trimmed.length * CHAR_W).toFixed(1)}" lengthAdjust="spacingAndGlyphs" xml:space="preserve">${esc(trimmed)}</text>`;
-      }
-      col += value.length;
-    }
-  });
-  return out;
-}
-
-export function renderEditorNeofetch(data, { githubId, scale, scheme, color = false, logo } = {}) {
+export function renderEditorNeofetch(data, { githubId, scale, scheme, avatar = null } = {}) {
   const p = palette(scheme);
   const user = data.login || githubId;
   const languages = data.languages?.length ? data.languages.join(", ") : "—";
@@ -55,13 +39,13 @@ export function renderEditorNeofetch(data, { githubId, scale, scheme, color = fa
     ...(data.blog ? [["Website", data.blog.replace(/^https?:\/\//, "")]] : []),
     ...(data.bio ? [["Bio", data.bio.replace(/\s+/g, " ").trim()]] : [])
   ];
-  // Width follows the content: logo, label column and the longest value (capped).
-  const logoCols = logo ? Math.max(...logo.lines.map((parts) => parts.reduce((n, part) => n + part.t.length, 0))) : 0;
+
+  // Width follows the content: photo, label column and the longest value (capped).
   const valueCols = Math.min(48, Math.max(`${user}@github`.length - 15, ...info.map(([, value]) => [...String(value)].length)));
-  const WIDTH = Math.max(700, Math.ceil(20 + 44 + 20 + (logoCols + 4 + 15 + valueCols) * CHAR_W + 40 + 20));
-  const logoRows = logo?.lines?.length ?? 0;
-  const contentRows = Math.max(logoRows, info.length + 3);
-  const panelH = 36 + 14 + LINE_H + 10 + contentRows * LINE_H + 18 + 24 + LINE_H;
+  const WIDTH = Math.max(700, Math.ceil(20 + 44 + 20 + PHOTO + 28 + (15 + valueCols) * CHAR_W + 40 + 20));
+  const infoRows = info.length + 2 + (data.partial ? 1 : 0);
+  const contentH = Math.max(PHOTO, 12 + infoRows * LINE_H + 18);
+  const panelH = 36 + 14 + 10 + contentH + 30 + 8;
   const editorH = 92;
   const HEIGHT = 20 + 30 + 35 + editorH + panelH + 22 + 20;
 
@@ -88,38 +72,36 @@ export function renderEditorNeofetch(data, { githubId, scale, scheme, color = fa
   ];
   body += codeBlock(p, e.x, e.y + 8, e.w, readme, { size: 13, lineH: 22 });
 
-  // Terminal: prompt, logo + info side by side, colour blocks, prompt.
+  // Terminal: prompt, photo + info side by side, colour blocks, prompt.
   const x = t.x + 20;
-  let y = t.y + 14;
+  const promptY = t.y + 14;
   const prompt = (py, command = "") => codeTokens(p, x, py, [[`${user}@github`, "ok"], [":", "fg"], ["~", "link"], ["$ ", "fg"], [command, command === "█" ? "dim" : "fg"]], { size: FONT });
-  body += prompt(y, "neofetch");
-  y += LINE_H + 10;
+  body += prompt(promptY, "neofetch");
+  const y = promptY + 10;
 
-  const logoColors = [p.fg, p.link, p.dim];
-  if (logo) body += fadeIn(renderLogo(logo, logoColors, color ? null : p.fg, x, y), 0.1);
-  const ix = x + (logoCols + 4) * CHAR_W;
+  body += fadeIn(avatarImage(avatar, x, y, PHOTO, { id: "ed-photo", round: false, radius: 4, fallbackText: user.slice(0, 2).toUpperCase(), fallbackFill: p.accent }), 0.1);
+  const ix = x + PHOTO + 28;
   const valueX = ix + 15 * CHAR_W;
   const maxValueW = t.x + t.w - 20 - valueX;
+  const ty = y + 12;
   const title = `${user}@github`;
-  let lines = text(ix, y, title, { size: FONT, fill: p.link, family: MONO, weight: 700 });
-  lines += text(ix, y + LINE_H, "-".repeat(title.length), { size: FONT, fill: p.dim, family: MONO });
+  let lines = text(ix, ty, title, { size: FONT, fill: p.link, family: MONO, weight: 700 });
+  lines += text(ix, ty + LINE_H, "-".repeat(title.length), { size: FONT, fill: p.dim, family: MONO });
   info.forEach(([label, value], i) => {
-    const ly = y + (i + 2) * LINE_H;
+    const ly = ty + (i + 2) * LINE_H;
     lines += text(ix, ly, `${label}:`, { size: FONT, fill: p.link, family: MONO, weight: 700 });
     lines += text(valueX, ly, fit(value, maxValueW, FONT), { size: FONT, fill: p.fg, family: MONO });
   });
-  if (data.partial) lines += text(ix, y + (info.length + 2) * LINE_H, "(some fields limited by API)", { size: FONT, fill: p.dim, family: MONO });
+  if (data.partial) lines += text(ix, ty + (info.length + 2) * LINE_H, "(some fields limited by API)", { size: FONT, fill: p.dim, family: MONO });
   body += fadeIn(lines, 0.25);
 
   // Colour blocks under the info column.
-  const by = y + contentRows * LINE_H + 2;
-  const blocks = [p.bg, p.err, p.ok, p.warn, p.kw, p.ctl, p.type, p.fg];
-  blocks.forEach((fill, i) => {
+  const by = ty + infoRows * LINE_H - 4;
+  [p.bg, p.err, p.ok, p.warn, p.kw, p.ctl, p.type, p.fg].forEach((fill, i) => {
     body += rect(ix + i * 24, by, 22, 14, fill, i === 0 ? `stroke="${p.line}"` : "");
   });
 
-  const py = by + 18 + 24;
-  body += prompt(py, "█");
+  body += prompt(y + contentH + 26, "█");
   body += windowEnd;
 
   return svgDocument({

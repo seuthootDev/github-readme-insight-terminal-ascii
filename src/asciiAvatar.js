@@ -8,6 +8,7 @@ import { THEMES, isEditor, isWin98 } from "./themes.js";
 import { renderWin98Ascii } from "./win98/ascii.js";
 import { withSkin } from "./win98/skin.js";
 import { renderEditorAscii } from "./editor/ascii.js";
+import { avatarDataUri } from "./editor/avatar.js";
 import { avatarToPaintBitmap } from "./win98/bitmap.js";
 import { REDUCED_MOTION_CSS } from "./constants.js";
 
@@ -283,6 +284,13 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
   const cols = clampCols(options.cols ?? options.size);
   const profile = await fetchAsciiProfile(githubId);
 
+  // The editor theme shows the photo itself (an image preview), not ASCII art.
+  if (isEditor(themeName)) {
+    const photo = await avatarDataUri(profile.avatarUrl, 400);
+    if (!photo) throw new Error(`Failed to process avatar image for '${githubId}'`);
+    return renderEditorAscii(profile, photo, { githubId, scale: options.scale, scheme: options.scheme });
+  }
+
   if (isWin98(themeName)) {
     let bitmap;
     try {
@@ -298,10 +306,6 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
     asciiRows = await imageToAsciiGrid(profile.avatarUrl, { cols, color });
   } catch (error) {
     throw new Error(`Failed to process avatar image for '${githubId}': ${error?.message ?? error}`);
-  }
-
-  if (isEditor(themeName)) {
-    return renderEditorAscii(profile, asciiRows, { githubId, scale: options.scale, scheme: options.scheme, color });
   }
 
   // The ascii portrait grid keeps its own fixed cell size regardless of

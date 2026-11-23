@@ -11,11 +11,31 @@ function luminance(hex) {
   return (0.2126 * (n >> 16) + 0.7152 * ((n >> 8) & 255) + 0.0722 * (n & 255)) / 255;
 }
 
-// Brand bitmap; colours that would vanish on the tile get a thin outline of offset copies.
+// slug -> 24-unit SVG path of every Simple Icons logo. The package is large, so it is only
+// imported the first time an editor skills card is drawn.
+let vectorPaths = null;
+
+export async function vectorIconPaths() {
+  if (!vectorPaths) {
+    const icons = await import("simple-icons");
+    vectorPaths = new Map();
+    for (const icon of Object.values(icons)) {
+      if (icon?.slug && icon.path) vectorPaths.set(icon.slug, icon.path);
+    }
+  }
+  return vectorPaths;
+}
+
+// Brand logo; colours that would vanish on the tile get a thin outline.
 function iconSvg(icon, x, y, p) {
   const fill = `#${icon.hex}`;
   const lum = luminance(icon.hex);
-  const outline = p.name === "light" ? (lum > 0.75 ? "#8b949e" : null) : (lum < 0.18 ? "#9d9d9d" : null);
+  const outline = p.name === "light" ? (lum > (icon.vector ? 0.88 : 0.75) ? "#8b949e" : null) : (lum < 0.18 ? "#9d9d9d" : null);
+  if (icon.vector) {
+    const s = ICON / 24;
+    const stroke = outline ? ` stroke="${outline}" stroke-width="${(1.5 / s).toFixed(2)}" paint-order="stroke" stroke-linejoin="round"` : "";
+    return `<path transform="translate(${x} ${y}) scale(${s})" fill="${fill}"${stroke} d="${icon.vector}"/>`;
+  }
   let out = "";
   if (outline) {
     const o = 1 / ICON_PX;
