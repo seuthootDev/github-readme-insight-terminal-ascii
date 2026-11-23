@@ -39,6 +39,10 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 ![editor graph](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=editor&scale=0.6)
 ![editor stats light](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=editor&scheme=light&scale=0.6)
 
+Add `ide=intellij` to draw the same cards as an IntelliJ-style IDE instead of VS Code: Settings › Plugins for stats, the Git tool window for git log, the Debug tool window for the streak…
+
+![editor intellij stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=editor&ide=intellij&scale=0.6)
+
 **Skills** — tech-stack icons as pixel-art ASCII, like [skillicons.dev](https://skillicons.dev) but in a terminal. No GitHub account needed: list the icons with `i=`
 
 ![mac skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=js,ts,react,nodejs,python,go,rust,docker&theme=mac&perline=8&scale=0.6)
@@ -129,7 +133,7 @@ Icon names for `skills` are [Simple Icons](https://simpleicons.org) slugs (`next
 
 A **streak** is how many days in a row you've had at least one contribution — like a Duolingo streak, but for commits. `streak` shows your current streak (counting from today, or yesterday if today has no contributions yet), your longest streak ever, and total contributions, all computed from the last year of contribution data.
 
-Each theme has its own color palette shared by every card: `mac` = One Dark with GitHub green, `windows` = PowerShell Campbell with blue, `ubuntu` = Tango with Ubuntu orange/aubergine. The contribution graph, PR/issue states, git log, and accent strips all follow it. `win98` is different: instead of a terminal, each card is drawn as the classic Windows 98 program window that fits it (grey bevels, navy title bars, Tahoma), and the graph uses a blue Disk Defragmenter ramp. `winxp` draws the same windows with the Windows XP (Luna) look. `editor` draws each card as a code editor screen in a dark or light color scheme, chosen with `scheme=dark|light`.
+Each theme has its own color palette shared by every card: `mac` = One Dark with GitHub green, `windows` = PowerShell Campbell with blue, `ubuntu` = Tango with Ubuntu orange/aubergine. The contribution graph, PR/issue states, git log, and accent strips all follow it. `win98` is different: instead of a terminal, each card is drawn as the classic Windows 98 program window that fits it (grey bevels, navy title bars, Tahoma), and the graph uses a blue Disk Defragmenter ramp. `winxp` draws the same windows with the Windows XP (Luna) look. `editor` draws each card as a code editor screen in a dark or light color scheme, chosen with `scheme=dark|light`; `ide=intellij` draws them as an IntelliJ-style IDE.
 
 ---
 
@@ -149,6 +153,7 @@ npm run cli -- --user YOUR_GITHUB_ID --theme mac
 | `--user` | ✅ | GitHub username |
 | `--theme` | ❌ (default: `mac`) | `mac` / `windows` / `ubuntu` / `win98` / `winxp` / `editor` |
 | `--scheme` | ❌ (default: `dark`) | `dark` / `light` (`editor` theme only) |
+| `--ide` | ❌ (default: `vscode`) | `vscode` / `intellij` (`editor` theme only) |
 | `--output` | ❌ | Output file (default: `{theme}_style.svg`) |
 
 ```bash
@@ -208,6 +213,7 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=ICON1,ICON2,
 | `user` | ✅ (optional for `repo` when `repo=owner/name`; optional for `skills`, only names the prompt) | GitHub username |
 | `theme` | ❌ (default: `mac`) | `mac` / `windows` / `ubuntu` / `win98` / `winxp` / `editor` |
 | `scheme` | ❌ (`editor` only, default: `dark`) | `dark` / `light`. Other themes ignore it |
+| `ide` | ❌ (`editor` only, default: `vscode`) | `vscode` / `intellij` |
 | `top` | ❌ (`top-lang` only, default: `6`) | `6`–`12` |
 | `color` | ❌ (`ascii` / `neofetch`, default: mono) | `1` / `true` / `color` (alias: `mode`) |
 | `lines` | ❌ (`git-log` / `pr-issue`, default: `8`) | Number of rows `3`–`15` |
