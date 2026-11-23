@@ -273,7 +273,7 @@ export async function generateStreakSvg(themeName, githubId, options = {}) {
 
   const login = profile?.login || githubId;
   if (isEditor(themeName)) {
-    return renderEditorStreak({ contributions, streak: streakData }, { githubId: login, scale: options.scale, scheme: options.scheme });
+    return renderEditorStreak({ contributions, streak: streakData }, { githubId: login, scale: options.scale, scheme: options.scheme, ide: options.ide });
   }
   if (isWin98(themeName)) {
     return withSkin(themeName, () => renderWin98Streak({ contributions, streak: streakData }, { githubId: login, scale: options.scale }));

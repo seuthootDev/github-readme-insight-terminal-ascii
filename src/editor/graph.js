@@ -25,8 +25,8 @@ function monthLabels(firstSunday) {
   return labels;
 }
 
-export function renderEditorGraph({ contributions, total, firstSunday, today }, { githubId, scale, scheme } = {}) {
-  const p = palette(scheme);
+export function renderEditorGraph({ contributions, total, firstSunday, today }, { githubId, scale, scheme, ide } = {}) {
+  const p = palette(scheme, ide);
   // Lines: 1 = month comment, 2-8 = weekdays, 9 = blank, 10 = summary comment.
   const lineCount = 10;
   const editorH = 12 + lineCount * LINE_H + 14;

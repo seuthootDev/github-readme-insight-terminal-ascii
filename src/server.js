@@ -49,8 +49,8 @@ const REPO_URL = "https://github.com/seuthootDev/github-readme-insight-terminal-
 
 const svgCache = createTtlCache({ ttlMs: CACHE_TTL_SECONDS * 1000, maxEntries: CACHE_MAX_ENTRIES });
 
-function sendErrorCard(res, { theme, user, type, message, scheme }) {
-  const svg = generateErrorSvg(theme, { user, type, message, scheme });
+function sendErrorCard(res, { theme, user, type, message, scheme, ide }) {
+  const svg = generateErrorSvg(theme, { user, type, message, scheme, ide });
   res.set("Cache-Control", "no-store");
   res.type("image/svg+xml").status(200).send(svg);
 }
@@ -89,22 +89,25 @@ async function handleSvgRequest(req, res, forcedType = null) {
   // Colour scheme for themes that have one (editor): dark by default, light on request.
   const schemeRaw = String(req.query.scheme ?? "").trim().toLowerCase();
   const scheme = schemeRaw === "light" ? "light" : schemeRaw === "dark" ? "dark" : undefined;
+  // Which IDE the editor theme imitates: VS Code by default, IntelliJ on request.
+  const ideRaw = String(req.query.ide ?? "").trim().toLowerCase();
+  const ide = ideRaw === "intellij" ? "intellij" : undefined;
 
   const safeTheme = THEMES[theme] ? theme : "mac";
 
   // The skills card is driven by the icon list, not a GitHub account.
   if (!user && renderType !== "skills") {
-    sendErrorCard(res, { theme: safeTheme, user: "", type: renderType, message: "Query parameter 'user' is required.", scheme });
+    sendErrorCard(res, { theme: safeTheme, user: "", type: renderType, message: "Query parameter 'user' is required.", scheme, ide });
     return;
   }
 
   if (!THEMES[theme]) {
-    sendErrorCard(res, { theme: safeTheme, user, type: renderType, message: `Unknown theme: ${theme}. Use one of: ${Object.keys(THEMES).join(", ")}`, scheme });
+    sendErrorCard(res, { theme: safeTheme, user, type: renderType, message: `Unknown theme: ${theme}. Use one of: ${Object.keys(THEMES).join(", ")}`, scheme, ide });
     return;
   }
 
   if (!getAvailableRenderTypes().includes(renderType)) {
-    sendErrorCard(res, { theme: safeTheme, user, type: renderType, message: `Unknown render type: ${renderType}. Use one of: ${getAvailableRenderTypes().join(", ")}`, scheme });
+    sendErrorCard(res, { theme: safeTheme, user, type: renderType, message: `Unknown render type: ${renderType}. Use one of: ${getAvailableRenderTypes().join(", ")}`, scheme, ide });
     return;
   }
 
@@ -122,7 +125,8 @@ async function handleSvgRequest(req, res, forcedType = null) {
     icons,
     perline,
     labels,
-    scheme
+    scheme,
+    ide
   };
 
   try {
@@ -132,7 +136,7 @@ async function handleSvgRequest(req, res, forcedType = null) {
     res.type("image/svg+xml").send(svg);
   } catch (error) {
     const message = String(error?.message ?? error);
-    sendErrorCard(res, { theme: safeTheme, user, type: renderType, message, scheme });
+    sendErrorCard(res, { theme: safeTheme, user, type: renderType, message, scheme, ide });
   }
 }
 

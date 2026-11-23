@@ -1,4 +1,5 @@
 // Editor theme, error card: a notification toast over a dimmed editor.
+import { renderIdeaError } from "./intellij.js";
 import { codeBlock, editorWindow, fit, palette, rect, svgDocument, text, textWidth, windowEnd } from "./kit.js";
 
 const WIDTH = 760;
@@ -17,8 +18,9 @@ function wrap(message, maxWidth, size, maxLines = 4) {
   return lines;
 }
 
-export function renderEditorError({ user, type, message, scale, scheme }) {
-  const p = palette(scheme);
+export function renderEditorError({ user, type, message, scale, scheme, ide }) {
+  const p = palette(scheme, ide);
+  if (p.ide === "intellij") return renderIdeaError({ user, type, message, scale, p });
   const file = `${type || "card"}.svg`;
   const lines = wrap(message || "Something went wrong.", TOAST_W - 70, 13);
   const toastH = 22 + lines.length * 19 + 46;

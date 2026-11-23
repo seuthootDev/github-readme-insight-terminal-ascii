@@ -299,7 +299,7 @@ export async function generateRepoCardSvg(themeName, githubId, options = {}) {
       fork: Boolean(repo.fork)
     };
     if (isEditor(themeName)) {
-      return renderEditorRepo(windowData, { githubId, scale: options.scale, scheme: options.scheme });
+      return renderEditorRepo(windowData, { githubId, scale: options.scale, scheme: options.scheme, ide: options.ide });
     }
     return withSkin(themeName, () => renderWin98Repo(windowData, { githubId, scale: options.scale }));
   }

@@ -71,3 +71,14 @@ test("editor theme takes its colour scheme from the link", async () => {
   assert.equal(await card("&scheme=dark"), dark);
   assert.equal(await card("&scheme=nope"), dark);
 });
+
+test("editor theme switches to IntelliJ with ide=intellij", async () => {
+  const card = async (query) => (await fetch(`${base}/svg/skills?i=js&theme=editor${query}`)).text();
+  const vscode = await card("");
+  const intellij = await card("&ide=intellij");
+  assert.match(intellij, /rx="10" fill="#2b2d30"/);
+  assert.doesNotMatch(vscode, /font-family="Inter/);
+  assert.match(intellij, /font-family="Inter/);
+  assert.equal(await card("&ide=vscode"), vscode);
+  assert.equal(await card("&ide=nope"), vscode);
+});

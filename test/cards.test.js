@@ -78,20 +78,20 @@ const CASES = [
   ["neofetch-winxp", { type: "neofetch", themeName: "winxp", color: true }],
   ["ascii-winxp", { type: "ascii", themeName: "winxp" }],
   ["skills-winxp", { type: "skills", themeName: "winxp", icons: "js,ts,react,nodejs,docker,postgres,unknown-icon-xyz" }],
-  // Editor theme: every card in both colour schemes.
-  ...["dark", "light"].flatMap((scheme) => [
-    [`stats-editor-${scheme}`, { type: "stats", themeName: "editor", scheme }],
-    [`graph-editor-${scheme}`, { type: "graph", themeName: "editor", scheme }],
-    [`top-lang-editor-${scheme}`, { type: "top-lang", themeName: "editor", scheme }],
-    [`streak-editor-${scheme}`, { type: "streak", themeName: "editor", scheme }],
-    [`git-log-editor-${scheme}`, { type: "git-log", themeName: "editor", scheme }],
-    [`pr-issue-editor-${scheme}`, { type: "pr-issue", themeName: "editor", scheme }],
-    [`repo-editor-${scheme}`, { type: "repo", themeName: "editor", repo: REPO, scheme }],
-    [`lang-history-editor-${scheme}`, { type: "lang-history", themeName: "editor", scheme }],
-    [`dashboard-editor-${scheme}`, { type: "dashboard", themeName: "editor", scheme }],
-    [`neofetch-editor-${scheme}`, { type: "neofetch", themeName: "editor", color: true, scheme }],
-    [`ascii-editor-${scheme}`, { type: "ascii", themeName: "editor", scheme }],
-    [`skills-editor-${scheme}`, { type: "skills", themeName: "editor", icons: "js,ts,react,nodejs,docker,postgres,unknown-icon-xyz", scheme }]
+  // Editor theme: every card in both colour schemes, as VS Code (default) and as IntelliJ.
+  ...[["dark", undefined, ""], ["light", undefined, ""], ["dark", "intellij", "-intellij"], ["light", "intellij", "-intellij"]].flatMap(([scheme, ide, tag]) => [
+    [`stats-editor${tag}-${scheme}`, { type: "stats", themeName: "editor", scheme, ide }],
+    [`graph-editor${tag}-${scheme}`, { type: "graph", themeName: "editor", scheme, ide }],
+    [`top-lang-editor${tag}-${scheme}`, { type: "top-lang", themeName: "editor", scheme, ide }],
+    [`streak-editor${tag}-${scheme}`, { type: "streak", themeName: "editor", scheme, ide }],
+    [`git-log-editor${tag}-${scheme}`, { type: "git-log", themeName: "editor", scheme, ide }],
+    [`pr-issue-editor${tag}-${scheme}`, { type: "pr-issue", themeName: "editor", scheme, ide }],
+    [`repo-editor${tag}-${scheme}`, { type: "repo", themeName: "editor", repo: REPO, scheme, ide }],
+    [`lang-history-editor${tag}-${scheme}`, { type: "lang-history", themeName: "editor", scheme, ide }],
+    [`dashboard-editor${tag}-${scheme}`, { type: "dashboard", themeName: "editor", scheme, ide }],
+    [`neofetch-editor${tag}-${scheme}`, { type: "neofetch", themeName: "editor", color: true, scheme, ide }],
+    [`ascii-editor${tag}-${scheme}`, { type: "ascii", themeName: "editor", scheme, ide }],
+    [`skills-editor${tag}-${scheme}`, { type: "skills", themeName: "editor", icons: "js,ts,react,nodejs,docker,postgres,unknown-icon-xyz", scheme, ide }]
   ])
 ];
 
@@ -117,9 +117,11 @@ test("renders winxp error card", () => {
   matchSnapshot("error-winxp", svg);
 });
 
-test("renders editor error card in both schemes", () => {
-  for (const scheme of ["dark", "light"]) {
-    const svg = generateErrorSvg("editor", { user: USER, type: "stats", message: "GitHub API rate limit exceeded.", scheme });
-    matchSnapshot(`error-editor-${scheme}`, svg);
+test("renders editor error card in both schemes and both IDEs", () => {
+  for (const [ide, tag] of [[undefined, ""], ["intellij", "-intellij"]]) {
+    for (const scheme of ["dark", "light"]) {
+      const svg = generateErrorSvg("editor", { user: USER, type: "stats", message: "GitHub API rate limit exceeded.", scheme, ide });
+      matchSnapshot(`error-editor${tag}-${scheme}`, svg);
+    }
   }
 });

@@ -1,5 +1,6 @@
 // Editor theme, git-log card: the source control graph (one lane per repository) with the newest
 // commit opened in the editor.
+import { renderIdeaGitLog } from "./intellij.js";
 import { MONO, codeTokens, editorWindow, fadeIn, fit, palette, pill, rect, relativeTime, sectionHeader, shortDate, svgDocument, text, textWidth, windowEnd } from "./kit.js";
 
 const WIDTH = 920;
@@ -12,8 +13,9 @@ function repoLabel(commit, githubId) {
   return commit.repoFullName;
 }
 
-export function renderEditorGitLog(data, { githubId, scale, scheme, lines = 8 } = {}) {
-  const p = palette(scheme);
+export function renderEditorGitLog(data, { githubId, scale, scheme, ide, lines = 8 } = {}) {
+  const p = palette(scheme, ide);
+  if (p.ide === "intellij") return renderIdeaGitLog(data, { githubId, scale, p, lines });
   const commits = Array.isArray(data.commits) ? data.commits : [];
   const user = githubId;
   const now = Date.now();

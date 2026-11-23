@@ -299,7 +299,7 @@ export async function generateLangHistorySvg(themeName, githubId, options = {}) 
   const mover = biggestMover(rows, legend);
   if (isEditor(themeName)) {
     const chartRows = rows.map((row) => ({ ...row, segments: rowSegments(row, legend) }));
-    return renderEditorLangHistory({ rows: chartRows, colors, legend, mover, yearCount }, { githubId, scale: options.scale, scheme: options.scheme });
+    return renderEditorLangHistory({ rows: chartRows, colors, legend, mover, yearCount }, { githubId, scale: options.scale, scheme: options.scheme, ide: options.ide });
   }
   if (isWin98(themeName)) {
     const chartRows = rows.map((row) => ({ ...row, segments: rowSegments(row, legend) }));

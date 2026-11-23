@@ -1,4 +1,5 @@
 // Editor theme, stats card: the profile shown as an extension's details page.
+import { renderIdeaStats } from "./intellij.js";
 import { avatarImage } from "./avatar.js";
 import { button, editorWindow, fadeIn, fit, formatNumber, hline, palette, rect, svgDocument, text, textWidth, windowEnd } from "./kit.js";
 
@@ -16,8 +17,9 @@ function rating(stars) {
   return Math.min(5, Math.max(1, Math.ceil(Math.log10(Number(stars ?? 0) + 1) * 3)));
 }
 
-export function renderEditorStats(data, { githubId, scale, scheme, avatar = null } = {}) {
-  const p = palette(scheme);
+export function renderEditorStats(data, { githubId, scale, scheme, ide, avatar = null } = {}) {
+  const p = palette(scheme, ide);
+  if (p.ide === "intellij") return renderIdeaStats(data, { githubId, scale, p, avatar });
   const user = data.login || githubId;
   const name = data.name || user;
   const now = new Date();

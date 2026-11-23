@@ -288,7 +288,7 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
   if (isEditor(themeName)) {
     const photo = await avatarDataUri(profile.avatarUrl, 400);
     if (!photo) throw new Error(`Failed to process avatar image for '${githubId}'`);
-    return renderEditorAscii(profile, photo, { githubId, scale: options.scale, scheme: options.scheme });
+    return renderEditorAscii(profile, photo, { githubId, scale: options.scale, scheme: options.scheme, ide: options.ide });
   }
 
   if (isWin98(themeName)) {

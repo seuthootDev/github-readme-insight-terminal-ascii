@@ -520,7 +520,7 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
       emptyLines: languageRows.length === 0 ? emptyStateLines(fetchError) : null
     };
     if (isEditor(themeName)) {
-      return renderEditorTopLang(windowData, { githubId, scale: options.scale, scheme: options.scheme });
+      return renderEditorTopLang(windowData, { githubId, scale: options.scale, scheme: options.scheme, ide: options.ide });
     }
     return withSkin(themeName, () => renderWin98TopLang(windowData, { githubId, scale: options.scale }));
   }

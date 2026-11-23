@@ -481,7 +481,7 @@ export async function generateNeofetchSvg(themeName, githubId, options = {}) {
   const data = await fetchNeofetchData(githubId);
   if (isEditor(themeName)) {
     const avatar = await avatarDataUri(sizedAvatarUrl(data.avatarUrl), 400);
-    return renderEditorNeofetch(data, { githubId, scale: options.scale, scheme: options.scheme, avatar });
+    return renderEditorNeofetch(data, { githubId, scale: options.scale, scheme: options.scheme, ide: options.ide, avatar });
   }
   if (isWin98(themeName)) {
     return withSkin(themeName, () => renderWin98Neofetch(data, { githubId, scale: options.scale, color, logo: GITHUB_LOGO }));

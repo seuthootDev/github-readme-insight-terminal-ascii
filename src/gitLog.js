@@ -279,7 +279,7 @@ export async function generateGitLogSvg(themeName, githubId, options = {}) {
   const lineCount = resolveLineCount(options.lines);
   const commits = await fetchRecentCommits(githubId, lineCount);
   if (isEditor(themeName)) {
-    return renderEditorGitLog({ commits }, { githubId, scale: options.scale, scheme: options.scheme, lines: lineCount });
+    return renderEditorGitLog({ commits }, { githubId, scale: options.scale, scheme: options.scheme, ide: options.ide, lines: lineCount });
   }
   if (isWin98(themeName)) {
     return withSkin(themeName, () => renderWin98GitLog({ commits }, { githubId, scale: options.scale, lines: lineCount }));

@@ -19,8 +19,8 @@ function valueOrNa(value) {
   return value === null || value === undefined ? "null" : String(value);
 }
 
-export function renderEditorDashboard(data, { githubId, scale, scheme, languageColors = {}, avatar = null } = {}) {
-  const p = palette(scheme);
+export function renderEditorDashboard(data, { githubId, scale, scheme, ide, languageColors = {}, avatar = null } = {}) {
+  const p = palette(scheme, ide);
   const user = data.login || githubId;
   const streak = data.streak ?? { current: 0, longest: 0 };
 

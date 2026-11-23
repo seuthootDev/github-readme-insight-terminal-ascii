@@ -529,7 +529,7 @@ export async function generateDashboardSvg(themeName, githubId, options = {}) {
   const data = await fetchDashboardData(githubId);
   if (isEditor(themeName)) {
     const avatar = await avatarDataUri(sizedAvatarUrl(data.avatarUrl), 112);
-    return renderEditorDashboard(data, { avatar, githubId, scale: options.scale, scheme: options.scheme, languageColors: LANGUAGE_COLORS });
+    return renderEditorDashboard(data, { avatar, githubId, scale: options.scale, scheme: options.scheme, ide: options.ide, languageColors: LANGUAGE_COLORS });
   }
   if (isWin98(themeName)) {
     return withSkin(themeName, () => renderWin98Dashboard(data, { githubId, scale: options.scale, languageColors: LANGUAGE_COLORS }));

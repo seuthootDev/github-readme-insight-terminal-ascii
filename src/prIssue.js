@@ -240,7 +240,7 @@ export async function generatePrIssueSvg(themeName, githubId, options = {}) {
   const lineCount = resolveLineCount(options.lines);
   const { items, totalCount } = await fetchRecentItems(githubId, lineCount);
   if (isEditor(themeName)) {
-    return renderEditorPrIssue({ items, totalCount }, { githubId, scale: options.scale, scheme: options.scheme, lines: lineCount });
+    return renderEditorPrIssue({ items, totalCount }, { githubId, scale: options.scale, scheme: options.scheme, ide: options.ide, lines: lineCount });
   }
   if (isWin98(themeName)) {
     return withSkin(themeName, () => renderWin98PrIssue({ items, totalCount }, { githubId, scale: options.scale, lines: lineCount }));

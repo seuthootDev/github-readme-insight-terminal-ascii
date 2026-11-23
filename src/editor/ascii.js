@@ -15,8 +15,8 @@ function checkerboard(p, x, y, w, h) {
     + rect(x, y, w, h, "url(#ed-checker)");
 }
 
-export function renderEditorAscii(profile, photo, { githubId, scale, scheme } = {}) {
-  const p = palette(scheme);
+export function renderEditorAscii(profile, photo, { githubId, scale, scheme, ide } = {}) {
+  const p = palette(scheme, ide);
   const user = profile.login || githubId;
   const editorH = PHOTO + 48;
   const HEIGHT = 20 + 30 + 35 + editorH + 22 + 20;

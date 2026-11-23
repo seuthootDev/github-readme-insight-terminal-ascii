@@ -219,6 +219,11 @@
         <label><input type="radio" name="scheme" value="dark" checked><span>dark</span></label>
         <label><input type="radio" name="scheme" value="light"><span>light</span></label>
       </div>
+      <span style="display:block;color:var(--mute);font-size:12px;margin:10px 0 6px">IDE</span>
+      <div class="themes" role="radiogroup" aria-label="IDE">
+        <label><input type="radio" name="ide" value="vscode" checked><span>vs code</span></label>
+        <label><input type="radio" name="ide" value="intellij"><span>intellij</span></label>
+      </div>
     </div>
 
     <label data-for="top">
@@ -372,7 +377,11 @@
 
     var theme = form.querySelector("input[name=theme]:checked").value;
     params.push(["theme", theme]);
-    if (theme === "editor") params.push(["scheme", form.querySelector("input[name=scheme]:checked").value]);
+    if (theme === "editor") {
+      params.push(["scheme", form.querySelector("input[name=scheme]:checked").value]);
+      var ide = form.querySelector("input[name=ide]:checked").value;
+      if (ide !== "vscode") params.push(["ide", ide]);
+    }
     OPTIONAL.forEach(function (name) {
       if ((name === "scale" || used.indexOf(name) !== -1) && value(name)) params.push([name, value(name)]);
     });
@@ -438,7 +447,7 @@
     if (FIELDS[parts[0]]) field("type").value = parts[0];
     var params = new URLSearchParams(parts[1] || "");
     params.forEach(function (val, key) {
-      if (key === "theme" || key === "scheme") {
+      if (key === "theme" || key === "scheme" || key === "ide") {
         var radio = form.querySelector("input[name=" + key + "][value='" + val.replace(/[^a-z0-9]/g, "") + "']");
         if (radio) radio.checked = true;
       } else if (key === "color") {

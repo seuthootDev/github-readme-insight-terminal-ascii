@@ -288,7 +288,7 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
   const data = await fetchStatsData(githubId);
   if (isEditor(themeName)) {
     const avatar = await avatarDataUri(sizedAvatarUrl(data.avatarUrl), 192);
-    return renderEditorStats(data, { githubId, scale: options.scale, scheme: options.scheme, avatar });
+    return renderEditorStats(data, { githubId, scale: options.scale, scheme: options.scheme, ide: options.ide, avatar });
   }
   if (isWin98(themeName)) {
     return withSkin(themeName, () => renderWin98Stats(data, { githubId, scale: options.scale }));

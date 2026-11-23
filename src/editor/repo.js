@@ -28,8 +28,8 @@ function badge(x, y, label, value, color) {
   };
 }
 
-export function renderEditorRepo(data, { githubId, scale, scheme } = {}) {
-  const p = palette(scheme);
+export function renderEditorRepo(data, { githubId, scale, scheme, ide } = {}) {
+  const p = palette(scheme, ide);
   const repoName = data.name || data.fullName;
   const x0 = 20 + 44 + 36;
   const contentW = WIDTH - 20 - x0 - 36;

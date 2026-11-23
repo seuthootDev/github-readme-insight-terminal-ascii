@@ -22,8 +22,8 @@ const BACKDROP = [
   { tokens: [["}", "fg"]] }
 ];
 
-export function renderEditorTopLang(data, { githubId, scale, scheme } = {}) {
-  const p = palette(scheme);
+export function renderEditorTopLang(data, { githubId, scale, scheme, ide } = {}) {
+  const p = palette(scheme, ide);
   const user = data.login || githubId;
   const unit = data.sizeUnit ?? 1;
   const rows = (Array.isArray(data.rows) ? data.rows : []).map((row) => ({

@@ -1,5 +1,6 @@
 // Editor theme, streak card: a debugger paused inside a streak function, the streak values shown
 // as variables, inline values and the debug console.
+import { renderIdeaStreak } from "./intellij.js";
 import { MONO, codeBlock, codeTokens, editorWindow, fadeIn, fit, formatNumber, palette, rect, sectionHeader, shortDate, svgDocument, text, textWidth, windowEnd } from "./kit.js";
 
 const WIDTH = 900;
@@ -39,8 +40,9 @@ function variableRow(p, x, y, name, value, valueColor) {
   return codeTokens(p, x, y, [[name, "prop"], [": ", "fg"], [value, valueColor]], { size: 13 });
 }
 
-export function renderEditorStreak({ contributions, streak }, { githubId, scale, scheme } = {}) {
-  const p = palette(scheme);
+export function renderEditorStreak({ contributions, streak }, { githubId, scale, scheme, ide } = {}) {
+  const p = palette(scheme, ide);
+  if (p.ide === "intellij") return renderIdeaStreak({ contributions, streak }, { githubId, scale, p });
   const user = githubId;
   const current = streak.currentStreak ?? 0;
   const longest = streak.longestStreak ?? 0;

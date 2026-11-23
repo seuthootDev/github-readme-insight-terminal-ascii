@@ -19,8 +19,8 @@ function uptime(createdAt) {
   return [years ? `${years} year${years === 1 ? "" : "s"}` : "", rest ? `${rest} month${rest === 1 ? "" : "s"}` : ""].filter(Boolean).join(", ") || "less than a month";
 }
 
-export function renderEditorNeofetch(data, { githubId, scale, scheme, avatar = null } = {}) {
-  const p = palette(scheme);
+export function renderEditorNeofetch(data, { githubId, scale, scheme, ide, avatar = null } = {}) {
+  const p = palette(scheme, ide);
   const user = data.login || githubId;
   const languages = data.languages?.length ? data.languages.join(", ") : "—";
   const info = [

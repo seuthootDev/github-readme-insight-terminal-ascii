@@ -154,7 +154,7 @@ export function generateSkillsSvg(themeName = "mac", githubId = "", options = {}
     return vectorIconPaths().then((vectors) => renderEditorSkills({
       icons: icons.map((icon) => ({ ...icon, path: bitmapToPath(icon.bitmap), vector: vectors.get(icon.slug) ?? null })),
       missing
-    }, { githubId: user, scale: options.scale, scheme: options.scheme, perline: perLine, labels: showLabels }));
+    }, { githubId: user, scale: options.scale, scheme: options.scheme, ide: options.ide, perline: perLine, labels: showLabels }));
   }
   if (isWin98(themeName)) {
     return withSkin(themeName, () => renderWin98Skills({

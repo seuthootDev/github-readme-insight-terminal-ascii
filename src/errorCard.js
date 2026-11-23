@@ -110,7 +110,7 @@ export function generateErrorSvg(themeName, options = {}) {
       type: String(options.type ?? "svg").trim(),
       message: String(options.message ?? "Something went wrong.").trim(),
       scale: options.scale,
-      scheme: options.scheme
+      scheme: options.scheme, ide: options.ide
     });
   }
   if (isWin98(themeName)) {

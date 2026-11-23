@@ -5,8 +5,8 @@ const WIDTH = 880;
 const OTHER = "Other";
 const BAR_ROW = 30;
 
-export function renderEditorLangHistory({ rows, colors, legend, mover, yearCount }, { githubId, scale, scheme } = {}) {
-  const p = palette(scheme);
+export function renderEditorLangHistory({ rows, colors, legend, mover, yearCount }, { githubId, scale, scheme, ide } = {}) {
+  const p = palette(scheme, ide);
   const user = githubId;
   const colorOf = (language) => (language === OTHER ? p.faint : (colors?.[language] ?? p.dim));
   const chartRows = Array.isArray(rows) ? rows : [];

@@ -53,8 +53,8 @@ function glyph(item, x, y, p) {
   return item.kind === "PR" ? prGlyph(x, y, color, item.state) : issueGlyph(x, y, color, item.state);
 }
 
-export function renderEditorPrIssue(data, { githubId, scale, scheme, lines = 8 } = {}) {
-  const p = palette(scheme);
+export function renderEditorPrIssue(data, { githubId, scale, scheme, ide, lines = 8 } = {}) {
+  const p = palette(scheme, ide);
   const items = Array.isArray(data.items) ? data.items : [];
   const totalCount = Number(data.totalCount ?? items.length);
   const user = githubId;

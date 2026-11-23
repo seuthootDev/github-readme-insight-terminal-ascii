@@ -154,7 +154,7 @@ export async function generateGraphSvg(themeName, githubId, options = {}) {
   const total = sumContributions(contributions);
   const { firstSunday, today } = getGraphRange();
   if (isEditor(themeName)) {
-    return renderEditorGraph({ contributions, total, firstSunday, today }, { githubId, scale: options.scale, scheme: options.scheme });
+    return renderEditorGraph({ contributions, total, firstSunday, today }, { githubId, scale: options.scale, scheme: options.scheme, ide: options.ide });
   }
   if (isWin98(themeName)) {
     return withSkin(themeName, () => renderWin98Graph({ contributions, total, firstSunday, today }, { githubId, scale: options.scale }));
