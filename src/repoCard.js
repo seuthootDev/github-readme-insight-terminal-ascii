@@ -2,9 +2,10 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { THEMES, isWin98 } from "./themes.js";
+import { THEMES, isEditor, isWin98 } from "./themes.js";
 import { renderWin98Repo } from "./win98/repo.js";
 import { withSkin } from "./win98/skin.js";
+import { renderEditorRepo } from "./editor/repo.js";
 import { REDUCED_MOTION_CSS } from "./constants.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
@@ -272,10 +273,10 @@ export async function generateRepoCardSvg(themeName, githubId, options = {}) {
   const user = String(githubId ?? "").trim() || repo.owner?.login || owner;
   const fullName = repo.full_name ?? `${owner}/${name}`;
   const [ownerLabel, repoNameLabel] = fullName.split("/");
-  if (isWin98(themeName)) {
+  if (isWin98(themeName) || isEditor(themeName)) {
     const total = Object.values(languages).reduce((acc, size) => acc + Number(size), 0);
     const language = repo.language ?? Object.keys(languages)[0] ?? null;
-    return withSkin(themeName, () => renderWin98Repo({
+    const windowData = {
       fullName,
       owner: ownerLabel,
       name: repoNameLabel ?? name,
@@ -296,7 +297,11 @@ export async function generateRepoCardSvg(themeName, githubId, options = {}) {
       activity,
       archived: Boolean(repo.archived),
       fork: Boolean(repo.fork)
-    }, { githubId, scale: options.scale }));
+    };
+    if (isEditor(themeName)) {
+      return renderEditorRepo(windowData, { githubId, scale: options.scale, scheme: options.scheme });
+    }
+    return withSkin(themeName, () => renderWin98Repo(windowData, { githubId, scale: options.scale }));
   }
 
   const termX = 20;

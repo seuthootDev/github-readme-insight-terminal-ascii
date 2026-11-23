@@ -209,6 +209,15 @@
         <label><input type="radio" name="theme" value="ubuntu"><span>ubuntu</span></label>
         <label><input type="radio" name="theme" value="win98"><span>win98</span></label>
         <label><input type="radio" name="theme" value="winxp"><span>winxp</span></label>
+        <label><input type="radio" name="theme" value="editor"><span>editor</span></label>
+      </div>
+    </div>
+
+    <div style="margin-bottom:14px" data-scheme hidden>
+      <span style="display:block;color:var(--mute);font-size:12px;margin-bottom:6px">Color scheme</span>
+      <div class="themes" role="radiogroup" aria-label="Color scheme">
+        <label><input type="radio" name="scheme" value="dark" checked><span>dark</span></label>
+        <label><input type="radio" name="scheme" value="light"><span>light</span></label>
       </div>
     </div>
 
@@ -361,7 +370,9 @@
       params.push(["user", fill.user]);
     }
 
-    params.push(["theme", form.querySelector("input[name=theme]:checked").value]);
+    var theme = form.querySelector("input[name=theme]:checked").value;
+    params.push(["theme", theme]);
+    if (theme === "editor") params.push(["scheme", form.querySelector("input[name=scheme]:checked").value]);
     OPTIONAL.forEach(function (name) {
       if ((name === "scale" || used.indexOf(name) !== -1) && value(name)) params.push([name, value(name)]);
     });
@@ -381,6 +392,8 @@
       el.hidden = name === "user" ? type === "skills" : used.indexOf(name) === -1;
     });
     field("user").placeholder = type === "repo" ? "optional with owner/name" : "your-github-username";
+    // Only the editor theme has a dark/light colour scheme.
+    form.querySelector("[data-scheme]").hidden = form.querySelector("input[name=theme]:checked").value !== "editor";
   }
 
   function render() {
@@ -425,8 +438,8 @@
     if (FIELDS[parts[0]]) field("type").value = parts[0];
     var params = new URLSearchParams(parts[1] || "");
     params.forEach(function (val, key) {
-      if (key === "theme") {
-        var radio = form.querySelector("input[name=theme][value='" + val.replace(/[^a-z0-9]/g, "") + "']");
+      if (key === "theme" || key === "scheme") {
+        var radio = form.querySelector("input[name=" + key + "][value='" + val.replace(/[^a-z0-9]/g, "") + "']");
         if (radio) radio.checked = true;
       } else if (key === "color") {
         field("color").checked = val === "1";

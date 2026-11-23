@@ -61,3 +61,13 @@ test("unknown type and theme return error cards", async () => {
   const badTheme = await (await fetch(`${base}/svg/skills?i=js&theme=nope`)).text();
   assert.match(badTheme, /Unknown theme/);
 });
+
+test("editor theme takes its colour scheme from the link", async () => {
+  const card = async (query) => (await fetch(`${base}/svg/skills?i=js&theme=editor${query}`)).text();
+  const dark = await card("");
+  const light = await card("&scheme=light");
+  assert.match(dark, /rx="8" fill="#1f1f1f"/);
+  assert.match(light, /rx="8" fill="#ffffff"/);
+  assert.equal(await card("&scheme=dark"), dark);
+  assert.equal(await card("&scheme=nope"), dark);
+});

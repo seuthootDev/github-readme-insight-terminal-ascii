@@ -26,6 +26,9 @@ function parseArgs(argv) {
     } else if (token === "--theme") {
       args.theme = argv[i + 1] ?? "mac";
       i += 1;
+    } else if (token === "--scheme") {
+      args.scheme = argv[i + 1];
+      i += 1;
     } else if (token === "--output") {
       args.output = argv[i + 1];
       i += 1;
@@ -38,7 +41,7 @@ function parseArgs(argv) {
 
 function printHelp() {
   console.log("GitHub graph ASCII art generator (Node.js)");
-  console.log("Usage: node src/cli.js --user YOUR_GITHUB_ID [--theme mac] [--output file.svg]");
+  console.log("Usage: node src/cli.js --user YOUR_GITHUB_ID [--theme mac] [--scheme dark|light] [--output file.svg]");
   console.log(`Themes: ${Object.keys(THEMES).join(", ")}`);
 }
 
@@ -105,7 +108,7 @@ async function main() {
     const contributions = await fetchContributions(args.user);
     printGrid(contributions, THEMES[args.theme].palette);
 
-    const svg = await generateSvg(args.theme, args.user);
+    const svg = await generateSvg({ type: "graph", themeName: args.theme, githubId: args.user, scheme: args.scheme });
     const output = args.output ?? `${args.theme}_style.svg`;
     await fs.writeFile(output, svg, "utf-8");
 

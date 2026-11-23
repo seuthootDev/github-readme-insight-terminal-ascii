@@ -3,9 +3,10 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { fetchContributions, sumContributions } from "./githubContributions.js";
-import { THEMES, isWin98 } from "./themes.js";
+import { THEMES, isEditor, isWin98 } from "./themes.js";
 import { renderWin98Stats } from "./win98/stats.js";
 import { withSkin } from "./win98/skin.js";
+import { renderEditorStats } from "./editor/stats.js";
 import { REDUCED_MOTION_CSS } from "./constants.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
@@ -283,6 +284,9 @@ export async function generateStatsSvg(themeName, githubId, options = {}) {
   }
 
   const data = await fetchStatsData(githubId);
+  if (isEditor(themeName)) {
+    return renderEditorStats(data, { githubId, scale: options.scale, scheme: options.scheme });
+  }
   if (isWin98(themeName)) {
     return withSkin(themeName, () => renderWin98Stats(data, { githubId, scale: options.scale }));
   }

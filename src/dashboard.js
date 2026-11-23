@@ -4,9 +4,10 @@ import { fileURLToPath } from "node:url";
 
 import { addDays, toIsoDate, REDUCED_MOTION_CSS } from "./constants.js";
 import { fetchContributions, sumContributions } from "./githubContributions.js";
-import { THEMES, isWin98 } from "./themes.js";
+import { THEMES, isEditor, isWin98 } from "./themes.js";
 import { renderWin98Dashboard } from "./win98/dashboard.js";
 import { withSkin } from "./win98/skin.js";
+import { renderEditorDashboard } from "./editor/dashboard.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
 
@@ -524,6 +525,9 @@ export async function generateDashboardSvg(themeName, githubId, options = {}) {
   const palette = PALETTES[themeName];
 
   const data = await fetchDashboardData(githubId);
+  if (isEditor(themeName)) {
+    return renderEditorDashboard(data, { githubId, scale: options.scale, scheme: options.scheme, languageColors: LANGUAGE_COLORS });
+  }
   if (isWin98(themeName)) {
     return withSkin(themeName, () => renderWin98Dashboard(data, { githubId, scale: options.scale, languageColors: LANGUAGE_COLORS }));
   }

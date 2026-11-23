@@ -12,9 +12,10 @@ import {
   toIsoDate
 } from "./constants.js";
 import { fetchContributions, sumContributions } from "./githubContributions.js";
-import { THEMES, isWin98 } from "./themes.js";
+import { THEMES, isEditor, isWin98 } from "./themes.js";
 import { renderWin98Graph } from "./win98/graph.js";
 import { withSkin } from "./win98/skin.js";
+import { renderEditorGraph } from "./editor/graph.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -152,6 +153,9 @@ export async function generateGraphSvg(themeName, githubId, options = {}) {
   const contributions = await fetchContributions(githubId);
   const total = sumContributions(contributions);
   const { firstSunday, today } = getGraphRange();
+  if (isEditor(themeName)) {
+    return renderEditorGraph({ contributions, total, firstSunday, today }, { githubId, scale: options.scale, scheme: options.scheme });
+  }
   if (isWin98(themeName)) {
     return withSkin(themeName, () => renderWin98Graph({ contributions, total, firstSunday, today }, { githubId, scale: options.scale }));
   }

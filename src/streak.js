@@ -3,9 +3,10 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { fetchContributions } from "./githubContributions.js";
-import { THEMES, isWin98 } from "./themes.js";
+import { THEMES, isEditor, isWin98 } from "./themes.js";
 import { renderWin98Streak } from "./win98/streak.js";
 import { withSkin } from "./win98/skin.js";
+import { renderEditorStreak } from "./editor/streak.js";
 import { REDUCED_MOTION_CSS } from "./constants.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
@@ -271,6 +272,9 @@ export async function generateStreakSvg(themeName, githubId, options = {}) {
   }
 
   const login = profile?.login || githubId;
+  if (isEditor(themeName)) {
+    return renderEditorStreak({ contributions, streak: streakData }, { githubId: login, scale: options.scale, scheme: options.scheme });
+  }
   if (isWin98(themeName)) {
     return withSkin(themeName, () => renderWin98Streak({ contributions, streak: streakData }, { githubId: login, scale: options.scale }));
   }

@@ -2,9 +2,10 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { THEMES, isWin98 } from "./themes.js";
+import { THEMES, isEditor, isWin98 } from "./themes.js";
 import { renderWin98PrIssue } from "./win98/prIssue.js";
 import { withSkin } from "./win98/skin.js";
+import { renderEditorPrIssue } from "./editor/prIssue.js";
 import { REDUCED_MOTION_CSS } from "./constants.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
@@ -238,6 +239,9 @@ export async function generatePrIssueSvg(themeName, githubId, options = {}) {
 
   const lineCount = resolveLineCount(options.lines);
   const { items, totalCount } = await fetchRecentItems(githubId, lineCount);
+  if (isEditor(themeName)) {
+    return renderEditorPrIssue({ items, totalCount }, { githubId, scale: options.scale, scheme: options.scheme, lines: lineCount });
+  }
   if (isWin98(themeName)) {
     return withSkin(themeName, () => renderWin98PrIssue({ items, totalCount }, { githubId, scale: options.scale, lines: lineCount }));
   }

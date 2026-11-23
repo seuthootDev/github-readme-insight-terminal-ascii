@@ -4,9 +4,10 @@ import { fileURLToPath } from "node:url";
 
 import { Jimp } from "jimp";
 
-import { THEMES, isWin98 } from "./themes.js";
+import { THEMES, isEditor, isWin98 } from "./themes.js";
 import { renderWin98Ascii } from "./win98/ascii.js";
 import { withSkin } from "./win98/skin.js";
+import { renderEditorAscii } from "./editor/ascii.js";
 import { avatarToPaintBitmap } from "./win98/bitmap.js";
 import { REDUCED_MOTION_CSS } from "./constants.js";
 
@@ -297,6 +298,10 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
     asciiRows = await imageToAsciiGrid(profile.avatarUrl, { cols, color });
   } catch (error) {
     throw new Error(`Failed to process avatar image for '${githubId}': ${error?.message ?? error}`);
+  }
+
+  if (isEditor(themeName)) {
+    return renderEditorAscii(profile, asciiRows, { githubId, scale: options.scale, scheme: options.scheme, color });
   }
 
   // The ascii portrait grid keeps its own fixed cell size regardless of

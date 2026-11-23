@@ -77,7 +77,22 @@ const CASES = [
   ["dashboard-winxp", { type: "dashboard", themeName: "winxp" }],
   ["neofetch-winxp", { type: "neofetch", themeName: "winxp", color: true }],
   ["ascii-winxp", { type: "ascii", themeName: "winxp" }],
-  ["skills-winxp", { type: "skills", themeName: "winxp", icons: "js,ts,react,nodejs,docker,postgres,unknown-icon-xyz" }]
+  ["skills-winxp", { type: "skills", themeName: "winxp", icons: "js,ts,react,nodejs,docker,postgres,unknown-icon-xyz" }],
+  // Editor theme: every card in both colour schemes.
+  ...["dark", "light"].flatMap((scheme) => [
+    [`stats-editor-${scheme}`, { type: "stats", themeName: "editor", scheme }],
+    [`graph-editor-${scheme}`, { type: "graph", themeName: "editor", scheme }],
+    [`top-lang-editor-${scheme}`, { type: "top-lang", themeName: "editor", scheme }],
+    [`streak-editor-${scheme}`, { type: "streak", themeName: "editor", scheme }],
+    [`git-log-editor-${scheme}`, { type: "git-log", themeName: "editor", scheme }],
+    [`pr-issue-editor-${scheme}`, { type: "pr-issue", themeName: "editor", scheme }],
+    [`repo-editor-${scheme}`, { type: "repo", themeName: "editor", repo: REPO, scheme }],
+    [`lang-history-editor-${scheme}`, { type: "lang-history", themeName: "editor", scheme }],
+    [`dashboard-editor-${scheme}`, { type: "dashboard", themeName: "editor", scheme }],
+    [`neofetch-editor-${scheme}`, { type: "neofetch", themeName: "editor", color: true, scheme }],
+    [`ascii-editor-${scheme}`, { type: "ascii", themeName: "editor", scheme }],
+    [`skills-editor-${scheme}`, { type: "skills", themeName: "editor", icons: "js,ts,react,nodejs,docker,postgres,unknown-icon-xyz", scheme }]
+  ])
 ];
 
 for (const [name, options] of CASES) {
@@ -100,4 +115,11 @@ test("renders win98 error card", () => {
 test("renders winxp error card", () => {
   const svg = generateErrorSvg("winxp", { user: USER, type: "stats", message: "GitHub API rate limit exceeded." });
   matchSnapshot("error-winxp", svg);
+});
+
+test("renders editor error card in both schemes", () => {
+  for (const scheme of ["dark", "light"]) {
+    const svg = generateErrorSvg("editor", { user: USER, type: "stats", message: "GitHub API rate limit exceeded.", scheme });
+    matchSnapshot(`error-editor-${scheme}`, svg);
+  }
 });

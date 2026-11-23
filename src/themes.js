@@ -54,6 +54,13 @@ const UBUNTU_PALETTE = createPalette({
   graph: ["#2d2d2d", "#5e2750", "#c34113", "#f0814f"]
 });
 
+const EDITOR_PALETTE = createPalette({
+  fg: "#cccccc", mute: "#9d9d9d", border: "#2b2b2b", accent: "#0078d4",
+  green: "#89d185", blue: "#4daafc", yellow: "#dcdcaa", purple: "#c586c0",
+  cyan: "#4ec9b0", red: "#f14c4c", orange: "#ce9178",
+  graph: ["#2a2a2a", "#0d3a5f", "#0e70c0", "#4daafc"]
+});
+
 const WIN98_PALETTE = createPalette({
   fg: "#000000", mute: "#808080", border: "#808080", accent: "#000080",
   green: "#008000", blue: "#000080", yellow: "#808000", purple: "#800080",
@@ -137,6 +144,21 @@ export const THEMES = {
     prompt: (user) => [{ text: `C:\\GITHUB\\${user}>`, fill: WIN98_PALETTE.fg }],
     command: (user) => `github-cli --user ${user} --theme winxp`,
     controlsSvg: () => ""
+  },
+  // Code editor: cards are drawn by src/editor/* as editor windows, in a dark or light
+  // colour scheme (?scheme=dark|light). The terminal fields only keep shared lookups working.
+  editor: {
+    kind: "editor",
+    palette: EDITOR_PALETTE,
+    title: (user) => `${user} — editor`,
+    frameBg: "#181818",
+    bodyBg: "#1f1f1f",
+    headerBg: "#181818",
+    text: EDITOR_PALETTE.fg,
+    accentSuccess: EDITOR_PALETTE.green,
+    prompt: (user) => [{ text: `${user}@github:~$ `, fill: EDITOR_PALETTE.green }],
+    command: (user) => `github-cli --user ${user} --theme editor`,
+    controlsSvg: () => ""
   }
 };
 
@@ -144,4 +166,8 @@ export const THEMES = {
 // picks the window skin.
 export function isWin98(themeName) {
   return THEMES[themeName]?.kind === "win98";
+}
+
+export function isEditor(themeName) {
+  return THEMES[themeName]?.kind === "editor";
 }

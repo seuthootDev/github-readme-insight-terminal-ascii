@@ -2,9 +2,10 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { THEMES, isWin98 } from "./themes.js";
+import { THEMES, isEditor, isWin98 } from "./themes.js";
 import { renderWin98GitLog } from "./win98/gitLog.js";
 import { withSkin } from "./win98/skin.js";
+import { renderEditorGitLog } from "./editor/gitLog.js";
 import { REDUCED_MOTION_CSS } from "./constants.js";
 
 const GITHUB_API_BASE = "https://api.github.com";
@@ -277,6 +278,9 @@ export async function generateGitLogSvg(themeName, githubId, options = {}) {
 
   const lineCount = resolveLineCount(options.lines);
   const commits = await fetchRecentCommits(githubId, lineCount);
+  if (isEditor(themeName)) {
+    return renderEditorGitLog({ commits }, { githubId, scale: options.scale, scheme: options.scheme, lines: lineCount });
+  }
   if (isWin98(themeName)) {
     return withSkin(themeName, () => renderWin98GitLog({ commits }, { githubId, scale: options.scale, lines: lineCount }));
   }
