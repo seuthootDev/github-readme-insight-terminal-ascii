@@ -84,12 +84,6 @@ Add `ide=intellij` to draw the same cards as an IntelliJ-style IDE instead of VS
 ![windows repo](https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=windows&scale=0.6)
 ![ubuntu repo](https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=ubuntu&scale=0.6)
 
-**Star history** — a repository's stars over time, week by week, with the last 30 days and a trend line
-
-![mac star-history](https://github-readme-insight-terminal-asci.vercel.app/svg/star-history?repo=sindresorhus/got&theme=mac&scale=0.6)
-![windows star-history](https://github-readme-insight-terminal-asci.vercel.app/svg/star-history?repo=sindresorhus/got&theme=windows&scale=0.6)
-![ubuntu star-history](https://github-readme-insight-terminal-asci.vercel.app/svg/star-history?repo=sindresorhus/got&theme=ubuntu&scale=0.6)
-
 **Language history** — share of commits by language, year by year
 
 ![mac lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=mac&scale=0.6)
@@ -129,7 +123,6 @@ Pass a GitHub username to fetch profile data and render a terminal-style SVG in 
 | `git-log` | Recent commits (hash, repo, message, relative time) in `git log --oneline` style |
 | `pr-issue` | Recent public PRs and issues (state, repo, number, title, last update) in `gh search issues` style |
 | `repo` | One repository in `gh repo view` style: stars, forks, watchers, language, license, branch, latest release, topics and 52-week commit activity |
-| `star-history` | One repository's stars over time: weekly cumulative stars, total, last 30 days and first star. Repositories with more than 500 stars are sampled from 5 pages of the stargazer list (needs `GITHUB_TOKEN`) |
 | `lang-history` | Share of commits by language for each of the last N years, with the top two languages and the biggest shift (needs `GITHUB_TOKEN`) |
 | `dashboard` | tmux-style split screen with profile, stats, streak, a 26-week contribution graph and languages, drawn on a character grid with ASCII-art icons |
 | `ascii` | Profile photo as ASCII art |
@@ -186,7 +179,6 @@ npm run serve
 | pr-issue | `http://127.0.0.1:8000/svg/pr-issue?user=YOUR_GITHUB_ID&theme=mac&lines=8` |
 | dashboard | `http://127.0.0.1:8000/svg/dashboard?user=YOUR_GITHUB_ID&theme=mac` |
 | repo | `http://127.0.0.1:8000/svg/repo?repo=OWNER/REPO&theme=mac` |
-| star-history | `http://127.0.0.1:8000/svg/star-history?repo=OWNER/REPO&theme=mac` |
 | lang-history | `http://127.0.0.1:8000/svg/lang-history?user=YOUR_GITHUB_ID&theme=mac&years=6` |
 | ascii | `http://127.0.0.1:8000/svg/ascii?user=YOUR_GITHUB_ID&theme=mac` |
 | ascii (color) | `http://127.0.0.1:8000/svg/ascii?user=YOUR_GITHUB_ID&theme=mac&color=1` |
@@ -209,7 +201,6 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=GITHUB_U
 https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=GITHUB_USERNAME&theme=THEME&lines=8
 https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=GITHUB_USERNAME&theme=THEME
 https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=OWNER/REPO&theme=THEME
-https://github-readme-insight-terminal-asci.vercel.app/svg/star-history?repo=OWNER/REPO&theme=THEME
 https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=GITHUB_USERNAME&theme=THEME&years=6
 https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=GITHUB_USERNAME&theme=THEME
 https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=GITHUB_USERNAME&theme=THEME&color=1
@@ -219,14 +210,14 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=ICON1,ICON2,
 
 | Query | Required | Description |
 |-------|----------|-------------|
-| `user` | ✅ (optional for `repo` / `star-history` when `repo=owner/name`; optional for `skills`, only names the prompt) | GitHub username |
+| `user` | ✅ (optional for `repo` when `repo=owner/name`; optional for `skills`, only names the prompt) | GitHub username |
 | `theme` | ❌ (default: `mac`) | `mac` / `windows` / `ubuntu` / `win98` / `winxp` / `editor` |
 | `scheme` | ❌ (`editor` only, default: `dark`) | `dark` / `light`. Other themes ignore it |
 | `ide` | ❌ (`editor` only, default: `vscode`) | `vscode` / `intellij` |
 | `top` | ❌ (`top-lang` only, default: `6`) | `6`–`12` |
 | `color` | ❌ (`ascii` / `neofetch`, default: mono) | `1` / `true` / `color` (alias: `mode`) |
 | `lines` | ❌ (`git-log` / `pr-issue`, default: `8`) | Number of rows `3`–`15` |
-| `repo` | ✅ for `repo` / `star-history` | `owner/name`, or just `name` together with `user=owner` |
+| `repo` | ✅ for `repo` | `owner/name`, or just `name` together with `user=owner` |
 | `years` | ❌ (`lang-history` only, default: `6`) | Number of years `3`–`10` |
 | `i` | ✅ for `skills` | Comma-separated icon names, up to 60 (alias: `icons`) |
 | `perline` | ❌ (`skills` only, default: `6`) | Icons per row `1`–`12` |
@@ -243,7 +234,6 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=ICON1,ICON2,
 ![GitHub PRs and issues](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=YOUR_GITHUB_ID&theme=mac)
 ![GitHub dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=YOUR_GITHUB_ID&theme=mac&scale=0.7)
 ![GitHub repo](https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=YOUR_GITHUB_ID/YOUR_REPO&theme=mac)
-![Star history](https://github-readme-insight-terminal-asci.vercel.app/svg/star-history?repo=YOUR_GITHUB_ID/YOUR_REPO&theme=mac)
 ![GitHub language history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=YOUR_GITHUB_ID&theme=mac)
 ![ASCII avatar](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=YOUR_GITHUB_ID&theme=mac&color=1)
 ![GitHub neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=YOUR_GITHUB_ID&theme=mac&color=1)
@@ -263,10 +253,9 @@ To host your own instance:
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `GITHUB_TOKEN` (or `GH_TOKEN`) | Recommended | GitHub personal access token used for GitHub API calls (`stats`, `top-lang`, `streak`, `git-log`, `pr-issue`, `repo`, `star-history`, `lang-history`, `ascii`, `neofetch`, `dashboard`). It needs no scopes, since only public data is read. Without it, requests share the 60 req/hour unauthenticated rate limit and cards will start failing quickly. `lang-history` uses the GraphQL API and always requires a token, and so does `star-history`, because GitHub only lists stargazers to authenticated requests. |
+| `GITHUB_TOKEN` (or `GH_TOKEN`) | Recommended | GitHub personal access token used for GitHub API calls (`stats`, `top-lang`, `streak`, `git-log`, `pr-issue`, `repo`, `lang-history`, `ascii`, `neofetch`, `dashboard`). It needs no scopes, since only public data is read. Without it, requests share the 60 req/hour unauthenticated rate limit and cards will start failing quickly. `lang-history` uses the GraphQL API and always requires a token. |
 | `PORT` | ❌ (default: `8000`) | Port for the local server |
 | `CACHE_TTL_SECONDS` | ❌ (default: `1800`) | How long a rendered card is reused, both in memory and by the CDN. `0` disables caching |
-| `STAR_HISTORY_CACHE_SECONDS` | ❌ (default: `43200`) | How long a `star-history` card is reused. Star counts move slowly and each render costs up to 6 GitHub requests, so it is kept longer than the other cards |
 | `CACHE_MAX_ENTRIES` | ❌ (default: `500`) | Max number of rendered cards kept in memory per server instance (least recently used are dropped first) |
 | `LOG_GITHUB_TOKEN_USAGE` | ❌ | Set to `1` to log whether a token was used for each `stats` API call |
 
@@ -279,7 +268,7 @@ Cards are cached in two layers so popular cards don't burn through the GitHub AP
 - **In memory**: each server instance keeps rendered cards for `CACHE_TTL_SECONDS` (default 30 minutes), and identical requests that arrive while a card is rendering share the same result. The `X-Cache: HIT | MISS` response header shows which one you got.
 - **CDN / browser**: successful responses are sent with `Cache-Control: public, max-age=1800, s-maxage=1800, stale-while-revalidate=86400`, so Vercel's CDN can answer repeat requests without running the function at all.
 
-As a result cards may take up to **30 minutes** (12 hours for `star-history`) to reflect new activity, and GitHub's image proxy (camo) can cache them for a while on top of that. Error cards are sent with `no-store`, so they are never cached.
+As a result cards may take up to **30 minutes** to reflect new activity, and GitHub's image proxy (camo) can cache them for a while on top of that. Error cards are sent with `no-store`, so they are never cached.
 
 ---
 
@@ -296,7 +285,6 @@ Every card in each look. `windows` and `ubuntu` draw the same terminal as `mac` 
 <tr><td><b>Git log</b></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=mac"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=mac" width="150" alt="mac Git log"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=win98"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=win98" width="150" alt="win98 Git log"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=winxp"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=winxp" width="150" alt="winxp Git log"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=editor"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=editor" width="150" alt="VS Code Git log"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=editor&ide=intellij"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=editor&ide=intellij" width="150" alt="IntelliJ Git log"></a></td></tr>
 <tr><td><b>PRs & issues</b></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=mac"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=mac" width="150" alt="mac PRs & issues"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=win98"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=win98" width="150" alt="win98 PRs & issues"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=winxp"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=winxp" width="150" alt="winxp PRs & issues"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=editor"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=editor" width="150" alt="VS Code PRs & issues"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=editor&ide=intellij"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=editor&ide=intellij" width="150" alt="IntelliJ PRs & issues"></a></td></tr>
 <tr><td><b>Repo</b></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=mac"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=mac" width="150" alt="mac Repo"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=win98"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=win98" width="150" alt="win98 Repo"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=winxp"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=winxp" width="150" alt="winxp Repo"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=editor"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=editor" width="150" alt="VS Code Repo"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=editor&ide=intellij"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=editor&ide=intellij" width="150" alt="IntelliJ Repo"></a></td></tr>
-<tr><td><b>Star history</b></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/star-history?repo=sindresorhus/got&theme=mac"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/star-history?repo=sindresorhus/got&theme=mac" width="150" alt="mac Star history"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/star-history?repo=sindresorhus/got&theme=win98"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/star-history?repo=sindresorhus/got&theme=win98" width="150" alt="win98 Star history"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/star-history?repo=sindresorhus/got&theme=winxp"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/star-history?repo=sindresorhus/got&theme=winxp" width="150" alt="winxp Star history"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/star-history?repo=sindresorhus/got&theme=editor"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/star-history?repo=sindresorhus/got&theme=editor" width="150" alt="VS Code Star history"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/star-history?repo=sindresorhus/got&theme=editor&ide=intellij"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/star-history?repo=sindresorhus/got&theme=editor&ide=intellij" width="150" alt="IntelliJ Star history"></a></td></tr>
 <tr><td><b>Language history</b></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=mac"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=mac" width="150" alt="mac Language history"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=win98"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=win98" width="150" alt="win98 Language history"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=winxp"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=winxp" width="150" alt="winxp Language history"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=editor"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=editor" width="150" alt="VS Code Language history"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=editor&ide=intellij"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=editor&ide=intellij" width="150" alt="IntelliJ Language history"></a></td></tr>
 <tr><td><b>Dashboard</b></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=mac"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=mac" width="150" alt="mac Dashboard"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=win98"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=win98" width="150" alt="win98 Dashboard"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=winxp"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=winxp" width="150" alt="winxp Dashboard"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=editor"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=editor" width="150" alt="VS Code Dashboard"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=editor&ide=intellij"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=editor&ide=intellij" width="150" alt="IntelliJ Dashboard"></a></td></tr>
 <tr><td><b>GitHub neofetch</b></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=mac&color=1"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=mac&color=1" width="150" alt="mac GitHub neofetch"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=win98&color=1"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=win98&color=1" width="150" alt="win98 GitHub neofetch"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=winxp&color=1"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=winxp&color=1" width="150" alt="winxp GitHub neofetch"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=editor&color=1"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=editor&color=1" width="150" alt="VS Code GitHub neofetch"></a></td><td align="center"><a href="https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=editor&color=1&ide=intellij"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=editor&color=1&ide=intellij" width="150" alt="IntelliJ GitHub neofetch"></a></td></tr>
@@ -367,9 +355,3 @@ Not a card, but a tool for anyone juggling personal and work GitHub accounts in 
 ```sh
 npx claude-gh-guard init
 ```
-
----
-
-## Star History
-
-<a href="https://github.com/seuthootDev/github-readme-insight-terminal-ascii/stargazers"><img src="https://github-readme-insight-terminal-asci.vercel.app/svg/star-history?repo=seuthootDev/github-readme-insight-terminal-ascii&theme=editor&scheme=dark" alt="Star history of github-readme-insight-terminal-ascii"></a>

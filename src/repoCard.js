@@ -26,7 +26,7 @@ function loadPowershellIconDataUri() {
   }
 }
 
-export const POWERSHELL_ICON_DATA_URI = loadPowershellIconDataUri();
+const POWERSHELL_ICON_DATA_URI = loadPowershellIconDataUri();
 
 const LANGUAGE_COLORS = {
   JavaScript: "#f1e05a",
@@ -49,7 +49,7 @@ const LANGUAGE_COLORS = {
   Dart: "#00B4AB"
 };
 
-export function escapeXml(text) {
+function escapeXml(text) {
   return String(text)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
@@ -76,7 +76,7 @@ function truncateFit(text, maxChars) {
   return `${t.slice(0, Math.max(1, maxChars - 1))}…`;
 }
 
-export function formatNumber(value) {
+function formatNumber(value) {
   return Number(value ?? 0).toLocaleString("en-US");
 }
 
@@ -84,12 +84,12 @@ function textWidth(text, fontSize = 16) {
   return text.length * (fontSize * 0.62);
 }
 
-export function promptPartsWidth(parts, fontSize = 16) {
+function promptPartsWidth(parts, fontSize = 16) {
   const promptCharFactor = 0.56;
   return parts.reduce((acc, part) => acc + (part.text.length * (fontSize * promptCharFactor)), 0);
 }
 
-export function addTextSpans(parts, startX, y, fontSize = 16) {
+function addTextSpans(parts, startX, y, fontSize = 16) {
   const spans = [];
   for (const part of parts) {
     spans.push(`<tspan fill="${part.fill}">${escapeXml(part.text)}</tspan>`);
@@ -100,17 +100,17 @@ export function addTextSpans(parts, startX, y, fontSize = 16) {
   return `<text x="${startX}" y="${y}" font-size="${fontSize}" font-family="Consolas, Menlo, monospace" xml:space="preserve" textLength="${promptPartsWidth(parts, fontSize)}" lengthAdjust="spacingAndGlyphs">${spans.join("")}</text>`;
 }
 
-export function resolveOutputScale(input) {
+function resolveOutputScale(input) {
   const parsed = Number.parseFloat(String(input ?? "1"));
   if (!Number.isFinite(parsed)) return 1;
   return Math.min(3, Math.max(0.05, parsed));
 }
 
 // Accepts `repo=owner/name`, or `user=owner&repo=name`.
-export function resolveRepoTarget(githubId, repoInput, card = "repo") {
+function resolveRepoTarget(githubId, repoInput) {
   const raw = String(repoInput ?? "").trim().replace(/^https?:\/\/github\.com\//i, "").replace(/\/+$/, "");
   if (!raw) {
-    throw new Error(`Query parameter 'repo' is required for the ${card} card (e.g. repo=owner/name).`);
+    throw new Error("Query parameter 'repo' is required for the repo card (e.g. repo=owner/name).");
   }
   const [first, second] = raw.split("/");
   const owner = second ? first : String(githubId ?? "").trim();
@@ -121,10 +121,10 @@ export function resolveRepoTarget(githubId, repoInput, card = "repo") {
   return { owner, name };
 }
 
-export async function fetchGithub(url, accept = "application/vnd.github+json") {
+async function fetchGithub(url) {
   const githubToken = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
   const headers = {
-    Accept: accept,
+    Accept: "application/vnd.github+json",
     "User-Agent": "github-readme-insight-terminal-ascii"
   };
   if (githubToken) {
@@ -146,8 +146,8 @@ export async function fetchGithub(url, accept = "application/vnd.github+json") {
   return response;
 }
 
-export async function fetchJson(url, notFoundMessage, accept) {
-  const response = await fetchGithub(url, accept);
+async function fetchJson(url, notFoundMessage) {
+  const response = await fetchGithub(url);
   if (response.status === 404) {
     if (notFoundMessage === null) return null;
     throw new Error(notFoundMessage);
@@ -208,7 +208,7 @@ function formatCompact(value) {
   return formatNumber(n);
 }
 
-export function buildRepoPrompt(themeName, user) {
+function buildRepoPrompt(themeName, user) {
   const palette = (THEMES[themeName] ?? THEMES.mac).palette;
   if (themeName === "windows") {
     return [

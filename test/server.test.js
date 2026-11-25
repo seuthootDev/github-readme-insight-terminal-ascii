@@ -48,12 +48,6 @@ test("skills card is cached and sent with CDN cache headers", async () => {
   assert.equal(await second.text(), body);
 });
 
-test("star history is cached longer than the other cards", async () => {
-  const { cacheSecondsFor, cacheControlFor } = await import("../src/server.js");
-  assert.ok(cacheSecondsFor("star-history") > cacheSecondsFor("stats"));
-  assert.match(cacheControlFor("star-history"), new RegExp(`s-maxage=${cacheSecondsFor("star-history")}`));
-});
-
 test("missing user returns an uncached error card", async () => {
   const res = await fetch(`${base}/svg/stats`);
   assert.equal(res.status, 200);

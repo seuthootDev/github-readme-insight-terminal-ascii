@@ -58,18 +58,6 @@ test("does not cache failures", async () => {
   assert.deepEqual(await cache.getOrCompute("k", compute), { value: "ok", hit: false });
 });
 
-test("a per-call ttl overrides the default", async () => {
-  let clock = 0;
-  const cache = createTtlCache({ ttlMs: 1000, maxEntries: 10, now: () => clock });
-  await cache.getOrCompute("long", async () => "a", { ttl: 5000 });
-  await cache.getOrCompute("short", async () => "b");
-  clock = 2000;
-  assert.equal(cache.get("long"), "a");
-  assert.equal(cache.get("short"), undefined);
-  clock = 5000;
-  assert.equal(cache.get("long"), undefined);
-});
-
 test("ttl 0 disables caching", async () => {
   const cache = createTtlCache({ ttlMs: 0, maxEntries: 10 });
   let calls = 0;
