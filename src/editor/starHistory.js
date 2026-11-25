@@ -24,12 +24,26 @@ export function renderEditorStarHistory(card, { scale, scheme, ide } = {}) {
   let body = win.svg;
   const e = win.regions.editor;
 
-  // The CSV: a header and the sampled series, as many rows as fit.
+  // The CSV: a header and the sampled series. When it is longer than the pane, the middle is
+  // folded like an editor region so the latest rows always stay in view.
   const lineH = 20;
   const maxRows = Math.floor((e.h - 12) / lineH);
   const lines = [{ tokens: [["date", "prop"], [",", "dim"], ["stars", "prop"]] }];
   for (const pt of series) lines.push({ tokens: [[isoDay(pt.t), "str"], [",", "dim"], [String(pt.total), "num"]] });
-  body += codeBlock(p, e.x, e.y + 6, CODE_W, lines.slice(0, maxRows), { size: 13, lineH });
+  const csvTop = e.y + 6;
+  if (lines.length <= maxRows) {
+    body += codeBlock(p, e.x, csvTop, CODE_W, lines, { size: 13, lineH });
+  } else {
+    const head = 4; // header + the first rows
+    const tail = maxRows - head - 1; // one row for the fold marker
+    const hidden = lines.length - head - tail;
+    body += codeBlock(p, e.x, csvTop, CODE_W, lines.slice(0, head), { size: 13, lineH });
+    const fy = csvTop + head * lineH;
+    const label = `⋯ ${hidden} rows`;
+    body += `<rect x="${e.x + 48}" y="${fy + 3}" width="${(label.length * 13 * 0.6 + 12).toFixed(1)}" height="${lineH - 6}" rx="3" fill="${p.chip}"/>`;
+    body += text(e.x + 54, fy + lineH * 0.7, label, { size: 12, fill: p.dim, family: MONO });
+    body += codeBlock(p, e.x, fy + lineH, CODE_W, lines.slice(-tail), { size: 13, lineH, start: lines.length - tail + 1, activeLine: lines.length });
+  }
 
   // Chart preview pane.
   const vx = e.x + CODE_W, vw = e.x + e.w - vx;
