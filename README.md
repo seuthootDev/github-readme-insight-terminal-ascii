@@ -355,3 +355,15 @@ Not a card, but a tool for anyone juggling personal and work GitHub accounts in 
 ```sh
 npx claude-gh-guard init
 ```
+
+---
+
+## Star History
+
+<a href="https://star-history.com/#seuthootDev/github-readme-insight-terminal-ascii&Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=seuthootDev/github-readme-insight-terminal-ascii&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=seuthootDev/github-readme-insight-terminal-ascii&type=Date" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=seuthootDev/github-readme-insight-terminal-ascii&type=Date" />
+  </picture>
+</a>
