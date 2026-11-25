@@ -129,7 +129,7 @@ Pass a GitHub username to fetch profile data and render a terminal-style SVG in 
 | `git-log` | Recent commits (hash, repo, message, relative time) in `git log --oneline` style |
 | `pr-issue` | Recent public PRs and issues (state, repo, number, title, last update) in `gh search issues` style |
 | `repo` | One repository in `gh repo view` style: stars, forks, watchers, language, license, branch, latest release, topics and 52-week commit activity |
-| `star-history` | One repository's stars over time: weekly cumulative stars, total, last 30 days and first star. Repositories with more than 1,000 stars are sampled from 10 pages of the stargazer list (needs `GITHUB_TOKEN`) |
+| `star-history` | One repository's stars over time: weekly cumulative stars, total, last 30 days and first star. Repositories with more than 500 stars are sampled from 5 pages of the stargazer list (needs `GITHUB_TOKEN`) |
 | `lang-history` | Share of commits by language for each of the last N years, with the top two languages and the biggest shift (needs `GITHUB_TOKEN`) |
 | `dashboard` | tmux-style split screen with profile, stats, streak, a 26-week contribution graph and languages, drawn on a character grid with ASCII-art icons |
 | `ascii` | Profile photo as ASCII art |
@@ -266,6 +266,7 @@ To host your own instance:
 | `GITHUB_TOKEN` (or `GH_TOKEN`) | Recommended | GitHub personal access token used for GitHub API calls (`stats`, `top-lang`, `streak`, `git-log`, `pr-issue`, `repo`, `star-history`, `lang-history`, `ascii`, `neofetch`, `dashboard`). It needs no scopes, since only public data is read. Without it, requests share the 60 req/hour unauthenticated rate limit and cards will start failing quickly. `lang-history` uses the GraphQL API and always requires a token, and so does `star-history`, because GitHub only lists stargazers to authenticated requests. |
 | `PORT` | ❌ (default: `8000`) | Port for the local server |
 | `CACHE_TTL_SECONDS` | ❌ (default: `1800`) | How long a rendered card is reused, both in memory and by the CDN. `0` disables caching |
+| `STAR_HISTORY_CACHE_SECONDS` | ❌ (default: `43200`) | How long a `star-history` card is reused. Star counts move slowly and each render costs up to 6 GitHub requests, so it is kept longer than the other cards |
 | `CACHE_MAX_ENTRIES` | ❌ (default: `500`) | Max number of rendered cards kept in memory per server instance (least recently used are dropped first) |
 | `LOG_GITHUB_TOKEN_USAGE` | ❌ | Set to `1` to log whether a token was used for each `stats` API call |
 
@@ -278,7 +279,7 @@ Cards are cached in two layers so popular cards don't burn through the GitHub AP
 - **In memory**: each server instance keeps rendered cards for `CACHE_TTL_SECONDS` (default 30 minutes), and identical requests that arrive while a card is rendering share the same result. The `X-Cache: HIT | MISS` response header shows which one you got.
 - **CDN / browser**: successful responses are sent with `Cache-Control: public, max-age=1800, s-maxage=1800, stale-while-revalidate=86400`, so Vercel's CDN can answer repeat requests without running the function at all.
 
-As a result cards may take up to **30 minutes** to reflect new activity, and GitHub's image proxy (camo) can cache them for a while on top of that. Error cards are sent with `no-store`, so they are never cached.
+As a result cards may take up to **30 minutes** (12 hours for `star-history`) to reflect new activity, and GitHub's image proxy (camo) can cache them for a while on top of that. Error cards are sent with `no-store`, so they are never cached.
 
 ---
 

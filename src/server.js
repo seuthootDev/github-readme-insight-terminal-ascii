@@ -34,11 +34,23 @@ function envInt(name, fallback) {
 
 const CACHE_TTL_SECONDS = Math.max(0, envInt("CACHE_TTL_SECONDS", 1800));
 const CACHE_MAX_ENTRIES = Math.max(0, envInt("CACHE_MAX_ENTRIES", 500));
+// Star history moves slowly and costs up to 6 GitHub requests per render, so it is kept longer.
+const STAR_HISTORY_CACHE_SECONDS = Math.max(0, envInt("STAR_HISTORY_CACHE_SECONDS", 43200));
+
+// Seconds a rendered card of this type is reused. Caching off (CACHE_TTL_SECONDS=0) turns it off for all.
+export function cacheSecondsFor(type) {
+  if (CACHE_TTL_SECONDS <= 0) return 0;
+  return type === "star-history" ? Math.max(CACHE_TTL_SECONDS, STAR_HISTORY_CACHE_SECONDS) : CACHE_TTL_SECONDS;
+}
+
 // Browsers/camo use max-age; s-maxage lets Vercel's CDN serve repeats without invoking the function,
 // and stale-while-revalidate keeps cards up while a refresh happens in the background.
-const SUCCESS_CACHE_CONTROL = CACHE_TTL_SECONDS > 0
-  ? `public, max-age=${CACHE_TTL_SECONDS}, s-maxage=${CACHE_TTL_SECONDS}, stale-while-revalidate=86400`
-  : "no-store";
+export function cacheControlFor(type) {
+  const seconds = cacheSecondsFor(type);
+  return seconds > 0
+    ? `public, max-age=${seconds}, s-maxage=${seconds}, stale-while-revalidate=86400`
+    : "no-store";
+}
 // URL builder page served at the bare site root. Falls back to a redirect if the file is missing.
 let BUILDER_HTML = null;
 try {
@@ -130,8 +142,8 @@ async function handleSvgRequest(req, res, forcedType = null) {
   };
 
   try {
-    const { value: svg, hit } = await svgCache.getOrCompute(JSON.stringify(options), () => generateSvg(options));
-    res.set("Cache-Control", SUCCESS_CACHE_CONTROL);
+    const { value: svg, hit } = await svgCache.getOrCompute(JSON.stringify(options), () => generateSvg(options), { ttl: cacheSecondsFor(renderType) * 1000 });
+    res.set("Cache-Control", cacheControlFor(renderType));
     res.set("X-Cache", hit ? "HIT" : "MISS");
     res.type("image/svg+xml").send(svg);
   } catch (error) {

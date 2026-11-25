@@ -20,7 +20,7 @@ import { renderEditorStarHistory } from "./editor/starHistory.js";
 const GITHUB_API_BASE = "https://api.github.com";
 const STAR_ACCEPT = "application/vnd.github.star+json"; // adds starred_at to every stargazer
 const PER_PAGE = 100;
-const MAX_PAGES = 10; // requests per card; bigger repos are sampled across their pages
+const MAX_PAGES = 5; // stargazer requests per card; bigger repos are sampled across their pages
 const API_PAGE_LIMIT = 400; // GitHub stops paginating stargazers after 40,000
 const DAY = 86_400_000;
 const STARGAZERS_ERROR = "GitHub refused the stargazer list. The server needs a GITHUB_TOKEN that is allowed to list stargazers.";

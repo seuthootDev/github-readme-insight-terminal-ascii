@@ -18,17 +18,18 @@ export function createTtlCache({ ttlMs, maxEntries, now = () => Date.now() }) {
     return entry.value;
   }
 
-  function set(key, value) {
-    if (ttlMs <= 0 || maxEntries <= 0) return;
+  // `ttl` overrides the default for this entry (cards that change slowly can be kept longer).
+  function set(key, value, ttl = ttlMs) {
+    if (ttl <= 0 || maxEntries <= 0) return;
     entries.delete(key);
-    entries.set(key, { value, expiresAt: now() + ttlMs });
+    entries.set(key, { value, expiresAt: now() + ttl });
     while (entries.size > maxEntries) {
       entries.delete(entries.keys().next().value);
     }
   }
 
   // Returns { value, hit }. Failed computations are not cached, so errors retry next time.
-  async function getOrCompute(key, compute) {
+  async function getOrCompute(key, compute, { ttl = ttlMs } = {}) {
     const cached = get(key);
     if (cached !== undefined) return { value: cached, hit: true };
 
@@ -38,7 +39,7 @@ export function createTtlCache({ ttlMs, maxEntries, now = () => Date.now() }) {
     const promise = (async () => {
       try {
         const value = await compute();
-        set(key, value);
+        set(key, value, ttl);
         return value;
       } finally {
         inflight.delete(key);
