@@ -57,7 +57,7 @@ function sendErrorCard(res, { theme, user, type, message, scheme, ide }) {
 
 async function handleSvgRequest(req, res, forcedType = null) {
   const repo = String(req.query.repo ?? "").trim() || undefined;
-  // The repo card can take everything from repo=owner/name, so user becomes optional there.
+  // Repo-based cards (repo, star-history) take everything from repo=owner/name, so user becomes optional there.
   const user = String(req.query.user ?? "").trim() || (repo?.includes("/") ? repo.split("/")[0] : "");
   const theme = String(req.query.theme ?? "mac").trim() || "mac";
   const renderType = String(forcedType ?? req.params.type ?? "graph").trim().toLowerCase();

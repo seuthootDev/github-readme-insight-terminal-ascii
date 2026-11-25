@@ -178,6 +178,7 @@
         <option value="pr-issue">pr-issue: recent PRs & issues</option>
         <option value="dashboard">dashboard: tmux-style overview</option>
         <option value="repo">repo: one repository</option>
+        <option value="star-history">star-history: stars over time</option>
         <option value="lang-history">lang-history: languages by year</option>
         <option value="neofetch">neofetch: profile card</option>
         <option value="ascii">ascii: avatar as ASCII art</option>
@@ -306,6 +307,7 @@
     "pr-issue": ["lines"],
     dashboard: [],
     repo: ["repo"],
+    "star-history": ["repo"],
     "lang-history": ["years"],
     neofetch: ["color"],
     ascii: ["color", "cols"],
@@ -320,11 +322,14 @@
     "pr-issue": "Recent PRs and issues",
     dashboard: "GitHub dashboard",
     repo: "GitHub repo",
+    "star-history": "Star history",
     "lang-history": "Language history",
     neofetch: "GitHub neofetch",
     ascii: "ASCII avatar",
     skills: "Skills"
   };
+  // Cards about one repository: they take repo=owner/name instead of a user.
+  var REPO_CARDS = ["repo", "star-history"];
   var OPTIONAL = ["top", "lines", "years", "cols", "perline", "scale"];
 
   var form = document.getElementById("form");
@@ -354,7 +359,7 @@
     var params = [];
     var example = false;
 
-    if (type === "repo") {
+    if (REPO_CARDS.indexOf(type) !== -1) {
       var repo = value("repo");
       var full = repo.indexOf("/") !== -1 ? repo : (repo && user ? user + "/" + repo : "");
       if (full || !fill) {
@@ -400,7 +405,7 @@
       var name = el.getAttribute("data-for");
       el.hidden = name === "user" ? type === "skills" : used.indexOf(name) === -1;
     });
-    field("user").placeholder = type === "repo" ? "optional with owner/name" : "your-github-username";
+    field("user").placeholder = REPO_CARDS.indexOf(type) !== -1 ? "optional with owner/name" : "your-github-username";
     // Only the editor theme has a dark/light colour scheme.
     form.querySelector("[data-scheme]").hidden = form.querySelector("input[name=theme]:checked").value !== "editor";
   }
@@ -420,7 +425,7 @@
 
     var preview_ = buildParams(type, "preview");
     var previewUrl = base + toQuery(preview_.params);
-    var label = preview_.example ? "example · " + (type === "repo" ? DEMO.repo.split("/")[1] : type === "skills" ? "sample icons" : DEMO.user) : "";
+    var label = preview_.example ? "example · " + (REPO_CARDS.indexOf(type) !== -1 ? DEMO.repo.split("/")[1] : type === "skills" ? "sample icons" : DEMO.user) : "";
 
     clearTimeout(timer);
     if (img.getAttribute("src") === previewUrl) {

@@ -7,6 +7,7 @@ import { generateNeofetchSvg } from "./neofetch.js";
 import { generatePrIssueSvg } from "./prIssue.js";
 import { generateRepoCardSvg } from "./repoCard.js";
 import { generateSkillsSvg } from "./skillIcons.js";
+import { generateStarHistorySvg } from "./starHistory.js";
 import { generateStatsSvg } from "./stats.js";
 import { generateStreakSvg } from "./streak.js";
 import { generateTopLanguageSvg } from "./topLanguage.js";
@@ -24,6 +25,7 @@ const RENDERERS = {
   "pr-issue": generatePrIssueSvg,
   dashboard: generateDashboardSvg,
   repo: generateRepoCardSvg,
+  "star-history": generateStarHistorySvg,
   "lang-history": generateLangHistorySvg,
   skills: generateSkillsSvg
 };
