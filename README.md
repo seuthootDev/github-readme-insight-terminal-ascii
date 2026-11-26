@@ -19,94 +19,94 @@ Like [github-readme-stats](https://github.com/anuraghazra/github-readme-stats), 
 
 **theme=mac** — macOS Terminal (zsh)
 
-![mac](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=mac&scale=0.6)
+[![mac](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=mac&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
 
 **theme=windows** — Windows PowerShell
 
-![windows](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=windows&scale=0.6)
+[![windows](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=windows&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
 
 **theme=ubuntu** — Ubuntu GNOME Terminal
 
-![ubuntu](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=ubuntu&scale=0.6)
+[![ubuntu](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=ubuntu&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
 
 **theme=win98** — Windows 98. Not a terminal: every card turns into the classic program window that fits it (Disk Defragmenter for the graph, a Properties dialog for stats, Explorer for git log, an inbox for PRs & issues, Paint for the ASCII avatar, a full desktop for the dashboard…)
 
-![win98 graph](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=win98&scale=0.6)
-![win98 stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=win98&scale=0.6)
+[![win98 graph](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=win98&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![win98 stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=win98&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
 
 **theme=editor** — a code editor window. Each card becomes an editor screen: an extension page for stats, a heatmap file for the graph, the source control graph for git log, a paused debugger for the streak, a notebook for language history… Pick the colors with `scheme=dark` (default) or `scheme=light`.
 
-![editor graph](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=editor&scale=0.6)
-![editor stats light](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=editor&scheme=light&scale=0.6)
+[![editor graph](https://github-readme-insight-terminal-asci.vercel.app/svg?user=torvalds&theme=editor&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![editor stats light](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=editor&scheme=light&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
 
 Add `ide=intellij` to draw the same cards as an IntelliJ-style IDE instead of VS Code: Settings › Plugins for stats, the Git tool window for git log, the Debug tool window for the streak…
 
-![editor intellij stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=editor&ide=intellij&scale=0.6)
+[![editor intellij stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=editor&ide=intellij&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
 
 **Skills** — tech-stack icons as pixel-art ASCII, like [skillicons.dev](https://skillicons.dev) but in a terminal. No GitHub account needed: list the icons with `i=`
 
-![mac skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=js,ts,react,nodejs,python,go,rust,docker&theme=mac&perline=8&scale=0.6)
-![windows skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=java,spring,kotlin,mysql,redis,git&theme=windows&scale=0.6)
-![ubuntu skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=linux,ubuntu,vim,bash,nginx,k8s&theme=ubuntu&scale=0.6)
+[![mac skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=js,ts,react,nodejs,python,go,rust,docker&theme=mac&perline=8&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![windows skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=java,spring,kotlin,mysql,redis,git&theme=windows&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![ubuntu skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=linux,ubuntu,vim,bash,nginx,k8s&theme=ubuntu&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
 
 **Dashboard** — tmux-style split panes: profile, stats, streak, 26-week graph and languages in one window
 
-![mac dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=mac&scale=0.6)
-![windows dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=windows&scale=0.6)
-![ubuntu dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=ubuntu&scale=0.6)
+[![mac dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=mac&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![windows dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=windows&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![ubuntu dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=torvalds&theme=ubuntu&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
 
 **Git log** — recent commits as `git log --oneline --graph`
 
-![mac git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=mac&scale=0.6)
-![windows git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=windows&scale=0.6)
-![ubuntu git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=ubuntu&scale=0.6)
+[![mac git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=mac&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![windows git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=windows&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![ubuntu git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=sindresorhus&theme=ubuntu&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
 
 **ASCII avatar** (mono / color)
 
-![mac ascii mono](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=torvalds&theme=mac&scale=0.15)
-![mac ascii color](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=torvalds&theme=mac&color=1&scale=0.15)
+[![mac ascii mono](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=torvalds&theme=mac&scale=0.15)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![mac ascii color](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=torvalds&theme=mac&color=1&scale=0.15)](https://github-readme-insight-terminal-asci.vercel.app/)
 
 **GitHub neofetch** — Octocat ASCII + profile fields (Repos, Stars, Contributions, …)
 
-![mac neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=mac&color=1&scale=0.6)
-![windows neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=windows&color=1&scale=0.6)
-![ubuntu neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=ubuntu&color=1&scale=0.6)
+[![mac neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=mac&color=1&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![windows neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=windows&color=1&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![ubuntu neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=torvalds&theme=ubuntu&color=1&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
 
 **PRs & issues** — recent pull requests and issues as `gh search issues --include-prs`
 
-![mac pr-issue](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=mac&scale=0.6)
-![windows pr-issue](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=windows&scale=0.6)
-![ubuntu pr-issue](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=ubuntu&scale=0.6)
+[![mac pr-issue](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=mac&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![windows pr-issue](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=windows&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![ubuntu pr-issue](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=sindresorhus&theme=ubuntu&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
 
 **Repo** — a single repository as `gh repo view`: stars, forks, language, license, latest release, topics and 52-week commit activity
 
-![mac repo](https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=mac&scale=0.6)
-![windows repo](https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=windows&scale=0.6)
-![ubuntu repo](https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=ubuntu&scale=0.6)
+[![mac repo](https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=mac&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![windows repo](https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=windows&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![ubuntu repo](https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=sindresorhus/got&theme=ubuntu&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
 
 **Language history** — share of commits by language, year by year
 
-![mac lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=mac&scale=0.6)
-![windows lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=windows&scale=0.6)
-![ubuntu lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=ubuntu&scale=0.6)
+[![mac lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=mac&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![windows lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=windows&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![ubuntu lang-history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=mitchellh&theme=ubuntu&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
 
 **Stats**
 
-![mac stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=mac&scale=0.6)
-![windows stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=windows&scale=0.6)
-![ubuntu stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=ubuntu&scale=0.6)
+[![mac stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=mac&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![windows stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=windows&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![ubuntu stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=torvalds&theme=ubuntu&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
 
 **Streak** — current / longest contribution streak
 
-![mac streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=mac&scale=0.6)
-![windows streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=windows&scale=0.6)
-![ubuntu streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=ubuntu&scale=0.6)
+[![mac streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=mac&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![windows streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=windows&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![ubuntu streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=torvalds&theme=ubuntu&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
 
 **Top languages**
 
-![mac top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=mac&top=8&scale=0.6)
-![windows top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=windows&top=8&scale=0.6)
-![ubuntu top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=ubuntu&top=8&scale=0.6)
+[![mac top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=mac&top=8&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![windows top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=windows&top=8&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![ubuntu top language](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=torvalds&theme=ubuntu&top=8&scale=0.6)](https://github-readme-insight-terminal-asci.vercel.app/)
 
 ---
 
@@ -226,18 +226,18 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=ICON1,ICON2,
 | `scale` | ❌ (default: `1`, ascii: `0.28`) | Size multiplier `0.05`–`3` |
 
 ```markdown
-![GitHub contribution graph](https://github-readme-insight-terminal-asci.vercel.app/svg?user=YOUR_GITHUB_ID&theme=mac)
-![GitHub stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=YOUR_GITHUB_ID&theme=mac)
-![GitHub top languages](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=YOUR_GITHUB_ID&theme=mac&top=8)
-![GitHub streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=YOUR_GITHUB_ID&theme=mac)
-![GitHub git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=YOUR_GITHUB_ID&theme=mac)
-![GitHub PRs and issues](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=YOUR_GITHUB_ID&theme=mac)
-![GitHub dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=YOUR_GITHUB_ID&theme=mac&scale=0.7)
-![GitHub repo](https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=YOUR_GITHUB_ID/YOUR_REPO&theme=mac)
-![GitHub language history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=YOUR_GITHUB_ID&theme=mac)
-![ASCII avatar](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=YOUR_GITHUB_ID&theme=mac&color=1)
-![GitHub neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=YOUR_GITHUB_ID&theme=mac&color=1)
-![Skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=js,ts,react,nodejs,docker,postgres&theme=mac)
+[![GitHub contribution graph](https://github-readme-insight-terminal-asci.vercel.app/svg?user=YOUR_GITHUB_ID&theme=mac)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![GitHub stats](https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=YOUR_GITHUB_ID&theme=mac)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![GitHub top languages](https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=YOUR_GITHUB_ID&theme=mac&top=8)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![GitHub streak](https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=YOUR_GITHUB_ID&theme=mac)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![GitHub git log](https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=YOUR_GITHUB_ID&theme=mac)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![GitHub PRs and issues](https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=YOUR_GITHUB_ID&theme=mac)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![GitHub dashboard](https://github-readme-insight-terminal-asci.vercel.app/svg/dashboard?user=YOUR_GITHUB_ID&theme=mac&scale=0.7)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![GitHub repo](https://github-readme-insight-terminal-asci.vercel.app/svg/repo?repo=YOUR_GITHUB_ID/YOUR_REPO&theme=mac)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![GitHub language history](https://github-readme-insight-terminal-asci.vercel.app/svg/lang-history?user=YOUR_GITHUB_ID&theme=mac)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![ASCII avatar](https://github-readme-insight-terminal-asci.vercel.app/svg/ascii?user=YOUR_GITHUB_ID&theme=mac&color=1)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![GitHub neofetch](https://github-readme-insight-terminal-asci.vercel.app/svg/neofetch?user=YOUR_GITHUB_ID&theme=mac&color=1)](https://github-readme-insight-terminal-asci.vercel.app/)
+[![Skills](https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=js,ts,react,nodejs,docker,postgres&theme=mac)](https://github-readme-insight-terminal-asci.vercel.app/)
 ```
 
 ---
