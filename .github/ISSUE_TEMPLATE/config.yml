@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💡 Theme ideas
+    url: https://github.com/seuthootDev/github-readme-insight-terminal-ascii/discussions/9
+    about: Have an idea for a new theme? Share it in this discussion first so we can agree on the look.
+  - name: 🛠️ Card builder
+    url: https://github-readme-insight-terminal-asci.vercel.app/
+    about: Build a card URL and preview it live.
