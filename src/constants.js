@@ -1,6 +1,15 @@
 export const NUM_WEEKS = 52;
 export const DAY_LABELS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
+// Accept what people paste for a username: "@name", "github.com/name" or a full profile URL.
+export function normalizeUser(input) {
+  return String(input ?? "")
+    .trim()
+    .replace(/^(?:https?:\/\/)?github\.com\//i, "")
+    .replace(/\/+$/, "")
+    .replace(/^@/, "");
+}
+
 export function levelFromCount(count) {
   if (count <= 0) return 0;
   if (count <= 3) return 1;
