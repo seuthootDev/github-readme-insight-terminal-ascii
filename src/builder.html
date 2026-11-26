@@ -263,6 +263,11 @@
       <span>Scale (0.05–3, empty = default)</span>
       <input type="number" name="scale" min="0.05" max="3" step="0.05" placeholder="1">
     </label>
+
+    <label>
+      <span>Cache seconds (1800–86400, empty = default)</span>
+      <input type="number" name="cache_seconds" min="1800" max="86400" step="60" placeholder="1800">
+    </label>
   </form>
 
   <section class="panel" aria-live="polite">
@@ -387,6 +392,8 @@
     });
     if (used.indexOf("color") !== -1 && field("color").checked) params.push(["color", "1"]);
     if (used.indexOf("labels") !== -1 && !field("labels").checked) params.push(["labels", "0"]);
+    // Caching doesn't change how the card looks, so the live preview leaves it out.
+    if (mode !== "preview" && value("cache_seconds")) params.push(["cache_seconds", value("cache_seconds")]);
     return { params: params, example: example };
   }
 
