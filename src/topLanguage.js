@@ -221,6 +221,9 @@ async function fetchJson(url) {
 
   const response = await fetch(url, { headers });
   if (!response.ok) {
+    if (response.status === 404) {
+      throw new Error("GitHub user not found.");
+    }
     if (response.status === 403) {
       const remaining = response.headers.get("x-ratelimit-remaining");
       const resetEpoch = response.headers.get("x-ratelimit-reset");
@@ -644,8 +647,10 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   svg.push(`</g>`);
 
   const failed = languageRows.length === 0 && fetchError;
+  // A missing user is named as one, like the other cards, instead of the generic fetch failure.
+  const failedText = /not found/i.test(fetchError?.message ?? "") ? "GitHub user not found." : `Failed to fetch languages for '${githubId}'.`;
   const statusLine = failed
-    ? `<tspan fill="${palette.red}">\u2716 </tspan><tspan fill="${theme.text}">${escapeXml(`Failed to fetch languages for '${githubId}'.`)}</tspan>`
+    ? `<tspan fill="${palette.red}">\u2716 </tspan><tspan fill="${theme.text}">${escapeXml(failedText)}</tspan>`
     : `<tspan fill="${palette.green}">\u2714 </tspan><tspan fill="${theme.text}">${escapeXml(`Success! Generated language card for '${githubId}'.`)}</tspan>`;
   svg.push(`<g class="line-success">`);
   svg.push(`<text x="${promptStartX}" y="${successLineY}" font-size="13" font-family="Consolas, Menlo, monospace">${statusLine}</text>`);
@@ -699,3 +704,4 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   svg.push(`</svg>`);
   return svg.join("\n");
 }
+

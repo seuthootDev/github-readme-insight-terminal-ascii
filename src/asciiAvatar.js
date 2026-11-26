@@ -134,6 +134,9 @@ async function fetchJson(url) {
 
   const response = await fetch(url, { headers });
   if (!response.ok) {
+    if (response.status === 404) {
+      throw new Error("GitHub user not found.");
+    }
     throw new Error(`GitHub API error ${response.status} for ${url}`);
   }
   return response.json();
@@ -465,3 +468,4 @@ export async function generateAsciiAvatarSvg(themeName, githubId, options = {}) 
   svg.push(`</svg>`);
   return svg.join("\n");
 }
+

@@ -14,6 +14,9 @@ export async function fetchContributions(username) {
   });
 
   if (!response.ok) {
+    if (response.status === 404) {
+      throw new Error("GitHub user not found.");
+    }
     throw new Error(`Failed to fetch contributions: HTTP ${response.status}`);
   }
 
@@ -47,3 +50,4 @@ export function sumContributions(contributions) {
 export function contributionCountForDate(contributions, date) {
   return contributions[toIsoDate(date)] ?? 0;
 }
+
