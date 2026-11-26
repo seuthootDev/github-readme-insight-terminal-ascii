@@ -224,6 +224,7 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=ICON1,ICON2,
 | `labels` | ❌ (`skills` only, default: on) | `0` / `false` hides the name under each icon |
 | `cols` | ❌ (`ascii` only, default: `50`) | ASCII width `24`–`140` (alias: `size`) |
 | `scale` | ❌ (default: `1`, ascii: `0.28`) | Size multiplier `0.05`–`3` |
+| `cache_seconds` | ❌ (default: server `CACHE_TTL_SECONDS`) | Keep a card cached longer, clamped to `CACHE_TTL_SECONDS`–`86400`. Ignored when caching is off |
 
 ```markdown
 [![GitHub contribution graph](https://github-readme-insight-terminal-asci.vercel.app/svg?user=YOUR_GITHUB_ID&theme=mac)](https://github-readme-insight-terminal-asci.vercel.app/)
@@ -268,7 +269,9 @@ Cards are cached in two layers so popular cards don't burn through the GitHub AP
 - **In memory**: each server instance keeps rendered cards for `CACHE_TTL_SECONDS` (default 30 minutes), and identical requests that arrive while a card is rendering share the same result. The `X-Cache: HIT | MISS` response header shows which one you got.
 - **CDN / browser**: successful responses are sent with `Cache-Control: public, max-age=1800, s-maxage=1800, stale-while-revalidate=86400`, so Vercel's CDN can answer repeat requests without running the function at all.
 
-As a result cards may take up to **30 minutes** to reflect new activity, and GitHub's image proxy (camo) can cache them for a while on top of that. Error cards are sent with `no-store`, so they are never cached.
+Add `cache_seconds=N` to a card URL to keep it cached longer (up to 86400 seconds). It can only extend the server default, never shorten it, and applies to both the in-memory entry and `Cache-Control`. It is ignored when `CACHE_TTL_SECONDS=0`.
+
+As a result cards may take up to **30 minutes** to reflect new activity by default, and GitHub's image proxy (camo) can cache them for a while on top of that. Error cards are sent with `no-store`, so they are never cached.
 
 ---
 

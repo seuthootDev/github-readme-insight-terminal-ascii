@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { after, before, test } from "node:test";
 
 process.env.VERCEL = "1"; // import the app without auto-listening on PORT
+process.env.CACHE_TTL_SECONDS = "1800"; // keep header assertions deterministic
 const { default: app } = await import("../src/server.js");
 
 let server;
@@ -46,6 +47,23 @@ test("skills card is cached and sent with CDN cache headers", async () => {
   const second = await fetch(`${base}/svg/skills?i=js,ts`);
   assert.equal(second.headers.get("x-cache"), "HIT");
   assert.equal(await second.text(), body);
+});
+
+test("cache_seconds extends CDN caching, clamped to one day", async () => {
+  const extended = await fetch(`${base}/svg/skills?i=js&cache_seconds=7200`);
+  assert.equal(extended.status, 200);
+  assert.match(extended.headers.get("cache-control"), /s-maxage=7200/);
+
+  const maxed = await fetch(`${base}/svg/skills?i=ts&cache_seconds=999999`);
+  assert.match(maxed.headers.get("cache-control"), /s-maxage=86400/);
+});
+
+test("cache_seconds below the default or invalid is ignored", async () => {
+  const tooShort = await fetch(`${base}/svg/skills?i=react&cache_seconds=5`);
+  assert.match(tooShort.headers.get("cache-control"), /s-maxage=1800/);
+
+  const invalid = await fetch(`${base}/svg/skills?i=nodejs&cache_seconds=abc`);
+  assert.match(invalid.headers.get("cache-control"), /s-maxage=1800/);
 });
 
 test("missing user returns an uncached error card", async () => {

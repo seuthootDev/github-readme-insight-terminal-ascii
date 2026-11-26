@@ -34,11 +34,24 @@ function envInt(name, fallback) {
 
 const CACHE_TTL_SECONDS = Math.max(0, envInt("CACHE_TTL_SECONDS", 1800));
 const CACHE_MAX_ENTRIES = Math.max(0, envInt("CACHE_MAX_ENTRIES", 500));
+const MAX_CACHE_SECONDS = 86400;
+
 // Browsers/camo use max-age; s-maxage lets Vercel's CDN serve repeats without invoking the function,
 // and stale-while-revalidate keeps cards up while a refresh happens in the background.
-const SUCCESS_CACHE_CONTROL = CACHE_TTL_SECONDS > 0
-  ? `public, max-age=${CACHE_TTL_SECONDS}, s-maxage=${CACHE_TTL_SECONDS}, stale-while-revalidate=86400`
-  : "no-store";
+function cacheControlFor(ttlSeconds) {
+  return ttlSeconds > 0
+    ? `public, max-age=${ttlSeconds}, s-maxage=${ttlSeconds}, stale-while-revalidate=86400`
+    : "no-store";
+}
+
+// cache_seconds can only extend the server default, never shorten it. Invalid
+// values fall back to the default, and a disabled cache stays disabled.
+function cacheSecondsFor(raw) {
+  if (CACHE_TTL_SECONDS === 0) return 0;
+  const parsed = Number.parseInt(String(raw ?? ""), 10);
+  if (Number.isNaN(parsed)) return CACHE_TTL_SECONDS;
+  return Math.min(MAX_CACHE_SECONDS, Math.max(CACHE_TTL_SECONDS, parsed));
+}
 // URL builder page served at the bare site root. Falls back to a redirect if the file is missing.
 let BUILDER_HTML = null;
 try {
@@ -129,9 +142,15 @@ async function handleSvgRequest(req, res, forcedType = null) {
     ide
   };
 
+  const ttlSeconds = cacheSecondsFor(req.query.cache_seconds);
+
   try {
-    const { value: svg, hit } = await svgCache.getOrCompute(JSON.stringify(options), () => generateSvg(options));
-    res.set("Cache-Control", SUCCESS_CACHE_CONTROL);
+    // Keep TTL variants apart: the same SVG cached for a longer period must not
+    // be served with a shorter Cache-Control header (or vice versa).
+    const key = JSON.stringify({ ...options, cacheSeconds: ttlSeconds });
+    const { value: svg, hit } = await svgCache.getOrCompute(
+      key, () => generateSvg(options), ttlSeconds * 1000);
+    res.set("Cache-Control", cacheControlFor(ttlSeconds));
     res.set("X-Cache", hit ? "HIT" : "MISS");
     res.type("image/svg+xml").send(svg);
   } catch (error) {
