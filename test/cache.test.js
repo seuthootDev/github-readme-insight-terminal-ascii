@@ -16,6 +16,28 @@ test("returns cached value until TTL expires", async () => {
   assert.deepEqual(await cache.getOrCompute("k", compute), { value: 2, hit: false });
 });
 
+test("set accepts a per-entry TTL", () => {
+  let clock = 0;
+  const cache = createTtlCache({ ttlMs: 1000, maxEntries: 10, now: () => clock });
+  cache.set("k", "v", 500);
+  assert.equal(cache.get("k"), "v");
+  clock = 500;
+  assert.equal(cache.get("k"), undefined);
+});
+
+test("getOrCompute honours a per-entry TTL longer than the default", async () => {
+  let clock = 0;
+  const cache = createTtlCache({ ttlMs: 1000, maxEntries: 10, now: () => clock });
+  let calls = 0;
+  const compute = async () => ++calls;
+
+  await cache.getOrCompute("k", compute, 5000);
+  clock = 1000; // the default TTL would have expired here
+  assert.deepEqual(await cache.getOrCompute("k", compute, 5000), { value: 1, hit: true });
+  clock = 5000;
+  assert.deepEqual(await cache.getOrCompute("k", compute, 5000), { value: 2, hit: false });
+});
+
 test("evicts least recently used entry", () => {
   const cache = createTtlCache({ ttlMs: 1000, maxEntries: 2, now: () => 0 });
   cache.set("a", 1);
