@@ -10,6 +10,7 @@ import {
   buildMonthLine,
   getGraphRange,
   levelFromCount,
+  normalizeUser,
   toIsoDate
 } from "./constants.js";
 import { fetchContributions, sumContributions } from "./githubContributions.js";
@@ -21,7 +22,7 @@ function parseArgs(argv) {
   for (let i = 2; i < argv.length; i += 1) {
     const token = argv[i];
     if (token === "--user") {
-      args.user = argv[i + 1];
+      args.user = normalizeUser(argv[i + 1]);
       i += 1;
     } else if (token === "--theme") {
       args.theme = argv[i + 1] ?? "mac";
