@@ -413,8 +413,10 @@
 
     var snippetUrl = base + toQuery(buildParams(type, "snippet").params);
     out.url.textContent = snippetUrl;
-    out.md.textContent = "![" + alt + "](" + snippetUrl + ")";
-    out.html.textContent = '<img src="' + snippetUrl.replace(/&/g, "&amp;") + '" alt="' + alt + '">';
+    // The card links back to this builder, so people who like it can make their own.
+    var home = location.origin + "/";
+    out.md.textContent = "[![" + alt + "](" + snippetUrl + ")](" + home + ")";
+    out.html.textContent = '<a href="' + home + '"><img src="' + snippetUrl.replace(/&/g, "&amp;") + '" alt="' + alt + '"></a>';
 
     try { history.replaceState(null, "", "#" + type + "?" + toQuery(buildParams(type, "raw").params)); } catch (e) {}
 
