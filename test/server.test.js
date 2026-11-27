@@ -22,12 +22,25 @@ test("bare root serves the URL builder page", async () => {
   assert.equal(res.status, 200);
   assert.match(res.headers.get("content-type"), /text\/html/);
   const html = await res.text();
-  assert.match(html, /<title>Terminal Card Builder<\/title>/);
+  assert.match(html, /<title>Terminal-Style GitHub README Stats Cards \| Card Builder<\/title>/);
+  assert.match(html, /<meta property="og:image" content="https:\/\/[^"]+\.png">/);
   // Every card type the server knows must be selectable in the builder.
   const { getAvailableRenderTypes } = await import("../src/renderer.js");
   for (const type of getAvailableRenderTypes()) {
     assert.match(html, new RegExp(`<option value="${type}">`), `builder is missing ${type}`);
   }
+});
+
+test("robots.txt and sitemap.xml point crawlers at the builder", async () => {
+  const robots = await fetch(`${base}/robots.txt`, { headers: { "x-forwarded-proto": "https" } });
+  assert.equal(robots.status, 200);
+  assert.match(robots.headers.get("content-type"), /text\/plain/);
+  assert.match(await robots.text(), /^Sitemap: https:\/\/127\.0\.0\.1:\d+\/sitemap\.xml$/m);
+
+  const sitemap = await fetch(`${base}/sitemap.xml`);
+  assert.equal(sitemap.status, 200);
+  assert.match(sitemap.headers.get("content-type"), /xml/);
+  assert.match(await sitemap.text(), /<loc>http:\/\/127\.0\.0\.1:\d+\/<\/loc>/);
 });
 
 test("root with a user still renders the graph card", async () => {
