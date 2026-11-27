@@ -88,6 +88,16 @@ test("user= accepts @handle and GitHub profile URLs", async () => {
   }
 });
 
+test("theme ignores case", async () => {
+  const mac = await (await fetch(`${base}/svg/skills?i=js&theme=mac`)).text();
+  const mixed = await (await fetch(`${base}/svg/skills?i=js&theme=Mac`)).text();
+  assert.doesNotMatch(mixed, /Unknown theme/);
+  assert.equal(mixed, mac);
+  const upper = await (await fetch(`${base}/svg/skills?i=js&theme=WIN98`)).text();
+  assert.doesNotMatch(upper, /Unknown theme/);
+  assert.equal(upper, await (await fetch(`${base}/svg/skills?i=js&theme=win98`)).text());
+});
+
 test("editor theme takes its colour scheme from the link", async () => {
   const card = async (query) => (await fetch(`${base}/svg/skills?i=js&theme=editor${query}`)).text();
   const dark = await card("");

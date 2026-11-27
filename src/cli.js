@@ -25,7 +25,7 @@ function parseArgs(argv) {
       args.user = normalizeUser(argv[i + 1]);
       i += 1;
     } else if (token === "--theme") {
-      args.theme = argv[i + 1] ?? "mac";
+      args.theme = String(argv[i + 1] ?? "mac").trim().toLowerCase() || "mac";
       i += 1;
     } else if (token === "--ide") {
       args.ide = argv[i + 1];

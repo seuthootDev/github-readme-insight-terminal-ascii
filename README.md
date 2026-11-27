@@ -319,6 +319,16 @@ Every card type has an SVG snapshot in `test/__snapshots__/`, rendered offline f
 
 The `skills` icons are precomputed into `src/skillIconsData.js`. After bumping the `simple-icons` devDependency, regenerate it with `npm run build:icons` (takes a couple of minutes).
 
+### Not ready to code?
+
+That is fine too. Starring the repo or sharing a card you made also helps other people find the project.
+
+### Contributors
+
+Thanks to everyone who has sent a fix or a feature:
+
+<a href="https://github.com/seuthootDev/github-readme-insight-terminal-ascii/graphs/contributors"><img src="https://contrib.rocks/image?repo=seuthootDev/github-readme-insight-terminal-ascii" alt="Contributors" /></a>
+
 ---
 
 ## More from the same author
