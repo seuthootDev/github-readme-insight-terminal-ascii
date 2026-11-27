@@ -137,7 +137,20 @@ async function fetchJson(url) {
     if (response.status === 404) {
       throw new Error("GitHub user not found.");
     }
-    throw new Error(`GitHub API error ${response.status} for ${url}`);
+    if (response.status === 403) {
+      // Match the rate-limit guidance shown by the other cards instead of
+      // leaking the raw API URL onto the card.
+      const remaining = response.headers.get("x-ratelimit-remaining");
+      const resetEpoch = response.headers.get("x-ratelimit-reset");
+      const resetHint = resetEpoch
+        ? ` (reset at ${new Date(Number.parseInt(resetEpoch, 10) * 1000).toISOString()})`
+        : "";
+      if (!githubToken && remaining === "0") {
+        throw new Error(`GitHub API rate limit exceeded. Set GITHUB_TOKEN or GH_TOKEN to increase limit${resetHint}.`);
+      }
+      throw new Error(`GitHub API access forbidden (HTTP 403)${resetHint}.`);
+    }
+    throw new Error(`GitHub API error (HTTP ${response.status}).`);
   }
   return response.json();
 }
