@@ -6,6 +6,7 @@ import express from "express";
 import { generateErrorSvg } from "./errorCard.js";
 import { generateSvg, getAvailableRenderTypes } from "./renderer.js";
 import { createTtlCache } from "./cache.js";
+import { normalizeUser } from "./constants.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 try {
@@ -71,7 +72,7 @@ function sendErrorCard(res, { theme, user, type, message, scheme, ide }) {
 async function handleSvgRequest(req, res, forcedType = null) {
   const repo = String(req.query.repo ?? "").trim() || undefined;
   // The repo card can take everything from repo=owner/name, so user becomes optional there.
-  const user = String(req.query.user ?? "").trim() || (repo?.includes("/") ? repo.split("/")[0] : "");
+  const user = normalizeUser(req.query.user) || (repo?.includes("/") ? repo.split("/")[0] : "");
   const theme = String(req.query.theme ?? "mac").trim().toLowerCase() || "mac";
   const renderType = String(forcedType ?? req.params.type ?? "graph").trim().toLowerCase();
   const topRaw = req.query.top;

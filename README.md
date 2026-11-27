@@ -210,7 +210,7 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=ICON1,ICON2,
 
 | Query | Required | Description |
 |-------|----------|-------------|
-| `user` | ✅ (optional for `repo` when `repo=owner/name`; optional for `skills`, only names the prompt) | GitHub username |
+| `user` | ✅ (optional for `repo` when `repo=owner/name`; optional for `skills`, only names the prompt) | GitHub username (`@name` or a `github.com/name` profile URL also works) |
 | `theme` | ❌ (default: `mac`) | `mac` / `windows` / `ubuntu` / `win98` / `winxp` / `editor` |
 | `scheme` | ❌ (`editor` only, default: `dark`) | `dark` / `light`. Other themes ignore it |
 | `ide` | ❌ (`editor` only, default: `vscode`) | `vscode` / `intellij` |

@@ -80,6 +80,14 @@ test("unknown type and theme return error cards", async () => {
   assert.match(badTheme, /Unknown theme/);
 });
 
+test("user= accepts @handle and GitHub profile URLs", async () => {
+  for (const user of ["@torvalds", "https://github.com/torvalds", "github.com/torvalds/"]) {
+    const svg = await (await fetch(`${base}/svg/nope?user=${encodeURIComponent(user)}`)).text();
+    assert.match(svg, /[^@]torvalds@MacBook/, user);
+    assert.doesNotMatch(svg, /github\.com/, user);
+  }
+});
+
 test("theme ignores case", async () => {
   const mac = await (await fetch(`${base}/svg/skills?i=js&theme=mac`)).text();
   const mixed = await (await fetch(`${base}/svg/skills?i=js&theme=Mac`)).text();
