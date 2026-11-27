@@ -1,7 +1,7 @@
 {
   "name": "github-readme-insight-terminal-ascii",
   "version": "1.5.0",
-"description": "Terminal-style GitHub README cards as SVG: contribution graph, stats, top languages, streak, git log, PRs & issues, repo, language history, dashboard, skill icons, ASCII avatar and neofetch (macOS, PowerShell, Ubuntu, Windows 98, Windows XP, and VS Code / IntelliJ code editor themes).",  "type": "module",
+  "description": "Terminal-style GitHub README cards as SVG: contribution graph, stats, top languages, streak, git log, PRs & issues, repo, language history, dashboard, skill icons, ASCII avatar and neofetch (macOS, PowerShell, Ubuntu, Windows 98, Windows XP, and VS Code / IntelliJ code editor themes).",
   "main": "src/index.js",
   "bin": {
     "github-graph-ascii": "src/cli.js"
@@ -50,10 +50,8 @@
     "dashboard",
     "repo-card",
     "language-history",
-    "windows-98",
     "skill-icons",
     "tech-stack",
-    "existing-keyword",
     "windows-98",
     "windows-xp",
     "vscode",
