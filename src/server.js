@@ -160,6 +160,26 @@ async function handleSvgRequest(req, res, forcedType = null) {
   }
 }
 
+// Crawler files for the builder page. Registered before "/:type" so these paths
+// don't render an error card. Vercel terminates TLS, so read x-forwarded-proto.
+function originOf(req) {
+  const proto = String(req.get("x-forwarded-proto") ?? req.protocol).split(",")[0].trim();
+  return `${proto}://${req.get("host")}`;
+}
+
+app.get("/robots.txt", (req, res) => {
+  res.set("Cache-Control", "public, max-age=86400");
+  res.type("text/plain").send(`User-agent: *\nAllow: /\nSitemap: ${originOf(req)}/sitemap.xml\n`);
+});
+
+app.get("/sitemap.xml", (req, res) => {
+  const origin = originOf(req);
+  res.set("Cache-Control", "public, max-age=86400");
+  res.type("application/xml").send(
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${origin}/</loc></url>\n</urlset>\n`
+  );
+});
+
 app.get(["/", "/svg"], async (req, res) => {
   // People opening the bare site in a browser get the URL builder, not an error card.
   if (req.path === "/" && !req.query.user && !req.query.repo) {
