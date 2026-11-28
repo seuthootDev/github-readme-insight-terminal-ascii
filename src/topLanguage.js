@@ -130,6 +130,22 @@ function clampTopN(input) {
   return Math.min(12, Math.max(6, parsed));
 }
 
+const EMPTY_EXCLUDED_REPOS = new Set();
+
+// Accepts "repo1,repo2", an array, or owner/name entries; comparison is by repo name.
+function normalizeExcludedRepos(input) {
+  if (!input) return EMPTY_EXCLUDED_REPOS;
+  const values = Array.isArray(input) ? input : String(input).split(",");
+  const names = values
+    .map((value) => String(value).trim().replace(/^.*\//, "").toLowerCase())
+    .filter(Boolean);
+  return names.length > 0 ? new Set(names) : EMPTY_EXCLUDED_REPOS;
+}
+
+function repoName(repo) {
+  return String(repo?.name ?? repo?.full_name ?? "").replace(/^.*\//, "").toLowerCase();
+}
+
 const BAR_TO_ROW_GAP = 40;
 
 function cardHeightForRowCount(rowCount) {
@@ -363,11 +379,12 @@ async function fetchAllRepoLanguageEdges(username) {
   return repos;
 }
 
-function aggregateLanguages(repos) {
+function aggregateLanguages(repos, excludedRepos = EMPTY_EXCLUDED_REPOS) {
   const languageMap = new Map();
 
   for (const repo of repos) {
     if (!repo || repo.fork) continue;
+    if (excludedRepos.has(repoName(repo))) continue;
     const language = String(repo.language ?? "").trim();
     if (!language) continue;
 
@@ -391,10 +408,11 @@ function aggregateLanguages(repos) {
   return rows;
 }
 
-function aggregateLanguageEdges(repos) {
+function aggregateLanguageEdges(repos, excludedRepos = EMPTY_EXCLUDED_REPOS) {
   const languageMap = new Map();
 
   for (const repo of repos) {
+    if (excludedRepos.has(repoName(repo))) continue;
     const edges = repo?.languages?.edges ?? [];
     for (const edge of edges) {
       const language = String(edge?.node?.name ?? "").trim();
@@ -477,6 +495,7 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   }
 
   const top = clampTopN(options.topN ?? options.top);
+  const excludedRepos = normalizeExcludedRepos(options.excludeRepos ?? options.exclude);
 
   let profile = null;
   let repos = [];
@@ -501,14 +520,14 @@ export async function generateTopLanguageSvg(themeName, githubId, options = {}) 
   try {
     if (process.env.GITHUB_TOKEN || process.env.GH_TOKEN) {
       const graphRepos = await fetchAllRepoLanguageEdges(githubId);
-      languageRows = aggregateLanguageEdges(graphRepos).slice(0, top);
+      languageRows = aggregateLanguageEdges(graphRepos, excludedRepos).slice(0, top);
     } else {
-      languageRows = aggregateLanguages(repos).slice(0, top);
+      languageRows = aggregateLanguages(repos, excludedRepos).slice(0, top);
     }
   } catch (error) {
     partial = true;
     fetchError ??= error;
-    languageRows = aggregateLanguages(repos).slice(0, top);
+    languageRows = aggregateLanguages(repos, excludedRepos).slice(0, top);
   }
 
   const fallbackLogin = profile?.login || githubId;

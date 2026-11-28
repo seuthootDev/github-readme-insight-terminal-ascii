@@ -99,6 +99,14 @@ async function handleSvgRequest(req, res, forcedType = null) {
   const perline = Number.isNaN(perlineParsed) ? undefined : perlineParsed;
   const labelsRaw = String(req.query.labels ?? "").trim().toLowerCase();
   const labels = labelsRaw ? !["0", "false", "no", "off"].includes(labelsRaw) : undefined;
+  // top-lang can leave out repositories that skew the language mix. Names are
+  // case-insensitive; owner/name is accepted too and compared by repo name.
+  const excludeRaw = String(req.query.exclude ?? "").trim();
+  const excludeRepos = excludeRaw
+    ? [...new Set(excludeRaw.split(",")
+      .map((name) => name.trim().replace(/^.*\//, "").toLowerCase())
+      .filter(Boolean))]
+    : undefined;
 
   // Colour scheme for themes that have one (editor): dark by default, light on request.
   const schemeRaw = String(req.query.scheme ?? "").trim().toLowerCase();
@@ -139,6 +147,7 @@ async function handleSvgRequest(req, res, forcedType = null) {
     icons,
     perline,
     labels,
+    excludeRepos,
     scheme,
     ide
   };

@@ -196,6 +196,7 @@ https://github-readme-insight-terminal-asci.vercel.app/svg?user=GITHUB_USERNAME&
 https://github-readme-insight-terminal-asci.vercel.app/svg/graph?user=GITHUB_USERNAME&theme=THEME
 https://github-readme-insight-terminal-asci.vercel.app/svg/stats?user=GITHUB_USERNAME&theme=THEME
 https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=GITHUB_USERNAME&theme=THEME&top=8
+https://github-readme-insight-terminal-asci.vercel.app/svg/top-lang?user=GITHUB_USERNAME&theme=THEME&top=8&exclude=dotfiles,my-blog
 https://github-readme-insight-terminal-asci.vercel.app/svg/streak?user=GITHUB_USERNAME&theme=THEME
 https://github-readme-insight-terminal-asci.vercel.app/svg/git-log?user=GITHUB_USERNAME&theme=THEME&lines=8
 https://github-readme-insight-terminal-asci.vercel.app/svg/pr-issue?user=GITHUB_USERNAME&theme=THEME&lines=8
@@ -215,6 +216,7 @@ https://github-readme-insight-terminal-asci.vercel.app/svg/skills?i=ICON1,ICON2,
 | `scheme` | ❌ (`editor` only, default: `dark`) | `dark` / `light`. Other themes ignore it |
 | `ide` | ❌ (`editor` only, default: `vscode`) | `vscode` / `intellij` |
 | `top` | ❌ (`top-lang` only, default: `6`) | `6`–`12` |
+| `exclude` | ❌ (`top-lang` only) | Comma-separated repo names to leave out of the language mix; case-insensitive (e.g. `dotfiles,my-blog`) |
 | `color` | ❌ (`ascii` / `neofetch`, default: mono) | `1` / `true` / `color` (alias: `mode`) |
 | `lines` | ❌ (`git-log` / `pr-issue`, default: `8`) | Number of rows `3`–`15` |
 | `repo` | ✅ for `repo` | `owner/name`, or just `name` together with `user=owner` |

@@ -45,6 +45,7 @@ const CASES = [
   ["stats-mac", { type: "stats", themeName: "mac" }],
   ["stats-windows", { type: "stats", themeName: "windows" }],
   ["top-lang-mac", { type: "top-lang", themeName: "mac" }],
+  ["top-lang-mac-exclude", { type: "top-lang", themeName: "mac", exclude: "gravita" }],
   ["streak-ubuntu", { type: "streak", themeName: "ubuntu" }],
   ["git-log-mac", { type: "git-log", themeName: "mac" }],
   ["pr-issue-mac", { type: "pr-issue", themeName: "mac" }],

@@ -24,6 +24,7 @@ test("bare root serves the URL builder page", async () => {
   const html = await res.text();
   assert.match(html, /<title>Terminal-Style GitHub README Stats Cards \| Card Builder<\/title>/);
   assert.match(html, /<meta property="og:image" content="https:\/\/[^"]+\.png">/);
+  assert.match(html, /name="exclude"/);
   // Every card type the server knows must be selectable in the builder.
   const { getAvailableRenderTypes } = await import("../src/renderer.js");
   for (const type of getAvailableRenderTypes()) {
