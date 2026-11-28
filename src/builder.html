@@ -240,6 +240,11 @@
       <input type="number" name="top" min="6" max="12" placeholder="6">
     </label>
 
+    <label data-for="exclude">
+      <span>Exclude repos (comma-separated)</span>
+      <input type="text" name="exclude" placeholder="dotfiles,my-blog" spellcheck="false">
+    </label>
+
     <label data-for="lines">
       <span>Rows (3–15)</span>
       <input type="number" name="lines" min="3" max="15" placeholder="8">
@@ -314,7 +319,7 @@
   var FIELDS = {
     graph: [],
     stats: [],
-    "top-lang": ["top"],
+    "top-lang": ["top", "exclude"],
     streak: [],
     "git-log": ["lines"],
     "pr-issue": ["lines"],
@@ -339,7 +344,7 @@
     ascii: "ASCII avatar",
     skills: "Skills"
   };
-  var OPTIONAL = ["top", "lines", "years", "cols", "perline", "scale"];
+  var OPTIONAL = ["top", "exclude", "lines", "years", "cols", "perline", "scale"];
 
   var form = document.getElementById("form");
   var preview = document.getElementById("preview");

@@ -52,6 +52,7 @@ function resolveGenerateOptions(input, githubIdFallback) {
       icons: input.icons,
       perline: input.perline,
       labels: input.labels,
+      excludeRepos: input.excludeRepos ?? input.exclude,
       scheme: input.scheme,
       ide: input.ide
     };
@@ -71,18 +72,19 @@ function resolveGenerateOptions(input, githubIdFallback) {
     icons: undefined,
     perline: undefined,
     labels: undefined,
+    excludeRepos: undefined,
     scheme: undefined,
     ide: undefined
   };
 }
 
 export async function generateSvg(input, githubIdFallback) {
-  const { type, themeName, githubId, topN, scale, color, cols, lines, repo, years, icons, perline, labels, scheme, ide } = resolveGenerateOptions(input, githubIdFallback);
+  const { type, themeName, githubId, topN, scale, color, cols, lines, repo, years, icons, perline, labels, excludeRepos, scheme, ide } = resolveGenerateOptions(input, githubIdFallback);
   const renderer = RENDERERS[type];
 
   if (!renderer) {
     throw new Error(`Unknown render type: ${type}. Use one of: ${getAvailableRenderTypes().join(", ")}`);
   }
 
-  return renderer(themeName, githubId, { topN, scale, color, cols, lines, repo, years, icons, perline, labels, scheme, ide });
+  return renderer(themeName, githubId, { topN, scale, color, cols, lines, repo, years, icons, perline, labels, excludeRepos, scheme, ide });
 }
